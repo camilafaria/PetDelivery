@@ -48,6 +48,7 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="top-navbar-1">
 			<ul class="nav navbar-nav navbar-right">
+				
 				<li class="active"><a href="index"><span
 						aria-hidden="true" class="icon_house"></span><br>Home</a></li>
 				<!--
@@ -61,7 +62,7 @@
 						class="icon_mail"></span><br>Contact</a></li>
 				-->
 				<li>
-					<a href="adiciona-usuario"><span aria-hidden="true" class="icon_profile"></span><br>Cadastrar-se</a>
+					<a href="adiciona-usuario"><span aria-hidden="true" class="icon_profile"></span><br>Cadastre-se</a>
 				</li>
 				<li>
 					<a href="login"><span aria-hidden="true" class="icon_profile"></span><br>Login</a>

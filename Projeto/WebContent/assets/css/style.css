@@ -24,7 +24,7 @@ img { max-width: 100%; }
 h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 30px;
-    color: #5d5d5d;
+    color: #ffffff; /* #5d5d5d; */
     line-height: 40px;
     font-weight: bold;
 }
@@ -110,7 +110,7 @@ a.big-link-3 {
     background: #fe503e;
     font-size: 18px;
     color: #fff;
-    font-style: italic;
+    font-style: bold;
     line-height: 24px;
     text-decoration: none;
     -moz-box-shadow: 0 1px 25px 0 rgba(0,0,0,.05) inset, 0 -1px 25px 0 rgba(0,0,0,.05) inset;
@@ -181,8 +181,9 @@ ul.navbar-nav li.active .dropdown-menu > .active > a:focus { background: #fe503e
 .navbar>.container .navbar-brand { margin-left: 0; }
 
 .navbar-brand {
-	width: 573px;
+	width: 410px;
 	height: 106px;
+	/*background:url(../img/indice.jpg) left center no-repeat;*/
 	background:url(../img/%C3%ADndice.jpg) left center no-repeat;
 	text-indent: -99999px;
 }
@@ -248,19 +249,22 @@ ul.navbar-nav li.active .dropdown-menu > .active > a:focus { background: #fe503e
 /***** Presentation *****/
 
 .presentation-container {
-    margin-top: 30px;
+    margin-top: 10px;
+    background-color: #fe503e;
+    backgroung-opacity: 0.5;
 }
 
 .presentation-container p {
     font-size: 18px;
     font-style: italic;
+    
 }
 
 
 /***** Services *****/
 
 .services-container {
-    margin-top: 10px;
+    margin-top: 100px;
 }
 
 .services-title {
@@ -684,8 +688,12 @@ footer {
 /***** Call to action *****/
 
 .call-to-action-container {
-    margin-top: 20px;
+    margin-top: -35%;
     padding-bottom: 50px;
+}
+
+.call-to-action-container p {
+	font-size: 18px;
 }
 
 .call-to-action-text {

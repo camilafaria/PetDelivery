@@ -45,17 +45,7 @@
 	<!-- Start Body -->
 	<c:if test="${not empty usuarioLogado.nome}">
 			<div class="collapse navbar-collapse" id="top-navbar-1">
-				<p>Bem vindo, usuario: ${usuarioLogado.nome}</p>
-			</div>
-	</c:if>
-	<c:if test="${not empty prestadorAutonomoLogado.nome}">
-			<div class="collapse navbar-collapse" id="top-navbar-1">
-				<p>Bem vindo, prestador autonomo: ${prestadorAutonomoLogado.nome}</p>
-			</div>
-	</c:if>
-	<c:if test="${not empty prestadorPetshopLogado.nome}">
-			<div class="collapse navbar-collapse" id="top-navbar-1">
-				<p>Bem vindo, Petshop: ${prestadorPetshopLogado.nome}</p>
+				<p>Bem vindo, ${usuarioLogado.nome}</p>
 			</div>
 	</c:if>
 		
@@ -65,42 +55,38 @@
                 <div class="flexslider">
                     <ul class="slides">
                         <li>
-                            <img src="assets/img/slider/3.jpg">
-                            <div class="flex-caption">
-                            	Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit 
-                            	lobortis nisl ut aliquip ex ea commodo consequat.
-                            </div>
+                            <img src="assets/img/slider/4.jpg">
+                            <!-- <div class="flex-caption">
+                            	
+                            </div>  -->
                         </li>
-                        <li>
-                            <img src="assets/img/slider/2.jpg">
-                            <div class="flex-caption">
-                            	Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit 
-                            	lobortis nisl ut aliquip ex ea commodo consequat.
-                            </div>
-                        </li>
-                        <li>
-                            <img src="assets/img/slider/1.jpg">
-                            <div class="flex-caption">
-                            	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. 
-                            	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. 
-                            	Lorem ipsum dolor sit amet, consectetur.
-                            </div>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>
+        </div>
+        
+        <!-- call to action -->
+        <div class="call-to-action-container" style="background-color:white; color:white;">
+
+	        <div class="container">
+        		<div class="row">
+	        		<div class="col-sm-12">
+	            		<h1>Seu <span class="colored-text">PET</span> merece ser tratado com carinho.</h1>
+	            		<p>
+	            			Encontre os melhores profissionais da sua região e solicite serviços sem sair de casa.
+	            		</p>
+	            	</div>
+            	</div>
+        	</div>
         </div>
 
         <!-- Presentation -->
         <div class="presentation-container">
         	<div class="container">
         		<div class="row">
-	        		<div class="col-sm-12 wow fadeInLeftBig">
-	            		<h1>This is <span class="colored-text">Gioia</span>, a Bootstrap business template.</h1>
-	            		<p>
-	            			Download this theme <a href="http://azmind.com" target="_blank">from here</a> for free, 
-	            			use it and customize it as you like.
-	            		</p>
+	        		<div class="col-sm-12">
+	            		<a class="big-link-3" href="adiciona-usuario">EXPERIMENTE</a>
 	            	</div>
             	</div>
         	</div>
@@ -113,33 +99,33 @@
 	            	<div class="col-sm-3">
 		                <div class="service wow fadeInUp">
 		                    <div class="service-icon"><span aria-hidden="true" class="icon_gift"></span></div>
-		                    <h3>Beautiful Websites</h3>
-		                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et...</p>
-		                    <a class="big-link-1" href="services.html">Read more</a>
+		                    <h3>Conheça nossos <br>Petlovers</h3>
+		                    <p>Nossos Petlovers oferecem os melhores serviços e cuidam do seu Pet como filhos</p>
+		                    <a class="big-link-1" href="services.html">Ler mais</a>
 		                </div>
 					</div>
 					<div class="col-sm-3">
 		                <div class="service wow fadeInDown">
 		                    <div class="service-icon"><span aria-hidden="true" class="icon_mobile"></span></div>
-		                    <h3>Responsive Layout</h3>
-		                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et...</p>
-		                    <a class="big-link-1" href="services.html">Read more</a>
+		                    <h3>Dê ao seu pet o cuidado que ele precisa </h3>
+		                    <p>Busque por Petlovers perto de você e contrate seus serviços sem sair de casa</p>
+		                    <a class="big-link-1" href="services.html">Ler mais</a>
 		                </div>
 	                </div>
 	                <div class="col-sm-3">
 		                <div class="service wow fadeInUp">
 		                    <div class="service-icon"><span aria-hidden="true" class="icon_pencil"></span></div>
-		                    <h3>Awesome Logos</h3>
-		                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et...</p>
-		                    <a class="big-link-1" href="services.html">Read more</a>
+		                    <h3>Adaptável à sua <br> agenda</h3>
+		                    <p>Escolha o melhor horário para você e a gente busca seu Pet na sua casa</p>
+		                    <a class="big-link-1" href="services.html">Ler mais</a>
 		                </div>
 	                </div>
 	                <div class="col-sm-3">
 		                <div class="service wow fadeInDown">
 		                    <div class="service-icon"><span aria-hidden="true" class="icon_printer-alt"></span></div>
-		                    <h3>High Res Prints</h3>
-		                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et...</p>
-		                    <a class="big-link-1" href="services.html">Read more</a>
+		                    <h3>Compartilhe sua experiência</h3>
+		                    <p>Conte para a gente como foi fazer parte da família que mais ama os animaizinhos!</p>
+		                    <a class="big-link-1" href="services.html">Ler mais</a>
 		                </div>
 	                </div>
 	            </div>
@@ -149,17 +135,17 @@
         <!-- Latest work -->
         <div class="work-container">
 	        <div class="container">
-	        	<div class="row">
-		            <div class="col-sm-12 work-title wow fadeIn">
-		                <h2>Our Latest Work</h2>
+	        	 <div class="row">
+		            <div class="col-sm-12 wow fadeIn"> 
+		                <h2>Alguns dos serviços oferecidos</h2>
 		            </div>
-	            </div>
+	            </div>  
 	            <div class="row">
 	            	<div class="col-sm-3">
 		                <div class="work wow fadeInUp">
-		                    <img src="assets/img/portfolio/work1.jpg" alt="Lorem Website" data-at2x="assets/img/portfolio/work1.jpg">
-		                    <h3>Lorem Website</h3>
-		                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...</p>
+		                    <img src="assets/img/portfolio/work01.jpg" alt="Lorem Website" data-at2x="assets/img/portfolio/work1.jpg">
+		                    <h3>Dog walk</h3>
+		                    <p></p>
 		                    <div class="work-bottom">
 		                        <a class="big-link-2 view-work" href="assets/img/portfolio/work1.jpg"><span class="icon_search"></span></a>
 		                        <a class="big-link-2" href="portfolio.html"><span class="icon_link"></span></a>
@@ -168,9 +154,9 @@
 	                </div>
 	                <div class="col-sm-3">
 		                <div class="work wow fadeInDown">
-		                    <img src="assets/img/portfolio/work2.jpg" alt="Ipsum Logo" data-at2x="assets/img/portfolio/work2.jpg">
-		                    <h3>Ipsum Logo</h3>
-		                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...</p>
+		                    <img src="assets/img/portfolio/work02.jpg" alt="Ipsum Logo" data-at2x="assets/img/portfolio/work2.jpg">
+		                    <h3>Banho</h3>
+		                    <p></p>
 		                    <div class="work-bottom">
 		                        <a class="big-link-2 view-work" href="assets/img/portfolio/work2.jpg"><span class="icon_search"></span></a>
 		                        <a class="big-link-2" href="portfolio.html"><span class="icon_link"></span></a>
@@ -179,9 +165,9 @@
 		            </div>
 		            <div class="col-sm-3">
 		                <div class="work wow fadeInUp">
-		                    <img src="assets/img/portfolio/work3.jpg" alt="Dolor Prints" data-at2x="assets/img/portfolio/work3.jpg">
-		                    <h3>Dolor Prints</h3>
-		                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...</p>
+		                    <img src="assets/img/portfolio/work03.jpg" alt="Dolor Prints" data-at2x="assets/img/portfolio/work3.jpg">
+		                    <h3>Hotel</h3>
+		                    <p></p>
 		                    <div class="work-bottom">
 		                        <a class="big-link-2 view-work" href="assets/img/portfolio/work3.jpg"><span class="icon_search"></span></a>
 		                        <a class="big-link-2" href="portfolio.html"><span class="icon_link"></span></a>
@@ -190,9 +176,9 @@
 		            </div>
 		            <div class="col-sm-3">
 		                <div class="work wow fadeInDown">
-		                    <img src="assets/img/portfolio/work4.jpg" alt="Sit Amet Website" data-at2x="assets/img/portfolio/work4.jpg">
-		                    <h3>Sit Amet Website</h3>
-		                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...</p>
+		                    <img src="assets/img/portfolio/work04.jpg" alt="Sit Amet Website" data-at2x="assets/img/portfolio/work4.jpg">
+		                    <h3>Vacinação</h3>
+		                    <p></p>
 		                    <div class="work-bottom">
 		                        <a class="big-link-2 view-work" href="assets/img/portfolio/work4.jpg"><span class="icon_search"></span></a>
 		                        <a class="big-link-2" href="portfolio.html"><span class="icon_link"></span></a>
@@ -208,7 +194,7 @@
 	        <div class="container">
 	        	<div class="row">
 		            <div class="col-sm-12 testimonials-title wow fadeIn">
-		                <h2>Testimonials</h2>
+		                <h2>Depoimentos</h2>
 		            </div>
 	            </div>
 	            <div class="row">
@@ -222,10 +208,8 @@
 	                				</div>
 	                				<div class="testimonial-text">
 		                                <p>
-		                                	"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. 
-		                                	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. 
-		                                	Lorem ipsum dolor sit amet, consectetur..."<br>
-		                                	<a href="#">Lorem Ipsum, dolor.co.uk</a>
+		                                	"Minha vida mudou depois que comecei a usar o Petdelivery! Meu cachorro Bob passava a tarde toda sozinho em casa, agora ele passeia todos os dias! Ele é sempre muito bem cuidado e sempre volta para casa muito feliz! "<br>
+		                                	<a href="#">Gustavo - Bob (Cão Beagle)</a>
 		                                </p>
 	                                </div>
 	                			</div>
@@ -235,10 +219,8 @@
 	                				</div>
 	                				<div class="testimonial-text">
 		                                <p>
-		                                	"Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip 
-		                                	ex ea commodo consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit 
-		                                	lobortis nisl ut aliquip ex ea commodo consequat..."<br>
-		                                	<a href="#">Minim Veniam, nostrud.com</a>
+		                                	"Eu estava desempregado e triste com a partida do meu amigão, e o Petdelivery foi muito mais que um emprego, me ajudou a sair da depressão e a encontrar minha paixão."<br>
+		                                	<a href="#">Luiz - Petlover há 3 meses</a>
 		                                </p>
 	                                </div>
 	                			</div>
@@ -261,10 +243,8 @@
 	                				</div>
 	                				<div class="testimonial-text">
 		                                <p>
-		                                	"Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip 
-		                                	ex ea commodo consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit 
-		                                	lobortis nisl ut aliquip ex ea commodo consequat..."<br>
-		                                	<a href="#">Minim Veniam, nostrud.com</a>
+		                                	"Se eu pudesse eu teria um milhão de animais! Só com o Pet Delivery isso foi possível!"<br>
+		                                	<a href="#">Miriam - Petlover há 6 meses</a>
 		                                </p>
 	                                </div>
 	                			</div>

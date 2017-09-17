@@ -118,10 +118,6 @@
 					<h3>
 						Caso queira prestar um serviço como autonomo, cadastre-se <a href="adiciona-prestador-autonomo">AQUI</a>!
 					</h3>
-					<br/>
-					<h3>
-						Ou, caso seja um Petshop, cadastre-se <a href="adiciona-prestador-petshop">AQUI</a>!
-					</h3>
 				</div>
 			</div>
 		</div>
