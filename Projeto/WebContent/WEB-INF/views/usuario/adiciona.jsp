@@ -48,76 +48,88 @@
 	<div class="page-title-container">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+				<div class="title col-sm-10 col-sm-offset-1 page-title wow fadeIn">
 					<span aria-hidden="true" class="icon_profile"></span>
-					<h1>Cadastrar /</h1>
-					<p>Registrar um novo usuário</p>
+					<h1>Cadastre-se</h1>
 				</div>
+			
 			</div>
+			<div style="text-align: right;"><p>Deseja se tornar um Petlover? <a href="adiciona-prestador-autonomo">Clique aqui</a></p></div>
 		</div>
 	</div>
 
 	<!-- form action="adicionaUsuario" class="form-horizontal"-->
 	<form action="insert-usuario" class="form-horizontal">
 		<div class="form-group">
-			<div class="container">
-				<div class="col-sm-7 contact-form wow fadeInLeft">
-					<h3>Quer utilizar algum serviço?</br>Preencha os campos abaixo.</h3>
-					<div class="form-group">
-						<label for="contact-name">Nome</label> <input type="text"
+			<div class="container col-sm-10">
+				<div class="contact-form col-sm-6 wow fadeInLeft">
+					<!-- 1 -->
+					<div class="form-group col-sm-12">
+						<label for="contact-name">Nome completo</label> <input type="text"
 							name="nome" placeholder="Digite seu Nome..."
 							class="contact-name form-control">
 					</div>
-					<div class="form-group">
+					<!-- 2 -->
+					<div class="form-group col-sm-6">
 						<label for="contact-name">CPF</label> <input type="text"
 							name="cpf" placeholder="123.345.678-90"
 							class="contact-name form-control">
 					</div>
-					<div class="form-group">
+					<div class="form-group col-sm-2">
 						<label for="contact-name">DDD</label> <input type="text"
 							name="ddd" placeholder="11" class="contact-name form-control">
 					</div>
-					<div class="form-group">
+					<div class="form-group col-sm-5">
 						<label for="contact-name">Telefone</label> <input type="text"
 							name="telefone" placeholder="93456-9879"
 							class="contact-name form-control">
 					</div>
-					<div class="form-group">
-						<label for="contact-name">Rua</label> <input type="text"
-							name="rua" placeholder="Rua XV de Maio"
+					<!-- 3 -->
+					<div class="form-group col-sm-6">
+						<label for="contact-name">CEP</label> <input type="text"
+							name="cep" placeholder="00000-000"
 							class="contact-name form-control">
 					</div>
-					<div class="form-group">
-						<label for="contact-name">Número</label> <input type="text"
-							name="numero" placeholder="245" class="contact-name form-control">
-					</div>
-					<div class="form-group">
-						<label for="contact-name">Complemento</label> <input type="text"
-							name="complemento" placeholder="Apt. 25 Bloco B"
-							class="contact-name form-control">
-					</div>
-					<div class="form-group">
+					<div class="form-group col-sm-6">
 						<label for="contact-name">Bairro</label> <input type="text"
 							name="bairro" placeholder="Santana"
 							class="contact-name form-control">
 					</div>
-					<div class="form-group">
+					<!-- 4 -->
+					<div class="form-group col-sm-6">
+						<label for="contact-name">Rua</label> <input type="text"
+							name="rua" placeholder="Rua XV de Maio"
+							class="contact-name form-control">
+					</div>
+					<div class="form-group col-sm-2">
+						<label for="contact-name">Número</label> <input type="text"
+							name="numero" placeholder="245" class="contact-name form-control">
+					</div>
+					<div class="form-group col-sm-5">
+						<label for="contact-name">Complemento</label> <input type="text"
+							name="complemento" placeholder="Apt. 25 Bloco B"
+							class="contact-name form-control">
+					</div>
+				</div>
+				<div class="contact-form col-sm-6 wow fadeInRight">
+					<!-- 5 -->					
+					<div class="form-group col-sm-12">
 						<label for="contact-email">Email</label> <input type="text"
 							name="email" placeholder="jose.silva@gmail.com"
 							class="contact-email form-control">
 					</div>
-					<div class="form-group">
+					<div class="form-group col-sm-12">
+						<label for="contact-email">Reinserir Email</label> <input type="text"
+							name="email" placeholder="jose.silva@gmail.com"
+							class="contact-email form-control">
+					</div>
+					<!-- 6 -->
+					<div class="form-group col-sm-11">
 						<label for="contact-email">Senha</label> <input type="password"
 							name="senha" placeholder="Senha"
 							class="contact-email form-control">
 					</div>
-					<!-- input type="submit" class="btn" value="Registrar" /-->
 					<button type="submit" class="btn">Registrar</button>
-				</div>
-				<div class="col-sm-5 contact-form wow fadeInUp">
-					<h3>
-						Caso queira prestar um serviço como autonomo, cadastre-se <a href="adiciona-prestador-autonomo">AQUI</a>!
-					</h3>
 				</div>
 			</div>
 		</div>

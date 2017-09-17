@@ -53,6 +53,14 @@ h3, h4 {
 ::selection { background: #fe503e; color: #fff; text-shadow: none; }
 
 
+.title h1 {
+	font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    color: #5d5d5d; 
+    line-height: 40px;
+    font-weight: bold;
+}
+
 /***** Big links / buttons *****/
 
 a.big-link-1 {
@@ -614,6 +622,7 @@ footer {
 .contact-form {
     padding-top: 25px;
     padding-bottom: 30px;
+    
 }
 
 .contact-form form {
