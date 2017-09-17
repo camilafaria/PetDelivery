@@ -4,6 +4,7 @@ public class Animal {
 	
 	private Long id_animal;
 	private Long id_raca;
+	private String nome;	
 	private String genero;
 	private String porte;
 	private Boolean pedigree;
@@ -23,6 +24,12 @@ public class Animal {
 	public void setId_raca(Long id_raca) {
 		this.id_raca = id_raca;
 	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}	
 	public String getGenero() {
 		return genero;
 	}

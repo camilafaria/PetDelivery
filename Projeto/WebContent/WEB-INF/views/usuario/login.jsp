@@ -65,17 +65,17 @@
 	<!-- Login -->
 
 	<div class="contact-us-container">
-		<div class="container">
+		<div class="container" align="center">
 			<div class="row justify-content-md-center">
 				<form role="form" action="efetuaLogin" method="post">
-					<div class="form-group">
-						<label for="contact-name">Login</label> <input type="text"
+					<div class="form-group" style="width:300px" >
+						<label for="contact-name" >Login</label> <input type="text"
 							name="cpf" placeholder="Digite seu CPF..."
 							class="contact-name form-control">
 					</div>
-					<div class="form-group">
+					<div class="form-group" style="width:300px">
 						<label for="contact-name">Senha</label> <input type="password"
-							name="senha" placeholder="Senha"
+							name="senha" placeholder="Digite sua senha.." 
 							class="contact-name form-control">
 					</div>
 					<button type="submit" class="btn">Entrar</button>
