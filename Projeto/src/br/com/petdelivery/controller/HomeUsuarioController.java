@@ -35,8 +35,27 @@ public class HomeUsuarioController {
 	public String adicionaPet(Animal animal, HttpSession session) {
 		new AnimalDAO().insert(animal);
 		// Adiciona o prestador ao session e manda par ao login
-		session.setAttribute("animalCriado", true);		
-		
+		session.setAttribute("animalCriado", true);
+
 		return "posLogin/usuario/meusPets";
+	}
+
+	@RequestMapping("busca-servico")
+	public String buscaFiltroServico() {
+		return "posLogin/usuario/buscaFiltroServico";
+	}
+
+	// Controllers de tarefa
+
+	/**
+	 * Retorna a lista de prestadores baseado no filtro selecionado na busca
+	 * 
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping("buscar-servico")
+	public String buscarServicos(HttpSession session) {
+
+		return "listarPrestadores";
 	}
 }
