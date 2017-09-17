@@ -69,8 +69,8 @@
 			<div class="row justify-content-md-center">
 				<form role="form" action="efetuaLogin" method="post">
 					<div class="form-group" style="width:300px" >
-						<label for="contact-name" >Login</label> <input type="text"
-							name="cpf" placeholder="Digite seu CPF..."
+						<label for="contact-name" >Email</label> <input type="text"
+							name="email" placeholder="Digite seu e-mail.."
 							class="contact-name form-control">
 					</div>
 					<div class="form-group" style="width:300px">

@@ -120,7 +120,7 @@
 					</div>
 					<div class="form-group col-sm-12">
 						<label for="contact-email">Reinserir Email</label> <input type="text"
-							name="email" placeholder="jose.silva@gmail.com"
+							name="" placeholder="jose.silva@gmail.com"
 							class="contact-email form-control">
 					</div>
 					<!-- 6 -->
