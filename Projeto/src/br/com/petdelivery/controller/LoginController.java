@@ -30,7 +30,7 @@ public class LoginController {
 			//System.out.println("usuarioLogadoNome=" + usrLogado.getNome());
 			session.setAttribute("usuarioLogado", usrLogado);
 			//TODO: Alterar o return para a home do posLogin
-			return "index";
+			return "posLogin/usuario/home";
 		}
 		
 		//Tenta fazer login de prestador

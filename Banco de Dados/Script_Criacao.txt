@@ -32,7 +32,9 @@ CREATE TABLE RACA_ANIMAL (
 
 CREATE TABLE ANIMAL (
 	id_animal bigint NOT NULL AUTO_INCREMENT,
+	id_usuario bigint NOT NULL,
     id_raca bigint NOT NULL,
+	nome char(40) NOT NULL,
     genero char(1) NOT NULL,
     porte char(20) NOT NULL,
     pedigree boolean NOT NULL,
@@ -40,6 +42,7 @@ CREATE TABLE ANIMAL (
     vacinas varchar(300) NOT NULL,        
     foto longblob,
 		PRIMARY KEY (id_animal),
+		FOREIGN KEY (id_usuario) REFERENCES USUARIO (cpf),
         FOREIGN KEY (id_raca) REFERENCES RACA_ANIMAL (id_raca)
 );
 

@@ -1,7 +1,13 @@
 package br.com.petdelivery.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import br.com.petdelivery.jdbc.dao.AnimalDAO;
+import br.com.petdelivery.jdbc.dao.UsuarioDAO;
+import br.com.petdelivery.jdbc.modelo.Animal;
 
 @Controller
 public class HomeUsuarioController {
@@ -22,5 +28,15 @@ public class HomeUsuarioController {
 	@RequestMapping("cadastro-pet")
 	public String cadastraPets() {
 		return "posLogin/usuario/cadastraPet";
+	}
+
+	// Mapeamento de JSP
+	@RequestMapping("inserePet")
+	public String adicionaPet(Animal animal, HttpSession session) {
+		new AnimalDAO().insert(animal);
+		// Adiciona o prestador ao session e manda par ao login
+		session.setAttribute("animalCriado", true);		
+		
+		return "posLogin/usuario/meusPets";
 	}
 }

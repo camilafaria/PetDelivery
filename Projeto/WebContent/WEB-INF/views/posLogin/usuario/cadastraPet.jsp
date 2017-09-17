@@ -31,7 +31,8 @@
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet Delivery</a>
+					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet
+						Delivery</a>
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
@@ -46,6 +47,7 @@
 	<c:import url="menuUsuario.jsp" />
 
 	<!-- /. NAV SIDE  -->
+
 	<div id="page-wrapper">
 		<div id="page-inner">
 			<div class="row">
@@ -55,14 +57,20 @@
 						<div class="row">
 							<div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
 								<span aria-hidden="true" class="icon_profile"></span>
-								<h1>Cadastrar PET </h1>								
+								<h1>Cadastrar PET</h1>
+								<c:if test="${not empty usuarioLogado.nome}">
+									<div class="collapse navbar-collapse" id="top-navbar-1">
+										<p>Bem vindo, ${usuarioLogado.nome}</p>
+										<p>CPF: ${usuarioLogado.cpf}</p>
+									</div>
+								</c:if>
 							</div>
 						</div>
 					</div>
 				</div>
 
 
-				<form action="insert-pet" class="form-horizontal">
+				<form action="inserePet" class="form-horizontal">
 					<div class="form-group">
 						<div class="container">
 							<div class="col-sm-7 contact-form wow">
@@ -71,69 +79,73 @@
 										name="nome" placeholder="Digite o nome do seu pet"
 										class="contact-name form-control">
 								</div>
-								
-								<div class="form-group">									 
-									<label for="contact-name">Tipo de PET</label>
-									<select onchange="CarregaRaca(this.options[this.selectedIndex].value);" name="tipo_animal">									
-										<option value="0">Selecione...</option>
-                            			<option value="1">Cachorro</option>
-                           				 <option value="2">Gato</option>
-                                    </select>									
-								</div>
-								
-								<div class="form-group">									 
-									<label for="contact-name">Raça</label>
-									<select name="raca_animal">
-										<option value="">Selecione...</option>					
-                                    </select>									
-								</div>
-								
+
 								<div class="form-group">
-									<label for="contact-name">Gênero</label> 
-									<br><input type="radio" name="genero" value="macho"> Macho <br>
-  									<input type="radio" name="genero" value="femea"> Fêmea <br>									
+									<label for="contact-name">Tipo de PET</label> <select
+										name="id_tipo">
+										<option value="">Selecione...</option>
+										<option value="1">Cachorro</option>
+										<option value="2">Gato</option>
+									</select>
 								</div>
-								
+
 								<div class="form-group">
-									<label for="contact-name">Pedigree</label> 
-									<br><input type="radio" name="pedigree" value="macho"> Sim <br>
-  									<input type="radio" name="pedigree" value="femea"> Não <br>									
+									<label for="contact-name">Raça</label> <select name="id_raca">
+										<option value="">Selecione...</option>
+										<option value="1">Vira-Lata</option>
+										<option value="2">Oriental</option>
+									</select>
 								</div>
-								
-								<div class="form-group">									 
-									<label for="contact-name">Porte</label>
-									<select name="porte">									
-										<option value="0">Selecione...</option>
-                            			<option value="1">Pequeno</option>
-                            			<option value="1">Médio</option>
-                            			<option value="1">Grande</option>                           				 
-                                    </select>									
+
+								<div class="form-group">
+									<label for="contact-name">Gênero</label> <br>
+									<input type="radio" name="genero" value="m"> Macho <br>
+									<input type="radio" name="genero" value="f"> Fêmea <br>
 								</div>
-								
-								<div class="form-group">									 
-									<label for="contact-name">Comportamento</label>
-									<select name="comportamento">									
-										<option value="0">Selecione...</option>
-                            			<option value="1">Agitado</option>
-                            			<option value="1">Agressivo</option>
-                            			<option value="1">Calmo</option>                           				 
-                            			<option value="1">Dócil</option>
-                            			<option value="1">Extrovertido</option>
-                                    </select>									
+
+								<div class="form-group">
+									<label for="contact-name">Pedigree</label> <br>
+									<input type="radio" name="pedigree" value="true"> Sim <br>
+									<input type="radio" name="pedigree" value="false"> Não
+									<br>
 								</div>
-								
+
+								<div class="form-group">
+									<label for="contact-name">Porte</label> <select name="porte">
+										<option value="">Selecione...</option>
+										<option value="Pequeno">Pequeno</option>
+										<option value="Médio">Médio</option>
+										<option value="Grande">Grande</option>
+									</select>
+								</div>
+
+								<div class="form-group">
+									<label for="contact-name">Comportamento</label> <select
+										name="comportamento">
+										<option value="">Selecione...</option>
+										<option value="Agitado">Agitado</option>
+										<option value="Agressivo">Agressivo</option>
+										<option value="Calmo">Calmo</option>
+										<option value="Dócil">Dócil</option>
+										<option value="Extrovertido">Extrovertido</option>
+									</select>
+								</div>
+
 								<div class="form-group">
 									<label for="contact-name">Vacinas</label><input type="text"
-										name="nome" placeholder="Descreva detalhes sobre as vacinas de seu PET"
+										name="vacinas"
+										placeholder="Descreva detalhes sobre as vacinas de seu PET"
 										class="contact-name form-control">
 								</div>
-								
+
 								<div class="form-group">
 									<label for="img">Selecione sua foto</label> <input type="file"
 										name="foto" class="img form-control"
 										accept="image/png, image/jpeg" multiple />
 								</div>
 								
+								<input type="hidden" name="id_usuario" value="${usuarioLogado.cpf}"/>
+
 								<!-- input type="submit" class="btn" value="Registrar" /-->
 								<button type="submit" class="btn">Registrar</button>
 							</div>

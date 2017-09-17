@@ -17,23 +17,24 @@ public class AnimalDAO {
 	}
 
 	public void insert(Animal animal) {
-		String sql = "INSERT INTO ANIMAL " + "(ID_Ad_animal,id_raca,nome,genero,porte,pedigree,comportamento,vacinas,foto)"
+		String sql = "INSERT INTO ANIMAL " + "(id_raca,id_usuario,nome,genero,porte,pedigree,comportamento,vacinas,foto)"
 				+ " VALUES (?,?,?,?,?,?,?,?,?)";
 
 		try {
 			// prepared statement para inserção
 			PreparedStatement stmt = connection.prepareStatement(sql);
 
-			// seta os valores			
-			stmt.setLong(1, animal.getId_animal());
-			stmt.setLong(2, animal.getId_raca());
+			// seta os valores	
+			System.out.println("TESTE " + animal.getGenero());
+			stmt.setLong(1, animal.getId_raca());
+			stmt.setLong(2, animal.getId_usuario());
 			stmt.setString(3, animal.getNome());
 			stmt.setString(4, animal.getGenero());
 			stmt.setString(5, animal.getPorte());
 			stmt.setBoolean(6, animal.getPedigree());
 			stmt.setString(7, animal.getComportamento());
 			stmt.setString(8, animal.getVacinas());
-			stmt.setBytes(9, animal.getFoto());			
+			stmt.setBytes(9, animal.getFoto());		
 
 			// executa
 			stmt.execute();
