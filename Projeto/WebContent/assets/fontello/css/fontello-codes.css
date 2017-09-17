@@ -1,0 +1,7 @@
+
+.icon-paw:before { content: '\32'; } /* '2' */
+.icon-calendar:before { content: '\33'; } /* '3' */
+.icon-smile:before { content: '\34'; } /* '4' */
+.icon-heart-filled:before { content: '\61'; } /* 'a' */
+.icon-heart:before { content: '\62'; } /* 'b' */
+.icon-heart-circled:before { content: '\63'; } /* 'c' */
