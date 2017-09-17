@@ -230,10 +230,8 @@
 	                				</div>
 	                				<div class="testimonial-text">
 		                                <p>
-		                                	"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. 
-		                                	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et. 
-		                                	Lorem ipsum dolor sit amet, consectetur..."<br>
-		                                	<a href="#">Lorem Ipsum, dolor.co.uk</a>
+		                                	"Eu viajo bastante a trabalho e a Lili ficava bastante sozinha em casa, depois do Pet Delivery ela sempre fica num Hotel ou vem alguém dar água e comida para ela!"<br>
+		                                	<a href="#">Roberto - Lili (Cão Salsicha)</a>
 		                                </p>
 	                                </div>
 	                			</div>
