@@ -53,6 +53,7 @@
 					<h1>Quero ser um Petlover</h1>
 				</div>
 			</div>
+			<div style="text-align: right;"><p>Você é dono de um Petshop? <a href="adiciona-prestador-petshop">Clique aqui</a></p></div>
 		</div>
 	</div>
 	

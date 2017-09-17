@@ -48,19 +48,19 @@
 	<div class="page-title-container">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+				<div class="title col-sm-10 col-sm-offset-1 page-title wow fadeIn">
 					<span aria-hidden="true" class="icon_profile"></span>
-					<h1>Cadastrar Petshop /</h1>
-					<p>Registrar um novo Petshop. Depois, o próximo passo será cadastrar suas unidades.</p>
+					<h1>Cadastrar-se como Petshop</h1>
 				</div>
 			</div>
 		</div>
 	</div>
 	
-	<form action="insert-prestador-petshop"  class="form-horizontal">
-		<div class="form-group">
-        	<div class="container">
-        		<div class="col-sm-7 contact-form wow">
+	<form action="insert-prestador-petshop"  class="form-horizontal" style="vertical-align: middle;" align="center">
+		<div class="form-group" style="vertical-align: middle;" align="center">
+        	<div class="container" style="vertical-align: middle; margin-left:27%;" align="center">
+        		<div class="col-sm-7 contact-form wow fadeInLeft" style="vertical-align: middle;" align="center">
+        			<!-- 1 -->
 	        		<div class="form-group">
 							<label for="contact-name">Nome</label> <input type="text"
 								name="nome" placeholder="Digite seu Nome..."
