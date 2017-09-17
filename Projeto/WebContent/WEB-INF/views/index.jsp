@@ -144,7 +144,7 @@
 	            	<div class="col-sm-3">
 		                <div class="work wow fadeInUp">
 		                    <img src="assets/img/portfolio/work01.jpg" alt="Lorem Website" data-at2x="assets/img/portfolio/work1.jpg">
-		                    <h3>Dog walk</h3>
+		                    <h3>Dog walker</h3>
 		                    <p></p>
 		                    <div class="work-bottom">
 		                        <a class="big-link-2 view-work" href="assets/img/portfolio/work1.jpg"><span class="icon_search"></span></a>
@@ -155,7 +155,7 @@
 	                <div class="col-sm-3">
 		                <div class="work wow fadeInDown">
 		                    <img src="assets/img/portfolio/work02.jpg" alt="Ipsum Logo" data-at2x="assets/img/portfolio/work2.jpg">
-		                    <h3>Banho</h3>
+		                    <h3>Banho e tosa</h3>
 		                    <p></p>
 		                    <div class="work-bottom">
 		                        <a class="big-link-2 view-work" href="assets/img/portfolio/work2.jpg"><span class="icon_search"></span></a>
@@ -166,7 +166,7 @@
 		            <div class="col-sm-3">
 		                <div class="work wow fadeInUp">
 		                    <img src="assets/img/portfolio/work03.jpg" alt="Dolor Prints" data-at2x="assets/img/portfolio/work3.jpg">
-		                    <h3>Hotel</h3>
+		                    <h3>Hotel e babá</h3>
 		                    <p></p>
 		                    <div class="work-bottom">
 		                        <a class="big-link-2 view-work" href="assets/img/portfolio/work3.jpg"><span class="icon_search"></span></a>
@@ -177,7 +177,7 @@
 		            <div class="col-sm-3">
 		                <div class="work wow fadeInDown">
 		                    <img src="assets/img/portfolio/work04.jpg" alt="Sit Amet Website" data-at2x="assets/img/portfolio/work4.jpg">
-		                    <h3>Vacinação</h3>
+		                    <h3>Veterinário</h3>
 		                    <p></p>
 		                    <div class="work-bottom">
 		                        <a class="big-link-2 view-work" href="assets/img/portfolio/work4.jpg"><span class="icon_search"></span></a>
