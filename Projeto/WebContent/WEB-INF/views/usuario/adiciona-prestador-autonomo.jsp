@@ -7,7 +7,7 @@
 <html>
 <head>
 
-<title>Pet Delivery - Cadastrar Prestador de Servi�o</title>
+<title>Pet Delivery - Cadastrar Prestador de Serviço</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta charset="utf-8">
@@ -48,76 +48,101 @@
 	<div class="page-title-container">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+				<div class="title col-sm-10 col-sm-offset-1 page-title wow fadeIn">
 					<span aria-hidden="true" class="icon_profile"></span>
-					<h1>Cadastrar Prestador Autonomo de serviço /</h1>
-					<p>Registrar um novo prestador autonomo</p>
+					<h1>Quero ser um Petlover</h1>
 				</div>
 			</div>
 		</div>
 	</div>
 	
-	<form action="insert-prestador-autonomo"  class="form-horizontal">
-		<div class="form-group">
-        	<div class="container">
-        		<div class="col-sm-7 contact-form wow">
-	        		<div class="form-group">
-							<label for="contact-name">Nome</label> <input type="text"
+	<form action="insert-prestador-autonomo"  class="form-horizontal" style="vertical-align: middle;" align="center">
+		<div class="form-group" style="vertical-align: middle;" align="center">
+        	<div class="container" style="vertical-align: middle; margin-left:27%;" align="center">
+        		<div class="col-sm-7 contact-form wow fadeInLeft" style="vertical-align: middle;" align="center">
+        			<!-- 1 -->
+	        		<div class="form-group col-sm-12">
+							<label for="contact-name">Nome completo</label> <input type="text"
 								name="nome" placeholder="Digite seu Nome..."
 								class="contact-name form-control">
 					</div>
-					<div class="form-group">
+					<!-- 2 -->
+					<div class="form-group col-sm-6">
 							<label for="contact-name">CPF</label> <input type="text"
 								name="cpf" placeholder="123.345.678-90"
 								class="contact-name form-control">
 					</div>
-					<div class="form-group">
-							<label for="contact-name">E-mail</label> <input type="text"
-								name="email" placeholder="seu.nome@provedor.com.br"
-								class="contact-name form-control">
-					</div>
-					<div class="form-group">
-							<label for="contact-name">Senha</label> <input type="password"
-								name="senha" placeholder="Digite sua senha..."
-								class="contact-name form-control">
-					</div>
-					<div class="form-group">
+					<div class="form-group col-sm-2">
 							<label for="contact-name">DDD</label> <input type="text"
 								name="ddd" placeholder="11" class="contact-name form-control">
 					</div>
-					<div class="form-group">
+					<div class="form-group col-sm-5">
 							<label for="contact-name">Telefone</label> <input type="text"
 								name="telefone" placeholder="93456-9879"
 								class="contact-name form-control">
 					</div>
-					<div class="form-group">
-							<label for="contact-name">Rua</label> <input type="text"
-								name="rua" placeholder="Rua XV de Maio"
-								class="contact-name form-control">
+					<!-- 3 -->
+					<div class="form-group col-sm-6">
+						<label for="contact-name">CEP</label> <input type="text"
+							name="cep" placeholder="00000-000"
+							class="contact-name form-control">
 					</div>
-					<div class="form-group">
-							<label for="contact-name">Número</label> <input type="text"
-								name="numero" placeholder="245"
-								class="contact-name form-control">
-					</div>
-					<div class="form-group">
-							<label for="contact-name">Complemento</label> <input type="text"
-								name="complemento" placeholder="Apt. 25 Bloco B"
-								class="contact-name form-control">
-					</div>
-					<div class="form-group">
+					<div class="form-group col-sm-6">
 							<label for="contact-name">Bairro</label> <input type="text"
 								name="bairro" placeholder="Santana"
 								class="contact-name form-control">
 					</div>
-					<div class="form-group">
+					<!-- 4 -->
+					<div class="form-group col-sm-6">
+							<label for="contact-name">Rua</label> <input type="text"
+								name="rua" placeholder="Rua XV de Maio"
+								class="contact-name form-control">
+					</div>
+					<div class="form-group col-sm-2">
+							<label for="contact-name">Número</label> <input type="text"
+								name="numero" placeholder="245"
+								class="contact-name form-control">
+					</div>
+					<div class="form-group col-sm-5">
+							<label for="contact-name">Complemento</label> <input type="text"
+								name="complemento" placeholder="Apt. 25 Bloco B"
+								class="contact-name form-control">
+					</div>
+					<!-- 5 -->
+					<div class="form-group col-sm-12">
 							<label for="contact-email">Experiência</label>
                             <textarea name="experiencia" cols="30" rows="10" class="contact-email form-control" id="experiencia" placeholder="jose.silva@gmail.com"></textarea>
 					</div>
-					<div class="form-group">
+				<!-- </div>
+				<div class="contact-form col-sm-6 wow fadeInRight"> -->
+					<!-- 6 -->
+					<div class="form-group col-sm-12">
 							<label for="img">Selecione sua foto</label>
 							<input type="file" name="foto" class="img form-control"  accept="image/png, image/jpeg"  multiple /> 
 					</div>
+					<!-- 7 -->
+					<div class="form-group col-sm-12">
+							<label for="contact-name">E-mail</label> <input type="text"
+								name="email" placeholder="seu.nome@provedor.com.br"
+								class="contact-name form-control">
+					</div>
+					<!-- 8 -->
+					<div class="form-group col-sm-12">
+						<label for="contact-email">Reinserir Email</label> <input type="text"
+							name="" placeholder="jose.silva@gmail.com"
+							class="contact-email form-control">
+					</div>
+					<!-- 9 -->
+					<div class="form-group col-sm-12">
+							<label for="contact-name">Senha</label> <input type="password"
+								name="senha" placeholder="Digite sua senha..."
+								class="contact-name form-control">
+					</div>
+					
+					
+					
+					
+					
 					<!-- input type="submit" class="btn" value="Registrar" /-->
 					<button type="submit" class="btn">Registrar</button>
 				</div>
