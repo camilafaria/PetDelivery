@@ -1,0 +1,118 @@
+CREATE SCHEMA `petdelivery` ;
+
+use `petdelivery` ;
+
+CREATE TABLE USUARIO (    
+	cpf bigint NOT NULL,
+    nome varchar(40) NOT NULL,
+    ddd int NOT NULL,
+    telefone bigint NOT NULL,
+    rua varchar(100) NOT NULL,
+    numero int NOT NULL,
+    complemento varchar(40),
+    bairro varchar(70) NOT NULL,
+    email varchar(200) NOT NULL,
+    senha varchar(8) NOT NULL,
+        PRIMARY KEY (cpf)
+);
+
+CREATE TABLE TIPO_ANIMAL (
+	id_tipo bigint NOT NULL AUTO_INCREMENT,
+    nome varchar (20) NOT NULL,
+        PRIMARY KEY (id_tipo)
+);
+
+CREATE TABLE RACA_ANIMAL (
+	id_raca bigint NOT NULL AUTO_INCREMENT,
+    id_tipo bigint NOT NULL,
+    nome varchar(20) NOT NULL,
+		PRIMARY KEY (id_raca),
+        FOREIGN KEY (id_tipo) REFERENCES TIPO_ANIMAL(id_tipo)
+);
+
+CREATE TABLE ANIMAL (
+	id_animal bigint NOT NULL AUTO_INCREMENT,
+    id_raca bigint NOT NULL,
+    genero char(1) NOT NULL,
+    porte char(20) NOT NULL,
+    pedigree boolean NOT NULL,
+    comportamento char(50) NOT NULL,
+    vacinas varchar(300) NOT NULL,        
+    foto longblob,
+		PRIMARY KEY (id_animal),
+        FOREIGN KEY (id_raca) REFERENCES RACA_ANIMAL (id_raca)
+);
+
+CREATE TABLE PRESTADOR (
+	id_prestador bigint NOT NULL,
+    email varchar(150) NOT NULL,
+    senha varchar(8) NOT NULL,
+    somanota float NOT NULL,
+    somaqnt int NOT NULL,
+		PRIMARY KEY (id_prestador)
+);
+
+CREATE TABLE PETSHOP (
+	cnpj bigint NOT NULL,
+    nome varchar(50) NOT NULL,
+    descricao varchar(300) NOT NULL,
+    logotipo longblob,    
+		PRIMARY KEY (cnpj),
+        FOREIGN KEY (cnpj) REFERENCES PRESTADOR(id_prestador)        
+);
+
+CREATE TABLE UNIDADE_PETSHOP (
+	id_unidade bigint NOT NULL AUTO_INCREMENT,
+    cnpj bigint NOT NULL,
+    nome varchar(20) NOT NULL,
+    ddd int NOT NULL,
+    telefone bigint NOT NULL,
+    rua varchar(100) NOT NULL,
+    numero int NOT NULL,
+    complemento varchar(20) NOT NULL,
+    bairro varchar(70) NOT NULL, 
+		PRIMARY KEY (id_unidade),
+        FOREIGN KEY (cnpj) REFERENCES PETSHOP (cnpj)    
+);
+
+CREATE TABLE AUTONOMO (
+	cpf bigint NOT NULL,
+    nome varchar(40) NOT NULL,
+    experiencia varchar(300) NOT NULL,
+    ddd int NOT NULL,
+    telefone bigint NOT NULL,
+    rua varchar(100) NOT NULL,
+    numero int NOT NULL,
+    complemento varchar(20) NOT NULL,
+    bairro varchar(70) NOT NULL,
+    foto longblob,
+		PRIMARY KEY (cpf),
+        FOREIGN KEY (cpf) REFERENCES PRESTADOR(id_prestador)
+);
+
+CREATE TABLE SERVICO (
+	id_servico bigint NOT NULL AUTO_INCREMENT,
+    nome varchar(20) NOT NULL,
+		PRIMARY KEY (id_servico)
+);
+
+CREATE TABLE SERVICO_PETSHOP (
+	id_servico bigint NOT NULL,
+    cnpj bigint NOT NULL,
+    id_unidade bigint NOT NULL,
+    preco float NOT NULL,
+    condicoes varchar(300) NOT NULL,
+    delivery boolean NOT NULL,
+		PRIMARY KEY (id_servico, cnpj, id_unidade),
+		FOREIGN KEY (cnpj, id_unidade) REFERENCES UNIDADE_PETSHOP (cnpj, id_unidade)       
+);
+
+CREATE TABLE SERVICO_AUTONOMO (
+	id_servico bigint NOT NULL,
+    cpf bigint NOT NULL,
+    preco float NOT NULL,
+    condicoes varchar(300) NOT NULL,
+    delivery boolean NOT NULL,
+		PRIMARY KEY (id_servico, cpf),
+		FOREIGN KEY (cpf) REFERENCES AUTONOMO (cpf)
+);
