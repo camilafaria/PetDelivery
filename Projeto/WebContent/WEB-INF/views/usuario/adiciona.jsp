@@ -60,9 +60,9 @@
 
 	<!-- form action="adicionaUsuario" class="form-horizontal"-->
 	<form action="insert-usuario" class="form-horizontal">
-		<div class="form-group">
-			<div class="container col-sm-10">
-				<div class="contact-form col-sm-6 wow fadeInLeft">
+		<div class="form-group" style="vertical-align: middle;" align="center">
+			<div class="container col-sm-10" style="vertical-align: middle;" align="center">
+				<div class="contact-form col-sm-6 wow fadeInLeft" style="vertical-align: middle; margin-left:30%;" align="center">
 					<!-- 1 -->
 					<div class="form-group col-sm-12">
 						<label for="contact-name">Nome completo</label> <input type="text"
@@ -109,9 +109,9 @@
 						<label for="contact-name">Complemento</label> <input type="text"
 							name="complemento" placeholder="Apt. 25 Bloco B"
 							class="contact-name form-control">
-					</div>
+				    </div>
 				</div>
-				<div class="contact-form col-sm-6 wow fadeInRight">
+				<div class="contact-form col-sm-6 wow fadeInRight" style="vertical-align: middle; margin-left:30%;" align="center">
 					<!-- 5 -->					
 					<div class="form-group col-sm-12">
 						<label for="contact-email">Email</label> <input type="text"
