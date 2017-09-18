@@ -42,7 +42,7 @@ public class Raca_AnimalDAO {
 		}
 	}
 	
-	public List<String> selectRacaByTipo(Long tipo_animal) {
+	public List<String> getRacaByTipo(Long tipo_animal) {
 		String sql = "SELECT nome FROM RACA_ANIMAL WHERE id_tipo=?";
 		List<String> racaByTipo = new ArrayList();				
 
@@ -59,6 +59,51 @@ public class Raca_AnimalDAO {
 			stmt.close();
 			
 			return racaByTipo;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public String getRacaById(Long raca_animal) {
+		String sql = "SELECT nome FROM RACA_ANIMAL WHERE id_raca=?";
+		String raca;				
+
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);			
+			stmt.setLong(1, raca_animal);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				raca = rs.getString("nome");
+				stmt.close();
+				return raca;
+			}
+			
+			return "";
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public Long getTipoByRaca(Long raca_animal) {
+		String sql = "SELECT id_tipo FROM RACA_ANIMAL WHERE id_raca=?";
+		Long id_tipo;				
+
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);			
+			stmt.setLong(1, raca_animal);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				id_tipo = rs.getLong("id_tipo");
+				stmt.close();				
+				return id_tipo;
+			}
+			
+			return null;
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

@@ -42,13 +42,6 @@
 <body>
 	<c:import url="header.jsp" />
 	
-	<!-- Start Body -->
-	<c:if test="${not empty usuarioLogado.nome}">
-			<div class="collapse navbar-collapse" id="top-navbar-1">
-				<p>Bem vindo, ${usuarioLogado.nome}</p>
-			</div>
-	</c:if>
-		
 	<!-- Slider -->
         <div class="slider-container">
             <div class="slider">

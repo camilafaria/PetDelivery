@@ -1,7 +1,15 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!-- Declaration to use JSTL -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@ page
+	import="java.util.*,
+        br.com.petdelivery.*,
+        br.com.petdelivery.jdbc.dao.AnimalDAO,
+        br.com.petdelivery.jdbc.modelo.Animal"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -31,11 +39,12 @@
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet Delivery</a>
+					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet
+						Delivery</a>
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Sair</a></li>
+						<li><a href="logout">Sair</a></li>
 					</ul>
 				</div>
 
@@ -45,10 +54,40 @@
 
 	<c:import url="menuUsuario.jsp" />
 
+	<jsp:useBean id="daoAnimal"
+		class="br.com.petdelivery.jdbc.dao.AnimalDAO" />
+	<jsp:useBean id="daoRaca"
+		class="br.com.petdelivery.jdbc.dao.Raca_AnimalDAO" />
+	<jsp:useBean id="daoTipo"
+		class="br.com.petdelivery.jdbc.dao.Tipo_AnimalDAO" />
+
 	<!-- /. NAV SIDE  -->
 	<div id="page-wrapper">
 		<div id="page-inner">
 			<div class="row">
+
+				<div class="col-md-12">
+					<h1>Pets da ${usuarioLogado.nome}</h1>
+					<table border="0">
+						<tr>
+							<th>Nome</th>
+							<th>Tipo</th>
+							<th>Raça</th>							
+						</tr>
+
+						<c:forEach var="animal"
+							items="${daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
+							<tr>
+								<td>${animal.nome}</td>
+								<td>${daoTipo.getTipoById(daoRaca.getTipoByRaca(animal.id_raca))}</td>
+								<td>${daoRaca.getRacaById(animal.id_raca)}</td>
+							</tr>
+						</c:forEach>
+					</table>
+
+				</div>
+
+				<br> <br>
 				<div class="col-md-12">
 					<form action="cadastro-pet">
 						<button type="submit" class="btn">Cadastrar PET</button>

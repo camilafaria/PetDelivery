@@ -31,33 +31,34 @@
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet Delivery</a>
+					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet
+						Delivery</a>
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Sair</a></li>
+						<li><a href="logout">Sair</a></li>
 					</ul>
 				</div>
 
 			</div>
 		</div>
 	</div>
-	
+
 	<c:import url="menuUsuario.jsp" />
-	
+
 	<!-- /. NAV SIDE  -->
 	<div id="page-wrapper">
 		<div id="page-inner">
 			<div class="row">
 				<div class="col-md-12">
-					
-					<h2> Bem-vindo, ${usuarioLogado.nome}! </h2>
-					<h3> Colocar algum texto legal aqui :)</h3>
+
+					<h2>Bem-vindo, ${usuarioLogado.nome}!</h2>
+					<h3>Colocar algum texto legal aqui :)</h3>
 				</div>
-			</div>			
+			</div>
 		</div>
 	</div>
-	
+
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script src="assetsPosLogin/js/jquery-1.10.2.js"></script>
@@ -67,5 +68,6 @@
 	<script src="assetsPosLogin/js/jquery.metisMenu.js"></script>
 	<!-- CUSTOM SCRIPTS -->
 	<script src="assetsPosLogin/js/custom.js"></script>
+
 </body>
 </html>
