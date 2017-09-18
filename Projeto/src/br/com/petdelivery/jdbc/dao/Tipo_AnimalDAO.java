@@ -2,6 +2,7 @@ package br.com.petdelivery.jdbc.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.com.petdelivery.jdbc.ConnectionFactory;
@@ -32,6 +33,28 @@ public class Tipo_AnimalDAO {
 				stmt.execute();
 				stmt.close();
 				
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		
+		public String getTipoById(Long tipo_animal) {
+			String sql = "SELECT nome FROM TIPO_ANIMAL WHERE id_tipo=?";
+			String tipo;				
+
+			try {
+				// prepared statement para inserção
+				PreparedStatement stmt = connection.prepareStatement(sql);			
+				stmt.setLong(1, tipo_animal);
+				ResultSet rs = stmt.executeQuery();
+				
+				while (rs.next()) {
+					tipo = rs.getString("nome");
+					stmt.close();
+					return tipo;
+				}
+				
+				return "";
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
 			}

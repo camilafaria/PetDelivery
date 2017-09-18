@@ -1,5 +1,6 @@
 package br.com.petdelivery.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -14,27 +15,26 @@ public class HomeUsuarioController {
 
 	// Mapeamento de JSP
 	@RequestMapping("home")
-	public String index() {
+	public String index(HttpServletRequest request) {
 		return "posLogin/usuario/home";
 	}
 
 	// Mapeamento de JSP
 	@RequestMapping("pets")
-	public String pets() {
+	public String pets(HttpServletRequest request) {					
 		return "posLogin/usuario/meusPets";
 	}
 
 	// Mapeamento de JSP
 	@RequestMapping("cadastro-pet")
-	public String cadastraPets() {
+	public String cadastraPets(HttpServletRequest request) {
 		return "posLogin/usuario/cadastraPet";
 	}
 
 	// Mapeamento de JSP
 	@RequestMapping("inserePet")
 	public String adicionaPet(Animal animal, HttpSession session) {
-		new AnimalDAO().insert(animal);
-		// Adiciona o prestador ao session e manda par ao login
+		new AnimalDAO().insert(animal);		
 		session.setAttribute("animalCriado", true);
 
 		return "posLogin/usuario/meusPets";
@@ -57,5 +57,11 @@ public class HomeUsuarioController {
 	public String buscarServicos(HttpSession session) {
 
 		return "listarPrestadores";
+	}
+	
+	@RequestMapping("logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:index";
 	}
 }

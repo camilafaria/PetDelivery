@@ -54,7 +54,7 @@
 				</div>
 			
 			</div>
-			<div style="text-align: right;"><p>Deseja se tornar um Petlover? <a href="adiciona-prestador-autonomo">Clique aqui</a></p></div>
+			<div style="text-align: right; margin-right:8%" ><p>Deseja se tornar um Petlover? <a href="adiciona-prestador-autonomo">Clique aqui</a></p></div>
 		</div>
 	</div>
 

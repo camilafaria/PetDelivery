@@ -1,5 +1,6 @@
 package br.com.petdelivery.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -23,12 +24,15 @@ public class LoginController {
 	}
 
 	@RequestMapping("efetuaLogin")
-	public String efetuaLogin(Usuario usuario, HttpSession session) {
+	public String efetuaLogin(Usuario usuario, HttpServletRequest request) {
 		//Tenta fazer login de usuario
-		Usuario usrLogado = new UsuarioDAO().existeUsuario(usuario);
+		Usuario usrLogado = new UsuarioDAO().existeUsuario(usuario);		
 		if (usrLogado != null) {
-			//System.out.println("usuarioLogadoNome=" + usrLogado.getNome());
+			//System.out.println("usuarioLogadoNome=" + usrLogado.getNome());			
+			request.getSession().invalidate();
+			HttpSession session = request.getSession(true);			
 			session.setAttribute("usuarioLogado", usrLogado);
+			session.setAttribute("AUTHENTICATED", new Boolean(true));
 			//TODO: Alterar o return para a home do posLogin
 			return "posLogin/usuario/home";
 		}
@@ -43,7 +47,10 @@ public class LoginController {
 			//Verificar se é autonomo
 			Autonomo prestadorAutonomo = new AutonomoDAO().getAutonomo(prestadorLogado);
 			if (prestadorAutonomo != null ){
+				request.getSession().invalidate();
+				HttpSession session = request.getSession(true);					
 				session.setAttribute("prestadorAutonomoLogado", prestadorAutonomo);
+				session.setAttribute("AUTHENTICATED", new Boolean(true));
 				//TODO: Alterar o return para a home do posLogin
 				return "index";
 			}
@@ -51,7 +58,10 @@ public class LoginController {
 			//Verificar se é petshop
 			Petshop prestadorPetshop = new PetshopDAO().getPetshop(prestadorLogado);
 			if (prestadorPetshop != null ){
+				request.getSession().invalidate();
+				HttpSession session = request.getSession(true);	
 				session.setAttribute("prestadorPetshopLogado", prestadorPetshop);
+				session.setAttribute("AUTHENTICATED", new Boolean(true));
 				//TODO: Alterar o return para a home do posLogin
 				return "index";
 			}
