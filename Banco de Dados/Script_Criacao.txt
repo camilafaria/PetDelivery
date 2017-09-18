@@ -11,6 +11,7 @@ CREATE TABLE USUARIO (
     numero int NOT NULL,
     complemento varchar(40),
     bairro varchar(70) NOT NULL,
+	cep varchar(20) NOT NULL,
     email varchar(200) NOT NULL,
     senha varchar(8) NOT NULL,
         PRIMARY KEY (cpf)
@@ -73,7 +74,8 @@ CREATE TABLE UNIDADE_PETSHOP (
     rua varchar(100) NOT NULL,
     numero int NOT NULL,
     complemento varchar(20) NOT NULL,
-    bairro varchar(70) NOT NULL, 
+    bairro varchar(70) NOT NULL,
+	cep varchar(20) NOT NULL,	
 		PRIMARY KEY (id_unidade),
         FOREIGN KEY (cnpj) REFERENCES PETSHOP (cnpj)    
 );
@@ -88,6 +90,7 @@ CREATE TABLE AUTONOMO (
     numero int NOT NULL,
     complemento varchar(20) NOT NULL,
     bairro varchar(70) NOT NULL,
+	cep varchar(20) NOT NULL,
     foto longblob,
 		PRIMARY KEY (cpf),
         FOREIGN KEY (cpf) REFERENCES PRESTADOR(id_prestador)

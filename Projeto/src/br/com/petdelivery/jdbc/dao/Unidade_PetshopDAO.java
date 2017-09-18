@@ -17,8 +17,8 @@ public class Unidade_PetshopDAO {
 	}
 
 	public void insert(Unidade_Petshop unidade_petshop) {
-		String sql = "INSERT INTO UNIDADE_PETSHOP " + "(id_unidade,cnpj,nome,ddd,telefone,rua,numero,complemento,bairro)"
-				+ " VALUES (?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO UNIDADE_PETSHOP " + "(id_unidade,cnpj,nome,ddd,telefone,rua,numero,complemento,bairro,cep)"
+				+ " VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			// prepared statement para inserção
@@ -33,7 +33,8 @@ public class Unidade_PetshopDAO {
 			stmt.setString(6, unidade_petshop.getRua());
 			stmt.setInt(7, unidade_petshop.getNumero());
 			stmt.setString(8, unidade_petshop.getComplemento());
-			stmt.setString(9, unidade_petshop.getBairro());			
+			stmt.setString(9, unidade_petshop.getBairro());
+			stmt.setString(10, unidade_petshop.getCep());
 
 			// executa
 			stmt.execute();

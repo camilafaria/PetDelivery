@@ -11,7 +11,8 @@ public class Unidade_Petshop {
 	private int numero;
 	private String complemento;
 	private String bairro;
-
+	private String cep;
+	
 	public Long getId_unidade() {
 		return id_unidade;
 	}
@@ -65,5 +66,11 @@ public class Unidade_Petshop {
 	}
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
+	}
+	public String getCep() {
+		return cep;
+	}
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 }

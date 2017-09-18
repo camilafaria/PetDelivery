@@ -50,19 +50,23 @@
 			<div class="row">
 				<div class="title col-sm-10 col-sm-offset-1 page-title wow fadeIn">
 					<span aria-hidden="true" class="icon_profile"></span>
-					<h1>Cadastre-se</h1>
+					<h1>Cadastrar usuário</h1>
 				</div>
 			
 			</div>
-			<div style="text-align: right; margin-right:8%" ><p>Deseja se tornar um Petlover? <a href="adiciona-prestador-autonomo">Clique aqui</a></p></div>
+			<div style="text-align: right; margin-right:8%" ><p>Deseja se tornar um Petlover? 
+			<br> <a href="adiciona-prestador-autonomo">Profissional Autônomo | </a></p> 
+				 <a href="adiciona-prestador-petshop">Petshop</a></p>
+			</div>
 		</div>
 	</div>
 
 	<!-- form action="adicionaUsuario" class="form-horizontal"-->
-	<form action="insert-usuario" class="form-horizontal">
+	<form action="insert-usuario" class="form-horizontal" style="vertical-align: middle;" align="center">
 		<div class="form-group" style="vertical-align: middle;" align="center">
-			<div class="container col-sm-10" style="vertical-align: middle;" align="center">
-				<div class="contact-form col-sm-6 wow fadeInLeft" style="vertical-align: middle; margin-left:30%;" align="center">
+		<div class="container" style="vertical-align: middle; margin-left:32%;" align="center">
+			<!-- <div class="container col-sm-10" style="vertical-align: middle;" align="center"> -->
+				<div class="contact-form col-sm-6 wow fadeInLeft" style="vertical-align: middle; align="center">
 					<!-- 1 -->
 					<div class="form-group col-sm-12">
 						<label for="contact-name">Nome completo</label> <input type="text"
@@ -72,7 +76,7 @@
 					<!-- 2 -->
 					<div class="form-group col-sm-6">
 						<label for="contact-name">CPF</label> <input type="text"
-							name="cpf" placeholder="123.345.678-90"
+							name="cpf" placeholder="12334567890"
 							class="contact-name form-control">
 					</div>
 					<div class="form-group col-sm-2">
@@ -109,9 +113,8 @@
 						<label for="contact-name">Complemento</label> <input type="text"
 							name="complemento" placeholder="Apt. 25 Bloco B"
 							class="contact-name form-control">
-				    </div>
-				</div>
-				<div class="contact-form col-sm-6 wow fadeInRight" style="vertical-align: middle; margin-left:30%;" align="center">
+				    </div>				
+				<!-- <div class="contact-form col-sm-6 wow fadeInRight" style="vertical-align: middle; margin-left:32%; align="center"> -->
 					<!-- 5 -->					
 					<div class="form-group col-sm-12">
 						<label for="contact-email">Email</label> <input type="text"

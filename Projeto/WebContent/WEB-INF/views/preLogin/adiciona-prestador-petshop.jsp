@@ -50,7 +50,7 @@
 			<div class="row">
 				<div class="title col-sm-10 col-sm-offset-1 page-title wow fadeIn">
 					<span aria-hidden="true" class="icon_profile"></span>
-					<h1>Cadastrar-se como Petshop</h1>
+					<h1>Cadastro de Petshop</h1>
 				</div>
 			</div>
 		</div>
@@ -64,30 +64,30 @@
 	        		<div class="form-group">
 							<label for="contact-name">Nome</label> <input type="text"
 								name="nome" placeholder="Digite seu Nome..."
-								class="contact-name form-control" value="Lion">
+								class="contact-name form-control" placeholder="Lion">
 					</div>
 					<div class="form-group">
 							<label for="contact-name">CNPJ</label> <input type="text"
-								name="cnpj" placeholder="123.345.678-90"
-								class="contact-name form-control" value="12345">
+								name="cnpj" placeholder="12334567890"
+								class="contact-name form-control" placeholder="12345">
 					</div>
 					<div class="form-group">
 							<label for="contact-name">E-mail</label> <input type="text"
 								name="email" placeholder="seu.nome@provedor.com.br"
-								class="contact-name form-control" value="lion@a.com">
+								class="contact-name form-control" placeholder="lion@a.com">
 					</div>
 					<div class="form-group">
 							<label for="contact-name">Senha</label> <input type="password"
 								name="senha" placeholder="Digite sua senha..."
-								class="contact-name form-control" value="123">
+								class="contact-name form-control" placeholder="123">
 					</div>
 					<div class="form-group">
 							<label for="contact-email">Descricao</label>
-                            <textarea name="descricao" cols="30" rows="10" class="contact-email form-control" id="experiencia" placeholder="jose.silva@gmail.com"></textarea>
+                            <textarea name="descricao" cols="30" rows="10" class="contact-email form-control" id="experiencia" placeholder="Somos especialistas na venda de produtos para animais..."></textarea>
 					</div>
 					<div class="form-group">
 							<label for="img">Logotipo</label>
-							<input type="file" name="imagem" class="img form-control"  accept="image/png, image/jpeg"  multiple /> 
+							<input type="file" name="logotipo" class="img form-control"  accept="image/png, image/jpeg"  multiple /> 
 					</div>
 					<button type="submit" class="btn">Registrar</button>
 				</div>

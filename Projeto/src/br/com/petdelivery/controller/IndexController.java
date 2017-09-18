@@ -32,22 +32,22 @@ public class IndexController {
 
 	@RequestMapping("adiciona-usuario")
 	public String registrarUsuario() {
-		return "usuario/adiciona";
+		return "preLogin/adiciona-usuario";
 	}
 
 	@RequestMapping("adiciona-prestador-autonomo")
 	public String registrarAutonomo() {
-		return "usuario/adiciona-prestador-autonomo";
+		return "preLogin/adiciona-prestador-autonomo";
 	}
 
 	@RequestMapping("adiciona-prestador-petshop")
 	public String registrarPetshop() {
-		return "usuario/adiciona-prestador-petshop";
+		return "preLogin/adiciona-prestador-petshop";
 	}
 
 	@RequestMapping("lista-usuario")
 	public String listar() {
-		return "usuario/lista";
+		return "preLogin/lista";
 	}
 
 	// Recebem chamada dos Forms
@@ -63,7 +63,7 @@ public class IndexController {
 		new UsuarioDAO().insert(usuario);
 		// Adiciona o prestador ao session e manda par ao login
 		session.setAttribute("usuarioCriado", true);
-		return "usuario/login";
+		return "preLogin/login";
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class IndexController {
 		// Adiciona o prestador ao session e manda par ao login
 		session.setAttribute("usuarioCriado", true);
 
-		return "usuario/login";
+		return "preLogin/login";
 	}
 
 	/**
@@ -113,20 +113,20 @@ public class IndexController {
 	 * @throws IOException 
 	 */
 	@RequestMapping("insert-prestador-petshop")
-	public String adicionaUsuarioPrestadorPetshop(Prestador prestador, Petshop petshop,@RequestParam("logotipo") MultipartFile logotipo, HttpSession session) throws IOException, ServletException {
+	public String adicionaUsuarioPrestadorPetshop(Prestador prestador, Petshop petshop, HttpSession session) {
 
 		// Instancia variaveis de prestador
 		prestador.setId_prestador(petshop.getCnpj());
 		prestador.setSomaNota(0);
 		prestador.setSomaQnt(0);
 		
-		//Transforma foto em byte
+		/*//Transforma foto em byte
 		InputStream inputStream = null; // input stream of the upload file
         
        if (!logotipo.isEmpty()) {
             // obtains input stream of the upload file
             petshop.setLogotipo(logotipo.getBytes());
-        }
+        }*/
         
 		// Insere no banco
 		new PrestadorDAO().insert(prestador);
@@ -136,7 +136,7 @@ public class IndexController {
 		session.setAttribute("usuarioCriado", true);
 
 		// TODO:Adicionar mapeamento para o poslogin
-		return "usuario/login";
+		return "preLogin/login";
 	}
 	
 	//Metodos auxiliares

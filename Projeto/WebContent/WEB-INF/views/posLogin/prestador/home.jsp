@@ -1,15 +1,7 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!-- Declaration to use JSTL -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-<%@ page
-	import="java.util.*,
-        br.com.petdelivery.*,
-        br.com.petdelivery.jdbc.dao.AnimalDAO,
-        br.com.petdelivery.jdbc.modelo.Animal"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -52,46 +44,16 @@
 		</div>
 	</div>
 
-	<c:import url="menuUsuario.jsp" />
-
-	<jsp:useBean id="daoAnimal"
-		class="br.com.petdelivery.jdbc.dao.AnimalDAO" />
-	<jsp:useBean id="daoRaca"
-		class="br.com.petdelivery.jdbc.dao.Raca_AnimalDAO" />
-	<jsp:useBean id="daoTipo"
-		class="br.com.petdelivery.jdbc.dao.Tipo_AnimalDAO" />
+	<c:import url="menuPrestador.jsp" />
 
 	<!-- /. NAV SIDE  -->
 	<div id="page-wrapper">
 		<div id="page-inner">
 			<div class="row">
-
 				<div class="col-md-12">
-					<h1>Pets da ${usuarioLogado.nome}</h1>
-					<table border="0">
-						<tr>
-							<th>Nome</th>
-							<th>Tipo</th>
-							<th>Raça</th>
-						</tr>
 
-						<c:forEach var="animal"
-							items="${daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
-							<tr>
-								<td href="">${animal.nome}</td>
-								<td>${daoTipo.getTipoById(daoRaca.getTipoByRaca(animal.id_raca))}</td>
-								<td>${daoRaca.getRacaById(animal.id_raca)}</td>
-							</tr>
-						</c:forEach>
-					</table>
-
-				</div>
-
-				<div class="col-md-12">
-					<br> <br>
-					<form action="cadastro-pet">
-						<button type="submit" class="btn">Cadastrar PET</button>
-					</form>
+					<h2>Bem-vindo, ${usuarioLogado.email}!</h2>
+					<h3>Colocar algum texto legal aqui :)</h3>
 				</div>
 			</div>
 		</div>
@@ -106,5 +68,6 @@
 	<script src="assetsPosLogin/js/jquery.metisMenu.js"></script>
 	<!-- CUSTOM SCRIPTS -->
 	<script src="assetsPosLogin/js/custom.js"></script>
+
 </body>
 </html>

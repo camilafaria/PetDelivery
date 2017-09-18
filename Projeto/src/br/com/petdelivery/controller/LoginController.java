@@ -20,7 +20,7 @@ public class LoginController {
 
 	@RequestMapping("login")
 	public String loginForm() {
-		return "usuario/login";
+		return "preLogin/login";
 	}
 
 	@RequestMapping("efetuaLogin")
@@ -52,7 +52,7 @@ public class LoginController {
 				session.setAttribute("prestadorAutonomoLogado", prestadorAutonomo);
 				session.setAttribute("AUTHENTICATED", new Boolean(true));
 				//TODO: Alterar o return para a home do posLogin
-				return "index";
+				return "posLogin/prestador/home";
 			}
 			
 			//Verificar se é petshop
@@ -63,10 +63,10 @@ public class LoginController {
 				session.setAttribute("prestadorPetshopLogado", prestadorPetshop);
 				session.setAttribute("AUTHENTICATED", new Boolean(true));
 				//TODO: Alterar o return para a home do posLogin
-				return "index";
+				return "posLogin/prestador/home";
 			}
 			//TODO: Alterar o return para a home do posLogin
-			return "index";
+			return "posLogin/prestador/home";
 		}
 		return "redirect:login";
 	}

@@ -10,6 +10,7 @@ public class Autonomo {
 	private String rua;
 	private int numero;
 	private String complemento;
+	private String cep;	
 	private String bairro;
 	private byte[] foto;
 	
@@ -66,6 +67,12 @@ public class Autonomo {
 	}
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
+	}
+	public String getCep() {
+		return cep;
+	}
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 	public byte[] getFoto() {
 		return foto;

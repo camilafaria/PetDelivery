@@ -84,8 +84,7 @@
 
 								<div class="form-group">
 									<label for="contact-name">Tipo de PET</label> <select
-										name="id_tipo"
-										onchange="CarregaRaca(this.options[selectedIndex].value)">
+										name="id_tipo" id="id_tipo">
 										<option selected disabled value="">Selecione...</option>
 										<option value="1">Cachorro</option>
 										<option value="2">Gato</option>
@@ -169,27 +168,6 @@
 		  alert('Cadastro realizado com sucesso!');  
 	}
 	
-	function CarregaRaca(tipo) {		
-		
-		System.out.println("PASSEI POR AQUI " + tipo);
-		
-		Raca_AnimalDAO raca_animal = new Raca_AnimalDAO();
-		List<String> racas;										
-					
-		if (tipo == "1"){
-			racas = raca_animal.selectRacaByTipo(1L);	
-		} else {										
-			if (tipo == "2"){
-				racas = raca_animal.selectRacaByTipo(2L);
-			}else{
-				return ;	
-			}
-		}
-		
-		//for (String raca : racas){
-		//	$('#id_raca').children().remove().end().append('<option value="">' + raca + '</option>');
-		//}		
-	}	
 	</script>
 	<!-- JQUERY SCRIPTS -->
 	<script src="assetsPosLogin/js/jquery-1.10.2.js"></script>

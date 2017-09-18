@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import br.com.petdelivery.jdbc.dao.AnimalDAO;
 import br.com.petdelivery.jdbc.dao.UsuarioDAO;
 import br.com.petdelivery.jdbc.modelo.Animal;
+import br.com.petdelivery.jdbc.modelo.Usuario;
 
 @Controller
 public class HomeUsuarioController {
@@ -21,7 +22,7 @@ public class HomeUsuarioController {
 
 	// Mapeamento de JSP
 	@RequestMapping("pets")
-	public String pets(HttpServletRequest request) {					
+	public String pets(HttpServletRequest request) {
 		return "posLogin/usuario/meusPets";
 	}
 
@@ -34,7 +35,7 @@ public class HomeUsuarioController {
 	// Mapeamento de JSP
 	@RequestMapping("inserePet")
 	public String adicionaPet(Animal animal, HttpSession session) {
-		new AnimalDAO().insert(animal);		
+		new AnimalDAO().insert(animal);
 		session.setAttribute("animalCriado", true);
 
 		return "posLogin/usuario/meusPets";
@@ -58,7 +59,21 @@ public class HomeUsuarioController {
 
 		return "listarPrestadores";
 	}
-	
+
+	@RequestMapping("configConta")
+	public String configConta(HttpServletRequest request) {
+		return "posLogin/usuario/configConta";
+	}
+
+	// Mapeamento de JSP
+	@RequestMapping("update-usuario")
+	public String updateUsuario(Usuario usuario, HttpSession session) {
+		new UsuarioDAO().update(usuario);
+		session.setAttribute("usuarioAtualizado", true);
+
+		return "posLogin/usuario/home";
+	}
+
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
 		session.invalidate();

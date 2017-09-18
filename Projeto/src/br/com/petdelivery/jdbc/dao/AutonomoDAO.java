@@ -20,8 +20,8 @@ public class AutonomoDAO {
 	}
 
 	public void insert(Autonomo autonomo) {
-		String sql = "INSERT INTO AUTONOMO " + "(cpf,nome,experiencia,ddd,telefone,rua,numero,complemento,bairro,foto)"
-				+ " VALUES (?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO AUTONOMO " + "(cpf,nome,experiencia,ddd,telefone,rua,numero,complemento,bairro,cep,foto)"
+				+ " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			// prepared statement para inserção
@@ -37,7 +37,8 @@ public class AutonomoDAO {
 			stmt.setInt(7, autonomo.getNumero());
 			stmt.setString(8, autonomo.getComplemento());
 			stmt.setString(9, autonomo.getBairro());
-			stmt.setBytes(10, autonomo.getFoto());
+			stmt.setString(10, autonomo.getCep());
+			stmt.setBytes(11, autonomo.getFoto());
 
 			// executa
 			stmt.execute();
@@ -74,6 +75,7 @@ public class AutonomoDAO {
 				autonomo.setNumero(rs.getInt("numero"));
 				autonomo.setComplemento(rs.getString("complemento"));
 				autonomo.setBairro(rs.getString("bairro"));
+				autonomo.setCep(rs.getString("cep"));
 				autonomo.setFoto(rs.getBytes("foto"));
 				
 				return autonomo;

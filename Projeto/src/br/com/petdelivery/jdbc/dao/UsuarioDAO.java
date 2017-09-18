@@ -20,8 +20,8 @@ public class UsuarioDAO {
 	}
 
 	public void insert(Usuario usuario) {
-		String sql = "INSERT INTO USUARIO " + "(cpf,nome,ddd,telefone,rua,numero,complemento,bairro,email,senha)"
-				+ " VALUES (?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO USUARIO " + "(cpf,nome,ddd,telefone,rua,numero,complemento,bairro,cep,email,senha)"
+				+ " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			// prepared statement para inserção
@@ -36,8 +36,39 @@ public class UsuarioDAO {
 			stmt.setInt(6, usuario.getNumero());
 			stmt.setString(7, usuario.getComplemento());
 			stmt.setString(8, usuario.getBairro());
+			stmt.setString(9, usuario.getCep());
+			stmt.setString(10, usuario.getEmail());
+			stmt.setString(11, usuario.getSenha());
+
+			// executa
+			stmt.execute();
+			stmt.close();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public void update(Usuario usuario) {
+		String sql = "UPDATE USUARIO SET nome=?, ddd=?, telefone=?, rua=?, numero=?, complemento=?, bairro=?, cep=?, email=?, senha=? "
+				+ "WHERE cpf=?";
+
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);
+
+			// seta os valores			
+			stmt.setString(1, usuario.getNome());
+			stmt.setInt(2, usuario.getDdd());
+			stmt.setLong(3, usuario.getTelefone());
+			stmt.setString(4, usuario.getRua());
+			stmt.setInt(5, usuario.getNumero());
+			stmt.setString(6, usuario.getComplemento());
+			stmt.setString(7, usuario.getBairro());
+			stmt.setString(8, usuario.getCep());
 			stmt.setString(9, usuario.getEmail());
 			stmt.setString(10, usuario.getSenha());
+			stmt.setLong(11, usuario.getCpf());
 
 			// executa
 			stmt.execute();
@@ -66,6 +97,7 @@ public class UsuarioDAO {
 				usuario.setNumero(rs.getInt("numero"));
 				usuario.setComplemento(rs.getString("complemento"));
 				usuario.setBairro(rs.getString("bairro"));
+				usuario.setCep(rs.getString("cep"));
 				usuario.setEmail(rs.getString("email"));
 				usuario.setSenha(rs.getString("senha"));
 
@@ -97,6 +129,7 @@ public class UsuarioDAO {
 				usuario.setNumero(rs.getInt("numero"));
 				usuario.setComplemento(rs.getString("complemento"));
 				usuario.setBairro(rs.getString("bairro"));
+				usuario.setCep(rs.getString("cep"));
 				usuario.setEmail(rs.getString("email"));
 				usuario.setSenha(rs.getString("senha"));
 
@@ -134,6 +167,7 @@ public class UsuarioDAO {
 				usuario.setNumero(rs.getInt("numero"));
 				usuario.setComplemento(rs.getString("complemento"));
 				usuario.setBairro(rs.getString("bairro"));
+				usuario.setCep(rs.getString("cep"));
 				//usuario.setEmail(rs.getString("email"));
 				//usuario.setSenha(rs.getString("Senha"));
 				

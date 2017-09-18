@@ -50,10 +50,9 @@
 			<div class="row">
 				<div class="title col-sm-10 col-sm-offset-1 page-title wow fadeIn">
 					<span aria-hidden="true" class="icon_profile"></span>
-					<h1>Quero ser um Petlover</h1>
+					<h1>Cadastro de profissional autônomo</h1>
 				</div>
-			</div>
-			<div style="text-align: right; margin-right:8%"><p>Você é dono de um Petshop? <a href="adiciona-prestador-petshop">Clique aqui</a></p></div>
+			</div>			
 		</div>
 	</div>
 	
@@ -70,7 +69,7 @@
 					<!-- 2 -->
 					<div class="form-group col-sm-6">
 							<label for="contact-name">CPF</label> <input type="text"
-								name="cpf" placeholder="123.345.678-90"
+								name="cpf" placeholder="12334567890"
 								class="contact-name form-control">
 					</div>
 					<div class="form-group col-sm-2">
@@ -112,7 +111,7 @@
 					<!-- 5 -->
 					<div class="form-group col-sm-12">
 							<label for="contact-email">Experiência</label>
-                            <textarea name="experiencia" cols="30" rows="10" class="contact-email form-control" id="experiencia" placeholder="jose.silva@gmail.com"></textarea>
+                            <textarea name="experiencia" cols="30" rows="10" class="contact-email form-control" id="experiencia" placeholder="Sou formado em veterinária, trabalho há 5 anos com animais..."></textarea>
 					</div>
 				<!-- </div>
 				<div class="contact-form col-sm-6 wow fadeInRight"> -->
@@ -138,11 +137,7 @@
 							<label for="contact-name">Senha</label> <input type="password"
 								name="senha" placeholder="Digite sua senha..."
 								class="contact-name form-control">
-					</div>
-					
-					
-					
-					
+					</div>				
 					
 					<!-- input type="submit" class="btn" value="Registrar" /-->
 					<button type="submit" class="btn">Registrar</button>
