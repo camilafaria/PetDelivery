@@ -68,22 +68,27 @@
 
 				<div class="col-md-12">
 					<h1>Pets da ${usuarioLogado.nome}</h1>
-					<table border="0">
-						<tr>
-							<th>Nome</th>
-							<th>Tipo</th>
-							<th>Raça</th>
-						</tr>
-
-						<c:forEach var="animal"
-							items="${daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
+					
+					<c:if test="${not empty daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
+					
+						<table border="0">
 							<tr>
-								<td href="">${animal.nome}</td>
-								<td>${daoTipo.getTipoById(daoRaca.getTipoByRaca(animal.id_raca))}</td>
-								<td>${daoRaca.getRacaById(animal.id_raca)}</td>
-							</tr>
-						</c:forEach>
-					</table>
+								<th>Nome</th>
+								<th>Tipo</th>
+								<th>Raça</th>
+							</tr>					
+						
+							<c:forEach var="animal"
+								items="${daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
+								<tr>
+									<td href="">${animal.nome}</td>
+									<td>${daoTipo.getTipoById(daoRaca.getTipoByRaca(animal.id_raca))}</td>
+									<td>${daoRaca.getRacaById(animal.id_raca)}</td>
+								</tr>
+							</c:forEach>			
+						
+						</table>
+					</c:if>
 
 				</div>
 

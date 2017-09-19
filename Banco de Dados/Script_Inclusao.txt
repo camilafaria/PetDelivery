@@ -1,5 +1,5 @@
-INSERT INTO TIPO_ANIMAL (nome) VALUES ("gato");
 INSERT INTO TIPO_ANIMAL (nome) VALUES ("cachorro");
+INSERT INTO TIPO_ANIMAL (nome) VALUES ("gato");
 
 INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (2,"Oriental");
 INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (2,"Egyptian Mau");

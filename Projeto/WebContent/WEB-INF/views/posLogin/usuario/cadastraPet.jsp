@@ -72,7 +72,7 @@
 					</div>
 				</div>
 
-				<form action="inserePet" class="form-horizontal" method="">
+				<form action="inserePet" class="form-horizontal" method="post">
 					<div class="form-group">
 						<div class="container"  style="vertical-align: middle; margin-left:20%;" align="center">
 							<div class="col-sm-7 contact-form wow">
@@ -95,9 +95,21 @@
 									<label for="contact-name">Raça</label> <select name="id_raca"
 										id="id_raca">
 										<option selected disabled value="">Selecione...</option>
-										<option value="1">Vira-Lata</option>
-										<option value="2">Oriental</option>
-									</select>
+										<option value="24">Afghan Hound</option>
+										<option value="19">Beagle</option>
+										<option value="21">American Pitbull</option>
+										<option value="18">Bull Terrier</option>
+										<option value="17">Bulldog</option> 
+										<option value="16">Chihuahua</option>
+										<option value="15">Dobermann</option>
+										<option value="14">Golden Retriever</option>
+										<option value="12">Labrador</option>
+										<option value="11">Poodle</option>
+										<option value="10">Rottweiler</option>
+										<option value="9">Vira-Lata</option>
+										<option value="8">Yorkshire Terrier</option>
+										<option value="7">Outra</option>
+								    </select>
 								</div>
 
 								<div class="form-group">
@@ -167,8 +179,8 @@
 	function confirmaCadastroPet(){
 		  alert('Cadastro realizado com sucesso!');  
 	}
-	
 	</script>
+	
 	<!-- JQUERY SCRIPTS -->
 	<script src="assetsPosLogin/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->

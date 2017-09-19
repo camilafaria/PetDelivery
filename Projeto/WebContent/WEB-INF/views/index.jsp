@@ -95,7 +95,7 @@
 		                    <h3>Conheça nossos <br>Petlovers</h3>
 		                    
 		                    <p>Nossos Petlovers oferecem os melhores serviços e cuidam do seu Pet como filhos</p>
-		                    <a class="big-link-1" href="services.html">Ler mais</a>
+		                    <a class="big-link-1" href="#">Ler mais</a>
 		                </div>
 					</div>
 					<div class="col-sm-3">
@@ -103,7 +103,7 @@
 		                    <div class="service-icon"><i class="demo-icon icon-paw">&#x32;</i></div>
 		                    <h3>Dê ao seu pet o cuidado que ele precisa </h3>
 		                    <p>Busque por Petlovers perto de você e contrate seus serviços sem sair de casa</p>
-		                    <a class="big-link-1" href="services.html">Ler mais</a>
+		                    <a class="big-link-1" href="#">Ler mais</a>
 		                </div>
 	                </div>
 	                <div class="col-sm-3">
@@ -111,7 +111,7 @@
 		                    <div class="service-icon"><i class="demo-icon icon-calendar">&#x33;</i></div>
 		                    <h3>Adaptável à sua <br> agenda</h3>
 		                    <p>Escolha o melhor horário para você e a gente busca seu Pet na sua casa</p>
-		                    <a class="big-link-1" href="services.html">Ler mais</a>
+		                    <a class="big-link-1" href="#">Ler mais</a>
 		                </div>
 	                </div>
 	                <div class="col-sm-3">
@@ -119,7 +119,7 @@
 		                    <div class="service-icon"><i class="demo-icon icon-smile">&#x34;</i></div>
 		                    <h3>Compartilhe sua experiência</h3>
 		                    <p>Conte para a gente como foi fazer parte da família que mais ama os animaizinhos!</p>
-		                    <a class="big-link-1" href="services.html">Ler mais</a>
+		                    <a class="big-link-1" href="#">Ler mais</a>
 		                </div>
 	                </div>
 	            </div>

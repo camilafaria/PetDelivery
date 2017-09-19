@@ -52,8 +52,9 @@
 			<div class="row">
 				<div class="col-md-12">
 
-					<h2>Bem-vindo, ${usuarioLogado.nome}!</h2>
-					<h3>Colocar algum texto legal aqui :)</h3>
+					<h2>Bem-vindo ao Pet Delivery, ${usuarioLogado.nome}!</h2>
+					<br>
+					<h2>Comece já sua experiência em nosso site, cadastrando seu pet ou buscando petlovers</h2>
 				</div>
 			</div>
 		</div>

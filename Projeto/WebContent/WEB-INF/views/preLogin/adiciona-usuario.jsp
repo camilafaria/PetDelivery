@@ -61,8 +61,7 @@
 		</div>
 	</div>
 
-	<!-- form action="adicionaUsuario" class="form-horizontal"-->
-	<form action="insert-usuario" class="form-horizontal" style="vertical-align: middle;" align="center">
+	<form action="insert-usuario" class="form-horizontal" style="vertical-align: middle;" align="center" method="post">
 		<div class="form-group" style="vertical-align: middle;" align="center">
 		<div class="container" style="vertical-align: middle; margin-left:32%;" align="center">
 			<!-- <div class="container col-sm-10" style="vertical-align: middle;" align="center"> -->
@@ -148,6 +147,7 @@
 	function confirmaCadastroUsuario(){
 		  alert('Cadastro realizado com sucesso!');  
 	}
+	</script>
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/js/bootstrap-hover-dropdown.min.js"></script>
