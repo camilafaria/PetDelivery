@@ -151,7 +151,7 @@
 									value="${usuarioLogado.cpf}" />
 
 								<!-- input type="submit" class="btn" value="Registrar" /-->
-								<button type="submit" class="btn" onclick="confirmaCadastro()">Registrar</button>
+								<button type="submit" class="btn" onclick="confirmaCadastroPet()">Registrar</button>
 							</div>
 						</div>
 					</div>
@@ -164,7 +164,7 @@
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 
 	<script language="javascript">
-	function confirmaCadastro(){
+	function confirmaCadastroPet(){
 		  alert('Cadastro realizado com sucesso!');  
 	}
 	

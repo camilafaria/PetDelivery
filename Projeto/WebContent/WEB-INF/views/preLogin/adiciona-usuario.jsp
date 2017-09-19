@@ -132,7 +132,7 @@
 							name="senha" placeholder="Senha"
 							class="contact-email form-control">
 					</div>
-					<button type="submit" class="btn">Registrar</button>
+					<button type="submit" class="btn" onclick="confirmaCadastroUsuario()">Registrar</button>
 				</div>
 			</div>
 		</div>
@@ -144,6 +144,10 @@
 	<c:import url="../footer.jsp" />
 
 	<!-- Javascript -->
+	<script language="javascript">
+	function confirmaCadastroUsuario(){
+		  alert('Cadastro realizado com sucesso!');  
+	}
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/js/bootstrap-hover-dropdown.min.js"></script>

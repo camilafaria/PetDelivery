@@ -19,6 +19,11 @@ public class HomeUsuarioController {
 	public String index(HttpServletRequest request) {
 		return "posLogin/usuario/home";
 	}
+	
+	@RequestMapping("homePrestador")
+	public String indexPrestador(HttpServletRequest request) {
+		return "posLogin/prestador/home";
+	}
 
 	// Mapeamento de JSP
 	@RequestMapping("pets")

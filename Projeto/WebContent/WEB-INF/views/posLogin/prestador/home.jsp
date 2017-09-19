@@ -52,8 +52,7 @@
 			<div class="row">
 				<div class="col-md-12">
 
-					<h2>Bem-vindo, ${usuarioLogado.email}!</h2>
-					<h3>Colocar algum texto legal aqui :)</h3>
+					<h2>Bem-vindo, ${prestadorAutonomoLogado.nome}!</h2>					
 				</div>
 			</div>
 		</div>

@@ -34,7 +34,7 @@ public class LoginController {
 			session.setAttribute("usuarioLogado", usrLogado);
 			session.setAttribute("AUTHENTICATED", new Boolean(true));
 			//TODO: Alterar o return para a home do posLogin
-			return "posLogin/usuario/home";
+			return "redirect:home";
 		}
 		
 		//Tenta fazer login de prestador
@@ -52,7 +52,7 @@ public class LoginController {
 				session.setAttribute("prestadorAutonomoLogado", prestadorAutonomo);
 				session.setAttribute("AUTHENTICATED", new Boolean(true));
 				//TODO: Alterar o return para a home do posLogin
-				return "posLogin/prestador/home";
+				return "redirect:homePrestador";
 			}
 			
 			//Verificar se é petshop
@@ -63,10 +63,10 @@ public class LoginController {
 				session.setAttribute("prestadorPetshopLogado", prestadorPetshop);
 				session.setAttribute("AUTHENTICATED", new Boolean(true));
 				//TODO: Alterar o return para a home do posLogin
-				return "posLogin/prestador/home";
+				return "redirect:homePrestador";
 			}
 			//TODO: Alterar o return para a home do posLogin
-			return "posLogin/prestador/home";
+			return "redirect:homePrestador";
 		}
 		return "redirect:login";
 	}
