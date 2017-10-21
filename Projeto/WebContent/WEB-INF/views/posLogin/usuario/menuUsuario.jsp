@@ -43,11 +43,11 @@
 			<li class="text-center user-image-back"><img
 				src="assetsPosLogin/img/find_user.png" class="img-responsive" /></li>
 
-			<li><a href="pets"><i class="fa fa-desktop "></i>Meus PETs</a></li>
+			<li><a href="pets"><i class="fa fa-group "></i>Meus PETs</a></li>
 
-			<li><a href="#"><i class="fa fa-edit "></i>Buscar serviços</a></li>
+			<li><a href="#"><i class="fa fa-search "></i>Buscar serviços</a></li>
 
-			<li><a href="configConta"><i class="fa fa-table "></i>Configurações da Conta</a></li>
+			<li><a href="configConta"><i class="fa fa-gear "></i>Configurações da Conta</a></li>
 
 		</ul>
 	</div>
