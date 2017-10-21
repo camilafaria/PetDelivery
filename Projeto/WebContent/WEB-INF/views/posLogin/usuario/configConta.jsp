@@ -147,6 +147,10 @@
 					</div>
 				</form>
 
+
+
+
+
 				<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 				<!-- JQUERY SCRIPTS -->
 				<script src="assetsPosLogin/js/jquery-1.10.2.js"></script>
@@ -156,5 +160,8 @@
 				<script src="assetsPosLogin/js/jquery.metisMenu.js"></script>
 				<!-- CUSTOM SCRIPTS -->
 				<script src="assetsPosLogin/js/custom.js"></script>
+				</div>
+				
+				
 </body>
 </html>
