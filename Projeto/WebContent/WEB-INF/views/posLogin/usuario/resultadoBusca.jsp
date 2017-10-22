@@ -76,9 +76,11 @@
 					</div>
 				</div>
 				
-				<h3>Prestadores Autonomods</h3>
-				<table border="0">
-					<tr>
+				<h3>Prestadores Autonomos</h3>
+				<br>
+				<br>
+				<table border="0" align="center" width="800px">
+					<tr align="center">
 						<th>Nome</th>
 						<th>Condicoes</th>
 						<th>Preco</th>
@@ -100,7 +102,8 @@
 					    </tr>
 					</c:forEach>
 				</table>
-				
+				<br>
+				<br>
 				<h3>Petshops</h3>
 				
 			</div>
