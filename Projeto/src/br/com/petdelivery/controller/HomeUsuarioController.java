@@ -106,6 +106,15 @@ public class HomeUsuarioController {
 		
 		return "posLogin/usuario/resultadoBusca";
 	}
+	
+	@RequestMapping("avaliar-PrestadorAutonomo")
+	public String avaliarPrestadorAutonomo(HttpServletRequest request, HttpSession session) {
+		//System.out.println("Prestador CPF="+request.getParameter("id"));
+		Prestador prestador = new PrestadorDAO().buscaPrestadorById(Long.parseLong(request.getParameter("id")));
+		new PrestadorDAO().atribuiNovaNota(prestador, Integer.parseInt(request.getParameter("nota")));
+		
+		return "posLogin/usuario/visualizaPerfilAutonomo";
+	}
 
 	@RequestMapping("configConta")
 	public String configConta(HttpServletRequest request) {
