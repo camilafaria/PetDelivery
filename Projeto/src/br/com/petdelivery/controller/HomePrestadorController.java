@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.petdelivery.jdbc.dao.AnimalDAO;
 import br.com.petdelivery.jdbc.dao.AutonomoDAO;
+import br.com.petdelivery.jdbc.dao.PetshopDAO;
 import br.com.petdelivery.jdbc.dao.PrestadorDAO;
 import br.com.petdelivery.jdbc.dao.Servico_AutonomoDAO;
 import br.com.petdelivery.jdbc.dao.Servico_PetshopDAO;
 import br.com.petdelivery.jdbc.dao.Unidade_PetshopDAO;
 import br.com.petdelivery.jdbc.dao.UsuarioDAO;
 import br.com.petdelivery.jdbc.modelo.Autonomo;
+import br.com.petdelivery.jdbc.modelo.Petshop;
 import br.com.petdelivery.jdbc.modelo.Prestador;
 import br.com.petdelivery.jdbc.modelo.Servico_Autonomo;
 import br.com.petdelivery.jdbc.modelo.Servico_Petshop;
@@ -103,4 +105,24 @@ public class HomePrestadorController {
 		new Servico_PetshopDAO().insert(servico);		
 		return "posLogin/prestador/petshop/minhasUnidades";	
 	}	
+	
+	@RequestMapping("configContaPetshop")
+	public String configuraContaPetshop(HttpSession session) {
+		return "posLogin/prestador/petshop/configConta";	
+	}
+	
+	@RequestMapping("update-petshop")
+	public String atualizarPetshop(Petshop petshop, HttpSession session, HttpServletRequest request) {
+		new PetshopDAO().update(petshop);
+		
+		Prestador prestador = new Prestador();
+		prestador.setId_prestador(Long.parseLong(request.getParameter("cnpj")));
+		prestador.setEmail(request.getParameter("email"));
+		prestador.setSenha(request.getParameter("senha"));		
+		new PrestadorDAO().update(prestador);
+		
+		session.setAttribute("prestadorAtualizado", true);
+		
+		return "posLogin/prestador/petshop/home"; 
+	}
 }

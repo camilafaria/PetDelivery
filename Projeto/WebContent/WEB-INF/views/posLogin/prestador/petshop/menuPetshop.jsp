@@ -45,7 +45,7 @@
 
 			<li><a href="cadastroServico"><i class="fa fa-desktop "></i>Meus serviços</a></li>			
 			<li><a href="minhasUnidades"><i class="fa fa-desktop "></i>Minhas unidades</a></li>
-			<li><a href="#"><i class="fa fa-table "></i>Configurações da Conta</a></li>
+			<li><a href="configContaPetshop"><i class="fa fa-table "></i>Configurações da Conta</a></li>
 
 		</ul>
 	</div>
