@@ -45,7 +45,7 @@
 
 			<li><a href="servicosAutonomo"><i class="fa fa-desktop "></i>Meus serviços</a></li>			
 
-			<li><a href="#"><i class="fa fa-table "></i>Configurações da Conta</a></li>
+			<li><a href="configContaAutonomo"><i class="fa fa-table "></i>Configurações da Conta</a></li>
 
 		</ul>
 	</div>
