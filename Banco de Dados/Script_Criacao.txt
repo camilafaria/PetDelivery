@@ -126,3 +126,18 @@ CREATE TABLE SERVICO_AUTONOMO (
 		FOREIGN KEY (cpf) REFERENCES AUTONOMO (cpf),
 		FOREIGN KEY (id_servico) REFERENCES SERVICO (id_servico)
 );
+
+CREATE TABLE AGENDA_SERVICO (
+    id_agendamento bigint NOT NULL AUTO_INCREMENT,
+    id_usuario bigint NOT NULL,
+    id_prestador bigint NOT NULL,
+    id_servico bigint NOT NULL,
+    id_animal bigint NOT NULL,
+    datahora datetime NOT NULL,
+    observacao varchar(300) NOT NULL,
+		PRIMARY KEY (id_agendamento),
+		FOREIGN KEY (id_usuario) REFERENCES Usuario (cpf),
+		FOREIGN KEY (id_prestador) REFERENCES Prestador (id_prestador),
+		FOREIGN KEY (id_servico) REFERENCES Servico (id_servico),
+		FOREIGN KEY (id_animal) REFERENCES Animal (id_animal)
+);
