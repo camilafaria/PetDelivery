@@ -1005,6 +1005,9 @@
 .fa-code-fork:before {
   content: "\f126";
 }
+.fa-paw:before {
+  content: "\f1b0";
+}
 .fa-unlink:before,
 .fa-chain-broken:before {
   content: "\f127";

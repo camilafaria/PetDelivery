@@ -50,26 +50,28 @@ INSERT INTO SERVICO_PETSHOP (id_servico, cnpj, id_unidade, preco, condicoes, del
 INSERT INTO SERVICO_PETSHOP (id_servico, cnpj, id_unidade, preco, condicoes, delivery) VALUES (5, 81542546000176, 3, "300", "", true);
 INSERT INTO SERVICO_PETSHOP (id_servico, cnpj, id_unidade, preco, condicoes, delivery) VALUES (6, 81542546000176, 3, "300", "", true);
 
+
 /* Insere Prestadores autonomos*/
-INSERT INTO `petdelivery`.`prestador` (`id_prestador`, `email`, `senha`, `somanota`, `somaqnt`) VALUES (123456787, "prestador3@a.com", "123", 0, 0);
-INSERT INTO `petdelivery`.`autonomo` (`cpf`, `nome`, `experiencia`, `ddd`, `telefone`, `rua`, `numero`, `complemento`, `bairro`, `cep`, `foto`) 
+INSERT INTO `prestador` (`id_prestador`, `email`, `senha`, `somanota`, `somaqnt`) VALUES (123456787, "prestador3@a.com", "123", 0, 0);
+INSERT INTO `autonomo` (`cpf`, `nome`, `experiencia`, `ddd`, `telefone`, `rua`, `numero`, `complemento`, `bairro`, `cep`, `foto`) 
 VALUES (123456787, "Prestador 3", "Banho e Tosa e coisas a mais", 11, 999087532, "Rua Três", 45, "", "Centro", "08564-932", null); 
-INSERT INTO `petdelivery`.`prestador` (`id_prestador`, `email`, `senha`, `somanota`, `somaqnt`) VALUES (123456786, "prestador4@a.com", "123", 0, 0);
-INSERT INTO `petdelivery`.`autonomo` (`cpf`, `nome`, `experiencia`, `ddd`, `telefone`, `rua`, `numero`, `complemento`, `bairro`, `cep`, `foto`) 
+INSERT INTO `prestador` (`id_prestador`, `email`, `senha`, `somanota`, `somaqnt`) VALUES (123456786, "prestador4@a.com", "123", 0, 0);
+INSERT INTO `autonomo` (`cpf`, `nome`, `experiencia`, `ddd`, `telefone`, `rua`, `numero`, `complemento`, `bairro`, `cep`, `foto`) 
 VALUES (123456786, "Prestador 4", "Sou novo no rolê", 11, 975463521, "Rua Seis", 99, "Torre B", "Perdizes", "87650-987", null);
-INSERT INTO `petdelivery`.`prestador` (`id_prestador`, `email`, `senha`, `somanota`, `somaqnt`) VALUES (123456785, "prestador5@a.com", "123", 0, 0);
-INSERT INTO `petdelivery`.`autonomo` (`cpf`, `nome`, `experiencia`, `ddd`, `telefone`, `rua`, `numero`, `complemento`, `bairro`, `cep`, `foto`) 
+INSERT INTO `prestador` (`id_prestador`, `email`, `senha`, `somanota`, `somaqnt`) VALUES (123456785, "prestador5@a.com", "123", 0, 0);
+INSERT INTO `autonomo` (`cpf`, `nome`, `experiencia`, `ddd`, `telefone`, `rua`, `numero`, `complemento`, `bairro`, `cep`, `foto`) 
 VALUES (123456785, "Prestador 5", "Mais de 60 anos com banho e tosa de bichanos", 11, 128374652, "Rua Limoeiro", 7, "", "Capão Redondo", "09876-243", null);
 
 
 /*INsere servicos para prestadores autonomos*/
-INSERT INTO `petdelivery`.`servico_autonomo` (`id_servico`, `cpf`, `preco`, `condicoes`, `delivery`)
+INSERT INTO `servico_autonomo` (`id_servico`, `cpf`, `preco`, `condicoes`, `delivery`)
 VALUES ("1","123456787",50,"Na minha casa",1);
-INSERT INTO `petdelivery`.`servico_autonomo` (`id_servico`, `cpf`, `preco`, `condicoes`, `delivery`)
+INSERT INTO `servico_autonomo` (`id_servico`, `cpf`, `preco`, `condicoes`, `delivery`)
 VALUES ("3","123456787",70,"",1);
-INSERT INTO `petdelivery`.`servico_autonomo` (`id_servico`, `cpf`, `preco`, `condicoes`, `delivery`)
+INSERT INTO `servico_autonomo` (`id_servico`, `cpf`, `preco`, `condicoes`, `delivery`)
 VALUES ("4","123456787",90,"Na minha casinha",0);
-INSERT INTO `petdelivery`.`servico_autonomo` (`id_servico`, `cpf`, `preco`, `condicoes`, `delivery`)
+INSERT INTO `servico_autonomo` (`id_servico`, `cpf`, `preco`, `condicoes`, `delivery`)
 VALUES ("1","123456786",50,"Vou até você",0);
-INSERT INTO `petdelivery`.`servico_autonomo` (`id_servico`, `cpf`, `preco`, `condicoes`, `delivery`)
+INSERT INTO `servico_autonomo` (`id_servico`, `cpf`, `preco`, `condicoes`, `delivery`)
 VALUES ("2","123456786",70,"Sou especialista",1);
+

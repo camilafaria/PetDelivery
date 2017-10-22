@@ -44,7 +44,7 @@
 		</div>
 	</div>
 
-	<c:import url="menuPrestador.jsp" />
+	<c:import url="menuAutonomo.jsp" />
 
 	<!-- /. NAV SIDE  -->
 	<div id="page-wrapper">
@@ -57,6 +57,9 @@
 			</div>
 		</div>
 	</div>
+
+
+	<c:import url="footer.jsp" />
 
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->

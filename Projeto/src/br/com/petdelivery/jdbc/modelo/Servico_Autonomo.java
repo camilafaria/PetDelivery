@@ -1,13 +1,19 @@
 package br.com.petdelivery.jdbc.modelo;
 
-public class Servico_Autonomo {
-	
+public class Servico_Autonomo {	
+	private Long id_servicoAutonomo;
 	private Long id_servico;
 	private Long cpf;
-	private float preco;
+	private double preco;
 	private String condicoes;
 	private Boolean delivery;
 	
+	public Long getId_servicoAutonomo() {
+		return id_servicoAutonomo;
+	}
+	public void setId_servicoAutonomo(Long id_servicoAutonomo) {
+		this.id_servicoAutonomo = id_servicoAutonomo;
+	}
 	public Long getId_servico() {
 		return id_servico;
 	}
@@ -20,10 +26,10 @@ public class Servico_Autonomo {
 	public void setCpf(Long cpf) {
 		this.cpf = cpf;
 	}
-	public float getPreco() {
+	public double getPreco() {
 		return preco;
 	}
-	public void setPreco(float preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 	public String getCondicoes() {

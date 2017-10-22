@@ -71,4 +71,27 @@ public class PetshopDAO {
 		}
 		return null;
 	}
+	
+	public void update(Petshop petshop) {
+		String sql = "UPDATE PETSHOP SET nome=?, descricao=?"
+				+ "WHERE cnpj=?";
+
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);
+
+			// seta os valores			
+			stmt.setString(1, petshop.getNome());
+			stmt.setString(2, petshop.getDescricao());
+			stmt.setLong(3, petshop.getCnpj());
+
+			// executa
+			stmt.execute();
+			stmt.close();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 }

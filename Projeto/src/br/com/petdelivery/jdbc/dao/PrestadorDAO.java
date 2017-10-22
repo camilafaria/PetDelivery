@@ -191,5 +191,75 @@ public class PrestadorDAO {
 		}
 		return null;
 	}
+	
+	public String getEmailById (Long cpf) {
+		String sql = "SELECT email FROM Prestador WHERE id_prestador=?";
+		String email = "";
+		
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, cpf);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {				
+				email = rs.getString("email");
+				stmt.close();
+				return email;
+			}			
+			
+			return "";
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}		
+		
+	}
+
+	public String getSenhaById (Long cpf) {
+		String sql = "SELECT senha FROM Prestador WHERE id_prestador=?";
+		String senha = "";
+		
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, cpf);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {				
+				senha = rs.getString("senha");
+				stmt.close();
+				return senha;
+			}			
+			
+			return "";
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}		
+		
+	}
+	
+	public void update(Prestador prestador) {
+		String sql = "UPDATE PRESTADOR SET email=?, senha=?"
+				+ "WHERE id_prestador=?";
+
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);
+
+			// seta os valores			
+			stmt.setString(1, prestador.getEmail());
+			stmt.setString(2, prestador.getSenha());
+			stmt.setLong(3, prestador.getId_prestador());
+
+			// executa
+			stmt.execute();
+			stmt.close();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 }

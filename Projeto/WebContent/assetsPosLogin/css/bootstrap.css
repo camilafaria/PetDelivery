@@ -315,6 +315,8 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+  align: center;
+  text-align: center;
 }
 .img-rounded {
   border-radius: 6px;

@@ -54,6 +54,10 @@
 	</div>
 
 	<c:import url="menuUsuario.jsp" />
+	
+	<jsp:useBean id="daoAnimal"
+		class="br.com.petdelivery.jdbc.dao.AnimalDAO" />
+	
 
 	<!-- /. NAV SIDE  -->
 
@@ -83,13 +87,18 @@
 								</div>
 
 								<div class="form-group">
-									<label for="contact-name">Tipo de PET</label> <select
-										name="id_tipo" id="id_tipo">
-										<option selected disabled value="">Selecione...</option>
-										<option value="1">Cachorro</option>
-										<option value="2">Gato</option>
+									<label for="contact-name">Tipo de PET</label> 
+									<select name="id_tipo" id="id_tipo">
+																			
+										<option selected disabled value="">Selecione um animal</option>
+									
+										<c:forEach var="animal"
+											items="${daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
+											<option value="${animal.id_animal}" }> ${animal.nome} </option>										
+										</c:forEach>
+													
 									</select>
-								</div>
+								</div>		
 
 								<div class="form-group">
 									<label for="contact-name">Raça</label> <select name="id_raca"
@@ -172,6 +181,10 @@
 			</div>
 		</div>
 	</div>
+
+
+
+	<c:import url="footer.jsp" />
 
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 

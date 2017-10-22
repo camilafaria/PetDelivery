@@ -24,10 +24,6 @@ public class HomeUsuarioController {
 		return "posLogin/usuario/home";
 	}
 	
-	@RequestMapping("homePrestador")
-	public String indexPrestador(HttpServletRequest request) {
-		return "posLogin/prestador/home";
-	}
 
 	// Mapeamento de JSP
 	@RequestMapping("pets")
