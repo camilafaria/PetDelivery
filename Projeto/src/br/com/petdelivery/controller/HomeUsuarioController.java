@@ -73,6 +73,11 @@ public class HomeUsuarioController {
 
 		return "posLogin/usuario/home";
 	}
+	
+	@RequestMapping("visualiza")
+	public String visualizaAutonomo(HttpSession session) {
+		return "posLogin/usuario/visualizaPerfilAutonomo";
+	}
 
 	@RequestMapping("logout")
 	public String logoutUsuario(HttpSession session) {
