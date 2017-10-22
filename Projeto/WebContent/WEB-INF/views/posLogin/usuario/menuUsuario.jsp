@@ -41,7 +41,7 @@
 
 		<ul class="nav" id="main-menu">
 			<li class="text-center user-image-back"><img
-				src="assetsPosLogin/img/find_userq.png" class="img-responsive img-rounded" /></li>
+				src="assetsPosLogin/img/find-user.png" class="img-responsive img-rounded" width="260px" height="100px" /></li>
 
 			<li><a href="pets"><i class="fa fa-paw "></i>Meus PETs</a></li>
 

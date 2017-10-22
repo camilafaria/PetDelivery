@@ -70,7 +70,9 @@
 				<div class=" title col-md-12 col-sm-offset-1 page-title wow fadeIn">
 					<span aria-hidden="true" ></span>
 					<h1 align="center">Seu(s) pet('s) cadastrado(s), ${usuarioLogado.nome}! </h1>
-					
+					<br>
+					<br>
+					<br>
 					<c:if test="${not empty daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
 					
 						<table border="0" align="center" width="500px">
@@ -103,6 +105,9 @@
 			</div>
 		</div>
 	</div>
+
+
+	<c:import url="footer.jsp" />
 
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->

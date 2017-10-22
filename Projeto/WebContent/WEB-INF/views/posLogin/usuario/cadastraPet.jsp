@@ -173,6 +173,10 @@
 		</div>
 	</div>
 
+
+
+	<c:import url="footer.jsp" />
+
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 
 	<script language="javascript">
