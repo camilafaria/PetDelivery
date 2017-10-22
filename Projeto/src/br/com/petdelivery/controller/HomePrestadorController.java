@@ -11,11 +11,13 @@ import br.com.petdelivery.jdbc.dao.AnimalDAO;
 import br.com.petdelivery.jdbc.dao.AutonomoDAO;
 import br.com.petdelivery.jdbc.dao.PrestadorDAO;
 import br.com.petdelivery.jdbc.dao.Servico_AutonomoDAO;
+import br.com.petdelivery.jdbc.dao.Servico_PetshopDAO;
 import br.com.petdelivery.jdbc.dao.Unidade_PetshopDAO;
 import br.com.petdelivery.jdbc.dao.UsuarioDAO;
 import br.com.petdelivery.jdbc.modelo.Autonomo;
 import br.com.petdelivery.jdbc.modelo.Prestador;
 import br.com.petdelivery.jdbc.modelo.Servico_Autonomo;
+import br.com.petdelivery.jdbc.modelo.Servico_Petshop;
 import br.com.petdelivery.jdbc.modelo.Unidade_Petshop;
 import br.com.petdelivery.jdbc.modelo.Usuario;
 
@@ -37,11 +39,6 @@ public class HomePrestadorController {
 	public String cadastraServicoAutonomo(HttpSession session) {
 		return "posLogin/prestador/autonomo/cadastraServicoAutonomo";	
 	}
-	
-	@RequestMapping("cadastro-servico-petshop")
-	public String cadastraServicoPetshop(HttpSession session) {
-		return "posLogin/prestador/petshop/cadastraServicoPetshop";	
-	}	
 	
 	@RequestMapping("servicosAutonomo")
 	public String servicoAutonomo(HttpSession session) {
@@ -91,4 +88,19 @@ public class HomePrestadorController {
 		return "posLogin/prestador/petshop/minhasUnidades";
 	}
 	
+	@RequestMapping("cadastroServico")
+	public String cadastroServico(HttpSession session) {				
+		return "posLogin/prestador/petshop/meusServicos";
+	}
+	
+	@RequestMapping("cadastro-servico-petshop")
+	public String cadastroServicoPetshop(HttpSession session) {				
+		return "posLogin/prestador/petshop/cadastraServicoPetshop";
+	}
+		
+	@RequestMapping("cadastroServicoPetshop")
+	public String insertServico(Servico_Petshop servico, HttpSession session) {
+		new Servico_PetshopDAO().insert(servico);		
+		return "posLogin/prestador/petshop/minhasUnidades";	
+	}	
 }

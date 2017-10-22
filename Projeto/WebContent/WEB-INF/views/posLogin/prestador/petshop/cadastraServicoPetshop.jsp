@@ -40,8 +40,7 @@
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet
-						Delivery</a>
+					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet Delivery</a>
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
@@ -53,7 +52,10 @@
 		</div>
 	</div>
 
-	<c:import url="menuUsuario.jsp" />
+	<c:import url="menuPetshop.jsp" />
+	
+	<jsp:useBean id="daoUnidade"
+		class="br.com.petdelivery.jdbc.dao.Unidade_PetshopDAO" />
 
 	<!-- /. NAV SIDE  -->
 
@@ -66,104 +68,68 @@
 						<div class="row">
 							<div class="title col-sm-9 col-sm-offset-1 page-title wow fadeIn">
 								<span aria-hidden="true" class="icon_profile"></span>
-								<h1>Cadastrar PET</h1>
+								<h1>Cadastro de Serviços</h1>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<form action="inserePet" class="form-horizontal" method="post">
+				<form action="cadastroServicoPetshop" class="form-horizontal" method="post">
 					<div class="form-group">
 						<div class="container"  style="vertical-align: middle; margin-left:20%;" align="center">
 							<div class="col-sm-7 contact-form wow">
+								
 								<div class="form-group">
-									<label for="contact-name">Nome</label><input type="text"
-										name="nome" placeholder="Digite o nome do seu pet"
+									<label for="contact-name">Selecione a unidade: </label>
+									<select name="id_unidade" id="id_unidade">
+										<option selected disabled value="">Selecione um serviço</option>
+									
+										<c:forEach var="unidade"
+											items="${daoUnidade.getUnidadesByCNPJ(prestadorPetshopLogado.cnpj)}">
+											<option value="${unidade.id_unidade}" }> ${unidade.nome} </option>										
+										</c:forEach>
+													
+									</select>
+								</div>
+								
+								<div class="form-group">
+									<label for="contact-name">Selecione o serviço oferecido: </label>
+									<select name="id_servico" id="id_servico">
+										<option selected disabled value="">Selecione um serviço</option>
+										<option value="1">Babá em Domicílio</option>
+										<option value="2">Banho e Tosa</option>
+										<option value="3">Dog Walker</option>
+										<option value="4">Hotel</option>
+										<option value="5">Veterinário</option>									
+									</select>
+								</div>
+									
+								<div class="form-group">
+									<label for="contact-name">Preço: R$</label>
+									<input type="number" step="0.01" name="preco"
+									class="contact-name form-control">
+								</div>
+
+								<div class="form-group">
+									<label for="contact-name">Condições do serviço oferecido</label>
+									<input type="text" name="condicoes" placeholder="Ex.: Pagamento antecipado"
 										class="contact-name form-control">
 								</div>
-
+								
 								<div class="form-group">
-									<label for="contact-name">Tipo de PET</label> <select
-										name="id_tipo" id="id_tipo">
-										<option selected disabled value="">Selecione...</option>
-										<option value="1">Cachorro</option>
-										<option value="2">Gato</option>
+									<label for="contact-name">Para esse serviço, você oferece delivery?</label>
+									<select name="delivery" id="delivery">
+										<option selected disabled value=""></option>
+										<option value="true">Sim</option>
+										<option value="false">Não</option>								
 									</select>
 								</div>
-
-								<div class="form-group">
-									<label for="contact-name">Raça</label> <select name="id_raca"
-										id="id_raca">
-										<option selected disabled value="">Selecione...</option>
-										<option value="24">Afghan Hound</option>
-										<option value="19">Beagle</option>
-										<option value="21">American Pitbull</option>
-										<option value="18">Bull Terrier</option>
-										<option value="17">Bulldog</option> 
-										<option value="16">Chihuahua</option>
-										<option value="15">Dobermann</option>
-										<option value="14">Golden Retriever</option>
-										<option value="12">Labrador</option>
-										<option value="11">Poodle</option>
-										<option value="10">Rottweiler</option>
-										<option value="9">Vira-Lata</option>
-										<option value="8">Yorkshire Terrier</option>
-										<option value="7">Outra</option>
-								    </select>
-								</div>
-
-								<div class="form-group">
-									<label for="contact-name">Gênero</label> <br> <input
-										type="radio" name="genero" value="m"> Macho <br>
-									<input type="radio" name="genero" value="f"> Fêmea <br>
-								</div>
-
-								<div class="form-group">
-									<label for="contact-name">Pedigree</label> <br> <input
-										type="radio" name="pedigree" value="true"> Sim <br>
-									<input type="radio" name="pedigree" value="false"> Não
-									<br>
-								</div>
-
-								<div class="form-group">
-									<label for="contact-name">Porte</label> <select name="porte">
-										<option value="">Selecione...</option>
-										<option value="Pequeno">Pequeno</option>
-										<option value="Médio">Médio</option>
-										<option value="Grande">Grande</option>
-									</select>
-								</div>
-
-								<div class="form-group">
-									<label for="contact-name">Comportamento</label> <select
-										name="comportamento">
-										<option value="">Selecione...</option>
-										<option value="Agitado">Agitado</option>
-										<option value="Agressivo">Agressivo</option>
-										<option value="Calmo">Calmo</option>
-										<option value="Dócil">Dócil</option>
-										<option value="Extrovertido">Extrovertido</option>
-									</select>
-								</div>
-
-								<div class="form-group">
-									<label for="contact-name">Vacinas</label><input type="text"
-										name="vacinas"
-										placeholder="Descreva detalhes sobre as vacinas de seu PET"
-										class="contact-name form-control">
-								</div>
-
-								<div class="form-group">
-									<label for="img">Selecione sua foto</label> <input type="file"
-										name="foto" class="img form-control"
-										accept="image/png, image/jpeg" multiple />
-								</div>
-
-								<input type="hidden" name="id_usuario"
-									value="${usuarioLogado.cpf}" />
+								
+								<input type="hidden" name="cnpj"
+									value="${prestadorPetshopLogado.cnpj}" />
 
 								<!-- input type="submit" class="btn" value="Registrar" /-->
-								<button type="submit" class="btn" onclick="confirmaCadastroPet()">Registrar</button>
+								<button type="submit" class="btn" onclick="confirmaCadastroServico()">Registrar</button>
 							</div>
 						</div>
 					</div>
@@ -176,7 +142,7 @@
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 
 	<script language="javascript">
-	function confirmaCadastroPet(){
+	function confirmaCadastroServico(){
 		  alert('Cadastro realizado com sucesso!');  
 	}
 	</script>

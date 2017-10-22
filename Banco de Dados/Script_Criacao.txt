@@ -103,14 +103,16 @@ CREATE TABLE SERVICO (
 );
 
 CREATE TABLE SERVICO_PETSHOP (
-	id_servico bigint NOT NULL,
+    id_servicoPetshop bigint NOT NULL AUTO_INCREMENT,
+    id_servico bigint NOT NULL,
     cnpj bigint NOT NULL,
     id_unidade bigint NOT NULL,
     preco float NOT NULL,
     condicoes varchar(300) NOT NULL,
     delivery boolean NOT NULL,
-		PRIMARY KEY (id_servico, cnpj, id_unidade),
-		FOREIGN KEY (cnpj, id_unidade) REFERENCES UNIDADE_PETSHOP (cnpj, id_unidade)       
+		PRIMARY KEY (id_servicoPetshop),
+		FOREIGN KEY (cnpj, id_unidade) REFERENCES UNIDADE_PETSHOP (cnpj, id_unidade),   
+                FOREIGN KEY (id_servico) REFERENCES SERVICO(id_servico)    
 );
 
 CREATE TABLE SERVICO_AUTONOMO (

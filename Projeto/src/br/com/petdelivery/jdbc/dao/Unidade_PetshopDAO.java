@@ -82,6 +82,28 @@ public class Unidade_PetshopDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public String getUnidadeById (Long id_unidade) {
+		String sql = "SELECT nome FROM Unidade_Petshop WHERE id_unidade=?";
+		String unidade;				
+
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);			
+			stmt.setLong(1, id_unidade);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				unidade = rs.getString("nome");
+				stmt.close();
+				return unidade;
+			}
+			
+			return "";
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}		
+	}
 
 }
 

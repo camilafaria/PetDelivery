@@ -43,7 +43,7 @@
 			<li class="text-center user-image-back"><img
 				src="assetsPosLogin/img/find_user.png" class="img-responsive" /></li>
 
-			<li><a href="#"><i class="fa fa-desktop "></i>Meus serviços</a></li>			
+			<li><a href="cadastroServico"><i class="fa fa-desktop "></i>Meus serviços</a></li>			
 			<li><a href="minhasUnidades"><i class="fa fa-desktop "></i>Minhas unidades</a></li>
 			<li><a href="#"><i class="fa fa-table "></i>Configurações da Conta</a></li>
 
