@@ -77,10 +77,13 @@
 				class="br.com.petdelivery.jdbc.dao.ServicoDAO" />
 				<jsp:useBean id="daoHelper"
 					class="br.com.petdelivery.jdbc.dao.HelperDAO" />
+					<br>
+					<br>
 	
 				<form action="buscar-servico" class="form-horizontal" method="get">
 					<div class="form-group row">
-						<label for="inputEmail3" class="col-sm-2 col-form-label">Lista de Serviços</label>
+						<label for="inputEmail3" class="col-sm-4 col-form-label">Lista de Serviços</label>
+						<div class="col-sm-2">
 						<c:forEach var="servico" items="${daoServico.lista}">
 							<div class="form-check form-check-inline">
 								<label class="form-check-label"> <input
@@ -89,43 +92,49 @@
 								</label>
 							</div>
 						</c:forEach>
+						</div>
 					</div>
 	
 					<div class="form-group row">
-						<label for="inputEmail3" class="col-sm-2 col-form-label">
+						<label for="inputEmail3" class="col-sm-4 col-form-label">
 							Faixa de Preço </label>
-						<div class="col-sm-5">
+						<div class="col-sm-2">
 							<input type="text" class="form-control" name="precoDe"	placeholder="De..">
 						</div>
-						<div class="col-sm-5">
+						<div class="col-sm-2">
 							<input type="text" class="form-control" name="precoAte"
 								placeholder="Até..">
 						</div>
 					</div>
 	
 					<div class="form-group row">
-						<label for="inputEmail3" class="col-sm-2 col-form-label">Bairro</label>
+						<label for="inputEmail3" class="col-sm-4 col-form-label">Bairro</label>
+						<div class="col-sm-2">
 						<select id="inputBairro" class="form-control" name="bairro">
 							<option value="">...</option>
 							<c:forEach var="bairro" items="${daoHelper.getTodosBairros()}">
 								<option value="${bairro}">${bairro}</option>
 							</c:forEach>
 						</select>
+						</div>
 					</div>
 	
 					<div class="form-group row">
-						<label for="inputEmail3" class="col-sm-2 col-form-label">Delivery</label>
+						<label for="inputEmail3" class="col-sm-4 col-form-label">Delivery</label>
+						<div class="col-sm-2">
 						<select id="inputBairro" class="form-control" name="delivery">
 							<option value="">...</option>
 							<option value="true">Sim</option>
 							<option value="false">Não</option>
 						</select>
+						</div>
 					</div>
 					
 					<fieldset class="form-group">
 						<div class="row">
-							<legend class="col-form-legend col-sm-2">Petshop ou autônomo?</legend>
-							<div class="col-sm-10">
+							<legend class="col-form-legend col-sm-6">Petshop ou autonomo?</legend>
+							<div class="col-sm-12">
+							
 								<div class="form-check">
 									<label class="form-check-label"> <input
 										class="form-check-input" type="radio" name="autonomoOuPetshop"
@@ -153,6 +162,9 @@
 			</div>
 		</div>
 	</div>
+
+
+	<c:import url="footer.jsp" />
 
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 

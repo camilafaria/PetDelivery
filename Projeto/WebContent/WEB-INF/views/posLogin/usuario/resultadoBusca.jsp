@@ -73,16 +73,19 @@
 				</div>
 
 				<c:if test="${empty resultadoBuscaPrestador}">
-				Não há há prestadores que atendam seu filtro
-				
+					Não há há prestadores que atendam seu filtro
+
 				<br><br>
-				<button name="back" onclick="history.back()" class="btn btn-primary">Efetuar nova busca</button>
+				<button name="back" onclick="history.back()" class="btn btn-primary">Efetuar
+					nova busca</button>
 				</c:if>
 
 				<c:if test="${not empty resultadoBuscaPrestador}">
 					<h3>Prestadores Autonomos</h3>
-					<table border="0">
-						<tr>
+					<br>
+					<br>
+					<table border="0" align="center" width="800px">
+						<tr align="center">
 							<th>Nome</th>
 							<th>Condicoes</th>
 							<th>Preco</th>
@@ -103,11 +106,15 @@
 								<td><c:out value="${result.bairro}" /></td>
 								<td><c:out value="${result.nota}" /></td>
 							</tr>
-						</c:forEach>				
+						</c:forEach>
 					</table>
-					
-					<br><br>
-					<button name="back" onclick="history.back()" class="btn btn-primary">Efetuar nova busca</button>
+					<br>
+					<br>
+
+					<br>
+					<br>
+					<button name="back" onclick="history.back()"
+						class="btn btn-primary">Efetuar nova busca</button>
 				</c:if>
 			</div>
 		</div>

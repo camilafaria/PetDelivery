@@ -1,6 +1,7 @@
 package br.com.petdelivery.jdbc.modelo;
 
 import java.sql.Date;
+import java.sql.Time;
 
 public class Agenda_Servico {
 	
@@ -9,7 +10,10 @@ public class Agenda_Servico {
 	private Long id_prestador;
 	private Long id_servico;
 	private Long id_animal;
-	private Date datahora;
+	private Date dataInicio;
+	private Date dataFim;
+	private Time horaInicio;	
+	private Time horaFim;
 	private String observacao;
 	
 	public Long getId_agendamento() {
@@ -42,16 +46,34 @@ public class Agenda_Servico {
 	public void setId_animal(Long id_animal) {
 		this.id_animal = id_animal;
 	}
-	public Date getDatahora() {
-		return datahora;
-	}
-	public void setDatahora(Date datahora) {
-		this.datahora = datahora;
-	}
 	public String getObservacao() {
 		return observacao;
 	}
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
+	}
+	public Date getDataInicio() {
+		return dataInicio;
+	}
+	public void setDataInicio(Date dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+	public Date getDataFim() {
+		return dataFim;
+	}
+	public void setDataFim(Date dataFim) {
+		this.dataFim = dataFim;
+	}
+	public Time getHoraInicio() {
+		return horaInicio;
+	}
+	public void setHoraInicio(Time horaInicio) {
+		this.horaInicio = horaInicio;
+	}
+	public Time getHoraFim() {
+		return horaFim;
+	}
+	public void setHoraFim(Time horaFim) {
+		this.horaFim = horaFim;
 	}
 }
