@@ -121,7 +121,7 @@ CREATE TABLE SERVICO_AUTONOMO (
     cpf bigint NOT NULL,
     preco double(5,2) NOT NULL,
     condicoes varchar(300) NOT NULL,
-    delivery boolean NOT NULL,
+    delivery int NOT NULL,
 		PRIMARY KEY (id_servicoAutonomo),
 		FOREIGN KEY (cpf) REFERENCES AUTONOMO (cpf),
 		FOREIGN KEY (id_servico) REFERENCES SERVICO (id_servico)

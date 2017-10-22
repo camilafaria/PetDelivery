@@ -56,7 +56,10 @@
 	<c:import url="menuUsuario.jsp" />
 	
 	<jsp:useBean id="daoServico"
+		class="br.com.petdelivery.jdbc.dao.ServicoDAO" />
+	<jsp:useBean id="daoServicoAutonomo"
 		class="br.com.petdelivery.jdbc.dao.Servico_AutonomoDAO" />
+		
 
 	<!-- /. NAV SIDE  -->
 	<div id="page-wrapper">
@@ -95,14 +98,16 @@
 								<th>Preço</th>
 								<th>Condições</th>
 								<th>Delivery</th>
+								<th></th>
 							</tr>
 							<c:forEach var="servico"
-								items="${daoServico.getServico(perfilPrestadorAutonomo.cpf)}">
+								items="${daoServicoAutonomo.getServico(perfilPrestadorAutonomo.cpf)}">
 								<tr>
-									<td>${servico.id_servico}</td>
+									<td>${daoServico.getServicoById(servico.id_servico)}</td>
 									<td>${servico.preco}</td>
 									<td>${servico.condicoes}</td>
 									<td>${servico.delivery}</td>
+									<td><a href="agenda-servicoAutonomo?id=${perfilPrestadorAutonomo.cpf}&servico=${servico.id_servico}&delivery=${servico.delivery}">Agendar</a></td>
 								</tr>
 							</c:forEach>
 						</table>
@@ -131,8 +136,7 @@
 						</form>
 					</div>
 					
-					<div class="form-group col-sm-12">
-						<button onclick="window.location.href='agenda-servicoAutonomo?id=${perfilPrestadorAutonomo.cpf}'" type="submit" class="btn">Contratar um serviço</button>
+					<div class="form-group col-sm-12">						
 						<button name="back" onclick="history.back()" class="btn">Voltar</button>
 					</div>
 				</div>

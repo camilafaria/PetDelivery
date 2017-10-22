@@ -75,4 +75,31 @@ public class Servico_AutonomoDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public boolean acceptsDelivery (Long cpf, Long id_servico) {
+		String sql = "SELECT delivery FROM Servico_Autonomo WHERE cpf=? and id_servico=?";
+		int delivery;
+		
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);			
+			stmt.setLong(1, cpf);
+			stmt.setLong(2, id_servico);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				delivery = rs.getInt("delivery");
+				stmt.close();				
+				if(delivery==0)
+					return true;
+				else
+					return false;
+			}		
+			
+			return false;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }
