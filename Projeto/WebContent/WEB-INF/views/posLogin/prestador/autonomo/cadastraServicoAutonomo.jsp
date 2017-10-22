@@ -103,8 +103,8 @@
 									<label for="contact-name">Para esse serviço, você oferece delivery?</label>
 									<select name="delivery" id="delivery">
 										<option selected disabled value=""></option>
-										<option value="true">Sim</option>
-										<option value="false">Não</option>								
+										<option value="0">Sim</option>
+										<option value="1">Não</option>								
 									</select>
 								</div>
 								

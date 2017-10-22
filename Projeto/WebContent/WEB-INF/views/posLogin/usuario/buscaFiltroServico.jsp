@@ -82,10 +82,10 @@
 	
 				<form action="buscar-servico" class="form-horizontal" method="get">
 					<div class="form-group row">
-						<label for="inputEmail3" class="col-sm-4 col-form-label">Lista de Serviços</label>
-						<div class="col-sm-2">
+						<label for="inputEmail3" class="col-sm-4 col-form-label">Serviços disponíveis</label>
+						<div class="col-sm-8">
 						<c:forEach var="servico" items="${daoServico.lista}">
-							<div class="form-check form-check-inline">
+							<div class="col-sm-2 col-form-label">
 								<label class="form-check-label"> <input
 									class="form-check-input" type="checkbox" id="inlineCheckbox1"
 									name="servico" value="${servico.id_servico}">${servico.nome}

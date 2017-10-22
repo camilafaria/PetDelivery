@@ -128,21 +128,8 @@ public class HomeUsuarioController {
 		session.setAttribute("usuarioAtualizado", true);
 
 		return "posLogin/usuario/home";
-	}
+	}	
 	
-	// Mapeamento de JSP
-	@RequestMapping("agenda-servicoAutonomo")
-	public String agendaServicoAutonomo(HttpSession session, HttpServletRequest request) {		
-		Prestador prestador = new Prestador();
-		prestador.setId_prestador(Long.parseLong(request.getParameter("id")));
-		Autonomo autonomo = new AutonomoDAO().getAutonomo(prestador);
-		
-		session.setAttribute("perfilPrestador", prestador);
-		session.setAttribute("perfilPrestadorAutonomo", autonomo);
-		
-		return "posLogin/usuario/agendaServicoAutonomo";
-	}
-
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
 		session.invalidate();

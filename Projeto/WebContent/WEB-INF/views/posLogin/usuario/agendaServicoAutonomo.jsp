@@ -54,13 +54,13 @@
 	</div>
 
 	<c:import url="menuUsuario.jsp" />
-
+	
 	<jsp:useBean id="daoAnimal"
 		class="br.com.petdelivery.jdbc.dao.AnimalDAO" />
 	<jsp:useBean id="daoServico"
 		class="br.com.petdelivery.jdbc.dao.ServicoDAO" />
 	<jsp:useBean id="daoServicoAutonomo"
-		class="br.com.petdelivery.jdbc.dao.Servico_AutonomoDAO" />
+		class="br.com.petdelivery.jdbc.dao.Servico_AutonomoDAO" />	
 
 	<!-- /. NAV SIDE  -->
 	<div id="page-wrapper">
@@ -84,16 +84,8 @@
 							style="vertical-align: middle; margin-left: 20%;" align="center">
 							<div class="col-sm-7 contact-form wow">
 								<div class="form-group">
-									<label for="contact-name">Serviço a ser
-										agendado: </label> <select name="id_servico" id="id_servico" onChange="checkDelivery()">
-
-										<option selected disabled value="">Selecione um serviço</option>
-										<c:forEach var="servico"
-											items="${daoServicoAutonomo.getServico(perfilPrestadorAutonomo.cpf)}">
-											<option value="${servico.id_servico}"}> ${daoServico.getServicoById(servico.id_servico)} </option>
-										</c:forEach>
-
-									</select>
+									<label for="contact-name">Serviço a ser	agendado: </label>								
+									<c:out value="${daoServico.getServicoById(id_servico)}" />									  								
 								</div>
 
 								<div class="form-group">
@@ -149,13 +141,15 @@
 										class="contact-name form-control">
 								</div>
 
-								<div class="form-group">
-									<label for="contact-name">Se disponível, deseja o
-										serviço de delivery?</label> <select name="delivery" id="id_servico">
-										<option value="1">Sim</option>
-										<option value="2">Não</option>
-									</select>
-								</div>
+								<c:if test= "${param.delivery eq 'true'}" >
+									<div class="form-group">
+										<label for="contact-name">Deseja o serviço de delivery?</label> 
+											<select name="delivery" id="delivery">
+											<option value="0">Sim</option>
+											<option value="1">Não</option>
+										</select>
+									</div>
+								</c:if>						
 
 								<input type="hidden" name="id_usuario"
 									value="${usuarioLogado.cpf}" />
