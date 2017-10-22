@@ -69,50 +69,75 @@
 				</div>
 
 				<img src="assetsPosLogin/img/find-user.png"
-					class="img-responsive img-rounded" width="260px" height="100px" />
+					class="img-responsive img-rounded col-sm-4" width="260px" height="100px" />
 
-				<div class="form-group col-sm-12">
-					<label for="contact-name">Nome: </label>
-					<c:out value="${perfilPrestadorAutonomo.nome}"/>
-				</div>
-
-				<div class="form-group col-sm-12">
-					<label for="contact-name">Experiência: </label>
-					<c:out value="${perfilPrestadorAutonomo.experiencia}"/>
-				</div>
-
-				<div class="form-group col-sm-12">
-					<label for="contact-name">Bairro: </label>
-					<c:out value="${perfilPrestadorAutonomo.bairro}"/>
-				</div>
-
-				<div class="form-group col-sm-12">
-					<label for="contact-name">Serviços oferecidos: </label>
-					<table border="0" align="center" width="500px">
-						<tr align="center">
-							<th>Serviço</th>
-							<th>Preço</th>
-							<th>Condições</th>
-							<th>Delivery</th>
-						</tr>
-						<c:forEach var="servico"
-							items="${daoServico.getServico(perfilPrestadorAutonomo.cpf)}">
-							<tr>
-								<td>${servico.id_servico}</td>
-								<td>${servico.preco}</td>
-								<td>${servico.condicoes}</td>
-								<td>${servico.delivery}</td>
+				<div class="form-group col-sm-8">
+					<div class="form-group col-sm-12">
+						<label  for="contact-name">Nome:</label>
+						<c:out value="${perfilPrestadorAutonomo.nome}"/>
+					</div>
+					
+					<div class="form-group col-sm-12">
+						<label for="contact-name">Experiência: </label>
+						<c:out value="${perfilPrestadorAutonomo.experiencia}"/>
+					</div>
+					
+					<div class="form-group col-sm-12">
+						<label for="contact-name">Bairro: </label>
+						<c:out value="${perfilPrestadorAutonomo.bairro}"/>
+					</div>
+					
+					<div class="form-group col-sm-12">
+						<label for="contact-name">Serviços oferecidos: </label>
+						<table border="0" align="center" width="500px">
+							<tr align="center">
+								<th>Serviço</th>
+								<th>Preço</th>
+								<th>Condições</th>
+								<th>Delivery</th>
 							</tr>
-						</c:forEach>
-					</table>
+							<c:forEach var="servico"
+								items="${daoServico.getServico(perfilPrestadorAutonomo.cpf)}">
+								<tr>
+									<td>${servico.id_servico}</td>
+									<td>${servico.preco}</td>
+									<td>${servico.condicoes}</td>
+									<td>${servico.delivery}</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</div>
+					
+					<div class="form-group col-sm-12">
+						<label for="contact-name">Avalie esse prestador:</label>
+						<form action="avaliar-PrestadorAutonomo" class="form-horizontal" method="get">
+							<label class="">1
+								<input	class="" type="radio" name="nota" value="1">
+							</label>
+							<label class="">2
+								<input	class="" type="radio" name="nota" value="2">
+							</label>
+							<label class="">3
+								<input	class="" type="radio" name="nota" value="3">
+							</label>
+							<label class="">4
+								<input	class="" type="radio" name="nota" value="4">
+							</label>
+							<label class="">5
+								<input	class="" type="radio" name="nota" value="5">
+							</label>
+							<input hidden type="text" name="id" value="${perfilPrestadorAutonomo.cpf}">
+							<button type="submit" class="btn">Avaliar</button>
+						</form>
+					</div>
+					
+					<div class="form-group col-sm-12">
+						<button onclick="window.location.href='agenda-servicoAutonomo?id=${perfilPrestadorAutonomo.cpf}'" type="submit" class="btn">Contratar um serviço</button>
+						<button name="back" onclick="history.back()" class="btn">Voltar</button>
+					</div>
 				</div>
 
-				<div class="form-group col-sm-12">
-					<label for="contact-name">Avalie esse prestador: </label>
-				</div>
-
-				<button onclick="window.location.href='agenda-servicoAutonomo?id=${perfilPrestadorAutonomo.cpf}'" type="submit" class="btn">Contratar um serviço</button>
-				<button name="back" onclick="history.back()" class="btn">Voltar</button>
+				
 				
 			</div>
 		</div>
