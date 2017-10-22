@@ -65,11 +65,19 @@
 			<div class="row">
 
 				<div class="col-md-12">
-					<h1>Servicos oferecidos por ${prestadorAutonomoLogado.nome}</h1>								
+					
+					
+					<div class=" title col-md-12 col-sm-offset-1 page-title wow fadeIn">
+					<span aria-hidden="true" ></span>
+					<h1 align="center">Servicos oferecidos por ${prestadorAutonomoLogado.nome}! </h1>								
 								
-					<c:if test="${not empty daoServico_Autonomo.getServico(prestadorAutonomoLogado.cpf)}">					
-						<table border="0">
-							<tr>
+					<c:if test="${not empty daoServico_Autonomo.getServico(prestadorAutonomoLogado.cpf)}">	
+					<br>
+					<br>
+					<br>
+									
+						<table border="0" align="center" width="500px">
+							<tr align="center">
 								<th>Serviço</th>
 								<th>Preço</th>
 								<th>Condições</th>
@@ -97,6 +105,9 @@
 			</div>
 		</div>
 	</div>
+
+
+	<c:import url="footer.jsp" />
 
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->

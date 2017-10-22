@@ -58,6 +58,9 @@
 		</div>
 	</div>
 
+
+	<c:import url="footer.jsp" />
+
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script src="assetsPosLogin/js/jquery-1.10.2.js"></script>
