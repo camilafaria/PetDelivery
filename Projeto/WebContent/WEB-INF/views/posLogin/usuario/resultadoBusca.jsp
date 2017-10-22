@@ -73,48 +73,19 @@
 				</div>
 
 				<c:if test="${empty resultadoBuscaPrestador}">
-				Não há há prestadores que atendam seu filtro
-				
-<<<<<<< HEAD
-				<h3>Prestadores Autonomos</h3>
-				<br>
-				<br>
-				<table border="0" align="center" width="800px">
-					<tr align="center">
-						<th>Nome</th>
-						<th>Condicoes</th>
-						<th>Preco</th>
-						<th>Delivery</th>
-						<th>Serviço</th>
-						<th>Bairro</th>
-						<th>Nota</th>
-					</tr>
-					
-					<c:forEach items="${resultadoBuscaPrestador}" var="result">
-						<tr>
-					        <td><a href="visualiza-autonomo?id=${result.id}"><c:out value="${result.nome}"/></a></td>
-					        <td><c:out value="${result.condicoes}"/></td>
-					        <td><c:out value="${result.preco}"/></td>
-					        <td><c:out value="${result.delivery}"/></td>
-					        <td><c:out value="${result.servico}"/></td>
-					        <td><c:out value="${result.bairro}"/></td>
-					        <td><c:out value="${result.nota}"/></td>
-					    </tr>
-					</c:forEach>
-				</table>
-				<br>
-				<br>
-				<h3>Petshops</h3>
-				
+					Não há há prestadores que atendam seu filtro
 
 				<br><br>
-				<button name="back" onclick="history.back()" class="btn btn-primary">Efetuar nova busca</button>
+				<button name="back" onclick="history.back()" class="btn btn-primary">Efetuar
+					nova busca</button>
 				</c:if>
 
 				<c:if test="${not empty resultadoBuscaPrestador}">
 					<h3>Prestadores Autonomos</h3>
-					<table border="0">
-						<tr>
+					<br>
+					<br>
+					<table border="0" align="center" width="800px">
+						<tr align="center">
 							<th>Nome</th>
 							<th>Condicoes</th>
 							<th>Preco</th>
@@ -135,13 +106,16 @@
 								<td><c:out value="${result.bairro}" /></td>
 								<td><c:out value="${result.nota}" /></td>
 							</tr>
-						</c:forEach>				
+						</c:forEach>
 					</table>
-					
-					<br><br>
-					<button name="back" onclick="history.back()" class="btn btn-primary">Efetuar nova busca</button>
+					<br>
+					<br>
+
+					<br>
+					<br>
+					<button name="back" onclick="history.back()"
+						class="btn btn-primary">Efetuar nova busca</button>
 				</c:if>
->>>>>>> 0a3fea791a93b55f3273c550a0ba1c02d16ed761
 			</div>
 		</div>
 	</div>
