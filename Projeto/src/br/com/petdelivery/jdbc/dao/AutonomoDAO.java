@@ -86,5 +86,34 @@ public class AutonomoDAO {
 
 		return null;
 	}
+	
+	public void update(Autonomo autonomo) {
+		String sql = "UPDATE AUTONOMO SET nome=?, experiencia=?, ddd=?, telefone=?, rua=?, numero=?, complemento=?, cep=?, bairro=? "
+				+ "WHERE cpf=?";
+
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);
+
+			// seta os valores			
+			stmt.setString(1, autonomo.getNome());
+			stmt.setString(2, autonomo.getExperiencia());
+			stmt.setInt(3, autonomo.getDdd());
+			stmt.setLong(4, autonomo.getTelefone());
+			stmt.setString(5, autonomo.getRua());
+			stmt.setInt(6, autonomo.getNumero());
+			stmt.setString(7, autonomo.getComplemento());
+			stmt.setString(8, autonomo.getCep());
+			stmt.setString(9, autonomo.getBairro());
+			stmt.setLong(10, autonomo.getCpf());
+
+			// executa
+			stmt.execute();
+			stmt.close();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 }
