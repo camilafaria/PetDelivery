@@ -56,11 +56,7 @@
 	<c:import url="menuUsuario.jsp" />
 
 	<!-- /. NAV SIDE  -->
-	
-	<c:forEach items="${sessionScope}" var="attr">
-    ${attr.key}=${attr.value}<br>
-	</c:forEach>
-	
+
 	<div id="page-wrapper">
 		<div id="page-inner">
 			<div class="row">
@@ -75,34 +71,44 @@
 						</div>
 					</div>
 				</div>
+
+				<c:if test="${empty resultadoBuscaPrestador}">
+				Não há há prestadores que atendam seu filtro
 				
-				<h3>Prestadores Autonomods</h3>
-				<table border="0">
-					<tr>
-						<th>Nome</th>
-						<th>Condicoes</th>
-						<th>Preco</th>
-						<th>Delivery</th>
-						<th>Serviço</th>
-						<th>Bairro</th>
-						<th>Nota</th>
-					</tr>
-					
-					<c:forEach items="${resultadoBuscaPrestador}" var="result">
+				<br><br>
+				<button name="back" onclick="history.back()" class="btn btn-primary">Efetuar nova busca</button>
+				</c:if>
+
+				<c:if test="${not empty resultadoBuscaPrestador}">
+					<h3>Prestadores Autonomos</h3>
+					<table border="0">
 						<tr>
-					        <td><a href="visualiza-autonomo?id=${result.id}"><c:out value="${result.nome}"/></a></td>
-					        <td><c:out value="${result.condicoes}"/></td>
-					        <td><c:out value="${result.preco}"/></td>
-					        <td><c:out value="${result.delivery}"/></td>
-					        <td><c:out value="${result.servico}"/></td>
-					        <td><c:out value="${result.bairro}"/></td>
-					        <td><c:out value="${result.nota}"/></td>
-					    </tr>
-					</c:forEach>
-				</table>
-				
-				<h3>Petshops</h3>
-				
+							<th>Nome</th>
+							<th>Condicoes</th>
+							<th>Preco</th>
+							<th>Delivery</th>
+							<th>Serviço</th>
+							<th>Bairro</th>
+							<th>Nota</th>
+						</tr>
+
+						<c:forEach items="${resultadoBuscaPrestador}" var="result">
+							<tr>
+								<td><a href="visualiza-autonomo?id=${result.id}"><c:out
+											value="${result.nome}" /></a></td>
+								<td><c:out value="${result.condicoes}" /></td>
+								<td><c:out value="${result.preco}" /></td>
+								<td><c:out value="${result.delivery}" /></td>
+								<td><c:out value="${result.servico}" /></td>
+								<td><c:out value="${result.bairro}" /></td>
+								<td><c:out value="${result.nota}" /></td>
+							</tr>
+						</c:forEach>				
+					</table>
+					
+					<br><br>
+					<button name="back" onclick="history.back()" class="btn btn-primary">Efetuar nova busca</button>
+				</c:if>
 			</div>
 		</div>
 	</div>
@@ -110,11 +116,11 @@
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 
 	<script language="javascript">
-	function confirmaCadastroPet(){
-		  alert('Cadastro realizado com sucesso!');  
-	}
+		function confirmaCadastroPet() {
+			alert('Cadastro realizado com sucesso!');
+		}
 	</script>
-	
+
 	<!-- JQUERY SCRIPTS -->
 	<script src="assetsPosLogin/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->

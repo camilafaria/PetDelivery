@@ -124,7 +124,7 @@
 					
 					<fieldset class="form-group">
 						<div class="row">
-							<legend class="col-form-legend col-sm-2">Petshop ou autonomo?</legend>
+							<legend class="col-form-legend col-sm-2">Petshop ou autônomo?</legend>
 							<div class="col-sm-10">
 								<div class="form-check">
 									<label class="form-check-label"> <input
@@ -135,21 +135,19 @@
 								<div class="form-check">
 									<label class="form-check-label"> <input
 										class="form-check-input" type="radio" name="autonomoOuPetshop"
-										id="gridRadios2" value="autonomo"> Autonomos
+										id="gridRadios2" value="autonomo"> Autônomo
 									</label>
 								</div>
 								<div class="form-check disabled">
 									<label class="form-check-label"> <input
 										class="form-check-input" type="radio" name="autonomoOuPetshop"
-										id="gridRadios3" value="petshop"> Petshops
+										id="gridRadios3" value="petshop"> Petshop
 									</label>
 								</div>
 							</div>
 						</div>
 					</fieldset>
-	
-	
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="submit" class="btn btn-primary">Buscar</button>
 				</form>
 				
 			</div>
