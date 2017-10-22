@@ -57,6 +57,10 @@
 	
 	<jsp:useBean id="daoAnimal"
 		class="br.com.petdelivery.jdbc.dao.AnimalDAO" />
+	<jsp:useBean id="daoServico"
+		class="br.com.petdelivery.jdbc.dao.ServicoDAO" />
+	<jsp:useBean id="daoServicoAutonomo"
+		class="br.com.petdelivery.jdbc.dao.Servico_AutonomoDAO" />
 
 	<!-- /. NAV SIDE  -->
 	<div id="page-wrapper">
@@ -81,12 +85,13 @@
 								<div class="form-group">
 									<label for="contact-name">Selecione o serviço a ser agendado: </label>
 									<select name="id_servico" id="id_servico">
-										<option selected disabled value="">Selecione um serviço</option>
-										<option value="1">Babá em Domicílio</option>
-										<option value="2">Banho e Tosa</option>
-										<option value="3">Dog Walker</option>
-										<option value="4">Hotel</option>
-										<option value="5">Veterinário</option>									
+									
+										<option selected disabled value="">Selecione um serviço</option>									
+										<c:forEach var="servico"
+											items="${daoServicoAutonomo.getServico(perfilPrestadorAutonomo.cpf)}">
+											<option value="${servico.id_servico}" }> ${daoServico.getServicoById(servico.id_servico)} </option>										
+										</c:forEach>
+																			
 									</select>
 								</div>
 								
@@ -99,6 +104,7 @@
 											items="${daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
 											<option value="${animal.id_animal}" }> ${animal.nome} </option>										
 										</c:forEach>									
+										
 									</select>
 								</div>
 							

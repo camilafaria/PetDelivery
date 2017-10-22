@@ -1,77 +1,92 @@
-INSERT INTO TIPO_ANIMAL (nome) VALUES ("cachorro");
-INSERT INTO TIPO_ANIMAL (nome) VALUES ("gato");
+/*!40000 ALTER TABLE `raca_animal` DISABLE KEYS */;
+INSERT INTO `tipo_animal` VALUES 
+	(1,'cachorro'),
+	(2,'gato');
+/*!40000 ALTER TABLE `raca_animal` ENABLE KEYS */;
 
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (2,"Oriental");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (2,"Egyptian Mau");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (2,"Devon Rex");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (2,"Cornish Rex");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (2,"Bengal");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (2,"American Short Hair");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (1,"Outra");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (1,"Yorkshire Terrier");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (1,"Vira-Lata");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (1,"Rottweiler");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (1,"Poodle");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (1,"Labrador");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (1,"Husky");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (1,"Golden Retriever");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (1,"Dobermann");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (1,"Chihuahua");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (1,"Bulldog");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (1,"Bull Terrier");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (1,"Beagle");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (1,"Bassethound");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (1,"American Pitbull");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (1,"Akita Inu");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (1,"Airedale Terrier");
-INSERT INTO RACA_ANIMAL (id_tipo,nome) VALUES (1,"Afghan Hound");
+/*!40000 ALTER TABLE `tipo_animal` DISABLE KEYS */;
+INSERT INTO `raca_animal` VALUES 
+	(1,2,'Oriental'),
+	(2,2,'Egyptian Mau'),
+	(3,2,'Devon Rex'),
+	(4,2,'Cornish Rex'),
+	(5,2,'Bengal'),
+	(6,2,'American Short Hair'),
+	(7,1,'Outra'),
+	(8,1,'Yorkshire Terrier'),
+	(9,1,'Vira-Lata'),
+	(10,1,'Rottweiler'),
+	(11,1,'Poodle'),
+	(12,1,'Labrador'),
+	(13,1,'Husky'),
+	(14,1,'Golden Retriever'),
+	(15,1,'Dobermann'),
+	(16,1,'Chihuahua'),
+	(17,1,'Bulldog'),
+	(18,1,'Bull Terrier'),
+	(19,1,'Beagle'),
+	(20,1,'Bassethound'),
+	(21,1,'American Pitbull'),
+	(22,1,'Akita Inu'),
+	(23,1,'Airedale Terrier'),
+	(24,1,'Afghan Hound');
+/*!40000 ALTER TABLE `tipo_animal` ENABLE KEYS */;
 
-INSERT INTO SERVICO (nome) VALUES ("Babá em Domicílio");
-INSERT INTO SERVICO (nome) VALUES ("Banho e Tosa");
-INSERT INTO SERVICO (nome) VALUES ("Dog Walker");
-INSERT INTO SERVICO (nome) VALUES ("Hotel");
-INSERT INTO SERVICO (nome) VALUES ("Veterinário");
+/*!40000 ALTER TABLE `servico` DISABLE KEYS */;
+INSERT INTO `servico` VALUES 
+	(1,'Babá em Domicílio'),
+	(2,'Banho e Tosa'),
+	(3,'Dog Walker'),
+	(4,'Hotel'),
+	(5,'Veterinário');
+/*!40000 ALTER TABLE `servico` ENABLE KEYS */;
 
-INSERT INTO PRESTADOR (id_prestador, email, senha, somanota, somaqnt) VAUES (1, "leo@petdelivery.com", "123", 0, 0);
-INSERT INTO PRESTADOR (id_prestador, email, senha, somanota, somaqnt) VAUES (2, "hector@petdelivery.com", "123", 0, 0);
-INSERT INTO PRESTADOR (id_prestador, email, senha, somanota, somaqnt) VAUES (3, "camila@petdelivery.com", "123", 0, 0);
+/*!40000 ALTER TABLE `prestador` DISABLE KEYS */;
+INSERT INTO `prestador` VALUES 
+	(123456785,'prestador5@a.com','123',0,0),
+	(123456786,'prestador4@a.com','123',0,0),
+	(123456787,'prestador3@a.com','123',0,0),
+	(62779650000134,'hector@petdelivery.com','123',0,0),
+	(81542546000176,'camila@petdelivery.com','123',0,0),
+	(86815128000129,'leo@petdelivery.com','123',0,0);
+/*!40000 ALTER TABLE `prestador` ENABLE KEYS */;
 
-INSERT INTO PETSHOP (cnpj, nome, descricao, logotipo) VALUES (86815128000129, "Cão cheiroso", "Seu cãozinho muito mais feliz e cheiroso com nossos banhos deliciosos", "");
-INSERT INTO PETSHOP (cnpj, nome, descricao, logotipo) VALUES (62779650000134, "Ibis pet", "Temos as melhores acomodações e distrações para o seu amigão não sentir sua falta!", "");
-INSERT INTO PETSHOP (cnpj, nome, descricao, logotipo) VALUES (81542546000176, "Dogtor House", "Todos mentem, os cachorros não.", "");
+/*!40000 ALTER TABLE `petshop` DISABLE KEYS */;
+INSERT INTO `petshop` VALUES 
+	(62779650000134,'Ibis pet','Temos as melhores acomodações e distrações para o seu amigão não sentir sua falta!',''),
+	(81542546000176,'Dogtor House','Todos mentem, os cachorros não.',''),
+	(86815128000129,'Cão cheiroso','Seu cãozinho muito mais feliz e cheiroso com nossos banhos deliciosos','');
+/*!40000 ALTER TABLE `petshop` ENABLE KEYS */;
 
-INSERT INTO UNIDADE_PETSHOP (id_unidade, cnpj, nome, ddd, telefone, rua, numero, complemento, bairro, cep) VALUES (1, 86815128000129, "Matriz", "11", "12341234", "Rua Vieira Martins", "21", "Loja 1", "Brás", "03053-020");
-INSERT INTO UNIDADE_PETSHOP (id_unidade, cnpj, nome, ddd, telefone, rua, numero, complemento, bairro, cep) VALUES (2, 62779650000134, "Única", "11", "37211112", "Rua Frei Antônio Santana Galvão", "326", "Loja 234", "Luz", "01106-040");
-INSERT INTO UNIDADE_PETSHOP (id_unidade, cnpj, nome, ddd, telefone, rua, numero, complemento, bairro, cep) VALUES (3, 66668332000157, "Unidade 1", "11", "28991181", "Rua Fermil do Couto", "622", "Loja A", "Interlagos", "04809-290");
-INSERT INTO UNIDADE_PETSHOP (id_unidade, cnpj, nome, ddd, telefone, rua, numero, complemento, bairro, cep) VALUES (4, 66668332000157, "Unidade 2", "11", "26608922", "Rua Dom José de Barros", "475", "Loja B", "República", "01038-000");
+/*!40000 ALTER TABLE `unidade_petshop` DISABLE KEYS */;
+INSERT INTO `unidade_petshop` VALUES 
+	(1,86815128000129,'Matriz',11,12341234,'Rua Vieira Martins',21,'Loja 1','Brás','03053-020'),
+	(2,62779650000134,'Única',11,37211112,'Rua Frei Antônio Santana Galvão',326,'Loja 234','Luz','01106-040'),
+	(4,81542546000176,'Unidade 1',11,28991181,'Rua Fermil do Couto',622,'Loja A','Interlagos','04809-290'),
+	(5,81542546000176,'Unidade 2',11,26608922,'Rua Dom José de Barros',475,'Loja B','República','01038-000');
+/*!40000 ALTER TABLE `unidade_petshop` ENABLE KEYS */;
 
-INSERT INTO SERVICO_PETSHOP (id_servico, cnpj, id_unidade, preco, condicoes, delivery) VALUES (2, 86815128000129, 1, "100", "", true);
-INSERT INTO SERVICO_PETSHOP (id_servico, cnpj, id_unidade, preco, condicoes, delivery) VALUES (4, 62779650000134, 2, "200", "Somente cães de pequeno e médio porte", true);
-INSERT INTO SERVICO_PETSHOP (id_servico, cnpj, id_unidade, preco, condicoes, delivery) VALUES (5, 81542546000176, 3, "300", "", true);
-INSERT INTO SERVICO_PETSHOP (id_servico, cnpj, id_unidade, preco, condicoes, delivery) VALUES (6, 81542546000176, 3, "300", "", true);
+/*!40000 ALTER TABLE `servico_petshop` DISABLE KEYS */;
+INSERT INTO `servico_petshop` VALUES 
+	(1,1,86815128000129,1,100,'',1),
+	(2,3,62779650000134,2,200,'Somente cães de pequeno e médio porte',1),
+	(4,4,81542546000176,4,300,'',1),
+	(5,5,81542546000176,4,300,'',1),
+	(6,5,81542546000176,5,300,'',1);
+/*!40000 ALTER TABLE `servico_petshop` ENABLE KEYS */;
 
+/*!40000 ALTER TABLE `autonomo` DISABLE KEYS */;
+INSERT INTO `autonomo` VALUES 
+	(123456785,'Prestador 5','Mais de 60 anos com banho e tosa de bichanos',11,128374652,'Rua Limoeiro',7,'','Capão Redondo','09876-243',NULL),
+	(123456786,'Prestador 4','Sou novo no rolê',11,975463521,'Rua Seis',99,'Torre B','Perdizes','87650-987',NULL),
+	(123456787,'Prestador 3','Banho e Tosa e coisas a mais',11,999087532,'Rua Três',45,'','Centro','08564-932',NULL);
+/*!40000 ALTER TABLE `autonomo` ENABLE KEYS */;
 
-/* Insere Prestadores autonomos*/
-INSERT INTO `prestador` (`id_prestador`, `email`, `senha`, `somanota`, `somaqnt`) VALUES (123456787, "prestador3@a.com", "123", 0, 0);
-INSERT INTO `autonomo` (`cpf`, `nome`, `experiencia`, `ddd`, `telefone`, `rua`, `numero`, `complemento`, `bairro`, `cep`, `foto`) 
-VALUES (123456787, "Prestador 3", "Banho e Tosa e coisas a mais", 11, 999087532, "Rua Três", 45, "", "Centro", "08564-932", null); 
-INSERT INTO `prestador` (`id_prestador`, `email`, `senha`, `somanota`, `somaqnt`) VALUES (123456786, "prestador4@a.com", "123", 0, 0);
-INSERT INTO `autonomo` (`cpf`, `nome`, `experiencia`, `ddd`, `telefone`, `rua`, `numero`, `complemento`, `bairro`, `cep`, `foto`) 
-VALUES (123456786, "Prestador 4", "Sou novo no rolê", 11, 975463521, "Rua Seis", 99, "Torre B", "Perdizes", "87650-987", null);
-INSERT INTO `prestador` (`id_prestador`, `email`, `senha`, `somanota`, `somaqnt`) VALUES (123456785, "prestador5@a.com", "123", 0, 0);
-INSERT INTO `autonomo` (`cpf`, `nome`, `experiencia`, `ddd`, `telefone`, `rua`, `numero`, `complemento`, `bairro`, `cep`, `foto`) 
-VALUES (123456785, "Prestador 5", "Mais de 60 anos com banho e tosa de bichanos", 11, 128374652, "Rua Limoeiro", 7, "", "Capão Redondo", "09876-243", null);
-
-
-/*INsere servicos para prestadores autonomos*/
-INSERT INTO `servico_autonomo` (`id_servico`, `cpf`, `preco`, `condicoes`, `delivery`)
-VALUES ("1","123456787",50,"Na minha casa",1);
-INSERT INTO `servico_autonomo` (`id_servico`, `cpf`, `preco`, `condicoes`, `delivery`)
-VALUES ("3","123456787",70,"",1);
-INSERT INTO `servico_autonomo` (`id_servico`, `cpf`, `preco`, `condicoes`, `delivery`)
-VALUES ("4","123456787",90,"Na minha casinha",0);
-INSERT INTO `servico_autonomo` (`id_servico`, `cpf`, `preco`, `condicoes`, `delivery`)
-VALUES ("1","123456786",50,"Vou até você",0);
-INSERT INTO `servico_autonomo` (`id_servico`, `cpf`, `preco`, `condicoes`, `delivery`)
-VALUES ("2","123456786",70,"Sou especialista",1);
-
+/*!40000 ALTER TABLE `servico_autonomo` DISABLE KEYS */;
+INSERT INTO `servico_autonomo` VALUES 
+	(1,1,123456787,50.00,'Na minha casa',1),
+	(2,3,123456787,70.00,'',1),
+	(3,4,123456787,90.00,'Na minha casinha',0),
+	(4,1,123456786,50.00,'Vou até você',0),
+	(5,2,123456786,70.00,'Sou especialista',1);
+/*!40000 ALTER TABLE `servico_autonomo` ENABLE KEYS */;
