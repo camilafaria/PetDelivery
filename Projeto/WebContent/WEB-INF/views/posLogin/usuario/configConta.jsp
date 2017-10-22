@@ -66,12 +66,11 @@
 
 				<!-- form action="alteraUsuario" class="form-horizontal"-->
 				<form action="update-usuario" class="form-horizontal">
-					<div class="form-group" style="vertical-align: middle;"
-						align="center">
-						<div class="container col-sm-10" style="vertical-align: middle;"
+					<div class="form-group" style="vertical-align: middle;" align="center">
+						<div class="container col-sm-8" style="vertical-align: middle; margin-left: 12%;"
 							align="center">
-							<div class="contact-form col-sm-6 wow fadeInLeft"
-								style="vertical-align: middle; margin-left: 30%;" align="center">
+							<div class="contact-form col-sm-10 wow fadeInLeft"
+								style="vertical-align: middle; margin-left: 12%;">
 								<!-- 1 -->
 								<div class="form-group col-sm-12">
 									<label for="contact-name">Nome completo</label> <input
@@ -130,16 +129,13 @@
 										value="${usuarioLogado.complemento}"
 										class="contact-nameform-control">
 								</div>
-							</div>
-							<div class="contact-form col-sm-6 wow fadeInRight"
-								style="vertical-align: middle; margin-left: 30%;" align="center">
 								<!-- 5 -->
-								<div class="form-group col-sm-12">
+								<div class="form-group col-sm-6">
 									<label for="contact-email">Email</label> <input type="text"
 										name="email" value="${usuarioLogado.email}"
 										class="contact-emailform-control">
 								</div>
-								<div class="form-group col-sm-11">
+								<div class="form-group col-sm-6">
 									<label for="contact-email">Senha</label> <input type="password"
 										name="senha" value="${usuarioLogado.senha}"
 										class="contact-email form-control">
