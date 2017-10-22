@@ -8,6 +8,9 @@ public class Prestador {
 	private float somaNota;
 	private int somaQnt;
 	
+	private Autonomo autonomo;
+	private Petshop petshop;
+	
 	public Long getId_prestador() {
 		return id_prestador;
 	}
@@ -37,6 +40,18 @@ public class Prestador {
 	}
 	public void setSomaQnt(int somaQnt) {
 		this.somaQnt = somaQnt;
+	}
+	public Autonomo getAutonomo() {
+		return autonomo;
+	}
+	public void setAutonomo(Autonomo autonomo) {
+		this.autonomo = autonomo;
+	}
+	public Petshop getPetshop() {
+		return petshop;
+	}
+	public void setPetshop(Petshop petshop) {
+		this.petshop = petshop;
 	}
 	
 }

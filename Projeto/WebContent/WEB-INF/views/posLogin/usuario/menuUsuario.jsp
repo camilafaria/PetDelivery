@@ -45,7 +45,7 @@
 
 			<li><a href="pets"><i class="fa fa-desktop "></i>Meus PETs</a></li>
 
-			<li><a href="#"><i class="fa fa-edit "></i>Buscar serviços</a></li>
+			<li><a href="busca-servico"><i class="fa fa-edit "></i>Buscar serviços</a></li>
 
 			<li><a href="configConta"><i class="fa fa-table "></i>Configurações da Conta</a></li>
 

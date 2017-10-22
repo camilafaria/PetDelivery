@@ -1,5 +1,7 @@
 package br.com.petdelivery.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -7,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.petdelivery.jdbc.dao.AnimalDAO;
+import br.com.petdelivery.jdbc.dao.PrestadorDAO;
 import br.com.petdelivery.jdbc.dao.UsuarioDAO;
 import br.com.petdelivery.jdbc.modelo.Animal;
+import br.com.petdelivery.jdbc.modelo.Busca;
 import br.com.petdelivery.jdbc.modelo.Usuario;
 
 @Controller
@@ -54,15 +58,41 @@ public class HomeUsuarioController {
 	// Controllers de tarefa
 
 	/**
-	 * Retorna a lista de prestadores baseado no filtro selecionado na busca
+	 * Retorna a lista de prestadores baseado no filtro selecionado na busca.
+	 * Chamado através do mapping busca-servico
 	 * 
 	 * @param session
 	 * @return
 	 */
 	@RequestMapping("buscar-servico")
-	public String buscarServicos(HttpSession session) {
-
-		return "listarPrestadores";
+	public String buscarServicos(HttpServletRequest request, HttpSession session) {
+		
+		//Pega parametros e realizar busca de prestadores com base no filtro.
+		String  [] servicos = null;
+		int precoDe = -1;
+		int precoAte = -1;
+		String bairro = null;
+		String delivery = null;
+		String autonomoOuPetshop = null;
+		
+		servicos = request.getParameterValues("servico");
+		if(!request.getParameter("precoDe").equals(""))
+			precoDe = Integer.parseInt(request.getParameter("precoDe"));
+		if(!request.getParameter("precoAte").equals(""))
+			precoAte = Integer.parseInt(request.getParameter("precoAte"));
+		if(!request.getParameter("bairro").equals(""))
+			bairro = request.getParameter("bairro");
+		if(!request.getParameter("delivery").equals(""))
+			delivery = request.getParameter("delivery");
+		if(!request.getParameter("autonomoOuPetshop").equals(""))
+			autonomoOuPetshop = request.getParameter("autonomoOuPetshop");
+	
+		//Realiza busca
+		List<Busca> resultadoBuscaPrestador = new PrestadorDAO().buscarPrestador(servicos,precoDe,precoAte,bairro,delivery,autonomoOuPetshop);
+		
+		session.setAttribute("resultadoBuscaPrestador", resultadoBuscaPrestador);
+		
+		return "posLogin/usuario/resultadoBusca";
 	}
 
 	@RequestMapping("configConta")
