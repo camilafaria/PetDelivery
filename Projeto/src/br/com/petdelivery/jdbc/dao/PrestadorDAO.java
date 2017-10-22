@@ -75,7 +75,7 @@ public class PrestadorDAO {
 
 		return null;
 	}
-	
+
 	public List<Busca> buscarPrestador(String [] servicos, int precoDe, int precoAte, String bairro, String delivery, String autonomoOuPetshop){
 		//Busca Prestador autonomo
 		//TODO: Busca Prestador PetShop

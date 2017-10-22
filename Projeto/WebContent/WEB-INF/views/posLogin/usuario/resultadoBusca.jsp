@@ -90,7 +90,7 @@
 					
 					<c:forEach items="${resultadoBuscaPrestador}" var="result">
 						<tr>
-					        <td><a href="display-prestador?id=${result.id}"><c:out value="${result.nome}"/></a></td>
+					        <td><a href="visualiza-autonomo?id=${result.id}"><c:out value="${result.nome}"/></a></td>
 					        <td><c:out value="${result.condicoes}"/></td>
 					        <td><c:out value="${result.preco}"/></td>
 					        <td><c:out value="${result.delivery}"/></td>

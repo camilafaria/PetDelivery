@@ -54,6 +54,9 @@
 	</div>
 
 	<c:import url="menuUsuario.jsp" />
+	
+	<jsp:useBean id="daoServico"
+		class="br.com.petdelivery.jdbc.dao.Servico_AutonomoDAO" />
 
 	<!-- /. NAV SIDE  -->
 	<div id="page-wrapper">
@@ -62,7 +65,7 @@
 
 				<div class="title col-sm-9 col-sm-offset-1 page-title wow fadeIn">
 					<span aria-hidden="true"></span>
-					<h1>Inserir o nome do prestador aqui</h1>
+					<h1><c:out value="${perfilPrestadorAutonomo.nome}"/></h1>
 				</div>
 
 				<img src="assetsPosLogin/img/find-user.png"
@@ -70,14 +73,17 @@
 
 				<div class="form-group col-sm-12">
 					<label for="contact-name">Nome: </label>
+					<c:out value="${perfilPrestadorAutonomo.nome}"/>
 				</div>
 
 				<div class="form-group col-sm-12">
 					<label for="contact-name">Experiência: </label>
+					<c:out value="${perfilPrestadorAutonomo.experiencia}"/>
 				</div>
 
 				<div class="form-group col-sm-12">
 					<label for="contact-name">Bairro: </label>
+					<c:out value="${perfilPrestadorAutonomo.bairro}"/>
 				</div>
 
 				<div class="form-group col-sm-12">
@@ -89,6 +95,15 @@
 							<th>Condições</th>
 							<th>Delivery</th>
 						</tr>
+						<c:forEach var="servico"
+							items="${daoServico.getServico(perfilPrestadorAutonomo.cpf)}">
+							<tr>
+								<td>${servico.id_servico}</td>
+								<td>${servico.preco}</td>
+								<td>${servico.condicoes}</td>
+								<td>${servico.delivery}</td>
+							</tr>
+						</c:forEach>
 					</table>
 				</div>
 
