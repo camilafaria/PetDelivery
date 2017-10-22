@@ -51,6 +51,78 @@ public class PrestadorDAO {
 		}
 	}
 	
+	public Prestador buscaPrestadorById(Long id){
+		Prestador prestador = new Prestador();
+		
+		String sql = "SELECT * FROM PRESTADOR WHERE id_prestador=?";
+		PreparedStatement stmt;
+		
+		try {
+			stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, id);
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()){
+				//Seta variaveis
+				prestador.setId_prestador(rs.getLong("id_prestador"));
+				prestador.setSomaNota(rs.getFloat("somanota"));
+				prestador.setSomaQnt(rs.getInt("somaqnt"));
+				prestador.setEmail(rs.getString("email"));
+				prestador.setSenha(rs.getString("senha"));
+				
+				stmt.close();
+				return prestador;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public Prestador atribuiNovaNota(Prestador prestador, int novaNota){
+		double nota = 0;
+		int somaqnt = 0;
+		//1. Recupera valor da notas e quantidades do prestador
+		String sql ="SELECT somanota, somaqnt FROM PRESTADOR WHERE id_prestador = ?";
+		PreparedStatement stmt;
+		try {
+			stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, prestador.getId_prestador());
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()){
+				nota = rs.getFloat("somanota");
+				somaqnt = rs.getInt("somaqnt");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//2. Insere nova notae atualiza quantidades de votantes
+		nota += novaNota;
+		somaqnt++;
+		
+		//3. Atualiza banco de dados
+		sql = "UPDATE PRESTADOR SET "
+				+ " somanota = "+ nota +","
+				+ " somaqnt = "+ somaqnt
+				+ " WHERE id_prestador = ?";
+		
+		try {
+			stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, prestador.getId_prestador());
+			System.out.println("SQL Atribui nova nota:\n" + stmt.toString());
+			
+			stmt.execute();
+			stmt.close();			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
 	public Prestador existePrestador(Prestador prestador) {
 
 		String sql = "SELECT * FROM PRESTADOR WHERE email=? and senha=?";
@@ -60,6 +132,7 @@ public class PrestadorDAO {
 			stmt.setString(1, prestador.getEmail());
 			stmt.setString(2, prestador.getSenha());
 			ResultSet rs = stmt.executeQuery();
+			stmt.close();
 			
 			if (rs.next()){
 				//Seta variaveis faltantes
@@ -184,7 +257,7 @@ public class PrestadorDAO {
 				
 				prestadores.add(resultado);
 			}
-			
+			stmt.close();
 			return prestadores;
 		} catch (SQLException e) {
 			e.printStackTrace();
