@@ -31,27 +31,7 @@
 
 <body>
 
-	<div id="wrapper">
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="adjust-nav">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".sidebar-collapse">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet
-						Delivery</a>
-				</div>
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="logout">Sair</a></li>
-					</ul>
-				</div>
-
-			</div>
-		</div>
-	</div>
+	<c:import url="headerUsuario.jsp" />
 
 	<c:import url="menuUsuario.jsp" />
 	
@@ -144,7 +124,8 @@
 								</div>
 
 								<div class="form-group">
-									<label for="contact-name">Comportamento</label> <select
+									<label for="contact-name">Como é o comportamento do seu pet?</label> 
+									<!-- <select
 										name="comportamento">
 										<option value="">Selecione...</option>
 										<option value="Agitado">Agitado</option>
@@ -153,10 +134,16 @@
 										<option value="Dócil">Dócil</option>
 										<option value="Extrovertido">Extrovertido</option>
 									</select>
+									 -->
+									<input type="text"
+										name="comportamento"
+										placeholder="Descreva seu PET é dócil, agressivo, agitado..."
+										class="contact-name form-control">
 								</div>
 
 								<div class="form-group">
-									<label for="contact-name">Vacinas</label><input type="text"
+									<label for="contact-name">Vacinas</label>
+									<input type="text"
 										name="vacinas"
 										placeholder="Descreva detalhes sobre as vacinas de seu PET"
 										class="contact-name form-control">

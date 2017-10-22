@@ -30,27 +30,7 @@
 	rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<div id="wrapper">
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="adjust-nav">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".sidebar-collapse">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet
-						Delivery</a>
-				</div>
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="logout">Sair</a></li>
-					</ul>
-				</div>
-
-			</div>
-		</div>
-	</div>
+	<c:import url="headerUsuario.jsp" />
 
 	<c:import url="menuUsuario.jsp" />
 
@@ -67,24 +47,27 @@
 			<div class="row">
 
 			
-				<div class=" title col-md-12 col-sm-offset-1 page-title wow fadeIn">
+				<div class=" title col-md-12 page-title wow fadeIn">
 					<span aria-hidden="true" ></span>
-					<h1 align="center">Seu(s) pet('s) cadastrado(s), ${usuarioLogado.nome}! </h1>
+					<h1 align="center">Meus PETs </h1>
 					<br>
 					<br>
 					<br>
 					<c:if test="${not empty daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
 					
 						<table border="0" align="center" width="500px">
-							<tr align="center">
+							<tr align="center" class="table-header">
+								<th></th>
 								<th><b>Nome</b></th>
 								<th><b>Tipo</b></th>
 								<th><b>Raça</b></th>
 							</tr>					
 						
-							<c:forEach var="animal"
-								items="${daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
-								<tr>
+							<c:forEach var="animal" items="${daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
+								<tr class="table-line">
+									<td>
+										<img src="assetsPosLogin/img/find-user.png" class="img-responsive img-circle" width="50px" height="50px" />
+									</td>
 									<td href="">${animal.nome}</td>
 									<td>${daoTipo.getTipoById(daoRaca.getTipoByRaca(animal.id_raca))}</td>
 									<td>${daoRaca.getRacaById(animal.id_raca)}</td>

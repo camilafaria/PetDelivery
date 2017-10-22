@@ -40,7 +40,7 @@ body {
     text-align:center;
 }
 .user-image-back {
-    background-color:#70bec2;
+    background-color:#F3F3F3;/*#70bec2;*/
 }
 h5,.h5 {
     font-size: 14px;

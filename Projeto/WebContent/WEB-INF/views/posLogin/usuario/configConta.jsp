@@ -30,27 +30,7 @@
 	rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<div id="wrapper">
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="adjust-nav">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".sidebar-collapse">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet
-						Delivery</a>
-				</div>
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="logout">Sair</a></li>
-					</ul>
-				</div>
-
-			</div>
-		</div>
-	</div>
+	<c:import url="headerUsuario.jsp" />
 
 	<c:import url="menuUsuario.jsp" />
 
@@ -67,10 +47,10 @@
 				<!-- form action="alteraUsuario" class="form-horizontal"-->
 				<form action="update-usuario" class="form-horizontal">
 					<div class="form-group" style="vertical-align: middle;" align="center">
-						<div class="container col-sm-8" style="vertical-align: middle; margin-left: 12%;"
+						<div class="container col-sm-8" style="vertical-align: middle; "
 							align="center">
-							<div class="contact-form col-sm-10 wow fadeInLeft"
-								style="vertical-align: middle; margin-left: 12%;">
+							<div class="contact-form col-sm-10 wow fadeInLeft col-sm-offset-4"
+								style="vertical-align: middle; ">
 								<!-- 1 -->
 								<div class="form-group col-sm-12">
 									<label for="contact-name">Nome completo</label> <input

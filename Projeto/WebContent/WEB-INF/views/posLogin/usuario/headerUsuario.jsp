@@ -37,22 +37,24 @@
 
 <body>
 
-	<nav class="navbar-default navbar-side" role="navigation">
-	<div class="sidebar-collapse">
+<div id="wrapper">
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="adjust-nav">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".sidebar-collapse">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet
+						Delivery</a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="logout">Sair</a></li>
+					</ul>
+				</div>
 
-		<ul class="nav" id="main-menu">
-			<!-- <li class="text-center user-image-back"><img
-				src="assetsPosLogin/img/find-user.png" class="img-responsive img-circle" width="260px" height="100px" /></li>
-			 -->
-			<li><a href="pets"><i class="fa fa-paw "></i>Meus PETs</a></li>
-
-			<li><a href="busca-servico"><i class="fa fa-search "></i>Buscar serviços</a></li>
-
-			<li><a href="configConta"><i class="fa fa-gear "></i>Configurações da Conta</a></li>
-
-		</ul>
+			</div>
+		</div>
 	</div>
-	</nav>
-
-</body>
-</html>

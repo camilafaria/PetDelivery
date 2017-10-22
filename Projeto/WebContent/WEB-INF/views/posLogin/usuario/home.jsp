@@ -22,27 +22,7 @@
 	rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<div id="wrapper">
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="adjust-nav">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".sidebar-collapse">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet
-						Delivery</a>
-				</div>
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="logout">Sair</a></li>
-					</ul>
-				</div>
-
-			</div>
-		</div>
-	</div>
+	<c:import url="headerUsuario.jsp" />
 
 	<c:import url="menuUsuario.jsp" />
 
@@ -50,11 +30,11 @@
 	<div id="page-wrapper">
 		<div id="page-inner">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="home col-md-12">
 
 					<h2>Bem-vindo ao Pet Delivery, ${usuarioLogado.nome}!</h2>
 					<br>
-					<h2>Comece já sua experiência em nosso site, cadastrando seu pet ou buscando petlovers</h2>
+					<h4>Comece já sua experiência em nosso site! <br> Atualize o perfil do seu PET e busque por petlovers.</h2>
 				</div>
 			</div>
 		</div>
