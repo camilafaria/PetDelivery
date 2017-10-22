@@ -31,3 +31,21 @@ INSERT INTO SERVICO (nome) VALUES ("Banho e Tosa");
 INSERT INTO SERVICO (nome) VALUES ("Dog Walker");
 INSERT INTO SERVICO (nome) VALUES ("Hotel");
 INSERT INTO SERVICO (nome) VALUES ("Veterinário");
+
+INSERT INTO PRESTADOR (id_prestador, email, senha, somanota, somaqnt) VAUES (1, "leo@petdelivery.com", "123", 0, 0);
+INSERT INTO PRESTADOR (id_prestador, email, senha, somanota, somaqnt) VAUES (2, "hector@petdelivery.com", "123", 0, 0);
+INSERT INTO PRESTADOR (id_prestador, email, senha, somanota, somaqnt) VAUES (3, "camila@petdelivery.com", "123", 0, 0);
+
+INSERT INTO PETSHOP (cnpj, nome, descricao, logotipo) VALUES (86815128000129, "Cão cheiroso", "Seu cãozinho muito mais feliz e cheiroso com nossos banhos deliciosos", "");
+INSERT INTO PETSHOP (cnpj, nome, descricao, logotipo) VALUES (62779650000134, "Ibis pet", "Temos as melhores acomodações e distrações para o seu amigão não sentir sua falta!", "");
+INSERT INTO PETSHOP (cnpj, nome, descricao, logotipo) VALUES (81542546000176, "Dogtor House", "Todos mentem, os cachorros não.", "");
+
+INSERT INTO UNIDADE_PETSHOP (id_unidade, cnpj, nome, ddd, telefone, rua, numero, complemento, bairro, cep) VALUES (1, 86815128000129, "Matriz", "11", "12341234", "Rua Vieira Martins", "21", "Loja 1", "Brás", "03053-020");
+INSERT INTO UNIDADE_PETSHOP (id_unidade, cnpj, nome, ddd, telefone, rua, numero, complemento, bairro, cep) VALUES (2, 62779650000134, "Única", "11", "37211112", "Rua Frei Antônio Santana Galvão", "326", "Loja 234", "Luz", "01106-040");
+INSERT INTO UNIDADE_PETSHOP (id_unidade, cnpj, nome, ddd, telefone, rua, numero, complemento, bairro, cep) VALUES (3, 66668332000157, "Unidade 1", "11", "28991181", "Rua Fermil do Couto", "622", "Loja A", "Interlagos", "04809-290");
+INSERT INTO UNIDADE_PETSHOP (id_unidade, cnpj, nome, ddd, telefone, rua, numero, complemento, bairro, cep) VALUES (4, 66668332000157, "Unidade 2", "11", "26608922", "Rua Dom José de Barros", "475", "Loja B", "República", "01038-000");
+
+INSERT INTO SERVICO_PETSHOP (id_servico, cnpj, id_unidade, preco, condicoes, delivery) VALUES (2, 86815128000129, 1, "100", "", true);
+INSERT INTO SERVICO_PETSHOP (id_servico, cnpj, id_unidade, preco, condicoes, delivery) VALUES (4, 62779650000134, 2, "200", "Somente cães de pequeno e médio porte", true);
+INSERT INTO SERVICO_PETSHOP (id_servico, cnpj, id_unidade, preco, condicoes, delivery) VALUES (5, 81542546000176, 3, "300", "", true);
+INSERT INTO SERVICO_PETSHOP (id_servico, cnpj, id_unidade, preco, condicoes, delivery) VALUES (6, 81542546000176, 3, "300", "", true);
