@@ -1,7 +1,7 @@
 /*!40000 ALTER TABLE `raca_animal` DISABLE KEYS */;
 INSERT INTO `tipo_animal` VALUES 
-	(1,'cachorro'),
-	(2,'gato');
+	(1,'Cachorro'),
+	(2,'Gato');
 /*!40000 ALTER TABLE `raca_animal` ENABLE KEYS */;
 
 /*!40000 ALTER TABLE `tipo_animal` DISABLE KEYS */;
