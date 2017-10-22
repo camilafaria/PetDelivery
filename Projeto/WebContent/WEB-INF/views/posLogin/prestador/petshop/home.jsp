@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!-- Declaration to use JSTL -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -44,7 +44,7 @@
 		</div>
 	</div>
 
-	<c:import url="menuUsuario.jsp" />
+	<c:import url="menuPetshop.jsp" />
 
 	<!-- /. NAV SIDE  -->
 	<div id="page-wrapper">
@@ -52,8 +52,7 @@
 			<div class="row">
 				<div class="col-md-12">
 
-					<h2>Bem-vindo, ${usuarioLogado.nome}!</h2>
-					<h3>Colocar algum texto legal aqui :)</h3>
+					<h2>Bem-vindo, ${prestadorAutonomoLogado.nome}!</h2>					
 				</div>
 			</div>
 		</div>

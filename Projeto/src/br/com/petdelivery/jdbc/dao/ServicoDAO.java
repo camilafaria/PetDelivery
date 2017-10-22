@@ -9,6 +9,7 @@ import java.util.List;
 
 import br.com.petdelivery.jdbc.ConnectionFactory;
 import br.com.petdelivery.jdbc.modelo.Servico;
+import br.com.petdelivery.jdbc.modelo.Servico_Autonomo;
 
 public class ServicoDAO {
 
@@ -62,5 +63,27 @@ public class ServicoDAO {
 			throw new RuntimeException(e);
 		}
 	}
-
+	
+	public String getServicoById (Long id_servico){
+		String sql = "SELECT nome FROM Servico WHERE id_servico=?";
+		String nome = "";
+		
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, id_servico);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {				
+				nome = rs.getString("nome");	
+				stmt.close();
+				return nome;
+			}
+			
+			return "";
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}		
+	}	
 }

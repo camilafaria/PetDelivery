@@ -52,7 +52,7 @@ public class LoginController {
 				session.setAttribute("prestadorAutonomoLogado", prestadorAutonomo);
 				session.setAttribute("AUTHENTICATED", new Boolean(true));
 				//TODO: Alterar o return para a home do posLogin
-				return "redirect:homePrestador";
+				return "redirect:homeAutonomo";
 			}
 			
 			//Verificar se é petshop
@@ -66,7 +66,7 @@ public class LoginController {
 				return "redirect:homePrestador";
 			}
 			//TODO: Alterar o return para a home do posLogin
-			return "redirect:homePrestador";
+			return "redirect:homePetshop";
 		}
 		return "redirect:login";
 	}

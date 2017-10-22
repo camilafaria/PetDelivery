@@ -1,7 +1,15 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!-- Declaration to use JSTL -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@ page
+	import="java.util.*,
+        br.com.petdelivery.*,
+        br.com.petdelivery.jdbc.dao.AnimalDAO,
+        br.com.petdelivery.jdbc.modelo.Animal"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -22,8 +30,8 @@
 	rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<div id="wrapper">
-		<div class="navbar navbar-inverse navbar-fixed-top">
+ 	<div id="wrapper">
+ 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class="adjust-nav">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -44,15 +52,47 @@
 		</div>
 	</div>
 
-	<c:import url="menuPrestador.jsp" />
+	<c:import url="menuAutonomo.jsp" />
 
+	<jsp:useBean id="daoServico"
+		class="br.com.petdelivery.jdbc.dao.ServicoDAO" />	
+	<jsp:useBean id="daoServico_Autonomo"
+		class="br.com.petdelivery.jdbc.dao.Servico_AutonomoDAO" />
+	
 	<!-- /. NAV SIDE  -->
 	<div id="page-wrapper">
 		<div id="page-inner">
 			<div class="row">
-				<div class="col-md-12">
 
-					<h2>Bem-vindo, ${prestadorAutonomoLogado.nome}!</h2>					
+				<div class="col-md-12">
+					<h1>Servicos oferecidos por ${prestadorAutonomoLogado.nome}</h1>								
+								
+					<c:if test="${not empty daoServico_Autonomo.getServico(prestadorAutonomoLogado.cpf)}">					
+						<table border="0">
+							<tr>
+								<th>Serviço</th>
+								<th>Preço</th>
+								<th>Condições</th>
+								<th>Delivery</th>
+							</tr>					
+						
+							<c:forEach var="servico"
+								items="${daoServico_Autonomo.getServico(prestadorAutonomoLogado.cpf)}">
+								<tr>
+									<td>${daoServico.getServicoById(servico.id_servico)}</td>
+									<td>R$ ${servico.preco}</td>
+									<td>${servico.condicoes}</td>
+									<td>${servico.delivery}</td>
+								</tr>
+							</c:forEach>			
+						
+						</table>
+					</c:if>				
+					
+					<br><br>
+					<form action="cadastro-servico-autonomo">
+						<button type="submit" class="btn">Cadastrar Serviço</button>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -67,6 +107,5 @@
 	<script src="assetsPosLogin/js/jquery.metisMenu.js"></script>
 	<!-- CUSTOM SCRIPTS -->
 	<script src="assetsPosLogin/js/custom.js"></script>
-
 </body>
 </html>

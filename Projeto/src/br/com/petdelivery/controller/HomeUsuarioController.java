@@ -20,11 +20,6 @@ public class HomeUsuarioController {
 		return "posLogin/usuario/home";
 	}
 	
-	@RequestMapping("homePrestador")
-	public String indexPrestador(HttpServletRequest request) {
-		return "posLogin/prestador/home";
-	}
-
 	// Mapeamento de JSP
 	@RequestMapping("pets")
 	public String pets(HttpServletRequest request) {
@@ -80,7 +75,7 @@ public class HomeUsuarioController {
 	}
 
 	@RequestMapping("logout")
-	public String logout(HttpSession session) {
+	public String logoutUsuario(HttpSession session) {
 		session.invalidate();
 		return "redirect:index";
 	}
