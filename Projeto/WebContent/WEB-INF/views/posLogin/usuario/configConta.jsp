@@ -59,7 +59,10 @@
 		<div id="page-inner">
 			<div class="row">
 
-			<h1 align="center">Configurações de conta</h1>
+			
+			<div class="title col-sm-9 col-sm-offset-1 page-title wow fadeIn">
+        		<span aria-hidden="true"></span><h1>Configurações de conta</h1>
+       		</div>
 
 				<!-- form action="alteraUsuario" class="form-horizontal"-->
 				<form action="update-usuario" class="form-horizontal">
@@ -160,8 +163,12 @@
 				<script src="assetsPosLogin/js/jquery.metisMenu.js"></script>
 				<!-- CUSTOM SCRIPTS -->
 				<script src="assetsPosLogin/js/custom.js"></script>
-				</div>
+			</div>
+		</div>
 				
+	</div>
+	
+	<c:import url="footer.jsp" />
 				
 </body>
 </html>
