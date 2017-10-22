@@ -100,8 +100,8 @@
 								<td><a href="visualiza-autonomo?id=${result.id}"><c:out
 											value="${result.nome}" /></a></td>
 								<td><c:out value="${result.condicoes}" /></td>
-								<td><c:out value="${result.preco}" /></td>
-								<td><c:out value="${result.delivery}" /></td>
+								<td>R$ <c:out value="${result.preco}" /></td>
+								<td>${result.delivery eq 'true'? 'Sim' : 'Não'}</td>
 								<td><c:out value="${result.servico}" /></td>
 								<td><c:out value="${result.bairro}" /></td>
 								<td><c:out value="${result.nota}" /></td>
