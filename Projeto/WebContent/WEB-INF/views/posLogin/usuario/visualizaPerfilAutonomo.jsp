@@ -111,8 +111,8 @@
 					<label for="contact-name">Avalie esse prestador: </label>
 				</div>
 
-				<button type="submit" class="btn">Contrate um serviço</button>
-				<button type="submit" class="btn">Retornar à busca</button>
+				<button onclick="window.location.href='agenda-servicoAutonomo?id=${perfilPrestadorAutonomo.cpf}'" type="submit" class="btn">Contratar um serviço</button>
+				<button name="back" onclick="history.back()" class="btn">Voltar</button>
 				
 			</div>
 		</div>
