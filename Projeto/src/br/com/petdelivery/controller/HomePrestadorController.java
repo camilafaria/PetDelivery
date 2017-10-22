@@ -11,10 +11,12 @@ import br.com.petdelivery.jdbc.dao.AnimalDAO;
 import br.com.petdelivery.jdbc.dao.AutonomoDAO;
 import br.com.petdelivery.jdbc.dao.PrestadorDAO;
 import br.com.petdelivery.jdbc.dao.Servico_AutonomoDAO;
+import br.com.petdelivery.jdbc.dao.Unidade_PetshopDAO;
 import br.com.petdelivery.jdbc.dao.UsuarioDAO;
 import br.com.petdelivery.jdbc.modelo.Autonomo;
 import br.com.petdelivery.jdbc.modelo.Prestador;
 import br.com.petdelivery.jdbc.modelo.Servico_Autonomo;
+import br.com.petdelivery.jdbc.modelo.Unidade_Petshop;
 import br.com.petdelivery.jdbc.modelo.Usuario;
 
 @Controller
@@ -72,4 +74,21 @@ public class HomePrestadorController {
 		
 		return "posLogin/prestador/autonomo/home"; 
 	}
+	
+	@RequestMapping("minhasUnidades")
+	public String unidadesPetshop(HttpSession session) {
+		return "posLogin/prestador/petshop/minhasUnidades";	
+	}
+	
+	@RequestMapping("cadastraUnidade")
+	public String cadastroUnidadePetshop(HttpSession session) {
+		return "posLogin/prestador/petshop/cadastraUnidade";
+	}
+	
+	@RequestMapping("cadastro-unidade")
+	public String insertUnidade(Unidade_Petshop unidade, HttpSession session) {
+		new Unidade_PetshopDAO().insert(unidade);
+		return "posLogin/prestador/petshop/minhasUnidades";
+	}
+	
 }
