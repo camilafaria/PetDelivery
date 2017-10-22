@@ -3,6 +3,9 @@
 #ignore classpath
 .classpath
 
+#ignore class files
+.class
+
 #ignore project
 .project
 
