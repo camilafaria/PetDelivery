@@ -125,10 +125,11 @@
 								
 								<input type="hidden" name="cnpj"
 									value="${prestadorPetshopLogado.cnpj}" />
-
+								<div class="form-group col-sm-10">
 								<!-- input type="submit" class="btn" value="Registrar" /-->
 								<button type="submit" class="btn"
 									onclick="confirmaCadastroUnidade()">Registrar</button>
+								</div>	
 							</div>
 						</div>
 					</div>
@@ -136,7 +137,10 @@
 			</div>
 		</div>
 	</div>
-
+	
+	
+	<c:import url="footer.jsp" />
+	
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 
 	<script language="javascript">

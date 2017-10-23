@@ -68,5 +68,7 @@
 	<!-- CUSTOM SCRIPTS -->
 	<script src="assetsPosLogin/js/custom.js"></script>
 
+	<c:import url="footer.jsp" />
+
 </body>
 </html>

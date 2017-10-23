@@ -66,12 +66,16 @@
 		<div id="page-inner">
 			<div class="row">
 
-				<div class="col-md-12">
-					<h1>Servicos oferecidos por ${prestadorPetshopLogado.nome}</h1>								
-								
-					<c:if test="${not empty daoServico_Petshop.getServico(prestadorPetshopLogado.cnpj)}">					
-						<table border="0">
-							<tr>
+											
+					<div class=" title col-md-12 col-sm-offset-1 page-title wow fadeIn">
+					<span aria-hidden="true" ></span>
+					<h1 align="center">Servicos oferecidos por ${prestadorPetshopLogado.nome}! </h1>
+					<br>
+					<br>
+					<br>			
+					<c:if test="${not empty Servico_Petshop.getServico(prestadorPetshopLogado.cnpj)}">					
+						<table border="0" align="center" width="700px">
+							<tr align="center">
 								<th>Unidade</th>
 								<th>Serviço</th>
 								<th>Preço</th>
@@ -102,6 +106,9 @@
 		</div>
 	</div>
 
+
+<c:import url="footer.jsp" />
+
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script src="assetsPosLogin/js/jquery-1.10.2.js"></script>
@@ -111,5 +118,8 @@
 	<script src="assetsPosLogin/js/jquery.metisMenu.js"></script>
 	<!-- CUSTOM SCRIPTS -->
 	<script src="assetsPosLogin/js/custom.js"></script>
+	
+	<c:import url="footer.jsp" />
+	
 </body>
 </html>
