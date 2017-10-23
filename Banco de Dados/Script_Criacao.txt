@@ -145,4 +145,3 @@ CREATE TABLE AGENDA_SERVICO (
 		FOREIGN KEY (id_servico) REFERENCES Servico (id_servico),
 		FOREIGN KEY (id_animal) REFERENCES Animal (id_animal)
 );
-);
