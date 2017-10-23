@@ -23,9 +23,17 @@
 </head>
 <body>
 	<c:import url="headerUsuario.jsp" />
-
 	<c:import url="menuUsuario.jsp" />
 
+	<jsp:useBean id="daoAgendamento"
+		class="br.com.petdelivery.jdbc.dao.Agenda_ServicoDAO" />
+	<jsp:useBean id="daoPrestador"
+		class="br.com.petdelivery.jdbc.dao.PrestadorDAO" />
+	<jsp:useBean id="daoServico"
+		class="br.com.petdelivery.jdbc.dao.ServicoDAO" />
+	<jsp:useBean id="daoAnimal"
+		class="br.com.petdelivery.jdbc.dao.AnimalDAO" />
+		
 	<!-- /. NAV SIDE  -->
 	<div id="page-wrapper">
 		<div id="page-inner">
@@ -34,13 +42,45 @@
 
 					<h2>Bem-vindo ao Pet Delivery, ${usuarioLogado.nome}!</h2>
 					<br>
+					
+					<c:if test="${not empty daoAgendamento.getAgendamentos(usuarioLogado.cpf)}">
+					<h4>Próximos serviços agendados:</h2>
+					
+					<table border="0" align="center" width="800px">
+						<tr align="center">
+							<th>Prestador</th>
+							<th>Serviço</th>
+							<th>Animal</th>
+							<th>Data início</th>
+							<th>Data fim</th>
+							<th>Horário de início</th>
+							<th>Horário fim</th>			
+						</tr>
+
+						<c:forEach items="${daoAgendamento.getAgendamentos(usuarioLogado.cpf)}" var="agendamento">
+							<tr>
+								<td><c:out value="${daoPrestador.getNomeById(agendamento.id_prestador)}" /></td>
+								<td><c:out value="${daoServico.getServicoById(agendamento.id_servico)}" /></td>
+								<td><c:out value="${daoAnimal.getAnimalById(agendamento.id_animal)}" /></td>
+								<td><c:out value="${agendamento.dataInicio}" /></td>
+								<td><c:out value="${agendamento.dataFim eq null? '--' : agendamento.dataFim}" /></td>							
+								<td><c:out value="${agendamento.horaInicio}" /></td>
+								<td><c:out value="${agendamento.horaFim eq null? '--' : agendamento.horaFim}" /></td>								
+							</tr>
+						</c:forEach>
+					</table>
+								
+					</c:if>
+					
+					<c:if test="${empty daoAgendamento.getAgendamentos(usuarioLogado.cpf)}">
 					<h4>Comece já sua experiência em nosso site! <br> Atualize o perfil do seu PET e busque por petlovers.</h2>
+					</h4>
+					</c:if>
+										
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	
 	
 <!-- Footer -->
 <footer>

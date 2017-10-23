@@ -120,14 +120,12 @@
 										class="form-check-input" type="radio" name="autonomoOuPetshop"
 										id="gridRadios1" value="" checked> Indiferente
 									</label>
-								</div>
-								<div class="form-check">
+								
 									<label class="form-check-label"> <input
 										class="form-check-input" type="radio" name="autonomoOuPetshop"
 										id="gridRadios2" value="autonomo"> Autônomo
 									</label>
-								</div>
-								<div class="form-check disabled">
+								
 									<label class="form-check-label"> <input
 										class="form-check-input" type="radio" name="autonomoOuPetshop"
 										id="gridRadios3" value="petshop"> Petshop

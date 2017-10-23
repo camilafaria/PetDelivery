@@ -158,8 +158,7 @@
 		if(selectedValue=="dataInicio"){			
 			document.getElementById("dataFim").setAttribute('disabled',true);
 		}else{			
-			document.getElementById("da
-								taFim").removeAttribute('disabled');
+			document.getElementById("dataFim").removeAttribute('disabled');
 		}
 	}
 	

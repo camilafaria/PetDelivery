@@ -85,7 +85,7 @@
 									<td>${daoServico.getServicoById(servico.id_servico)}</td>
 									<td>${servico.preco}</td>
 									<td>${servico.condicoes}</td>
-									<td>${servico.delivery}</td>
+									<td>${servico.delivery eq 'true'? 'Sim' : 'Não'}</td>
 									<td><a href="agenda-servicoAutonomo?id=${perfilPrestadorAutonomo.cpf}&servico=${servico.id_servico}&delivery=${servico.delivery}">Agendar</a></td>
 								</tr>
 							</c:forEach>

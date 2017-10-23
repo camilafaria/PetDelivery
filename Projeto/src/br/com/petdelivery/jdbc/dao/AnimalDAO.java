@@ -81,5 +81,28 @@ public class AnimalDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public String getAnimalById (Long id_animal) {
+		String sql = "SELECT * FROM ANIMAL WHERE id_animal=?";
+		String nome = "";
+		
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);			
+			stmt.setLong(1, id_animal);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				nome = rs.getString("nome");				
+				stmt.close();
+				return nome;
+			}
+
+			return "";
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 }
