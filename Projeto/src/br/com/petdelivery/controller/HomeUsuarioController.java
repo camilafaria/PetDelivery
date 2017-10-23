@@ -8,10 +8,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.petdelivery.jdbc.dao.Agenda_ServicoDAO;
 import br.com.petdelivery.jdbc.dao.AnimalDAO;
 import br.com.petdelivery.jdbc.dao.AutonomoDAO;
 import br.com.petdelivery.jdbc.dao.PrestadorDAO;
 import br.com.petdelivery.jdbc.dao.UsuarioDAO;
+import br.com.petdelivery.jdbc.modelo.Agenda_Servico;
 import br.com.petdelivery.jdbc.modelo.Animal;
 import br.com.petdelivery.jdbc.modelo.Autonomo;
 import br.com.petdelivery.jdbc.modelo.Busca;
@@ -26,7 +28,6 @@ public class HomeUsuarioController {
 	public String index(HttpServletRequest request) {
 		return "posLogin/usuario/home";
 	}
-	
 
 	// Mapeamento de JSP
 	@RequestMapping("pets")
@@ -48,17 +49,17 @@ public class HomeUsuarioController {
 
 		return "posLogin/usuario/meusPets";
 	}
-	
-	//Visualiza página do Prestador Autonomo
+
+	// Visualiza página do Prestador Autonomo
 	@RequestMapping("visualiza-autonomo")
 	public String vizualizaAutonomo(HttpServletRequest request, HttpSession session) {
 		Prestador prestador = new Prestador();
 		prestador.setId_prestador(Long.parseLong(request.getParameter("id")));
 		Autonomo autonomo = new AutonomoDAO().getAutonomo(prestador);
-		
+
 		session.setAttribute("perfilPrestador", prestador);
 		session.setAttribute("perfilPrestadorAutonomo", autonomo);
-		
+
 		return "posLogin/usuario/visualizaPerfilAutonomo";
 	}
 
@@ -78,41 +79,42 @@ public class HomeUsuarioController {
 	 */
 	@RequestMapping("buscar-servico")
 	public String buscarServicos(HttpServletRequest request, HttpSession session) {
-		
-		//Pega parametros e realizar busca de prestadores com base no filtro.
-		String  [] servicos = null;
+
+		// Pega parametros e realizar busca de prestadores com base no filtro.
+		String[] servicos = null;
 		int precoDe = -1;
 		int precoAte = -1;
 		String bairro = null;
 		String delivery = null;
 		String autonomoOuPetshop = null;
-		
+
 		servicos = request.getParameterValues("servico");
-		if(!request.getParameter("precoDe").equals(""))
+		if (!request.getParameter("precoDe").equals(""))
 			precoDe = Integer.parseInt(request.getParameter("precoDe"));
-		if(!request.getParameter("precoAte").equals(""))
+		if (!request.getParameter("precoAte").equals(""))
 			precoAte = Integer.parseInt(request.getParameter("precoAte"));
-		if(!request.getParameter("bairro").equals(""))
+		if (!request.getParameter("bairro").equals(""))
 			bairro = request.getParameter("bairro");
-		if(!request.getParameter("delivery").equals(""))
+		if (!request.getParameter("delivery").equals(""))
 			delivery = request.getParameter("delivery");
-		if(!request.getParameter("autonomoOuPetshop").equals(""))
+		if (!request.getParameter("autonomoOuPetshop").equals(""))
 			autonomoOuPetshop = request.getParameter("autonomoOuPetshop");
-	
-		//Realiza busca
-		List<Busca> resultadoBuscaPrestador = new PrestadorDAO().buscarPrestador(servicos,precoDe,precoAte,bairro,delivery,autonomoOuPetshop);
-		
+
+		// Realiza busca
+		List<Busca> resultadoBuscaPrestador = new PrestadorDAO().buscarPrestador(servicos, precoDe, precoAte, bairro,
+				delivery, autonomoOuPetshop);
+
 		session.setAttribute("resultadoBuscaPrestador", resultadoBuscaPrestador);
-		
+
 		return "posLogin/usuario/resultadoBusca";
 	}
-	
+
 	@RequestMapping("avaliar-PrestadorAutonomo")
 	public String avaliarPrestadorAutonomo(HttpServletRequest request, HttpSession session) {
-		//System.out.println("Prestador CPF="+request.getParameter("id"));
+		// System.out.println("Prestador CPF="+request.getParameter("id"));
 		Prestador prestador = new PrestadorDAO().buscaPrestadorById(Long.parseLong(request.getParameter("id")));
 		new PrestadorDAO().atribuiNovaNota(prestador, Integer.parseInt(request.getParameter("nota")));
-		
+
 		return "posLogin/usuario/visualizaPerfilAutonomo";
 	}
 
@@ -128,8 +130,31 @@ public class HomeUsuarioController {
 		session.setAttribute("usuarioAtualizado", true);
 
 		return "posLogin/usuario/home";
-	}	
+	}
+
+	// Mapeamento de JSP
+	@RequestMapping("agenda-servicoAutonomo")
+	public String agendaServicoAutonomo(HttpSession session, HttpServletRequest request) {
+		Prestador prestador = new Prestador();
+		prestador.setId_prestador(Long.parseLong(request.getParameter("id")));
+		Autonomo autonomo = new AutonomoDAO().getAutonomo(prestador);
+
+		session.setAttribute("perfilPrestador", prestador);
+		session.setAttribute("perfilPrestadorAutonomo", autonomo);
+		session.setAttribute("id_servico", request.getParameter("servico"));
+
+		return "posLogin/usuario/agendaServicoAutonomo";
+	}
 	
+	// Mapeamento de JSP
+	@RequestMapping("agendaServico")
+	public String confirmaAgendamento(Agenda_Servico agendamento, HttpSession session, HttpServletRequest request) {
+		new Agenda_ServicoDAO().insert(agendamento);
+		session.setAttribute("agendamentoCadastrado", true);
+
+		return "posLogin/usuario/home";
+	}
+
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
 		session.invalidate();

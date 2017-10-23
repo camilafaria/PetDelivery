@@ -12,10 +12,17 @@ public class Agenda_Servico {
 	private Long id_animal;
 	private Date dataInicio;
 	private Date dataFim;
-	private Time horaInicio;	
-	private Time horaFim;
+	private String horaInicio;	
+	private String horaFim;
 	private String observacao;
+	private boolean delivery;
 	
+	public boolean isDelivery() {
+		return delivery;
+	}
+	public void setDelivery(boolean delivery) {
+		this.delivery = delivery;
+	}
 	public Long getId_agendamento() {
 		return id_agendamento;
 	}
@@ -64,16 +71,16 @@ public class Agenda_Servico {
 	public void setDataFim(Date dataFim) {
 		this.dataFim = dataFim;
 	}
-	public Time getHoraInicio() {
+	public String getHoraInicio() {
 		return horaInicio;
 	}
-	public void setHoraInicio(Time horaInicio) {
+	public void setHoraInicio(String horaInicio) {
 		this.horaInicio = horaInicio;
 	}
-	public Time getHoraFim() {
+	public String getHoraFim() {
 		return horaFim;
 	}
-	public void setHoraFim(Time horaFim) {
+	public void setHoraFim(String horaFim) {
 		this.horaFim = horaFim;
 	}
 }

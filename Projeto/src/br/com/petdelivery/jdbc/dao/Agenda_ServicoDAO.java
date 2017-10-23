@@ -17,8 +17,8 @@ public class Agenda_ServicoDAO {
 		}
 
 		public void insert(Agenda_Servico agendamento) {					
-			String sql = "INSERT INTO Agenda_Servico " + "(id_usuario,id_prestador,id_servico,id_animal,dataInicio,dataFim,horaInicio,horaFim,observacao)"
-							+ " VALUES (?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO Agenda_Servico " + "(id_usuario,id_prestador,id_servico,id_animal,dataInicio,dataFim,horaInicio,horaFim,observacao,delivery)"
+							+ " VALUES (?,?,?,?,?,?,?,?,?,?)";
 			
 			try {
 				// prepared statement para inserção
@@ -31,11 +31,13 @@ public class Agenda_ServicoDAO {
 				stmt.setLong(4, agendamento.getId_animal());
 				stmt.setDate(5, agendamento.getDataInicio());
 				stmt.setDate(6, agendamento.getDataFim());
-				stmt.setTime(7, agendamento.getHoraInicio());
-				stmt.setTime(8, agendamento.getHoraFim());
+				stmt.setString(7, agendamento.getHoraInicio());
+				stmt.setString(8, agendamento.getHoraFim());
 				stmt.setString(9, agendamento.getObservacao());
+				stmt.setBoolean(10, agendamento.isDelivery());
 				
 				// executa
+				System.out.println("Agenda_ServicoDAO.insert:\n"+stmt.toString());
 				stmt.execute();
 				stmt.close();
 

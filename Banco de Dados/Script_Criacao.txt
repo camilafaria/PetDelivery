@@ -134,13 +134,15 @@ CREATE TABLE AGENDA_SERVICO (
     id_servico bigint NOT NULL,
     id_animal bigint NOT NULL,
     dataInicio date NOT NULL,
-    dataFim date NOT NULL,	
-    horaInicio time NOT NULL,
-    horaFim time NOT NULL,
-    observacao varchar(300) NOT NULL,
+    dataFim date,	
+    horaInicio varchar(10) NOT NULL,
+    horaFim varchar(10),
+    observacao varchar(300),
+    delivery boolean,
 		PRIMARY KEY (id_agendamento),
 		FOREIGN KEY (id_usuario) REFERENCES Usuario (cpf),
 		FOREIGN KEY (id_prestador) REFERENCES Prestador (id_prestador),
 		FOREIGN KEY (id_servico) REFERENCES Servico (id_servico),
 		FOREIGN KEY (id_animal) REFERENCES Animal (id_animal)
+);
 );

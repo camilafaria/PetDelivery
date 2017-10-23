@@ -32,9 +32,8 @@
 <body>
 
 	<c:import url="headerUsuario.jsp" />
-
 	<c:import url="menuUsuario.jsp" />
-	
+		
 	<jsp:useBean id="daoAnimal"
 		class="br.com.petdelivery.jdbc.dao.AnimalDAO" />
 	<jsp:useBean id="daoServico"
