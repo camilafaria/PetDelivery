@@ -62,12 +62,17 @@
 		<div id="page-inner">
 			<div class="row">
 
-				<div class="col-md-12">
-					<h1>Unidades do Petshop ${prestadorPetshopLogado.nome}</h1>								
+									
+					<div class=" title col-md-12 col-sm-offset-1 page-title wow fadeIn">
+					<span aria-hidden="true" ></span>
+					<h1 align="center">Unidades do Petshop ${prestadorPetshopLogado.nome}! </h1>
+					<br>
+					<br>
+					<br>								
 								
 					<c:if test="${not empty daoUnidade.getUnidadesByCNPJ(prestadorPetshopLogado.cnpj)}">					
-						<table border="0">
-							<tr>
+						<table border="0" align="center" width="400px">
+							<tr align="center">
 								<th>Nome</th>
 								<th>Rua</th>
 								<th>Número</th>
@@ -95,7 +100,10 @@
 			</div>
 		</div>
 	</div>
-
+	
+	
+	<c:import url="footer.jsp"/>
+	
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script src="assetsPosLogin/js/jquery-1.10.2.js"></script>

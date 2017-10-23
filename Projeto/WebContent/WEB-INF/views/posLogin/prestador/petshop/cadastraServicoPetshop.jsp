@@ -77,12 +77,13 @@
 				<form action="cadastroServicoPetshop" class="form-horizontal" method="post">
 					<div class="form-group">
 						<div class="container"  style="vertical-align: middle; margin-left:20%;" align="center">
-							<div class="col-sm-7 contact-form wow">
-								
+							<div class="col-sm-6 contact-form wow">
+															
 								<div class="form-group">
 									<label for="contact-name">Selecione a unidade: </label>
+									
 									<select name="id_unidade" id="id_unidade">
-										<option selected disabled value="">Selecione um serviço</option>
+										<option selected disabled value="">Selecione uma unidade</option>
 									
 										<c:forEach var="unidade"
 											items="${daoUnidade.getUnidadesByCNPJ(prestadorPetshopLogado.cnpj)}">
@@ -90,6 +91,7 @@
 										</c:forEach>
 													
 									</select>
+									
 								</div>
 								
 								<div class="form-group">
@@ -138,6 +140,10 @@
 			</div>
 		</div>
 	</div>
+
+
+
+<c:import url="footer.jsp" />
 
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 

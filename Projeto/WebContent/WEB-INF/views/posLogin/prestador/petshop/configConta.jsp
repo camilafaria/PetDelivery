@@ -105,12 +105,16 @@
 										name="senha" value="${daoPrestador.getSenhaById (prestadorPetshopLogado.cnpj)}"
 										class="contact-name form-control">
 								</div>
-								
+								<div class="form-group col-sm-12">
 								<button type="submit" class="btn">Atualizar</button>
+								</div>
 							</div>
 						</div>
 					</div>
 				</form>
+				
+				
+		
 				
 				<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 				<!-- JQUERY SCRIPTS -->
@@ -125,5 +129,7 @@
 		</div>
 
 	</div>
+	
+			<c:import url="footer.jsp" />
 </body>
 </html>
