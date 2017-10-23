@@ -33,7 +33,7 @@
 
 	<c:import url="headerUsuario.jsp" />
 	<c:import url="menuUsuario.jsp" />
-		
+	
 	<jsp:useBean id="daoAnimal"
 		class="br.com.petdelivery.jdbc.dao.AnimalDAO" />
 	<jsp:useBean id="daoServico"
@@ -104,36 +104,41 @@
 
 								<div class="form-group col-sm-5">
 									<label for="contact-name">Hora de Início</label> 
-									<input type="time" name="horaInicio" class="contact-name form-control" id="horaInicio"> 
+									<input type="text" name="horaInicio" class="contact-name form-control" id="horaInicio" placeholder="hh:mm"> 
 								</div>
 								<div class="form-group col-sm-5">
 									<label for="contact-name">Hora de Fim</label> 
-									<input type="time" name="horaFim" class="contact-name form-control" id="horaFim" disabled>
+									<input type="text" name="horaFim" class="contact-name form-control" id="horaFim" placeholder="hh:mm" disabled>
 								</div>
 								
 								<br><br>
 								
 								<div class="form-group col-sm-10">
 									<label for="contact-name">Observacões:</label> <input
-										type="text" name="observacoes"
-										placeholder="Descreva quaisquer observacoes sobre o servico"
+										type="text" name="observacao"
+										placeholder="Descreva as bservacoes sobre o servico"
 										class="contact-name form-control">
 								</div>
 
 								<c:if test= "${param.delivery eq 'true'}" >
-									<div class="form-group">
-										<label for="contact-name">Deseja o serviço de delivery?</label> 
+									<div class="form-group col-sm-10">Deseja o serviço de delivery?</label> 
 											<select name="delivery" id="delivery">
-											<option value="0">Sim</option>
-											<option value="1">Não</option>
+											<option value="true">Sim</option>
+											<option value="false">Não</option>
 										</select>
-									</div>
 								</c:if>						
 
 								<input type="hidden" name="id_usuario"
 									value="${usuarioLogado.cpf}" />
+								
+								<input type="hidden" name="id_prestador"
+									value="${perfilPrestadorAutonomo.cpf}" />
+									
+								<input type="hidden" name="id_servico"
+									value="${id_servico}" />
 
 								<!-- input type="submit" class="btn" value="Registrar" /-->
+								<br><br><br>
 								<button type="submit" class="btn">Agendar servico</button>
 							</div>
 						</div>
@@ -153,7 +158,8 @@
 		if(selectedValue=="dataInicio"){			
 			document.getElementById("dataFim").setAttribute('disabled',true);
 		}else{			
-			document.getElementById("dataFim").removeAttribute('disabled');
+			document.getElementById("da
+								taFim").removeAttribute('disabled');
 		}
 	}
 	

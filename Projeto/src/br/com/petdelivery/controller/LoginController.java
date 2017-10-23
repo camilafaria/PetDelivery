@@ -41,6 +41,9 @@ public class LoginController {
 		Prestador prestador = new Prestador();
 		prestador.setEmail(usuario.getEmail());
 		prestador.setSenha(usuario.getSenha());
+		
+		System.out.println("Email: "+ usuario.getEmail());
+		System.out.println("Senha: "+ usuario.getSenha());
 
 		Prestador prestadorLogado = new PrestadorDAO().existePrestador(prestador);
 		if (prestadorLogado != null) {

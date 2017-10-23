@@ -32,7 +32,6 @@
 <body>
 
 	<c:import url="headerUsuario.jsp" />
-
 	<c:import url="menuUsuario.jsp" />
 	
 	<jsp:useBean id="daoServico"
@@ -111,6 +110,7 @@
 							<label class="">5
 								<input	class="" type="radio" name="nota" value="5">
 							</label>
+							
 							<input hidden type="text" name="id" value="${perfilPrestadorAutonomo.cpf}">
 							<button type="submit" class="btn">Avaliar</button>
 						</form>
@@ -119,9 +119,7 @@
 					<div class="form-group col-sm-12">						
 						<button name="back" onclick="history.back()" class="btn">Voltar</button>
 					</div>
-				</div>
-
-				
+				</div>		
 				
 			</div>
 		</div>

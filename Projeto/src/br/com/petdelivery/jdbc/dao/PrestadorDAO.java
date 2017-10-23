@@ -131,8 +131,7 @@ public class PrestadorDAO {
 			stmt = connection.prepareStatement(sql);
 			stmt.setString(1, prestador.getEmail());
 			stmt.setString(2, prestador.getSenha());
-			ResultSet rs = stmt.executeQuery();
-			stmt.close();
+			ResultSet rs = stmt.executeQuery();	
 			
 			if (rs.next()){
 				//Seta variaveis faltantes
@@ -140,6 +139,7 @@ public class PrestadorDAO {
 				prestador.setSomaNota(rs.getFloat("somanota"));
 				prestador.setSomaQnt(rs.getInt("somaqnt"));
 				
+				stmt.close();
 				return prestador;
 			}
 		} catch (SQLException e) {
