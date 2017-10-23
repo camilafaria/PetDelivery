@@ -26,7 +26,7 @@
 <!-- GOOGLE FONTS-->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans"
 	rel="stylesheet" type="text/css" />
-
+<c:import url="../favicon.jsp" />
 </head>
 
 <body>
@@ -47,7 +47,7 @@
 						<div class="row">
 							<div class="title col-sm-9 col-sm-offset-1 page-title wow fadeIn">
 								<span aria-hidden="true" class="icon_search"></span>
-								<h1>Buscar Serviços</h1>
+								<h1>Buscar Petlovers</h1>
 							</div>
 						</div>
 					</div>
@@ -112,7 +112,7 @@
 					
 					<fieldset class="form-group">
 						<div class="row">
-							<legend class="col-form-legend col-sm-6">Petshop ou autonomo?</legend>
+							<legend class="col-form-legend col-sm-6">Petshop ou autônomo?</legend>
 							<div class="col-sm-12">
 							
 								<div class="form-check">

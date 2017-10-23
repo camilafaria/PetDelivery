@@ -26,7 +26,7 @@
 <!-- GOOGLE FONTS-->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans"
 	rel="stylesheet" type="text/css" />
-
+<c:import url="../favicon.jsp" />
 </head>
 
 <body>
@@ -45,15 +45,15 @@
 					<div class="container">
 						<div class="row">
 							<div class="title col-sm-9 col-sm-offset-1 page-title wow fadeIn">
-								<span aria-hidden="true" class="icon_profile"></span>
-								<h1>Resultados</h1>
+								<span aria-hidden="true" class="icon_search"></span>
+								<h1>Petlovers</h1>
 							</div>
 						</div>
 					</div>
 				</div>
 
 				<c:if test="${empty resultadoBuscaPrestador}">
-					Não há há prestadores que atendam seu filtro
+					Não há Petlovers que atendam seu filtro
 
 				<br><br>
 				<button name="back" onclick="history.back()" class="btn btn-primary">Efetuar
@@ -61,14 +61,14 @@
 				</c:if>
 
 				<c:if test="${not empty resultadoBuscaPrestador}">
-					<h3>Prestadores Autonomos</h3>
+					<!-- <h3>Prestadores Autonomos</h3> -->
 					<br>
 					<br>
-					<table border="0" align="center" width="800px">
-						<tr align="center">
+					<table border="0" align="center" width="800px" >
+						<tr align="center" class="table-header">
 							<th>Nome</th>
-							<th>Condicoes</th>
-							<th>Preco</th>
+							<th>Condições</th>
+							<th>Preço</th>
 							<th>Delivery</th>
 							<th>Serviço</th>
 							<th>Bairro</th>
@@ -76,11 +76,11 @@
 						</tr>
 
 						<c:forEach items="${resultadoBuscaPrestador}" var="result">
-							<tr>
+							<tr class="table-line">
 								<td><a href="visualiza-autonomo?id=${result.id}"><c:out
 											value="${result.nome}" /></a></td>
 								<td><c:out value="${result.condicoes}" /></td>
-								<td>R$ <c:out value="${result.preco}" /></td>
+								<td>R$ <c:out value="${result.preco}0" /></td>
 								<td>${result.delivery eq 'true'? 'Sim' : 'Não'}</td>
 								<td><c:out value="${result.servico}" /></td>
 								<td><c:out value="${result.bairro}" /></td>
@@ -94,7 +94,7 @@
 					<br>
 					<br>
 					<button name="back" onclick="history.back()"
-						class="btn btn-primary">Efetuar nova busca</button>
+						class="btn btn-primary"><< Efetuar nova busca</button>
 				</c:if>
 			</div>
 		</div>

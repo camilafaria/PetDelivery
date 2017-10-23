@@ -20,6 +20,9 @@
 <!-- GOOGLE FONTS-->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans"
 	rel="stylesheet" type="text/css" />
+
+<c:import url="../favicon.jsp" />
+	
 </head>
 <body>
 	<c:import url="headerUsuario.jsp" />
@@ -40,32 +43,38 @@
 			<div class="row">
 				<div class="home col-md-12">
 
-					<h2>Bem-vindo ao Pet Delivery, ${usuarioLogado.nome}!</h2>
+					<h2>Bem-vindo ao <span class="colored-text">Pet Delivery</span>, ${usuarioLogado.nome}!</h2>
 					<br>
 					
 					<c:if test="${not empty daoAgendamento.getAgendamentos(usuarioLogado.cpf)}">
 					<h4>Próximos serviços agendados:</h2>
 					
 					<table border="0" align="center" width="800px">
-						<tr align="center">
-							<th>Prestador</th>
+						<tr align="center" class="table-header">
+							<th></th>
+							<th>Petlover</th>
 							<th>Serviço</th>
 							<th>Animal</th>
-							<th>Data início</th>
-							<th>Data fim</th>
-							<th>Horário de início</th>
-							<th>Horário fim</th>			
+							<th>Início</th>
+							<th>Fim</th>			
 						</tr>
 
 						<c:forEach items="${daoAgendamento.getAgendamentos(usuarioLogado.cpf)}" var="agendamento">
-							<tr>
+							<tr class="table-line">
+								<td>
+									<img src="assetsPosLogin/img/find-user.png" class="img-responsive img-circle" width="50px" height="50px" />
+								</td>
 								<td><c:out value="${daoPrestador.getNomeById(agendamento.id_prestador)}" /></td>
 								<td><c:out value="${daoServico.getServicoById(agendamento.id_servico)}" /></td>
 								<td><c:out value="${daoAnimal.getAnimalById(agendamento.id_animal)}" /></td>
-								<td><c:out value="${agendamento.dataInicio}" /></td>
-								<td><c:out value="${agendamento.dataFim eq null? '--' : agendamento.dataFim}" /></td>							
-								<td><c:out value="${agendamento.horaInicio}" /></td>
-								<td><c:out value="${agendamento.horaFim eq null? '--' : agendamento.horaFim}" /></td>								
+								<td>
+									<c:out value="${agendamento.dataInicio}" />
+									<c:out value="${agendamento.horaInicio}" /> 
+								</td>							
+								<td>
+									<c:out value="${agendamento.dataFim eq null? '--' : agendamento.dataFim}" />
+									<c:out value="${agendamento.horaFim eq null? '--' : agendamento.horaFim}" />
+								</td>								
 							</tr>
 						</c:forEach>
 					</table>

@@ -61,7 +61,7 @@ h3, h4 {
 }
 .home h3, h4 {
 	margin: 0;
-    background: #ffffff;
+    /*background: #ffffff; se descomentar zoa o footer*/
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     color: #5d5d5d;
@@ -884,6 +884,7 @@ footer {
 
 .table-line, .table-line td {
 	padding-bottom: 5px;
+	font-size: 14px;
 	
 }
 

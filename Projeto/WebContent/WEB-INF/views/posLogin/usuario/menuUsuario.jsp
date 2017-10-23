@@ -46,7 +46,7 @@
 			 -->
 			<li><a href="pets"><i class="fa fa-paw "></i>Meus PETs</a></li>
 
-			<li><a href="busca-servico"><i class="fa fa-search "></i>Buscar serviços</a></li>
+			<li><a href="busca-servico"><i class="fa fa-search "></i>Buscar Petlovers</a></li>
 
 			<li><a href="configConta"><i class="fa fa-gear "></i>Configurações da Conta</a></li>
 

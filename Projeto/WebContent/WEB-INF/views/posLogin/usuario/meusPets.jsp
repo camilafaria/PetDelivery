@@ -28,6 +28,8 @@
 <!-- GOOGLE FONTS-->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans"
 	rel="stylesheet" type="text/css" />
+	
+<c:import url="../favicon.jsp" />
 </head>
 <body>
 	<c:import url="headerUsuario.jsp" />
@@ -46,40 +48,41 @@
 		<div id="page-inner">
 			<div class="row">
 
-			
 				<div class=" title col-md-12 page-title wow fadeIn">
 					<span aria-hidden="true" ></span>
 					<h1 align="center">Meus PETs </h1>
-					<br>
-					<br>
-					<br>
-					<c:if test="${not empty daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
-					
-						<table border="0" align="center" width="500px">
-							<tr align="center" class="table-header">
-								<th></th>
-								<th><b>Nome</b></th>
-								<th><b>Tipo</b></th>
-								<th><b>Raça</b></th>
-							</tr>					
-						
-							<c:forEach var="animal" items="${daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
-								<tr class="table-line">
-									<td>
-										<img src="assetsPosLogin/img/find-user.png" class="img-responsive img-circle" width="50px" height="50px" />
-									</td>
-									<td href="">${animal.nome}</td>
-									<td>${daoTipo.getTipoById(daoRaca.getTipoByRaca(animal.id_raca))}</td>
-									<td>${daoRaca.getRacaById(animal.id_raca)}</td>
-								</tr>
-							</c:forEach>			
-						
-						</table>
-					</c:if>
-
 				</div>
+				<div class="col-md-12 col-md-offset-1">
+				
+				<c:if test="${empty daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
+					<h4>Parece que você ainda não cadastrou seu pet :( <br> Que tal cadastrá-lo?</h4>
+				</c:if>
+				
+				<c:if test="${not empty daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
+				
+					<table border="0" align="center" width="500px">
+						<tr align="center" class="table-header">
+							<th></th>
+							<th><b>Nome</b></th>
+							<th><b>Tipo</b></th>
+							<th><b>Raça</b></th>
+						</tr>					
+					
+						<c:forEach var="animal" items="${daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
+							<tr class="table-line">
+								<td>
+									<img src="assetsPosLogin/img/find-user.png" class="img-responsive img-circle" width="50px" height="50px" />
+								</td>
+								<td href="">${animal.nome}</td>
+								<td>${daoTipo.getTipoById(daoRaca.getTipoByRaca(animal.id_raca))}</td>
+								<td>${daoRaca.getRacaById(animal.id_raca)}</td>
+							</tr>
+						</c:forEach>			
+					
+					</table>
+				</c:if>
 
-				<div class="col-md-12">
+				
 					<br> <br>
 					<form action="cadastro-pet">
 						<button type="submit" class="btn">Cadastrar PET</button>

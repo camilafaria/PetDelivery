@@ -26,7 +26,7 @@
 <!-- GOOGLE FONTS-->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans"
 	rel="stylesheet" type="text/css" />
-
+<c:import url="../favicon.jsp" />
 </head>
 
 <body>
@@ -38,6 +38,8 @@
 		class="br.com.petdelivery.jdbc.dao.ServicoDAO" />
 	<jsp:useBean id="daoServicoAutonomo"
 		class="br.com.petdelivery.jdbc.dao.Servico_AutonomoDAO" />
+	<jsp:useBean id="daoPrestador"
+		class="br.com.petdelivery.jdbc.dao.PrestadorDAO" />	
 		
 
 	<!-- /. NAV SIDE  -->
@@ -45,45 +47,42 @@
 		<div id="page-inner">
 			<div class="row">
 
-				<div class="title col-sm-9 col-sm-offset-1 page-title wow fadeIn">
+				<div class="title col-sm-9 col-sm-offset-1 wow fadeIn">
 					<span aria-hidden="true"></span>
 					<h1><c:out value="${perfilPrestadorAutonomo.nome}"/></h1>
+					<h5><c:out value="${perfilPrestadorAutonomo.experiencia}"/></h5>
+					<h5>Avaliação: 
+						<c:out value="${daoPrestador.buscaPrestadorById(perfilPrestadorAutonomo.cpf).somaNota / daoPrestador.buscaPrestadorById(perfilPrestadorAutonomo.cpf).somaQnt ?? 0}"/>
+					</h5>
 				</div>
+<br><br><br><br>
+				<img src="assetsPosLogin/img/prestador.jpg"
+					class="img-responsive img-circle col-sm-3"/>
 
-				<img src="assetsPosLogin/img/find-user.png"
-					class="img-responsive img-rounded col-sm-4" width="260px" height="100px" />
-
-				<div class="form-group col-sm-8">
+				<div class="form-group col-sm-8">					
 					<div class="form-group col-sm-12">
-						<label  for="contact-name">Nome:</label>
-						<c:out value="${perfilPrestadorAutonomo.nome}"/>
-					</div>
-					
-					<div class="form-group col-sm-12">
-						<label for="contact-name">Experiência: </label>
-						<c:out value="${perfilPrestadorAutonomo.experiencia}"/>
-					</div>
-					
-					<div class="form-group col-sm-12">
-						<label for="contact-name">Bairro: </label>
+						<label for="contact-name" class="table-header">Localização: </label> <br>
+						<c:out value="${perfilPrestadorAutonomo.rua}"/>, 
+						<c:out value="${perfilPrestadorAutonomo.numero}"/> 
+						<c:out value="${perfilPrestadorAutonomo.complemento}"/><br>
 						<c:out value="${perfilPrestadorAutonomo.bairro}"/>
 					</div>
 					
 					<div class="form-group col-sm-12">
-						<label for="contact-name">Serviços oferecidos: </label>
+						<label for="contact-name" class="table-header"><b>Serviços oferecidos: </b></label>
 						<table border="0" align="center" width="500px">
-							<tr align="center">
-								<th>Serviço</th>
-								<th>Preço</th>
-								<th>Condições</th>
-								<th>Delivery</th>
+							<tr align="center" style="text-align:center;">
+								<th></th>
+								<th style="text-align:center;"><b>Preço</b></th>
+								<th style="text-align:center;"><b>Condições</b></th>
+								<th style="text-align:center;"><b>Delivery</b></th>
 								<th></th>
 							</tr>
 							<c:forEach var="servico"
 								items="${daoServicoAutonomo.getServico(perfilPrestadorAutonomo.cpf)}">
-								<tr>
-									<td>${daoServico.getServicoById(servico.id_servico)}</td>
-									<td>${servico.preco}</td>
+								<tr class="table-line">
+									<td><b>${daoServico.getServicoById(servico.id_servico)}</b></td>
+									<td>R$ ${servico.preco}0</td>
 									<td>${servico.condicoes}</td>
 									<td>${servico.delivery eq 'true'? 'Sim' : 'Não'}</td>
 									<td><a href="agenda-servicoAutonomo?id=${perfilPrestadorAutonomo.cpf}&servico=${servico.id_servico}&delivery=${servico.delivery}">Agendar</a></td>
@@ -116,12 +115,12 @@
 						</form>
 					</div>
 					
-					<div class="form-group col-sm-12">						
-						<button name="back" onclick="history.back()" class="btn">Voltar</button>
-					</div>
 				</div>		
 				
 			</div>
+			<div class="form-group col-sm-12 col-md-offset-0">						
+						<button name="back" onclick="history.back()" class="btn"><< Voltar</button>
+					</div>
 		</div>
 	</div>
 
