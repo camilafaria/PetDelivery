@@ -114,7 +114,7 @@
 				</form>
 				
 				
-				<c:import url="footer.jsp" />
+		
 				
 				<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 				<!-- JQUERY SCRIPTS -->
@@ -129,5 +129,7 @@
 		</div>
 
 	</div>
+	
+			<c:import url="footer.jsp" />
 </body>
 </html>
