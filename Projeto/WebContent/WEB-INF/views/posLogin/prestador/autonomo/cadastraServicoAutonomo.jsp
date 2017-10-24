@@ -31,26 +31,7 @@
 
 <body>
 
-	<div id="wrapper">
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="adjust-nav">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".sidebar-collapse">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet Delivery</a>
-				</div>
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="logout">Sair</a></li>
-					</ul>
-				</div>
-
-			</div>
-		</div>
-	</div>
+	<c:import url="headerAutonomo.jsp" />
 
 	<c:import url="menuAutonomo.jsp" />
 
@@ -86,17 +67,13 @@
 										<option value="5">Veterinário</option>									
 									</select>
 								</div>
+								
+								
 									
-								<div class="form-group">
+								<div class="form-group col-md-6">
 									<label for="contact-name">Preço: R$</label>
 									<input type="number" step="0.01" name="preco"
 									class="contact-name form-control">
-								</div>
-
-								<div class="form-group">
-									<label for="contact-name">Condições do serviço oferecido</label>
-									<input type="text" name="condicoes" placeholder="Ex.: Pagamento antecipado"
-										class="contact-name form-control">
 								</div>
 								
 								<div class="form-group">
@@ -107,6 +84,14 @@
 										<option value="1">Não</option>								
 									</select>
 								</div>
+
+								<div class="form-group col-md-12">
+									<label for="contact-name">Condições do serviço oferecido</label>
+									<input type="text" name="condicoes" placeholder="Ex.: Pagamento antecipado"
+										class="contact-name form-control">
+								</div>
+								
+								
 								
 								<input type="hidden" name="cpf"
 									value="${prestadorAutonomoLogado.cpf}" />

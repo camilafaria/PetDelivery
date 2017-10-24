@@ -31,27 +31,7 @@
 <c:import url="../../favicon.jsp" />
 </head>
 <body>
- 	<div id="wrapper">
- 		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="adjust-nav">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".sidebar-collapse">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet
-						Delivery</a>
-				</div>
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="logout">Sair</a></li>
-					</ul>
-				</div>
-
-			</div>
-		</div>
-	</div>
+ 	<c:import url="headerAutonomo.jsp" />
 
 	<c:import url="menuAutonomo.jsp" />
 
@@ -68,17 +48,22 @@
 				<div class="col-md-12">
 					
 					
-					<div class=" title col-md-12 col-sm-offset-1 page-title wow fadeIn">
-					<span aria-hidden="true" ></span>
-					<h1 align="center">Servicos oferecidos por ${prestadorAutonomoLogado.nome}! </h1>								
+					<div class=" title col-md-12 wow fadeIn">
+						<span aria-hidden="true" ></span>
+						<h1 align="center">Meus Serviços</h1>								
+					</div>
+					
+					<c:if test="${empty daoServico_Autonomo.getServico(prestadorAutonomoLogado.cpf)}">
+						<h4><br>Parece que você não tem serviços cadastrados ainda. Que tal cadastrar?</h4>
+					</c:if>
 								
 					<c:if test="${not empty daoServico_Autonomo.getServico(prestadorAutonomoLogado.cpf)}">	
-					<br>
-					<br>
-					<br>
+						<br>
+						<br>
+						<br>
 									
 						<table border="0" align="center" width="500px">
-							<tr align="center">
+							<tr align="center" class="table-header">
 								<th>Serviço</th>
 								<th>Preço</th>
 								<th>Condições</th>
@@ -87,7 +72,7 @@
 						
 							<c:forEach var="servico"
 								items="${daoServico_Autonomo.getServico(prestadorAutonomoLogado.cpf)}">
-								<tr>
+								<tr class="table-line">
 									<td>${daoServico.getServicoById(servico.id_servico)}</td>
 									<td>R$ ${servico.preco}</td>
 									<td>${servico.condicoes}</td>
