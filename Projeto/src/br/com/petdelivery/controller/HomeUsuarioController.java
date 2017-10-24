@@ -54,10 +54,19 @@ public class HomeUsuarioController {
 	@RequestMapping("visualiza-autonomo")
 	public String vizualizaAutonomo(HttpServletRequest request, HttpSession session) {
 		Prestador prestador = new Prestador();
-		prestador.setId_prestador(Long.parseLong(request.getParameter("id")));
+		prestador = new PrestadorDAO().getPrestadorbyId(Long.parseLong(request.getParameter("id")));
+		//corrige nota caso seja 0
+		double nota=0;
+		
+		if (prestador.getSomaNota() == 0){
+			nota = 0;
+		}else{
+			nota = prestador.getSomaNota() / prestador.getSomaQnt();
+		}
 		Autonomo autonomo = new AutonomoDAO().getAutonomo(prestador);
 
 		session.setAttribute("perfilPrestador", prestador);
+		session.setAttribute("perfilPrestador_nota", nota);
 		session.setAttribute("perfilPrestadorAutonomo", autonomo);
 
 		return "posLogin/usuario/visualizaPerfilAutonomo";

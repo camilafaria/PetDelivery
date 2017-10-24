@@ -52,7 +52,8 @@
 					<h1><c:out value="${perfilPrestadorAutonomo.nome}"/></h1>
 					<h5><c:out value="${perfilPrestadorAutonomo.experiencia}"/></h5>
 					<h5>Avaliação: 
-						<c:out value="${daoPrestador.buscaPrestadorById(perfilPrestadorAutonomo.cpf).somaNota / daoPrestador.buscaPrestadorById(perfilPrestadorAutonomo.cpf).somaQnt ?? 0}"/>
+						<c:out value="${perfilPrestador_nota}"/>
+					</div>
 					</h5>
 				</div>
 <br><br><br><br>

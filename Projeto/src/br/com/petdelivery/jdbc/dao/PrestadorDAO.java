@@ -177,10 +177,11 @@ public class PrestadorDAO {
 			count++;
 			map.put(count, bairro);
 		}
+		/*
 		if(delivery != null){
 			count++;
 			map.put(count, delivery);
-		}
+		}*/
 		
 		//verifica se há filtros a serem aplicados
 		if (servicos.length > 0 || precoDe != -1 || precoAte != -1 || bairro != null){
@@ -219,8 +220,14 @@ public class PrestadorDAO {
 				sql += " AND sa.preco >= ?";
 			if (precoAte != -1)
 				sql += " AND sa.preco <= ?";
-			if (delivery != null)
-				sql += " AND sa.delivery = ?";
+			if (delivery != null){
+				if (delivery.equals("false")){ 
+					sql += " AND sa.delivery = 0";
+				}else if (delivery.equals("true")){
+					sql += " AND sa.delivery = 1";
+				}
+			}
+				
 		}
 		sql+="	) AS s_aut" +
 				"	ON s_aut.cpf = p.id_prestador" +
@@ -358,6 +365,32 @@ public class PrestadorDAO {
 			throw new RuntimeException(e);
 		}		
 		
+	}
+
+	public Prestador getPrestadorbyId(long id) {
+		String sql = "SELECT * FROM prestador WHERE id_prestador=?";
+		Prestador prestador = new Prestador ();
+		
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, id);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				prestador.setId_prestador(rs.getLong("id_prestador"));
+				prestador.setEmail(rs.getString("email"));
+				prestador.setSomaNota(rs.getFloat("somanota"));
+				prestador.setSomaQnt(rs.getInt("somaqnt"));
+				
+				stmt.close();
+				return prestador;
+			}			
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}	
+		return null;
 	}
 
 }
