@@ -74,9 +74,9 @@
 								items="${daoServico_Autonomo.getServico(prestadorAutonomoLogado.cpf)}">
 								<tr class="table-line">
 									<td>${daoServico.getServicoById(servico.id_servico)}</td>
-									<td>R$ ${servico.preco}</td>
+									<td>R$ ${servico.preco}0</td>
 									<td>${servico.condicoes}</td>
-									<td>${servico.delivery}</td>
+									<td>${servico.delivery eq 'true'? 'Sim' : 'Não'}</td>
 								</tr>
 							</c:forEach>			
 						

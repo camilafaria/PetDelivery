@@ -44,7 +44,7 @@
 				<div class="page-title-container">
 					<div class="container">
 						<div class="row">
-							<div class="title col-sm-9 col-sm-offset-1 page-title wow fadeIn">
+							<div class="title col-sm-9 page-title wow fadeIn">
 								<span aria-hidden="true" class="icon_profile"></span>
 								<h1>Cadastro de Serviços</h1>
 							</div>
@@ -54,7 +54,7 @@
 
 				<form action="insereServicoAutonomo" class="form-horizontal" method="post">
 					<div class="form-group">
-						<div class="container"  style="vertical-align: middle; margin-left:20%;" align="center">
+						<div class="container col-md-offset-2"  style="vertical-align: middle;" align="center">
 							<div class="col-sm-7 contact-form wow">
 								<div class="form-group">
 									<label for="contact-name">Selecione o serviço oferecido: </label>
@@ -70,14 +70,13 @@
 								
 								
 									
-								<div class="form-group col-md-6">
+								<div class="form-group">
 									<label for="contact-name">Preço: R$</label>
-									<input type="number" step="0.01" name="preco"
-									class="contact-name form-control">
+									<input type="number" step="0.01" name="preco" class="contact-name form-control" style="width:150px;">
 								</div>
 								
 								<div class="form-group">
-									<label for="contact-name">Para esse serviço, você oferece delivery?</label>
+									<label for="contact-name col-md-12">Para esse serviço, você oferece delivery?</label>
 									<select name="delivery" id="delivery">
 										<option selected disabled value=""></option>
 										<option value="0">Sim</option>

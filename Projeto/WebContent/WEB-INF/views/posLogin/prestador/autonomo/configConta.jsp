@@ -55,7 +55,7 @@
 						<div class="container col-sm-10" style="vertical-align: middle;"
 							align="center">
 							<div class="contact-form col-sm-6 wow fadeInLeft"
-								style="vertical-align: middle; margin-left: 30%;" align="center">
+								style="vertical-align: middle; margin-left: 33%;" align="center">
 								<!-- 1 -->
 								<div class="form-group col-sm-12">
 									<label for="contact-name">Nome completo</label> <input

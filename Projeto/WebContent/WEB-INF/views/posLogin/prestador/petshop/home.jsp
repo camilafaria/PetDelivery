@@ -23,27 +23,7 @@
 <c:import url="../../favicon.jsp" />
 </head>
 <body>
-	<div id="wrapper">
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="adjust-nav">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".sidebar-collapse">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet
-						Delivery</a>
-				</div>
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="logout">Sair</a></li>
-					</ul>
-				</div>
-
-			</div>
-		</div>
-	</div>
+	<c:import url="headerPetshop.jsp" />
 
 	<c:import url="menuPetshop.jsp" />
 
@@ -52,7 +32,6 @@
 		<div id="page-inner">
 			<div class="row">
 				<div class="col-md-12">
-
 					<h2>Bem-vindo, ${prestadorPetshopLogado.nome}!</h2>					
 				</div>
 			</div>

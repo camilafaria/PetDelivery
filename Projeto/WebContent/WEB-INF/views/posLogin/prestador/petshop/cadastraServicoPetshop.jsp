@@ -31,26 +31,7 @@
 
 <body>
 
-	<div id="wrapper">
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="adjust-nav">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".sidebar-collapse">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet Delivery</a>
-				</div>
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="logout">Sair</a></li>
-					</ul>
-				</div>
-
-			</div>
-		</div>
-	</div>
+	<c:import url="headerPetshop.jsp" />
 
 	<c:import url="menuPetshop.jsp" />
 	
@@ -66,7 +47,7 @@
 				<div class="page-title-container">
 					<div class="container">
 						<div class="row">
-							<div class="title col-sm-9 col-sm-offset-1 page-title wow fadeIn">
+							<div class="title col-sm-9 page-title wow fadeIn">
 								<span aria-hidden="true" class="icon_profile"></span>
 								<h1>Cadastro de Serviços</h1>
 							</div>
@@ -107,17 +88,11 @@
 								</div>
 									
 								<div class="form-group">
-									<label for="contact-name">Preço: R$</label>
-									<input type="number" step="0.01" name="preco"
-									class="contact-name form-control">
+										<label for="contact-name">Preço: R$</label>
+									<input type="number" step="0.01" name="preco" class="contact-name form-control" style="width:150px;">
 								</div>
 
-								<div class="form-group">
-									<label for="contact-name">Condições do serviço oferecido</label>
-									<input type="text" name="condicoes" placeholder="Ex.: Pagamento antecipado"
-										class="contact-name form-control">
-								</div>
-								
+								<!-- podia ser só um checkbox -->
 								<div class="form-group">
 									<label for="contact-name">Para esse serviço, você oferece delivery?</label>
 									<select name="delivery" id="delivery">
@@ -125,6 +100,12 @@
 										<option value="true">Sim</option>
 										<option value="false">Não</option>								
 									</select>
+								</div>
+								
+								<div class="form-group">
+									<label for="contact-name">Condições do serviço oferecido</label>
+									<input type="text" name="condicoes" placeholder="Ex.: Pagamento antecipado"
+										class="contact-name form-control">
 								</div>
 								
 								<input type="hidden" name="cnpj"

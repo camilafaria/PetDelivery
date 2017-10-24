@@ -31,27 +31,7 @@
 <c:import url="../../favicon.jsp" />
 </head>
 <body>
- 	<div id="wrapper">
- 		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="adjust-nav">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".sidebar-collapse">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet
-						Delivery</a>
-				</div>
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="logout">Sair</a></li>
-					</ul>
-				</div>
-
-			</div>
-		</div>
-	</div>
+ 	<c:import url="headerPetshop.jsp" />
 
 	<c:import url="menuPetshop.jsp" />
 
@@ -71,12 +51,14 @@
 					<div class=" title col-md-12 col-sm-offset-1 page-title wow fadeIn">
 					<span aria-hidden="true" ></span>
 					<h1 align="center">Servicos oferecidos por ${prestadorPetshopLogado.nome}! </h1>
-					<br>
-					<br>
-					<br>			
+					
+					<c:if test="${empty Servico_Petshop.getServico(prestadorPetshopLogado.cnpj)}">
+						<h4><br>Parece que você não tem serviços cadastrados ainda. Que tal cadastrar?</h4>
+					</c:if>
+					
 					<c:if test="${not empty Servico_Petshop.getServico(prestadorPetshopLogado.cnpj)}">					
 						<table border="0" align="center" width="700px">
-							<tr align="center">
+							<tr align="center" class="table-header">
 								<th>Unidade</th>
 								<th>Serviço</th>
 								<th>Preço</th>
@@ -86,7 +68,7 @@
 						
 							<c:forEach var="servico"
 								items="${daoServico_Petshop.getServico(prestadorPetshopLogado.cnpj)}">
-								<tr>
+								<tr class="table-line">
 									<td>${daoUnidade.getUnidadeById(servico.id_unidade) };</td>									
 									<td>${daoServico.getServicoById(servico.id_servico)}</td>
 									<td>R$ ${servico.preco}</td>

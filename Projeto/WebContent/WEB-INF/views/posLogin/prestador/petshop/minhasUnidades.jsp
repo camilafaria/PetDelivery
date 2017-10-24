@@ -31,27 +31,7 @@
 <c:import url="../../favicon.jsp" />
 </head>
 <body>
- 	<div id="wrapper">
- 		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="adjust-nav">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".sidebar-collapse">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="home"><i class="fa fa-square-o "></i>&nbsp;Pet
-						Delivery</a>
-				</div>
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="logout">Sair</a></li>
-					</ul>
-				</div>
-
-			</div>
-		</div>
-	</div>
+ 	<c:import url="headerPetshop.jsp" />
 
 	<c:import url="menuPetshop.jsp" />
 
@@ -67,10 +47,11 @@
 					<div class=" title col-md-12 col-sm-offset-1 page-title wow fadeIn">
 					<span aria-hidden="true" ></span>
 					<h1 align="center">Unidades do Petshop ${prestadorPetshopLogado.nome}! </h1>
-					<br>
-					<br>
-					<br>								
-								
+					
+					<c:if test="${empty daoUnidade.getUnidadesByCNPJ(prestadorPetshopLogado.cnpj)}">								
+						<h4><br>Parece que você não tem unidades cadastradas ainda. Que tal cadastrar?</h4>
+					</c:if>
+					
 					<c:if test="${not empty daoUnidade.getUnidadesByCNPJ(prestadorPetshopLogado.cnpj)}">					
 						<table border="0" align="center" width="400px">
 							<tr align="center">
