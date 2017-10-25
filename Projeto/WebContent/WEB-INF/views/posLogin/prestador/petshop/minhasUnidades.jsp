@@ -1,15 +1,14 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@page import="com.sun.java.swing.plaf.windows.resources.windows"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<!-- Declaration to use JSTL -->
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <%@ page
 	import="java.util.*,
         br.com.petdelivery.*,
         br.com.petdelivery.jdbc.dao.AnimalDAO,
         br.com.petdelivery.jdbc.modelo.Animal"%>
+        
+<!-- Declaration to use JSTL -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -43,18 +42,19 @@
 		<div id="page-inner">
 			<div class="row">
 
-									
-					<div class=" title col-md-12 col-sm-offset-1 page-title wow fadeIn">
-					<span aria-hidden="true" ></span>
-					<h1 align="center">Unidades do Petshop ${prestadorPetshopLogado.nome}! </h1>
+					<div class="page-title-container container row title col-md-12 col-sm-offset-2 page-title wow fadeIn">
+						<span aria-hidden="true" class="fa fa-home"></span>
+						<h1 align="center">Minhas unidades</h1>
+					</div>
 					
 					<c:if test="${empty daoUnidade.getUnidadesByCNPJ(prestadorPetshopLogado.cnpj)}">								
-						<h4><br>Parece que você não tem unidades cadastradas ainda. Que tal cadastrar?</h4>
+						<h4 class="com-md-12 col-sm-offset-1"><br><br><br>Parece que você não tem unidades cadastradas ainda. Que tal cadastrar?</h4>
 					</c:if>
 					
 					<c:if test="${not empty daoUnidade.getUnidadesByCNPJ(prestadorPetshopLogado.cnpj)}">					
+						<br><br><br><br> <br><br><br>
 						<table border="0" align="center" width="400px">
-							<tr align="center">
+							<tr align="center" class="table-header">
 								<th>Nome</th>
 								<th>Rua</th>
 								<th>Número</th>
@@ -63,7 +63,7 @@
 						
 							<c:forEach var="unidade"
 								items="${daoUnidade.getUnidadesByCNPJ(prestadorPetshopLogado.cnpj)}">
-								<tr>
+								<tr class="table-line">
 									<td>${unidade.nome}</td>
 									<td>${unidade.rua}</td>
 									<td>${unidade.numero}</td>

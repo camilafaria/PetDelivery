@@ -43,9 +43,9 @@
 		<div id="page-inner">
 			<div class="row">
 			
-				<div class="title col-sm-9 col-sm-offset-1 page-title wow fadeIn">
-					<span aria-hidden="true"></span>
-					<h1>Configurações de conta</h1>
+				<div class="page-title-container title col-sm-12 col-sm-offset-1 page-title wow fadeIn">
+					<span aria-hidden="true" class="fa fa-gear"></span>
+					<h1>Configurações da conta</h1>
 				</div>
 
 				<!-- form action="alteraUsuario" class="form-horizontal"-->
@@ -54,8 +54,8 @@
 						align="center">
 						<div class="container col-sm-10" style="vertical-align: middle;"
 							align="center">
-							<div class="contact-form col-sm-6 wow fadeInLeft"
-								style="vertical-align: middle; margin-left: 30%;" align="center">
+							<div class="contact-form col-sm-6 wow fadeInLeft col-md-offset-4"
+								style="vertical-align: middle; " align="center">
 								<!-- 1 -->
 								<div class="form-group col-sm-12">
 									<label for="contact-name">Nome</label> <input
@@ -63,7 +63,7 @@
 										class="contact-name form-control">
 								</div>
 								<!-- 2 -->
-								<div class="form-group col-sm-6">
+								<div class="form-group col-sm-12">
 									<label for="contact-name">CNPJ</label> <input type="number"
 										name="cnpj" value="${prestadorPetshopLogado.cnpj}"
 										class="contact-name form-control" readonly>

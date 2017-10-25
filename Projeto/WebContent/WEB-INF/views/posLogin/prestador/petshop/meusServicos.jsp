@@ -45,18 +45,21 @@
 	<!-- /. NAV SIDE  -->
 	<div id="page-wrapper">
 		<div id="page-inner">
-			<div class="row">
-
-											
-					<div class=" title col-md-12 col-sm-offset-1 page-title wow fadeIn">
-					<span aria-hidden="true" ></span>
-					<h1 align="center">Servicos oferecidos por ${prestadorPetshopLogado.nome}! </h1>
-					
-					<c:if test="${empty Servico_Petshop.getServico(prestadorPetshopLogado.cnpj)}">
-						<h4><br>Parece que você não tem serviços cadastrados ainda. Que tal cadastrar?</h4>
+			<div class="row">					
+				<div class="page-title-container title col-md-12 col-md-offset-2 page-title wow fadeIn">
+					<span aria-hidden="true" class="fa fa-heart"></span>
+					<h1 align="center">Meus serviços</h1>
+				</div>
+				
+				<div class="col-md-12  wow fadeIn">
+					<c:if test="${ empty daoServico_Petshop.getServico(prestadorPetshopLogado.cnpj)}">
+						<div class="col-md-offset-1">
+							<h4>Parece que você não tem serviços cadastrados ainda. Que tal cadastrar?</h4>
+						</div>
 					</c:if>
 					
-					<c:if test="${not empty Servico_Petshop.getServico(prestadorPetshopLogado.cnpj)}">					
+					<c:if test="${not empty daoServico_Petshop.getServico(prestadorPetshopLogado.cnpj)}">					
+						<br><br>
 						<table border="0" align="center" width="700px">
 							<tr align="center" class="table-header">
 								<th>Unidade</th>
@@ -73,7 +76,7 @@
 									<td>${daoServico.getServicoById(servico.id_servico)}</td>
 									<td>R$ ${servico.preco}</td>
 									<td>${servico.condicoes}</td>
-									<td>${servico.delivery}</td>
+									<td>${servico.delivery eq 'true'? 'Sim' : 'Não'}</td>
 								</tr>
 							</c:forEach>			
 						
@@ -81,9 +84,11 @@
 					</c:if>				
 					
 					<br><br>
-					<form action="cadastro-servico-petshop">
-						<button type="submit" class="btn">Cadastrar Serviço</button>
-					</form>
+					<div class="col-md-12">
+						<form action="cadastro-servico-petshop">
+							<button type="submit" class="btn">Cadastrar Serviço</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>

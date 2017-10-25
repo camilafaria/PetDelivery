@@ -43,9 +43,9 @@
 			<li class="text-center user-image-back"><img
 				src="assetsPosLogin/img/prestador.jpg" class="img-responsive" width="260px" height="100px" /></li>
 
-			<li><a href="servicosAutonomo"><i class="fa fa-desktop "></i>Meus serviços</a></li>			
+			<li><a href="servicosAutonomo"><i class="fa fa-heart "></i>Meus serviços</a></li>			
 
-			<li><a href="configContaAutonomo"><i class="fa fa-table "></i>Configurações da Conta</a></li>
+			<li><a href="configContaAutonomo"><i class="fa fa-gear "></i>Configurações da Conta</a></li>
 
 		</ul>
 	</div>

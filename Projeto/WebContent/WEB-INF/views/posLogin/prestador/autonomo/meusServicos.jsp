@@ -47,20 +47,21 @@
 
 				<div class="col-md-12">
 					
-					
-					<div class=" title col-md-12 wow fadeIn">
-						<span aria-hidden="true" ></span>
-						<h1 align="center">Meus Serviços</h1>								
+					<div class="page-title-container">
+						<div class=" title col-md-12 page-title wow fadeIn">
+							<span aria-hidden="true" class="fa fa-heart"></span>
+							<h1 align="center">Meus serviços</h1>								
+						</div>
 					</div>
 					
-					<c:if test="${empty daoServico_Autonomo.getServico(prestadorAutonomoLogado.cpf)}">
-						<h4><br>Parece que você não tem serviços cadastrados ainda. Que tal cadastrar?</h4>
+					<c:if test="${ empty daoServico_Autonomo.getServico(prestadorAutonomoLogado.cpf)}">
+						<div class="col-md-offset-1">
+							<h4><br>Parece que você não tem serviços cadastrados ainda. Que tal cadastrar?</h4>
+						</div>
 					</c:if>
 								
 					<c:if test="${not empty daoServico_Autonomo.getServico(prestadorAutonomoLogado.cpf)}">	
-						<br>
-						<br>
-						<br>
+						<br><br><br><br><br>
 									
 						<table border="0" align="center" width="500px">
 							<tr align="center" class="table-header">

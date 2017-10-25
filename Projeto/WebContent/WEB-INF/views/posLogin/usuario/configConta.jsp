@@ -40,10 +40,9 @@
 		<div id="page-inner">
 			<div class="row">
 
-			
-			<div class="title col-sm-9 col-sm-offset-1 page-title wow fadeIn">
-        		<span aria-hidden="true"></span><h1>Configurações de conta</h1>
-       		</div>
+				<div class="title col-sm-9 col-sm-offset-1 page-title wow fadeIn">
+	        		<span aria-hidden="true"></span><h1>Configurações de conta</h1>
+	       		</div>
 
 				<!-- form action="alteraUsuario" class="form-horizontal"-->
 				<form action="update-usuario" class="form-horizontal">

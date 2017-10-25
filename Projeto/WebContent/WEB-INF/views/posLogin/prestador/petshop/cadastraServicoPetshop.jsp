@@ -48,7 +48,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="title col-sm-9 page-title wow fadeIn">
-								<span aria-hidden="true" class="icon_profile"></span>
+								<span aria-hidden="true" class="fa fa-heart"></span>
 								<h1>Cadastro de Serviços</h1>
 							</div>
 						</div>

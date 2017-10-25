@@ -103,7 +103,7 @@ public class HomePrestadorController {
 	@RequestMapping("cadastroServicoPetshop")
 	public String insertServico(Servico_Petshop servico, HttpSession session) {
 		new Servico_PetshopDAO().insert(servico);		
-		return "posLogin/prestador/petshop/minhasUnidades";	
+		return "posLogin/prestador/petshop/meusServicos";	
 	}	
 	
 	@RequestMapping("configContaPetshop")

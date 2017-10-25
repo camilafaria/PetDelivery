@@ -31,8 +31,8 @@
 	<div id="page-wrapper">
 		<div id="page-inner">
 			<div class="row">
-				<div class="col-md-12">
-					<h2>Bem-vindo, ${prestadorPetshopLogado.nome}!</h2>					
+				<div class="home col-md-12">
+					<h2>Bem-vindo ao <span class="colored-text">Pet Delivery</span>, ${prestadorPetshopLogado.nome}!</h2>					
 				</div>
 			</div>
 		</div>

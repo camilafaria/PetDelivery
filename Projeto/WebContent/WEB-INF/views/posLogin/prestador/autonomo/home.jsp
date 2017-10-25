@@ -30,9 +30,9 @@
 	<div id="page-wrapper">
 		<div id="page-inner">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="home col-md-12">
 
-					<h2>Bem-vindo, ${prestadorAutonomoLogado.nome}!</h2>					
+					<h2>Bem-vindo ao <span class="colored-text">Pet Delivery</span>, ${prestadorAutonomoLogado.nome}!</h2>					
 				</div>
 			</div>
 		</div>

@@ -44,19 +44,19 @@
 				<div class="page-title-container">
 					<div class="container">
 						<div class="row">
-							<div class="title col-sm-9 col-sm-offset-1 page-title wow fadeIn">
-								<span aria-hidden="true" class="icon_profile"></span>
+							<div class="title col-sm-9 page-title wow fadeIn">
+								<span aria-hidden="true" class="fa fa-home"></span>
 								<h1>Cadastrar Unidade</h1>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<form action="cadastro-unidade" class="form-horizontal"
+				<form action="cadastro-unidade" class="form-horizontal col-md-offset-2"
 					method="post">
 					<div class="form-group">
 						<div class="container"
-							style="vertical-align: middle; margin-left: 20%;" align="center">
+							style="vertical-align: middle;" align="center">
 							<div class="col-sm-7 contact-form wow">
 
 								<div class="form-group col-sm-12">
@@ -105,10 +105,10 @@
 								
 								<input type="hidden" name="cnpj"
 									value="${prestadorPetshopLogado.cnpj}" />
-								<div class="form-group col-sm-10">
+								<div class="form-group col-sm-12">
 								<!-- input type="submit" class="btn" value="Registrar" /-->
-								<button type="submit" class="btn"
-									onclick="confirmaCadastroUnidade()">Registrar</button>
+								<button type="submit" class="btn col-md-offset-2"
+									onclick="confirmaCadastroUnidade()">asdRegistrar</button>
 								</div>	
 							</div>
 						</div>
