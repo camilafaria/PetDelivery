@@ -48,39 +48,40 @@
 		<div id="page-inner">
 			<div class="row">
 
-				<div class=" title col-md-12 page-title wow fadeIn">
-					<span aria-hidden="true" ></span>
+				<div class="page-title-container title col-md-12 page-title wow fadeIn">
+					<span aria-hidden="true" class="fa fa-paw"></span>
 					<h1 align="center">Meus PETs </h1>
 				</div>
-				<div class="col-md-12 col-md-offset-1">
 				
-				<c:if test="${empty daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
-					<h4>Parece que você ainda não cadastrou seu pet :( <br> Que tal cadastrá-lo?</h4>
-				</c:if>
+				<div class="col-md-12">
 				
-				<c:if test="${not empty daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
+					<c:if test="${empty daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
+						<h4>Parece que você ainda não cadastrou seu pet :( <br> Que tal cadastrá-lo?</h4>
+					</c:if>
 				
-					<table border="0" align="center" width="500px">
-						<tr align="center" class="table-header">
-							<th></th>
-							<th><b>Nome</b></th>
-							<th><b>Tipo</b></th>
-							<th><b>Raça</b></th>
-						</tr>					
-					
-						<c:forEach var="animal" items="${daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
-							<tr class="table-line">
-								<td>
-									<img src="assetsPosLogin/img/find-user.png" class="img-responsive img-circle" width="50px" height="50px" />
-								</td>
-								<td href="">${animal.nome}</td>
-								<td>${daoTipo.getTipoById(daoRaca.getTipoByRaca(animal.id_raca))}</td>
-								<td>${daoRaca.getRacaById(animal.id_raca)}</td>
-							</tr>
-						</c:forEach>			
-					
-					</table>
-				</c:if>
+					<c:if test="${not empty daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
+					<br>
+						<table border="0" align="center" width="500px">
+							<tr align="center" class="table-header">
+								<th></th>
+								<th><b>Nome</b></th>
+								<th><b>Tipo</b></th>
+								<th><b>Raça</b></th>
+							</tr>					
+						
+							<c:forEach var="animal" items="${daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
+								<tr class="table-line">
+									<td>
+										<img src="assetsPosLogin/img/find-user.png" class="img-responsive img-circle" width="50px" height="50px" />
+									</td>
+									<td href="">${animal.nome}</td>
+									<td>${daoTipo.getTipoById(daoRaca.getTipoByRaca(animal.id_raca))}</td>
+									<td>${daoRaca.getRacaById(animal.id_raca)}</td>
+								</tr>
+							</c:forEach>			
+						
+						</table>
+					</c:if>
 
 				
 					<br> <br>

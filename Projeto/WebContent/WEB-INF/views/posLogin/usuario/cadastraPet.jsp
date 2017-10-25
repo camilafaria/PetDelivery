@@ -48,8 +48,8 @@
 				<div class="page-title-container">
 					<div class="container">
 						<div class="row">
-							<div class="title col-sm-9 col-sm-offset-1 page-title wow fadeIn">
-								<span aria-hidden="true" class="icon_profile"></span>
+							<div class="title col-sm-9 page-title wow fadeIn">
+								<span aria-hidden="true" class="fa fa-paw"></span>
 								<h1>Cadastrar PET</h1>
 							</div>
 						</div>
@@ -58,8 +58,8 @@
 
 				<form action="inserePet" class="form-horizontal" method="post">
 					<div class="form-group">
-						<div class="container"  style="vertical-align: middle; margin-left:20%;" align="center">
-							<div class="col-sm-7 contact-form wow">
+						<div class="container"  style="vertical-align: middle;" align="center">
+							<div class="col-sm-6 col-sm-offset-2 contact-form wow">
 								<div class="form-group">
 									<label for="contact-name">Nome</label><input type="text"
 										name="nome" placeholder="Digite o nome do seu pet"

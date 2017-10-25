@@ -47,20 +47,19 @@
 		<div id="page-inner">
 			<div class="row">
 
-				<div class="title col-sm-9 col-sm-offset-1 wow fadeIn">
+				<div class="title col-sm-12 wow fadeIn">
 					<span aria-hidden="true"></span>
 					<h1><c:out value="${perfilPrestadorAutonomo.nome}"/></h1>
 					<h5><c:out value="${perfilPrestadorAutonomo.experiencia}"/></h5>
 					<h5>Avaliação: 
 						<c:out value="${perfilPrestador_nota}"/>
-					</div>
 					</h5>
 				</div>
 <br><br><br><br>
 				<img src="assetsPosLogin/img/prestador.jpg"
-					class="img-responsive img-circle col-sm-3"/>
+					class="img-responsive img-circle col-sm-3 col-sm-offset-1"/>
 
-				<div class="form-group col-sm-8">					
+				<div class="form-group col-sm-7">					
 					<div class="form-group col-sm-12">
 						<label for="contact-name" class="table-header">Localização: </label> <br>
 						<c:out value="${perfilPrestadorAutonomo.rua}"/>, 
