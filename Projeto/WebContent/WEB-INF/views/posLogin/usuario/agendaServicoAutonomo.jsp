@@ -85,66 +85,68 @@
 									<input type="radio" id="r1" name="radioData" value="dataInicio" onChange="checkRadioData()" checked>Apenas data de início 
 									<input type="radio" id="r2" name="radioData" value="dataInicioFim" onChange="checkRadioData()"> Data de início e fim definidos <br>
 								</div>
-								
-								<div class="form-group col-sm-5">
-									<label for="contact-name">Data de Início:</label> 
-									<input type="date" name="dataInicio" id="dataInicio" class="contact-name form-control" min="2017-10-26"> 
-								</div>
-								<div class="form-group col-sm-5">
-									<label for="contact-name">Data de Fim:</label> 
-									<input type="date" name="dataFim" id="dataFim" class="contact-name form-control" min="2017-10-26" disabled>
-								</div>
-								
-								<br><br>
-								
-								<div class="form-group col-sm-10">
-									<input type="radio" id="r1" name="radioTime" value="timeInicio" onChange="checkRadioTime()" checked>Apenas hora de início 
-									<input type="radio" id="r2" name="radioTime" value="timeInicioFim" onChange="checkRadioTime()"> Hora de início e fim definidos <br>
-								</div>
-
-								<div class="form-group col-sm-5">
-									<label for="contact-name">Hora de Início</label> 
-									<input type="text" name="horaInicio" class="contact-name form-control" id="horaInicio" placeholder="hh:mm"> 
-								</div>
-								<div class="form-group col-sm-5">
-									<label for="contact-name">Hora de Fim</label> 
-									<input type="text" name="horaFim" class="contact-name form-control" id="horaFim" placeholder="hh:mm" disabled>
-								</div>
-								
-								<br><br>
-								
-								<div class="form-group col-sm-10">
-									<label for="contact-name">Observacões:</label> <input
-										type="text" name="observacao"
-										placeholder="Descreva as bservacoes sobre o servico"
-										class="contact-name form-control">
-								</div>
-
-								<c:if test= "${param.delivery eq 'true'}" >
-									<div class="form-group col-sm-10">Deseja o serviço de delivery?</label> 
-											<select name="delivery" id="delivery">
-											<option value="true">Sim</option>
-											<option value="false">Não</option>
-										</select>
-								</c:if>						
-
-								<input type="hidden" name="id_usuario"
-									value="${usuarioLogado.cpf}" />
-								
-								<input type="hidden" name="id_prestador"
-									value="${perfilPrestadorAutonomo.cpf}" />
+								<div class="col-md-offset-2">
+									<div class="form-group col-sm-5">
+										<label for="contact-name">Data de Início:</label> 
+										<input type="date" name="dataInicio" id="dataInicio" class="contact-name form-control" min="2017-10-26"> 
+									</div>
+									<div class="form-group col-sm-5">
+										<label for="contact-name">Data de Fim:</label> 
+										<input type="date" name="dataFim" id="dataFim" class="contact-name form-control" min="2017-10-26" disabled>
+									</div>
 									
-								<input type="hidden" name="id_servico"
-									value="${id_servico}" />
-
-								<!-- input type="submit" class="btn" value="Registrar" /-->
-								<br><br><br>
+									<br><br>
+									
+									<div class="form-group col-sm-10">
+										<input type="radio" id="r1" name="radioTime" value="timeInicio" onChange="checkRadioTime()" checked>Apenas hora de início 
+										<input type="radio" id="r2" name="radioTime" value="timeInicioFim" onChange="checkRadioTime()"> Hora de início e fim definidos <br>
+									</div>
+	
+									<div class="form-group col-sm-5">
+										<label for="contact-name">Hora de Início</label> 
+										<input type="text" name="horaInicio" class="contact-name form-control" id="horaInicio" placeholder="hh:mm"> 
+									</div>
+									<div class="form-group col-sm-5">
+										<label for="contact-name">Hora de Fim</label> 
+										<input type="text" name="horaFim" class="contact-name form-control" id="horaFim" placeholder="hh:mm" disabled>
+									</div>
+								
+									<br><br>
+									
+									<div class="form-group col-sm-10">
+										<label for="contact-name">Observacões:</label> <input
+											type="text" name="observacao"
+											placeholder="Descreva as bservacoes sobre o servico"
+											class="contact-name form-control">
+									</div>
+	
+									<c:if test= "${param.delivery eq 'true'}" >
+										<div class="form-group col-sm-10">Deseja o serviço de delivery?</label> 
+												<select name="delivery" id="delivery">
+												<option value="true">Sim</option>
+												<option value="false">Não</option>
+											</select>
+										</div>
+									</c:if>						
+	
+									<input type="hidden" name="id_usuario"
+										value="${usuarioLogado.cpf}" />
+									
+									<input type="hidden" name="id_prestador"
+										value="${perfilPrestadorAutonomo.cpf}" />
+										
+									<input type="hidden" name="id_servico"
+										value="${id_servico}" />
+	
+									<!-- input type="submit" class="btn" value="Registrar" /-->
+									<br><br><br>
+									
+								</div>
 								<button type="submit" class="btn">Agendar servico</button>
 							</div>
 						</div>
 					</div>
 				</form>
-
 			</div>
 		</div>
 	</div>

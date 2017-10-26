@@ -44,7 +44,7 @@
 				<div class="page-title-container">
 					<div class="container">
 						<div class="row">
-							<div class="title col-sm-9 page-title wow fadeIn">
+							<div class="title col-sm-10 page-title wow fadeIn">
 								<span aria-hidden="true" class="icon_search"></span>
 								<h1>Petlovers</h1>
 							</div>
