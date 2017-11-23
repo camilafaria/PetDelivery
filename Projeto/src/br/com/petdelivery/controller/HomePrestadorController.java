@@ -1,20 +1,32 @@
 package br.com.petdelivery.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import br.com.petdelivery.jdbc.dao.Agenda_ServicoDAO;
 import br.com.petdelivery.jdbc.dao.AnimalDAO;
 import br.com.petdelivery.jdbc.dao.AutonomoDAO;
 import br.com.petdelivery.jdbc.dao.PetshopDAO;
 import br.com.petdelivery.jdbc.dao.PrestadorDAO;
+import br.com.petdelivery.jdbc.dao.ServicoDAO;
 import br.com.petdelivery.jdbc.dao.Servico_AutonomoDAO;
 import br.com.petdelivery.jdbc.dao.Servico_PetshopDAO;
 import br.com.petdelivery.jdbc.dao.Unidade_PetshopDAO;
 import br.com.petdelivery.jdbc.dao.UsuarioDAO;
+import br.com.petdelivery.jdbc.modelo.Agenda_Servico;
 import br.com.petdelivery.jdbc.modelo.Autonomo;
 import br.com.petdelivery.jdbc.modelo.Petshop;
 import br.com.petdelivery.jdbc.modelo.Prestador;
@@ -125,4 +137,42 @@ public class HomePrestadorController {
 		
 		return "posLogin/prestador/petshop/home"; 
 	}
+	
+	@RequestMapping("agenda")
+	public String visualizaAgendaAutonomo(HttpSession session) {
+		return "posLogin/prestador/autonomo/agenda";	
+	}
+	
+	@RequestMapping("populaAgenda.json")
+	public @ResponseBody String populaAgendaAutonomo(Autonomo autonomo, HttpSession session, HttpServletResponse response) {
+		System.out.println("PASSEI POR AQUI" + autonomo.getCpf());
+		
+		List<Agenda_Servico> agendamentos = new ArrayList();
+		agendamentos = new Agenda_ServicoDAO().getAgendamentosPrestador(new Long(111111111));
+		
+		List<Map<String, Object>> setAgendamentos = new ArrayList<Map<String, Object>>();		
+		for (Agenda_Servico agendamento : agendamentos) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("id", agendamento.getId_agendamento());
+			map.put("title", new ServicoDAO().getServicoById(agendamento.getId_servico()) + " " + new AnimalDAO().getAnimalById(agendamento.getId_animal()));
+			map.put("start", agendamento.getDataInicio() + " " + agendamento.getHoraInicio());
+			map.put("end", agendamento.getDataFim() + " " + agendamento.getHoraFim());
+						
+			setAgendamentos.add(map);
+		}
+		
+		JSONArray json = new JSONArray();
+		json.put(setAgendamentos);
+		try {
+		    System.err.println(json.toString(2));		    
+		} catch (JSONException e) {
+		    e.printStackTrace();
+		}
+		
+		response.setContentType("application/json");
+	    response.setCharacterEncoding("UTF-8");
+
+	    String jsonString = json.toString();		
+	    return jsonString.substring(1, jsonString.length()-1);				
+	}	
 }
