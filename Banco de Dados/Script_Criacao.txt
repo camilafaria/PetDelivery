@@ -139,6 +139,7 @@ CREATE TABLE AGENDA_SERVICO (
     horaFim varchar(10),
     observacao varchar(300),
     delivery boolean,
+    status varchar(30),
 		PRIMARY KEY (id_agendamento),
 		FOREIGN KEY (id_usuario) REFERENCES Usuario (cpf),
 		FOREIGN KEY (id_prestador) REFERENCES Prestador (id_prestador),

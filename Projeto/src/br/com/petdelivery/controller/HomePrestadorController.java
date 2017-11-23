@@ -157,7 +157,8 @@ public class HomePrestadorController {
 			map.put("title", new ServicoDAO().getServicoById(agendamento.getId_servico()) + " " + new AnimalDAO().getAnimalById(agendamento.getId_animal()));
 			map.put("start", agendamento.getDataInicio() + " " + agendamento.getHoraInicio());
 			map.put("end", agendamento.getDataFim() + " " + agendamento.getHoraFim());
-						
+			map.put("url", "visualiza-servico?id=" + agendamento.getId_agendamento());
+			map.put("backgroundColor", agendamento.getStatus().compareTo("a confirmar") == 0 ? "#ff4d4d" : "#009999");
 			setAgendamentos.add(map);
 		}
 		
@@ -174,5 +175,26 @@ public class HomePrestadorController {
 
 	    String jsonString = json.toString();		
 	    return jsonString.substring(1, jsonString.length()-1);				
-	}	
+	}
+	
+	@RequestMapping("visualiza-servico")
+	public String visualizaServicoAutonomo (HttpServletRequest request, HttpSession session) {
+		Agenda_Servico agendamento = new Agenda_Servico();
+		agendamento = new Agenda_ServicoDAO().getAgendamentosByID(Long.parseLong(request.getParameter("id")));
+		session.setAttribute("servicoSelecionado", agendamento);
+		
+		return "posLogin/prestador/autonomo/visualizaServico";
+	}
+	
+	@RequestMapping("updateStatus")
+	public String updateStatusServicoAutonomo (String status, Long id_agendamento, HttpServletRequest request, HttpSession session) {
+		if ( status.compareTo("cancelado") == 0 )
+			new Agenda_ServicoDAO().delete(id_agendamento);
+		else
+			new Agenda_ServicoDAO().updateStatus(status, id_agendamento);				
+		
+		return "posLogin/prestador/autonomo/agenda";
+	}
+	
+	
 }

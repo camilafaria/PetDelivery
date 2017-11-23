@@ -179,4 +179,50 @@ public class UsuarioDAO {
 
 		return null;
 	}
+	
+	public String getNameById (Long cpf) {
+		
+		String sql = "SELECT nome FROM USUARIO WHERE cpf=?";
+		String nome = "";
+		
+		PreparedStatement stmt;
+		try {
+			stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, cpf);			
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()){				
+				nome = rs.getString("nome");								
+				stmt.close();
+				return nome;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return nome;
+	}
+	
+	public String getEmailById (Long cpf) {
+		
+		String sql = "SELECT email FROM USUARIO WHERE cpf=?";
+		String email = "";
+		
+		PreparedStatement stmt;
+		try {
+			stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, cpf);			
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()){				
+				email = rs.getString("email");								
+				stmt.close();
+				return email;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;		
+	}
 }

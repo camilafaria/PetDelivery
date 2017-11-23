@@ -16,7 +16,14 @@ public class Agenda_Servico {
 	private String horaFim;
 	private String observacao;
 	private boolean delivery;
+	private String status;
 	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public boolean isDelivery() {
 		return delivery;
 	}

@@ -20,8 +20,8 @@ public class Agenda_ServicoDAO {
 		}
 
 		public void insert(Agenda_Servico agendamento) {					
-			String sql = "INSERT INTO Agenda_Servico " + "(id_usuario,id_prestador,id_servico,id_animal,dataInicio,dataFim,horaInicio,horaFim,observacao,delivery)"
-							+ " VALUES (?,?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO Agenda_Servico " + "(id_usuario,id_prestador,id_servico,id_animal,dataInicio,dataFim,horaInicio,horaFim,observacao,delivery,status)"
+							+ " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 			
 			try {
 				// prepared statement para inserção
@@ -38,6 +38,7 @@ public class Agenda_ServicoDAO {
 				stmt.setString(8, agendamento.getHoraFim());
 				stmt.setString(9, agendamento.getObservacao());
 				stmt.setBoolean(10, agendamento.isDelivery());
+				stmt.setString(11, "a confirmar");
 				
 				// executa
 				System.out.println("Agenda_ServicoDAO.insert:\n"+stmt.toString());
@@ -48,6 +49,19 @@ public class Agenda_ServicoDAO {
 				throw new RuntimeException(e);
 			}
 		}
+		
+		public void delete (Long id_agendamento) {
+			String sql = "DELETE FROM AGENDA_SERVICO WHERE id_agendamento=?";
+			
+			try {
+				PreparedStatement stmt = connection.prepareStatement(sql);				
+				stmt.setLong(1, id_agendamento);
+				stmt.execute();
+				stmt.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}			
+		}		
 		
 		public List<Agenda_Servico> getAgendamentos (Long cpfUsuario) {
 			String sql = "SELECT * FROM Agenda_Servico WHERE id_usuario=? and dataInicio >= (SELECT CURDATE());";	
@@ -71,7 +85,8 @@ public class Agenda_ServicoDAO {
 					agendamento.setHoraInicio(rs.getString("horaInicio"));
 					agendamento.setHoraFim(rs.getString("horaFim"));
 					agendamento.setObservacao(rs.getString("observacao"));
-					agendamento.setDelivery(rs.getBoolean("delivery"));				
+					agendamento.setDelivery(rs.getBoolean("delivery"));
+					agendamento.setStatus(rs.getString("status"));	
 					
 					agendamentos.add(agendamento);
 				}
@@ -106,7 +121,8 @@ public class Agenda_ServicoDAO {
 					agendamento.setHoraInicio(rs.getString("horaInicio"));
 					agendamento.setHoraFim(rs.getString("horaFim"));
 					agendamento.setObservacao(rs.getString("observacao"));
-					agendamento.setDelivery(rs.getBoolean("delivery"));				
+					agendamento.setDelivery(rs.getBoolean("delivery"));
+					agendamento.setStatus(rs.getString("status"));
 					
 					agendamentos.add(agendamento);
 				}
@@ -118,4 +134,106 @@ public class Agenda_ServicoDAO {
 				throw new RuntimeException(e);
 			}
 		}
+		
+		public Agenda_Servico getAgendamentosByID (Long id_agendamento) {
+			String sql = "SELECT * FROM Agenda_Servico WHERE id_agendamento=?";	
+			Agenda_Servico agendamento = new Agenda_Servico();
+
+			try {
+				// prepared statement para inserção
+				PreparedStatement stmt = connection.prepareStatement(sql);			
+				stmt.setLong(1, id_agendamento);
+				ResultSet rs = stmt.executeQuery();
+				
+				while (rs.next()) {				
+					agendamento.setId_agendamento(rs.getLong("id_agendamento"));
+					agendamento.setId_usuario(rs.getLong("id_usuario"));
+					agendamento.setId_servico(rs.getLong("id_servico"));
+					agendamento.setId_animal(rs.getLong("id_animal"));
+					agendamento.setId_prestador(rs.getLong("id_prestador"));
+					agendamento.setDataInicio(rs.getDate("dataInicio"));
+					agendamento.setDataFim(rs.getDate("dataFim"));
+					agendamento.setHoraInicio(rs.getString("horaInicio"));
+					agendamento.setHoraFim(rs.getString("horaFim"));
+					agendamento.setObservacao(rs.getString("observacao"));
+					agendamento.setDelivery(rs.getBoolean("delivery"));
+					agendamento.setStatus(rs.getString("status"));
+					
+					stmt.close();					
+					return agendamento;
+				}
+				
+			return agendamento;
+				
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		
+		public void updateServicoByUsuario(Long id_agendamento, Agenda_Servico agendamento) {					
+			String sql = "UPDATE AGENDA_SERVICO SET id_servico=?, id_animal=?, dataInicio=?, dataFim=?, horaInicio=?, horaFim=?, observacao=?, delivery=?"
+					+ "WHERE id_agendamento=?";			
+			
+			try {
+				// prepared statement para inserção
+				PreparedStatement stmt = connection.prepareStatement(sql);
+
+				// seta os valores				
+				stmt.setLong(1, agendamento.getId_servico());
+				stmt.setLong(2, agendamento.getId_animal());
+				stmt.setDate(3, agendamento.getDataInicio());
+				stmt.setDate(4, agendamento.getDataFim());
+				stmt.setString(5, agendamento.getHoraInicio());
+				stmt.setString(6, agendamento.getHoraFim());
+				stmt.setString(7, agendamento.getObservacao());
+				stmt.setBoolean(8, agendamento.isDelivery());
+				stmt.setLong(9, id_agendamento);
+				
+				stmt.execute();
+				stmt.close();
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		
+		public void updateStatus (String status, Long id_agendamento) {
+			String sql = "UPDATE AGENDA_SERVICO SET status=? WHERE id_agendamento=?";
+			
+			try {
+				// prepared statement para inserção
+				PreparedStatement stmt = connection.prepareStatement(sql);
+
+				// seta os valores				
+				stmt.setString(1, status);
+				stmt.setLong(2, id_agendamento);
+				stmt.execute();
+				stmt.close();
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}			
+		}
+		
+		public String getStatus (Long id_agendamento) {
+			String sql = "SELECT status FROM AGENDA_SERVICO WHERE id_agendamento=?";
+			String status = "";
+			
+			try {
+				PreparedStatement stmt = connection.prepareStatement(sql);			
+				stmt.setLong(1, id_agendamento);
+				ResultSet rs = stmt.executeQuery();
+				
+				while (rs.next()) {
+					status = rs.getString("id_agendamento");
+					stmt.close();
+					return status;				
+				}
+				return status;				
+				
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}			
+		}
+		
 }
