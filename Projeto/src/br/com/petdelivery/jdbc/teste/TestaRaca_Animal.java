@@ -21,7 +21,7 @@ public class TestaRaca_Animal {
 		List<String> racas = new ArrayList();
 		Raca_AnimalDAO raca_animaldao = new Raca_AnimalDAO();
 		
-		racas = raca_animaldao.getRacaByTipo(1L);
+		//racas = raca_animaldao.getRacaByTipo(1L);
 		
 		for (int i = 0; i < racas.size(); i++) {
 			String raca = racas.get(i);

@@ -197,4 +197,24 @@ public class HomePrestadorController {
 		return "redirect: agenda";
 	}
 	
+	@RequestMapping("editaServicoAutonomo")
+	public String redirecionaEdicaoServico (HttpServletRequest request, HttpSession session) {		
+		Servico_Autonomo servico = new Servico_AutonomoDAO().getServicoById(Long.parseLong(request.getParameter("id")));
+		session.setAttribute("servicoSelecionado", servico);
+		return "posLogin/prestador/autonomo/editaServico";
+	}
+	
+	@RequestMapping("confirmaEdicaoServicoAutonomo")
+	public String editaServicoAutonomo (Servico_Autonomo servico, HttpServletRequest request, HttpSession session) {		
+		new Servico_AutonomoDAO().update(servico);
+		session.setAttribute("servicoAtualizado", servico);
+		return "redirect:servicosAutonomo";
+	}
+	
+	@RequestMapping("confirmaExclusaoServicoAutonomo")
+	public String excluiServicoAutonomo (HttpServletRequest request, HttpSession session) {		
+		new Servico_AutonomoDAO().delete(Long.parseLong(request.getParameter("id")));		
+		return "redirect:servicosAutonomo";
+	}
+	
 }

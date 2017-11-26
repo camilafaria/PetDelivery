@@ -76,6 +76,21 @@ public class AnimalDAO {
 		}
 	}
 	
+	public void delete(Long id_animal) {
+		String sql = "DELETE FROM ANIMAL WHERE id_animal=?";
+
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, id_animal);
+			stmt.execute();
+			stmt.close();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	public List<Animal> getAnimalUsuario(Long id_usuario) {
 		String sql = "SELECT * FROM ANIMAL WHERE id_usuario=?";
 		List<Animal> animais = new ArrayList();				

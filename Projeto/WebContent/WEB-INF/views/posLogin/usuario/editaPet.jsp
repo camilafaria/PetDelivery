@@ -27,6 +27,25 @@
 <link href="http://fonts.googleapis.com/css?family=Open+Sans"
 	rel="stylesheet" type="text/css" />
 <c:import url="../favicon.jsp" />
+
+<script>
+$(document).ready(function() {
+
+$('#id_tipo').change(function(event) {
+        var sports = $("select#id_tipo").val();
+        $.get('JsonServlet', {
+                id_tipo : sports
+        }, function(response) {
+
+        var select = $('#id_raca');
+        select.find('option').remove();
+          $.each(response, function(index, value) {
+          $('<option>').val(value.id_raca).text(value.nome).appendTo(select);
+      });
+        });
+        });
+});
+</script>
 </head>
 
 <body>
@@ -85,11 +104,10 @@
 								</div>		
 
 								<div class="form-group">
-									<label for="contact-name">Raça</label>
-									<select name="id_raca" id="id_raca">
-										<option selected value="${animalSelecionado.id_raca}"> ${daoRacaAnimal.getRacaById(animalSelecionado.id_raca)} </option>
-										<!--  Colocar código AJAX -->								
-								    </select>
+									<label for="contact-name">Raça</label> <select name="id_raca"
+										id="id_raca">
+										<option>Selecione uma Raça</option>
+									</select>
 								</div>
 
 								<div class="form-group">

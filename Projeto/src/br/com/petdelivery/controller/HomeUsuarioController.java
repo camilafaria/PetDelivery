@@ -318,6 +318,12 @@ public class HomeUsuarioController {
 		session.setAttribute("animalAtualizado", animal);
 		return "posLogin/usuario/meusPets";
 	}
+	
+	@RequestMapping("confirmaExclusaoPet")
+	public String excluiPet (HttpServletRequest request, HttpSession session) {
+		new AnimalDAO().delete(Long.parseLong((request.getParameter("id"))));		
+		return "posLogin/usuario/meusPets";
+	}
 
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {

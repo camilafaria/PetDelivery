@@ -70,6 +70,7 @@
 								<th><b>Tipo</b></th>
 								<th><b>Raça</b></th>
 								<th><b></b></th>
+								<th><b></b></th>
 							</tr>					
 						
 							<c:forEach var="animal" items="${daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
@@ -80,13 +81,13 @@
 									<td href="">${animal.nome}</td>
 									<td>${daoTipo.getTipoById(daoRaca.getTipoByRaca(animal.id_raca))}</td>
 									<td>${daoRaca.getRacaById(animal.id_raca)}</td>
-									<td><a href="editaPet?id=${animal.id_animal}">Detalhes</a></td>
+									<td><a href="editaPet?id=${animal.id_animal}">Editar</a></td>
+									<td><a href="javascript:confirmaExclusao();">Excluir</a></td>
 								</tr>
 							</c:forEach>			
 						
 						</table>
 					</c:if>
-
 				
 					<br> <br>
 					<form action="cadastro-pet">
@@ -101,6 +102,13 @@
 	<c:import url="footer.jsp" />
 
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+	<script>
+	function confirmaExclusao(){
+		if (confirm('Tem certeza que deseja excluir este pet?')){		
+			window.location = 'confirmaExclusaoPet?id=' + ${animal.id_animal};
+		}
+	}
+	</script>
 	<!-- JQUERY SCRIPTS -->
 	<script src="assetsPosLogin/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->

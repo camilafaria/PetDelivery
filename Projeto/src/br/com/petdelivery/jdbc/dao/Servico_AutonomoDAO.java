@@ -45,6 +45,46 @@ public class Servico_AutonomoDAO {
 		}
 	}
 	
+	public void update(Servico_Autonomo servico_autonomo) {
+		String sql = "UPDATE SERVICO_AUTONOMO SET id_servico=?, preco=?, condicoes=?, delivery=? "
+				+ "WHERE id_servicoAutonomo=?";
+
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);
+
+			// seta os valores			
+			stmt.setLong(1, servico_autonomo.getId_servico());			
+			stmt.setDouble(2, servico_autonomo.getPreco());
+			stmt.setString(3, servico_autonomo.getCondicoes());
+			stmt.setBoolean(4,servico_autonomo.getDelivery());
+			stmt.setLong(5, servico_autonomo.getId_servicoAutonomo());
+
+			// executa
+			System.out.println("UPDATE: " + stmt.toString());
+			stmt.execute();
+			stmt.close();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public void delete(Long id_servico_autonomo) {
+		String sql = "DELETE FROM SERVICO_AUTONOMO WHERE id_servicoAutonomo=?";
+
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, id_servico_autonomo);
+			stmt.execute();
+			stmt.close();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	public List<Servico_Autonomo> getServico (Long cpf) {
 		String sql = "SELECT * FROM Servico_Autonomo WHERE cpf=?";
 		List<Servico_Autonomo> servicos = new ArrayList();				
@@ -102,4 +142,34 @@ public class Servico_AutonomoDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public Servico_Autonomo getServicoById (Long id_servicoAutonomo) {
+		String sql = "SELECT * FROM Servico_Autonomo WHERE id_servicoAutonomo=?";
+		Servico_Autonomo servico = new Servico_Autonomo();				
+
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);			
+			stmt.setLong(1, id_servicoAutonomo);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {				
+				servico.setId_servicoAutonomo(rs.getLong("id_servicoAutonomo"));
+				servico.setId_servico(rs.getLong("id_servico"));
+				servico.setCpf(rs.getLong("cpf"));
+				servico.setPreco(rs.getDouble("preco"));
+				servico.setCondicoes(rs.getString("condicoes"));
+				servico.setDelivery(rs.getBoolean("delivery"));
+				
+				stmt.close();
+				return servico;				
+			}			
+			
+			return servico;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 }

@@ -17,8 +17,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Pet Delivery</title>
-
+<title>Pet Delivery</title>	
+	
 <!-- BOOTSTRAP STYLES-->
 <link href="assetsPosLogin/css/bootstrap.css" rel="stylesheet" />
 <!-- FONTAWESOME STYLES-->
@@ -30,6 +30,7 @@
 	rel="stylesheet" type="text/css" />
 <c:import url="../../favicon.jsp" />
 </head>
+
 <body>
  	<c:import url="headerAutonomo.jsp" />
 
@@ -69,6 +70,8 @@
 								<th>Preço</th>
 								<th>Condições</th>
 								<th>Delivery</th>
+								<th></th>
+								<th></th>
 							</tr>					
 						
 							<c:forEach var="servico"
@@ -78,8 +81,11 @@
 									<td>R$ ${servico.preco}0</td>
 									<td>${servico.condicoes}</td>
 									<td>${servico.delivery eq 'true'? 'Sim' : 'Não'}</td>
+									<td><a href="editaServicoAutonomo?id=${servico.id_servicoAutonomo}">Atualizar</a></td>
+									<td><a href="javascript:confirmaExclusao();"> Excluir </a></td>						
+									
 								</tr>
-							</c:forEach>			
+							</c:forEach>						
 						
 						</table>
 					</c:if>				
@@ -92,11 +98,18 @@
 			</div>
 		</div>
 	</div>
-
-
+	
 	<c:import url="footer.jsp" />
 
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+	<script language="javascript">
+	function confirmaExclusao(){
+		System.out.println("ESTOU EXECUTANDO");
+		if (confirm('Tem certeza que deseja excluir este serviço?')){		
+			window.location = 'confirmaExclusaoServicoAutonomo?id=' + ${servico.id_servicoAutonomo};
+		}
+	}
+	</script>	
 	<!-- JQUERY SCRIPTS -->
 	<script src="assetsPosLogin/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->
