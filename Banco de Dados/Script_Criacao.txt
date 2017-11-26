@@ -14,7 +14,7 @@ CREATE TABLE USUARIO (
 	cep varchar(20) NOT NULL,
     email varchar(200) NOT NULL,
     senha varchar(8) NOT NULL,
-    foto mediumblob,
+    foto varchar(v),
     PRIMARY KEY (cpf)
 );
 
@@ -50,6 +50,7 @@ CREATE TABLE ANIMAL (
 
 CREATE TABLE PRESTADOR (
 	id_prestador bigint NOT NULL,
+	tipo int NOT NULL,
     email varchar(150) NOT NULL,
     senha varchar(8) NOT NULL,
     somanota float NOT NULL,
@@ -138,7 +139,8 @@ CREATE TABLE AGENDA_SERVICO (
     dataFim date,	
     horaInicio varchar(10) NOT NULL,
     horaFim varchar(10),
-    observacao varchar(300),
+    obsCliente varchar(300),
+	obsPrestador varchar(300),
     delivery boolean,
     status varchar(30),
 		PRIMARY KEY (id_agendamento),

@@ -20,8 +20,8 @@ public class Agenda_ServicoDAO {
 		}
 
 		public void insert(Agenda_Servico agendamento) {					
-			String sql = "INSERT INTO Agenda_Servico " + "(id_usuario,id_prestador,id_servico,id_animal,dataInicio,dataFim,horaInicio,horaFim,observacao,delivery,status)"
-							+ " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO Agenda_Servico " + "(id_usuario,id_prestador,id_servico,id_animal,dataInicio,dataFim,horaInicio,horaFim,obsCliente,obsPrestador,delivery,status)"
+							+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 			
 			try {
 				// prepared statement para inserção
@@ -36,9 +36,10 @@ public class Agenda_ServicoDAO {
 				stmt.setDate(6, agendamento.getDataFim());
 				stmt.setString(7, agendamento.getHoraInicio());
 				stmt.setString(8, agendamento.getHoraFim());
-				stmt.setString(9, agendamento.getObservacao());
-				stmt.setBoolean(10, agendamento.isDelivery());
-				stmt.setString(11, "a confirmar");
+				stmt.setString(9, agendamento.getObsCliente());
+				stmt.setString(10, null);
+				stmt.setBoolean(11, agendamento.isDelivery());
+				stmt.setString(12, "a confirmar");
 				
 				// executa
 				System.out.println("Agenda_ServicoDAO.insert:\n"+stmt.toString());
@@ -84,7 +85,8 @@ public class Agenda_ServicoDAO {
 					agendamento.setDataFim(rs.getDate("dataFim"));
 					agendamento.setHoraInicio(rs.getString("horaInicio"));
 					agendamento.setHoraFim(rs.getString("horaFim"));
-					agendamento.setObservacao(rs.getString("observacao"));
+					agendamento.setObsCliente(rs.getString("obsCliente"));
+					agendamento.setObsPrestador(rs.getString("obsPrestador"));
 					agendamento.setDelivery(rs.getBoolean("delivery"));
 					agendamento.setStatus(rs.getString("status"));	
 					
@@ -100,7 +102,7 @@ public class Agenda_ServicoDAO {
 		}
 		
 		public List<Agenda_Servico> getAgendamentosPrestador (Long id_prestador) {
-			String sql = "SELECT * FROM Agenda_Servico WHERE id_prestador=?";	
+			String sql = "SELECT * FROM Agenda_Servico WHERE id_prestador=? AND status NOT IN ('cancelado')";	
 			List<Agenda_Servico> agendamentos = new ArrayList();				
 
 			try {
@@ -120,7 +122,8 @@ public class Agenda_ServicoDAO {
 					agendamento.setDataFim(rs.getDate("dataFim"));
 					agendamento.setHoraInicio(rs.getString("horaInicio"));
 					agendamento.setHoraFim(rs.getString("horaFim"));
-					agendamento.setObservacao(rs.getString("observacao"));
+					agendamento.setObsCliente(rs.getString("obsCliente"));
+					agendamento.setObsPrestador(rs.getString("obsPrestador"));
 					agendamento.setDelivery(rs.getBoolean("delivery"));
 					agendamento.setStatus(rs.getString("status"));
 					
@@ -155,7 +158,8 @@ public class Agenda_ServicoDAO {
 					agendamento.setDataFim(rs.getDate("dataFim"));
 					agendamento.setHoraInicio(rs.getString("horaInicio"));
 					agendamento.setHoraFim(rs.getString("horaFim"));
-					agendamento.setObservacao(rs.getString("observacao"));
+					agendamento.setObsCliente(rs.getString("obsCliente"));
+					agendamento.setObsPrestador(rs.getString("obsPrestador"));
 					agendamento.setDelivery(rs.getBoolean("delivery"));
 					agendamento.setStatus(rs.getString("status"));
 					
@@ -170,8 +174,8 @@ public class Agenda_ServicoDAO {
 			}
 		}
 		
-		public void updateServicoByUsuario(Long id_agendamento, Agenda_Servico agendamento) {					
-			String sql = "UPDATE AGENDA_SERVICO SET id_servico=?, id_animal=?, dataInicio=?, dataFim=?, horaInicio=?, horaFim=?, observacao=?, delivery=?"
+		public void updateServicoByUsuario(Agenda_Servico agendamento) {					
+			String sql = "UPDATE AGENDA_SERVICO SET id_servico=?, id_animal=?, dataInicio=?, dataFim=?, horaInicio=?, horaFim=?, obsCliente=?, delivery=?"
 					+ "WHERE id_agendamento=?";			
 			
 			try {
@@ -185,9 +189,9 @@ public class Agenda_ServicoDAO {
 				stmt.setDate(4, agendamento.getDataFim());
 				stmt.setString(5, agendamento.getHoraInicio());
 				stmt.setString(6, agendamento.getHoraFim());
-				stmt.setString(7, agendamento.getObservacao());
+				stmt.setString(7, agendamento.getObsCliente());				
 				stmt.setBoolean(8, agendamento.isDelivery());
-				stmt.setLong(9, id_agendamento);
+				stmt.setLong(9, agendamento.getId_agendamento());
 				
 				stmt.execute();
 				stmt.close();
@@ -197,8 +201,8 @@ public class Agenda_ServicoDAO {
 			}
 		}
 		
-		public void updateStatus (String status, Long id_agendamento) {
-			String sql = "UPDATE AGENDA_SERVICO SET status=? WHERE id_agendamento=?";
+		public void updateStatus (String status, String obsPrestador, Long id_agendamento) {
+			String sql = "UPDATE AGENDA_SERVICO SET status=?, obsPrestador=? WHERE id_agendamento=?";
 			
 			try {
 				// prepared statement para inserção
@@ -206,7 +210,8 @@ public class Agenda_ServicoDAO {
 
 				// seta os valores				
 				stmt.setString(1, status);
-				stmt.setLong(2, id_agendamento);
+				stmt.setString(2, obsPrestador);
+				stmt.setLong(3, id_agendamento);
 				stmt.execute();
 				stmt.close();
 

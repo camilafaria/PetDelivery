@@ -28,8 +28,8 @@ public class PrestadorDAO {
 	 * 
 	 */
 	public void insert(Prestador prestador) {
-		String sql = "INSERT INTO PRESTADOR " + "(id_prestador,email,senha,somanota,somaqnt)"
-				+ " VALUES (?,?,?,?,?)";
+		String sql = "INSERT INTO PRESTADOR " + "(id_prestador,tipo,email,senha,somanota,somaqnt)"
+				+ " VALUES (?,?,?,?,?,?)";
 		
 		try {
 			// prepared statement para inserção
@@ -38,10 +38,11 @@ public class PrestadorDAO {
 			
 			// seta os valores			
 			stmt.setLong(1, prestador.getId_prestador());
-			stmt.setString(2, prestador.getEmail());
-			stmt.setString(3, prestador.getSenha());
-			stmt.setFloat(4, prestador.getSomaNota());
-			stmt.setInt(5, prestador.getSomaQnt());
+			stmt.setInt(2, prestador.getTipo());
+			stmt.setString(3, prestador.getEmail());
+			stmt.setString(4, prestador.getSenha());
+			stmt.setFloat(5, prestador.getSomaNota());
+			stmt.setInt(6, prestador.getSomaQnt());
 			
 			// executa
 			stmt.execute();
@@ -65,6 +66,7 @@ public class PrestadorDAO {
 			if (rs.next()){
 				//Seta variaveis
 				prestador.setId_prestador(rs.getLong("id_prestador"));
+				prestador.setTipo(rs.getInt("tipo"));
 				prestador.setSomaNota(rs.getFloat("somanota"));
 				prestador.setSomaQnt(rs.getInt("somaqnt"));
 				prestador.setEmail(rs.getString("email"));
@@ -392,5 +394,27 @@ public class PrestadorDAO {
 		}	
 		return null;
 	}
-
+	
+	public int getTipoById (Long id_prestador) {
+		String sql = "SELECT tipo from prestador where id_prestador=?";
+		int tipo = -1;
+		
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, id_prestador);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				tipo = rs.getInt("tipo");
+				stmt.close();
+				return tipo;
+			}
+			
+			return tipo;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}	
+	}
 }

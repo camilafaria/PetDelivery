@@ -59,8 +59,8 @@
 						</div>
 					</div>
 
-					<div id="calendar"></div>
-
+					<div id="calendar"></div>					
+					
 				</div>
 			</div>
 		</div>
@@ -82,9 +82,9 @@
 	<script src='assetsPosLogin/js/jqueryCalendar.min.js'></script>
 	<script src='assetsPosLogin/js/momentCalendar.min.js'></script>
 	<script src='assetsPosLogin/js/fullcalendar.min.js'></script>
-
+	
 	<script>
-
+		var cpfAutonomo = '${prestadorAutonomoLogado.cpf}';		
 		$(document).ready(function() {			
 			$('#calendar').fullCalendar({
 				header: {
@@ -97,15 +97,19 @@
 				editable: true,
 				eventLimit: true, // allow "more" link when too many events
 				events: {
-					url: 'populaAgenda.json'	
+					url: 'populaAgenda',
+					type: 'POST',
+					data: {
+						cpf: cpfAutonomo
+					}
 				},
 				eventClick: function(event) {
 			        if (event.url) {
-			            window.open(event.url, 'STATUS=no, TOP=10, LEFT=10, WIDTH=770, HEIGHT=400');
+			            window.open(event.url);
 			            return false;       
 			        }
 			    }
-			});		
+			});			
 		});
 	</script>
 

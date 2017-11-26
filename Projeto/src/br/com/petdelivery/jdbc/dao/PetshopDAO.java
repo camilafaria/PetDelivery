@@ -93,5 +93,27 @@ public class PetshopDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public String getNomeById (Long cnpj) {
+		String sql = "SELECT nome FROM PETSHOP WHERE cnpj=?";
+		String nome = "";
+		
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, cnpj);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				nome = rs.getString("nome");
+				stmt.close();
+				return nome;
+			}
+			
+			return nome;
 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

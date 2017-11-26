@@ -193,9 +193,37 @@ public class HomeUsuarioController {
 		new Agenda_ServicoDAO().insert(agendamento);
 		session.setAttribute("agendamentoCadastrado", true);
 
+		return "redirect:home";
+	}
+	
+	@RequestMapping("visualizaServico")
+	public String visualizaAgendamento(HttpSession session, HttpServletRequest request) {
+		Agenda_Servico servico =  new Agenda_ServicoDAO().getAgendamentosByID(Long.parseLong(request.getParameter("id")));
+		session.setAttribute("servicoSelecionado", servico);
+
+		return "posLogin/usuario/visualizaServico";
+	}
+	
+	@RequestMapping("cancelaServico")
+	public String cancelaAgendamento(HttpSession session, HttpServletRequest request) {
+		new Agenda_ServicoDAO().delete(Long.parseLong(request.getParameter("id")));		
 		return "posLogin/usuario/home";
 	}
-
+	
+	@RequestMapping("editaServico")
+	public String redirecionaEdicaoServico (HttpServletRequest request, HttpSession session) {
+		Agenda_Servico agendamento = new Agenda_ServicoDAO().getAgendamentosByID(Long.parseLong((request.getParameter("id"))));
+		session.setAttribute("servicoSelecionado", agendamento);
+		return "posLogin/usuario/editaServico";
+	}
+	
+	@RequestMapping("confirmaEdicaoServico")
+	public String editaServico (Agenda_Servico agendamento, HttpServletRequest request, HttpSession session) {		
+		new Agenda_ServicoDAO().updateServicoByUsuario(agendamento);
+		session.setAttribute("servicoAtualizado", true);
+		return "posLogin/usuario/home";
+	}	
+	
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
