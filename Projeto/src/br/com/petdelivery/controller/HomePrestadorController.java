@@ -194,7 +194,7 @@ public class HomePrestadorController {
 		else
 			new Agenda_ServicoDAO().updateStatus(status, request.getParameter("obsPrestador"), Long.parseLong(request.getParameter("id")));				
 		
-		return "posLogin/prestador/autonomo/agenda";
+		return "redirect: agenda";
 	}
 	
 }

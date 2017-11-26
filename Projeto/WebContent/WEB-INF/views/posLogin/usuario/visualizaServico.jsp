@@ -80,7 +80,7 @@
 		<c:out value="${servicoSelecionado.status}"/>
 		
 	<br><label for="contact-name" class="table-header"> Observação do Prestador: </label>
-	<c:out value="${servicoSelecionado.obsPrestador eq null? 'Não informado' : servicoSelecionado.obsPrestador}"/>	
+	<c:out value="${servicoSelecionado.obsPrestador eq (null or 'null')? 'Não informado' : servicoSelecionado.obsPrestador}"/>	
 	
 	<c:if test="${servicoSelecionado.status ne 'cancelado'}">
 		<br><br><button type="submit" class="btn" onclick="editaServico()"> Editar Serviço </button>

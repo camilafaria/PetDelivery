@@ -58,7 +58,8 @@
 							<th>Animal</th>
 							<th>Início</th>
 							<th>Fim</th>
-							<th>Status</th>			
+							<th>Status</th>
+							<th></th>			
 						</tr>
 
 						<c:forEach items="${daoAgendamento.getAgendamentos(usuarioLogado.cpf)}" var="agendamento">
@@ -74,10 +75,11 @@
 									<c:out value="${agendamento.horaInicio}" /> 
 								</td>							
 								<td>
-									<c:out value="${agendamento.dataFim eq null? '---' : agendamento.dataFim}" />
-									<c:out value="${agendamento.horaFim eq null? '---' : agendamento.horaFim}" />
+									<c:out value="${agendamento.dataFim eq null? '--' : agendamento.dataFim}" />
+									<c:out value="${agendamento.horaFim eq null? '--' : agendamento.horaFim}" />
 								</td>
-								<td><a href="visualizaServico?id=${agendamento.id_agendamento}"><c:out value="${agendamento.status}" /></td>						
+								<td><c:out value="${agendamento.status}" /></td>
+								<td><a href="visualizaServico?id=${agendamento.id_agendamento}"/>Saiba mais</td>						
 							</tr>
 						</c:forEach>
 					</table>

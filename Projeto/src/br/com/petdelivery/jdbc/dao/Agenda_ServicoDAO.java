@@ -175,7 +175,7 @@ public class Agenda_ServicoDAO {
 		}
 		
 		public void updateServicoByUsuario(Agenda_Servico agendamento) {					
-			String sql = "UPDATE AGENDA_SERVICO SET id_servico=?, id_animal=?, dataInicio=?, dataFim=?, horaInicio=?, horaFim=?, obsCliente=?, delivery=?"
+			String sql = "UPDATE AGENDA_SERVICO SET id_servico=?, id_animal=?, dataInicio=?, dataFim=?, horaInicio=?, horaFim=?, obsCliente=?, delivery=? "
 					+ "WHERE id_agendamento=?";			
 			
 			try {
@@ -193,6 +193,7 @@ public class Agenda_ServicoDAO {
 				stmt.setBoolean(8, agendamento.isDelivery());
 				stmt.setLong(9, agendamento.getId_agendamento());
 				
+				//System.out.println("UPDATE : " + stmt.toString());
 				stmt.execute();
 				stmt.close();
 
