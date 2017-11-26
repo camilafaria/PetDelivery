@@ -1,5 +1,8 @@
 package br.com.petdelivery.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,6 +10,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import br.com.petdelivery.jdbc.dao.Agenda_ServicoDAO;
 import br.com.petdelivery.jdbc.dao.AnimalDAO;
@@ -133,8 +139,34 @@ public class HomeUsuarioController {
 	}
 
 	// Mapeamento de JSP
-	@RequestMapping("update-usuario")
-	public String updateUsuario(Usuario usuario, HttpSession session) {
+	@RequestMapping(value = "update-usuario", method = RequestMethod.POST)
+	public String updateUsuario(Usuario usuario, HttpSession session, @RequestParam CommonsMultipartFile file) {
+		String path = HelperController.getProperty("fotos.dir");
+		new File(path).mkdirs();
+		String filename = "";
+		// Get file extension
+		if (!file.isEmpty()){
+			String extension = new StringBuilder().append(file.getOriginalFilename()).reverse().toString();
+			extension = extension.substring(0, extension.indexOf("."));
+			extension = new StringBuilder().append(extension).reverse().toString();
+
+			filename = "" + usuario.getCpf() + "." + extension;
+			System.out.println("Updating image on "+ path + " " + filename);
+			try {
+				byte barr[] = file.getBytes();
+
+				BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(path + "/" + filename));
+				bout.write(barr);
+				bout.flush();
+				bout.close();
+
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
+		
+		usuario.setFoto(filename);
+		
 		new UsuarioDAO().update(usuario);
 		session.setAttribute("usuarioAtualizado", true);
 

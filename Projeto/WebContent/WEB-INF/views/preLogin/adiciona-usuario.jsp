@@ -60,8 +60,12 @@
 			</div>
 		</div>
 	</div>
-
-	<form action="insert-usuario" class="form-horizontal" style="vertical-align: middle;" align="center" method="post">
+	<!-- <form action="savefile" method="post" enctype="multipart/form-data">  
+	Select File: <input type="file" name="file"/>  
+	<input type="submit" value="Upload File"/>  
+	</form>
+	 -->
+	<form action="insert-usuario" method="post" enctype="multipart/form-data" class="form-horizontal" style="vertical-align: middle;" align="center">
 		<div class="form-group" style="vertical-align: middle;" align="center">
 		<div class="container" style="vertical-align: middle; margin-left:32%;" align="center">
 			<!-- <div class="container col-sm-10" style="vertical-align: middle;" align="center"> -->
@@ -130,6 +134,11 @@
 						<label for="contact-email">Senha</label> <input type="password"
 							name="senha" placeholder="Senha"
 							class="contact-email form-control">
+					</div>
+					<!-- 7 -->
+					<div class="form-group col-sm-11">
+						<label for="contact-email">Foto (até 16 MB)</label>
+						 <input type="file" name="file" class="contact-email form-control" accept=".png"/>
 					</div>
 					<button type="submit" class="btn" onclick="confirmaCadastroUsuario()">Registrar</button>
 				</div>

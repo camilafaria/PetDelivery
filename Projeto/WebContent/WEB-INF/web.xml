@@ -31,4 +31,9 @@
     <session-config>
     	<session-timeout>60</session-timeout>
     </session-config>
+    
+    <!-- Error handling -->
+    <error-page>
+    <location>/errors</location>
+	</error-page>
 </web-app>

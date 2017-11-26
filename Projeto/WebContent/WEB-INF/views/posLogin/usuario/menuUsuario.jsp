@@ -39,11 +39,10 @@
 
 	<nav class="navbar-default navbar-side" role="navigation">
 	<div class="sidebar-collapse">
-
 		<ul class="nav" id="main-menu">
-			<!-- <li class="text-center user-image-back"><img
-				src="assetsPosLogin/img/find-user.png" class="img-responsive img-circle" width="260px" height="100px" /></li>
-			 -->
+			<li class="text-center user-image-back">	
+				<img src="/ESI2017/getImage?foto=${param.foto}" class="img-responsive img-circle" width="260px" height="100px" />
+			</li>
 			<li><a href="pets"><i class="fa fa-paw "></i>Meus PETs</a></li>
 
 			<li><a href="busca-servico"><i class="fa fa-search "></i>Buscar Petlovers</a></li>
