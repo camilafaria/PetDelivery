@@ -75,7 +75,7 @@
 							<c:forEach var="animal" items="${daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
 								<tr class="table-line">
 									<td>
-										<img src="assetsPosLogin/img/find-user.png" class="img-responsive img-circle" width="50px" height="50px" />
+										<img src="/ESI2017/getImage?foto=${animal.foto}" class="img-responsive img-circle" width="50px" height="50px" />
 									</td>
 									<td href="">${animal.nome}</td>
 									<td>${daoTipo.getTipoById(daoRaca.getTipoByRaca(animal.id_raca))}</td>

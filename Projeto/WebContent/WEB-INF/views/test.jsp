@@ -10,7 +10,7 @@
 <!-- CUSTOM SCRIPTS -->
 <script src="assetsPosLogin/js/custom.js"></script>
 
-<script>
+<!-- <script>
 $(document).ready(function() {
 
 $('#sports').change(function(event) {
@@ -28,6 +28,25 @@ $('#sports').change(function(event) {
         });
 });
 </script>
+ -->
+ <script>
+$(document).ready(function() {
+
+$('#id_tipo').change(function(event) {
+        var sports = $("select#id_tipo").val();
+        $.get('JsonServlet', {
+                id_tipo : sports
+        }, function(response) {
+
+        var select = $('#id_raca');
+        select.find('option').remove();
+          $.each(response, function(index, value) {
+          $('<option>').val(value).text(value).appendTo(select);
+      });
+        });
+        });
+});
+</script>
 </head>
 <body>
 
@@ -37,7 +56,9 @@ $('#sports').change(function(event) {
 		<option value="1">Cachorro</option>
 		<option value="2">Gato</option>
 	</select>
-
+	<select id="id_raca">
+		<option>Select Raça</option>
+	</select>
 	<h3>AJAX in Servlet using JQuery and JSON</h3>
 	Select Favorite Sports:
 	<select id="sports">

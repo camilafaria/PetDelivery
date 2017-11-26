@@ -42,9 +42,9 @@ public class Raca_AnimalDAO {
 		}
 	}
 	
-	public List<String> getRacaByTipo(Long tipo_animal) {
-		String sql = "SELECT nome FROM RACA_ANIMAL WHERE id_tipo=?";
-		List<String> racaByTipo = new ArrayList();				
+	public List<Raca_Animal> getRacasByTipo(Long tipo_animal) {
+		String sql = "SELECT * FROM RACA_ANIMAL WHERE id_tipo=?";
+		List<Raca_Animal> racas = new ArrayList();				
 
 		try {
 			// prepared statement para inserção
@@ -53,12 +53,17 @@ public class Raca_AnimalDAO {
 			ResultSet rs = stmt.executeQuery();
 			
 			while (rs.next()) {
-				racaByTipo.add(rs.getString("nome"));
+				Raca_Animal raca = new Raca_Animal();
+				raca.setId_raca(rs.getLong("id_raca"));
+				raca.setId_tipo(rs.getLong("id_tipo"));
+				raca.setNome(rs.getString("nome"));
+				
+				racas.add(raca);
 			}
 
 			stmt.close();
 			
-			return racaByTipo;
+			return racas;
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

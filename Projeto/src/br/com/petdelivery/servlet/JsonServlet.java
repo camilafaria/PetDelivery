@@ -1,7 +1,9 @@
 package br.com.petdelivery.servlet;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import br.com.petdelivery.jdbc.dao.Raca_AnimalDAO;
+import br.com.petdelivery.jdbc.modelo.Raca_Animal;
 
 public class JsonServlet extends HttpServlet {
 
@@ -19,10 +22,17 @@ public class JsonServlet extends HttpServlet {
         protected void doGet(HttpServletRequest request,
                 HttpServletResponse response) throws ServletException, IOException {
 
-                String sportsName = request.getParameter("sportsName");
-                System.out.println("Entrou no get: " + sportsName);
                 String tipo = request.getParameter("id_tipo");
                 System.out.println("Entrou no get: " + tipo);
+                
+                Raca_AnimalDAO racaDao = new Raca_AnimalDAO();
+                List<Raca_Animal> racas = new ArrayList();
+                if (!tipo.isEmpty()){
+                	Long id_tipo = Long.parseLong(tipo);
+                	racas = racaDao.getRacasByTipo(id_tipo);
+                }
+                
+                /*
                 List<String> list = new ArrayList<String>();
                 String json = null;
 
@@ -39,9 +49,10 @@ public class JsonServlet extends HttpServlet {
                 } else if (sportsName.equals("Select Sports")) {
                         list.add("Select Player");
                 }
+                */
                 
                 JSONArray gson = new JSONArray();
-        		gson.put(list);
+        		gson.put(racas);
         		try {
         		    System.err.println(gson.toString(2));		    
         		} catch (JSONException e) {
