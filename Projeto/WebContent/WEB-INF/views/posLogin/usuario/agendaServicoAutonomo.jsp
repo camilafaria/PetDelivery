@@ -90,11 +90,11 @@
 								<div class="col-md-offset-2">
 									<div class="form-group col-sm-5">
 										<label for="contact-name">Data de Início:</label> 
-										<input type="date" name="dataInicio" id="dataInicio" class="contact-name form-control" min="2017-10-26"> 
+										<input type="date" name="dataInicio" id="dataInicio" class="contact-name form-control" min="2017-11-30"> 
 									</div>
 									<div class="form-group col-sm-5">
 										<label for="contact-name">Data de Fim:</label> 
-										<input type="date" name="dataFim" id="dataFim" class="contact-name form-control" min="2017-10-26" disabled>
+										<input type="date" name="dataFim" id="dataFim" class="contact-name form-control" min="2017-11-30" disabled>
 									</div>
 									
 									<br><br>
