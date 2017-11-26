@@ -3,6 +3,7 @@ package br.com.petdelivery.jdbc.modelo;
 public class Prestador {
 	
 	private Long id_prestador;
+	private int tipo; //0 = autonomo; 1 = petshop	
 	private String email;
 	private String senha;
 	private float somaNota;
@@ -16,6 +17,12 @@ public class Prestador {
 	}
 	public void setId_prestador(Long id_prestador) {
 		this.id_prestador = id_prestador;
+	}
+	public int getTipo() {
+		return tipo;
+	}
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
 	}
 	public String getEmail() {
 		return email;

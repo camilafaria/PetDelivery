@@ -114,10 +114,8 @@
 									<br><br>
 									
 									<div class="form-group col-sm-10">
-										<label for="contact-name">Observacões:</label> <input
-											type="text" name="observacao"
-											placeholder="Descreva as bservacoes sobre o servico"
-											class="contact-name form-control">
+										<label for="contact-name">Observacões:</label> 
+										<input	type="text" name="obsCliente" placeholder="Descreva as bservacoes sobre o servico" class="contact-name form-control">										
 									</div>
 	
 									<c:if test= "${param.delivery eq 'true'}" >
@@ -125,7 +123,7 @@
 												<select name="delivery" id="delivery">
 												<option value="true">Sim</option>
 												<option value="false">Não</option>
-											</select>
+												</select>
 										</div>
 									</c:if>						
 	

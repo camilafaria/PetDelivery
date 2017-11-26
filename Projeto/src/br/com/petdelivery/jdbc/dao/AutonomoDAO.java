@@ -115,5 +115,28 @@ public class AutonomoDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public String getNomeById (Long cpf) {
+		String sql = "SELECT nome FROM AUTONOMO WHERE cpf=?";
+		String nome = "";
+		
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, cpf);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				nome = rs.getString("nome");
+				stmt.close();
+				return nome;
+			}
+			
+			return nome;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 }

@@ -143,12 +143,10 @@ public class HomePrestadorController {
 		return "posLogin/prestador/autonomo/agenda";	
 	}
 	
-	@RequestMapping("populaAgenda.json")
-	public @ResponseBody String populaAgendaAutonomo(Autonomo autonomo, HttpSession session, HttpServletResponse response) {
-		System.out.println("PASSEI POR AQUI" + autonomo.getCpf());
-		
+	@RequestMapping("populaAgenda")
+	public @ResponseBody String populaAgendaAutonomo(HttpServletRequest request, HttpSession session, HttpServletResponse response) {
 		List<Agenda_Servico> agendamentos = new ArrayList();
-		agendamentos = new Agenda_ServicoDAO().getAgendamentosPrestador(new Long(111111111));
+		agendamentos = new Agenda_ServicoDAO().getAgendamentosPrestador(Long.parseLong(request.getParameter("cpf")));
 		
 		List<Map<String, Object>> setAgendamentos = new ArrayList<Map<String, Object>>();		
 		for (Agenda_Servico agendamento : agendamentos) {
@@ -159,6 +157,7 @@ public class HomePrestadorController {
 			map.put("end", agendamento.getDataFim() + " " + agendamento.getHoraFim());
 			map.put("url", "visualiza-servico?id=" + agendamento.getId_agendamento());
 			map.put("backgroundColor", agendamento.getStatus().compareTo("a confirmar") == 0 ? "#ff4d4d" : "#009999");
+			map.put("editable", "false");
 			setAgendamentos.add(map);
 		}
 		
@@ -174,7 +173,7 @@ public class HomePrestadorController {
 	    response.setCharacterEncoding("UTF-8");
 
 	    String jsonString = json.toString();		
-	    return jsonString.substring(1, jsonString.length()-1);				
+	    return jsonString.substring(1, jsonString.length()-1);			
 	}
 	
 	@RequestMapping("visualiza-servico")
@@ -187,14 +186,15 @@ public class HomePrestadorController {
 	}
 	
 	@RequestMapping("updateStatus")
-	public String updateStatusServicoAutonomo (String status, Long id_agendamento, HttpServletRequest request, HttpSession session) {
+	public String updateStatusServicoAutonomo (HttpServletRequest request, HttpSession session) {
+		String status = request.getParameter("status");
 		if ( status.compareTo("cancelado") == 0 )
-			new Agenda_ServicoDAO().delete(id_agendamento);
+			new Agenda_ServicoDAO().updateStatus(status, request.getParameter("obsPrestador"), Long.parseLong(request.getParameter("id")));
+			//new Agenda_ServicoDAO().delete(Long.parseLong(request.getParameter("obsPrestador")));
 		else
-			new Agenda_ServicoDAO().updateStatus(status, id_agendamento);				
+			new Agenda_ServicoDAO().updateStatus(status, request.getParameter("obsPrestador"), Long.parseLong(request.getParameter("id")));				
 		
 		return "posLogin/prestador/autonomo/agenda";
 	}
-	
 	
 }

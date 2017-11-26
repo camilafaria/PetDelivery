@@ -140,6 +140,7 @@
 					</div>				
 					
 					<!-- input type="submit" class="btn" value="Registrar" /-->
+					<input hidden type="text" name="tipo" value="0" class="contact-name form-control">
 					<button type="submit" class="btn" onclick="confirmaCadastroAutonomo()">Registrar</button>
 				</div>
 			</div>

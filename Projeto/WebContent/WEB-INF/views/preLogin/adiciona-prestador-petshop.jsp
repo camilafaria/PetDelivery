@@ -89,6 +89,8 @@
 							<label for="img">Logotipo</label>
 							<input type="file" name="logotipo" class="img form-control"  accept="image/png, image/jpeg"  multiple /> 
 					</div>
+					
+					<input hidden type="text" name="tipo" value="1" class="contact-name form-control">
 					<button type="submit" class="btn" onclick="confirmaCadastroPetshop()">Registrar</button>
 				</div>
 			</div>
