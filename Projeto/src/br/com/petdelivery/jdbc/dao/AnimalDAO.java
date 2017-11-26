@@ -37,7 +37,7 @@ public class AnimalDAO {
 			stmt.setBoolean(6, animal.getPedigree());
 			stmt.setString(7, animal.getComportamento());
 			stmt.setString(8, animal.getVacinas());
-			stmt.setBytes(9, animal.getFoto());		
+			stmt.setString(9, animal.getFoto());		
 
 			// executa
 			stmt.execute();
@@ -68,7 +68,8 @@ public class AnimalDAO {
 				animal.setPorte(rs.getString("porte"));
 				animal.setPedigree(rs.getBoolean("pedigree"));
 				animal.setComportamento(rs.getString("comportamento"));
-				animal.setVacinas(rs.getString("vacinas"));				
+				animal.setVacinas(rs.getString("vacinas"));	
+				animal.setFoto(rs.getString("foto"));	
 				
 				animais.add(animal);
 			}

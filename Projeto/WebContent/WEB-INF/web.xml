@@ -36,4 +36,13 @@
     <error-page>
     <location>/errors</location>
 	</error-page>
+	
+	<servlet>
+		<servlet-name>JsonServlet</servlet-name>
+		<servlet-class>br.com.petdelivery.servlet.JsonServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>JsonServlet</servlet-name>
+		<url-pattern>/JsonServlet/*</url-pattern>
+	</servlet-mapping>
 </web-app>

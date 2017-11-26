@@ -33,7 +33,9 @@
 
 	<c:import url="headerUsuario.jsp" />
 
-	<c:import url="menuUsuario.jsp" />
+	<jsp:include page="menuUsuario.jsp">
+	<jsp:param name="foto" value="${usuarioLogado.foto}"/>
+</jsp:include>
 
 	<!-- /. NAV SIDE  -->
 	

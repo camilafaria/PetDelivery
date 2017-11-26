@@ -42,7 +42,7 @@ CREATE TABLE ANIMAL (
     pedigree boolean NOT NULL,
     comportamento char(50) NOT NULL,
     vacinas varchar(300) NOT NULL,        
-    foto longblob,
+    foto varchar(1000),
 		PRIMARY KEY (id_animal),
 		FOREIGN KEY (id_usuario) REFERENCES USUARIO (cpf),
         FOREIGN KEY (id_raca) REFERENCES RACA_ANIMAL (id_raca)

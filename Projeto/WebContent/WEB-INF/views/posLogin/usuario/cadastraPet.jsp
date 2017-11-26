@@ -27,17 +27,40 @@
 <link href="http://fonts.googleapis.com/css?family=Open+Sans"
 	rel="stylesheet" type="text/css" />
 <c:import url="../favicon.jsp" />
+
+<script>
+		$(document).ready(function() {
+		
+		$('#id_tipo').change(function(event) {
+		        var tipo = $("select#id_tipo").val();
+		        $.get('JsonServlet', {
+		        		id_raca : tipo
+		        }, function(response) {
+		
+		        var select = $('#id_raca');
+		        select.find('option').remove();
+		          $.each(response, function(index, value) {
+		          $('<option>').val(value).text(value).appendTo(select);
+		      });
+		        });
+		        });
+		});
+</script>
+	
 </head>
 
 <body>
-
+	
 	<c:import url="headerUsuario.jsp" />
 
-	<c:import url="menuUsuario.jsp" />
-	
+	<jsp:include page="menuUsuario.jsp">
+		<jsp:param name="foto" value="${usuarioLogado.foto}" />
+	</jsp:include>
+
 	<jsp:useBean id="daoAnimal"
 		class="br.com.petdelivery.jdbc.dao.AnimalDAO" />
-	
+	<jsp:useBean id="daoTipo_Animal"
+		class="br.com.petdelivery.jdbc.dao.Tipo_AnimalDAO" />
 
 	<!-- /. NAV SIDE  -->
 
@@ -56,9 +79,11 @@
 					</div>
 				</div>
 
-				<form action="inserePet" class="form-horizontal" method="post">
+				<form action="inserePet" method="post" enctype="multipart/form-data"
+					class="form-horizontal">
 					<div class="form-group">
-						<div class="container"  style="vertical-align: middle;" align="center">
+						<div class="container" style="vertical-align: middle;"
+							align="center">
 							<div class="col-sm-6 col-sm-offset-2 contact-form wow">
 								<div class="form-group">
 									<label for="contact-name">Nome</label><input type="text"
@@ -67,23 +92,24 @@
 								</div>
 
 								<div class="form-group">
-									<label for="contact-name">Tipo de PET</label> 
-									<select name="id_tipo" id="id_tipo">
-																			
-										<option selected disabled value="">Selecione um animal</option>
-									
-										<c:forEach var="animal"
-											items="${daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
-											<option value="${animal.id_animal}" }> ${animal.nome} </option>										
+									<label for="contact-name">Tipo de PET</label> <select
+										name="id_tipo" id="id_tipo">
+
+										<option selected disabled value="">Selecione um
+											animal</option>
+
+										<c:forEach var="tipo"
+											items="${daoTipo_Animal.getTiposAnimal()}">
+											<option value="${tipo.id_tipo}">${tipo.nome}</option>
 										</c:forEach>
-													
+
 									</select>
-								</div>		
+								</div>
 
 								<div class="form-group">
 									<label for="contact-name">Raça</label> <select name="id_raca"
 										id="id_raca">
-										<option selected disabled value="">Selecione...</option>
+										<!-- <option selected disabled value="">Selecione...</option>
 										<option value="24">Afghan Hound</option>
 										<option value="19">Beagle</option>
 										<option value="21">American Pitbull</option>
@@ -98,7 +124,8 @@
 										<option value="9">Vira-Lata</option>
 										<option value="8">Yorkshire Terrier</option>
 										<option value="7">Outra</option>
-								    </select>
+										 -->
+									</select>
 								</div>
 
 								<div class="form-group">
@@ -124,7 +151,8 @@
 								</div>
 
 								<div class="form-group">
-									<label for="contact-name">Como é o comportamento do seu pet?</label> 
+									<label for="contact-name">Como é o comportamento do seu
+										pet?</label>
 									<!-- <select
 										name="comportamento">
 										<option value="">Selecione...</option>
@@ -135,15 +163,13 @@
 										<option value="Extrovertido">Extrovertido</option>
 									</select>
 									 -->
-									<input type="text"
-										name="comportamento"
+									<input type="text" name="comportamento"
 										placeholder="Descreva seu PET é dócil, agressivo, agitado..."
 										class="contact-name form-control">
 								</div>
 
 								<div class="form-group">
-									<label for="contact-name">Vacinas</label>
-									<input type="text"
+									<label for="contact-name">Vacinas</label> <input type="text"
 										name="vacinas"
 										placeholder="Descreva detalhes sobre as vacinas de seu PET"
 										class="contact-name form-control">
@@ -151,15 +177,15 @@
 
 								<div class="form-group">
 									<label for="img">Selecione sua foto</label> <input type="file"
-										name="foto" class="img form-control"
-										accept="image/png, image/jpeg" multiple />
+										name="file" class="contact-email form-control" accept=".png" />
 								</div>
 
 								<input type="hidden" name="id_usuario"
 									value="${usuarioLogado.cpf}" />
 
 								<!-- input type="submit" class="btn" value="Registrar" /-->
-								<button type="submit" class="btn" onclick="confirmaCadastroPet()">Registrar</button>
+								<button type="submit" class="btn"
+									onclick="confirmaCadastroPet()">Registrar</button>
 							</div>
 						</div>
 					</div>
@@ -180,7 +206,9 @@
 		  alert('Cadastro realizado com sucesso!');  
 	}
 	</script>
+
 	
+
 	<!-- JQUERY SCRIPTS -->
 	<script src="assetsPosLogin/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->

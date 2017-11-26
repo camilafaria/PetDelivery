@@ -11,7 +11,7 @@ public class Animal {
 	private Boolean pedigree;
 	private String comportamento;
 	private String vacinas;
-	private byte[] foto;
+	private String foto;
 	
 	public Long getId_animal() {
 		return id_animal;
@@ -67,10 +67,10 @@ public class Animal {
 	public void setVacinas(String vacinas) {
 		this.vacinas = vacinas;
 	}
-	public byte[] getFoto() {
+	public String getFoto() {
 		return foto;
 	}
-	public void setFoto(byte[] foto) {
+	public void setFoto(String foto) {
 		this.foto = foto;
 	}
 	

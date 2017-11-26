@@ -34,7 +34,9 @@
 <body>
 	<c:import url="headerUsuario.jsp" />
 
-	<c:import url="menuUsuario.jsp" />
+	<jsp:include page="menuUsuario.jsp">
+	<jsp:param name="foto" value="${usuarioLogado.foto}"/>
+</jsp:include>
 
 	<jsp:useBean id="daoAnimal"
 		class="br.com.petdelivery.jdbc.dao.AnimalDAO" />

@@ -3,21 +3,29 @@ package br.com.petdelivery.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import br.com.petdelivery.jdbc.dao.Agenda_ServicoDAO;
 import br.com.petdelivery.jdbc.dao.AnimalDAO;
 import br.com.petdelivery.jdbc.dao.AutonomoDAO;
 import br.com.petdelivery.jdbc.dao.PrestadorDAO;
+import br.com.petdelivery.jdbc.dao.ServicoDAO;
 import br.com.petdelivery.jdbc.dao.UsuarioDAO;
 import br.com.petdelivery.jdbc.modelo.Agenda_Servico;
 import br.com.petdelivery.jdbc.modelo.Animal;
@@ -28,6 +36,12 @@ import br.com.petdelivery.jdbc.modelo.Usuario;
 
 @Controller
 public class HomeUsuarioController {
+
+	// Mapeamento de JSP
+	@RequestMapping("test")
+	public String test(HttpServletRequest request) {
+		return "test";
+	}
 
 	// Mapeamento de JSP
 	@RequestMapping("home")
@@ -48,12 +62,75 @@ public class HomeUsuarioController {
 	}
 
 	// Mapeamento de JSP
-	@RequestMapping("inserePet")
-	public String adicionaPet(Animal animal, HttpSession session) {
+	@RequestMapping(value = "/inserePet", method = RequestMethod.POST)
+	public String adicionaPet(Animal animal, HttpSession session, @RequestParam CommonsMultipartFile file) {
+		// Tratativa de foto
+		String path = HelperController.getProperty("fotos.dir");
+		new File(path).mkdirs();
+		String filename = "";
+		// Get file extension
+		if (!file.isEmpty()) {
+			String extension = new StringBuilder().append(file.getOriginalFilename()).reverse().toString();
+			extension = extension.substring(0, extension.indexOf("."));
+			extension = new StringBuilder().append(extension).reverse().toString();
+
+			filename = "" + animal.getId_usuario() + "_" + animal.getNome() + "." + extension;
+			System.out.println("Adicionando imagem do animal " + path + " " + filename);
+			try {
+				byte barr[] = file.getBytes();
+
+				BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(path + "/" + filename));
+				bout.write(barr);
+				bout.flush();
+				bout.close();
+
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
+
+		animal.setFoto(filename);
+
 		new AnimalDAO().insert(animal);
 		session.setAttribute("animalCriado", true);
 
-		return "posLogin/usuario/meusPets";
+		return "redirect:pets";
+	}
+
+	@RequestMapping("populaRaca")
+	public @ResponseBody String populaAgendaAutonomo(HttpServletRequest request, HttpSession session,
+			HttpServletResponse response) {
+		System.out.println(request.getParameter("id_tipo"));
+		return "teste";
+		// List<Agenda_Servico> agendamentos = new ArrayList();
+		// agendamentos = new
+		// Agenda_ServicoDAO().getAgendamentosPrestador(Long.parseLong(request.getParameter("id_tipo")));
+
+		/*
+		 * List<Map<String, Object>> setAgendamentos = new ArrayList<Map<String,
+		 * Object>>(); for (Agenda_Servico agendamento : agendamentos) {
+		 * Map<String, Object> map = new HashMap<String, Object>();
+		 * map.put("id", agendamento.getId_agendamento()); map.put("title", new
+		 * ServicoDAO().getServicoById(agendamento.getId_servico()) + " " + new
+		 * AnimalDAO().getAnimalById(agendamento.getId_animal()));
+		 * map.put("start", agendamento.getDataInicio() + " " +
+		 * agendamento.getHoraInicio()); map.put("end", agendamento.getDataFim()
+		 * + " " + agendamento.getHoraFim()); map.put("url",
+		 * "visualiza-servico?id=" + agendamento.getId_agendamento());
+		 * map.put("backgroundColor",
+		 * agendamento.getStatus().compareTo("a confirmar") == 0 ? "#ff4d4d" :
+		 * "#009999"); map.put("editable", "false"); setAgendamentos.add(map); }
+		 * 
+		 * JSONArray json = new JSONArray(); json.put(setAgendamentos); try {
+		 * System.err.println(json.toString(2)); } catch (JSONException e) {
+		 * e.printStackTrace(); }
+		 * 
+		 * response.setContentType("application/json");
+		 * response.setCharacterEncoding("UTF-8");
+		 * 
+		 * String jsonString = json.toString(); return jsonString.substring(1,
+		 * jsonString.length()-1);
+		 */
 	}
 
 	// Visualiza página do Prestador Autonomo
@@ -61,12 +138,12 @@ public class HomeUsuarioController {
 	public String vizualizaAutonomo(HttpServletRequest request, HttpSession session) {
 		Prestador prestador = new Prestador();
 		prestador = new PrestadorDAO().getPrestadorbyId(Long.parseLong(request.getParameter("id")));
-		//corrige nota caso seja 0
-		double nota=0;
-		
-		if (prestador.getSomaNota() == 0){
+		// corrige nota caso seja 0
+		double nota = 0;
+
+		if (prestador.getSomaNota() == 0) {
 			nota = 0;
-		}else{
+		} else {
 			nota = prestador.getSomaNota() / prestador.getSomaQnt();
 		}
 		Autonomo autonomo = new AutonomoDAO().getAutonomo(prestador);
@@ -145,13 +222,13 @@ public class HomeUsuarioController {
 		new File(path).mkdirs();
 		String filename = "";
 		// Get file extension
-		if (!file.isEmpty()){
+		if (!file.isEmpty()) {
 			String extension = new StringBuilder().append(file.getOriginalFilename()).reverse().toString();
 			extension = extension.substring(0, extension.indexOf("."));
 			extension = new StringBuilder().append(extension).reverse().toString();
 
 			filename = "" + usuario.getCpf() + "." + extension;
-			System.out.println("Updating image on "+ path + " " + filename);
+			System.out.println("Updating image on " + path + " " + filename);
 			try {
 				byte barr[] = file.getBytes();
 
@@ -164,9 +241,9 @@ public class HomeUsuarioController {
 				System.out.println(e);
 			}
 		}
-		
+
 		usuario.setFoto(filename);
-		
+
 		new UsuarioDAO().update(usuario);
 		session.setAttribute("usuarioAtualizado", true);
 
@@ -186,7 +263,7 @@ public class HomeUsuarioController {
 
 		return "posLogin/usuario/agendaServicoAutonomo";
 	}
-	
+
 	// Mapeamento de JSP
 	@RequestMapping("agendaServico")
 	public String confirmaAgendamento(Agenda_Servico agendamento, HttpSession session, HttpServletRequest request) {
@@ -195,35 +272,37 @@ public class HomeUsuarioController {
 
 		return "redirect:home";
 	}
-	
+
 	@RequestMapping("visualizaServico")
 	public String visualizaAgendamento(HttpSession session, HttpServletRequest request) {
-		Agenda_Servico servico =  new Agenda_ServicoDAO().getAgendamentosByID(Long.parseLong(request.getParameter("id")));
+		Agenda_Servico servico = new Agenda_ServicoDAO()
+				.getAgendamentosByID(Long.parseLong(request.getParameter("id")));
 		session.setAttribute("servicoSelecionado", servico);
 
 		return "posLogin/usuario/visualizaServico";
 	}
-	
+
 	@RequestMapping("cancelaServico")
 	public String cancelaAgendamento(HttpSession session, HttpServletRequest request) {
-		new Agenda_ServicoDAO().delete(Long.parseLong(request.getParameter("id")));		
+		new Agenda_ServicoDAO().delete(Long.parseLong(request.getParameter("id")));
 		return "posLogin/usuario/home";
 	}
-	
+
 	@RequestMapping("editaServico")
-	public String redirecionaEdicaoServico (HttpServletRequest request, HttpSession session) {
-		Agenda_Servico agendamento = new Agenda_ServicoDAO().getAgendamentosByID(Long.parseLong((request.getParameter("id"))));
+	public String redirecionaEdicaoServico(HttpServletRequest request, HttpSession session) {
+		Agenda_Servico agendamento = new Agenda_ServicoDAO()
+				.getAgendamentosByID(Long.parseLong((request.getParameter("id"))));
 		session.setAttribute("servicoSelecionado", agendamento);
 		return "posLogin/usuario/editaServico";
 	}
-	
+
 	@RequestMapping("confirmaEdicaoServico")
-	public String editaServico (Agenda_Servico agendamento, HttpServletRequest request, HttpSession session) {		
+	public String editaServico(Agenda_Servico agendamento, HttpServletRequest request, HttpSession session) {
 		new Agenda_ServicoDAO().updateServicoByUsuario(agendamento);
 		session.setAttribute("servicoAtualizado", true);
 		return "posLogin/usuario/home";
-	}	
-	
+	}
+
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
