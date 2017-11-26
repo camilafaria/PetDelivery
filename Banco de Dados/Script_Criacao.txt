@@ -14,7 +14,7 @@ CREATE TABLE USUARIO (
 	cep varchar(20) NOT NULL,
     email varchar(200) NOT NULL,
     senha varchar(8) NOT NULL,
-    foto varchar(v),
+    foto varchar(1000),
     PRIMARY KEY (cpf)
 );
 
