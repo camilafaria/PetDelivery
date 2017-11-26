@@ -1,16 +1,24 @@
 package br.com.petdelivery.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import br.com.petdelivery.jdbc.dao.AutonomoDAO;
 import br.com.petdelivery.jdbc.dao.PetshopDAO;
@@ -58,12 +66,57 @@ public class IndexController {
 	 * @param usuario
 	 * @return
 	 */
-	@RequestMapping("insert-usuario")
-	public String adicionaUsuario(Usuario usuario, HttpSession session) {
+	@RequestMapping(value = "/insert-usuario", method = RequestMethod.POST)
+	public String adicionaUsuario(Usuario usuario, HttpSession session, @RequestParam CommonsMultipartFile file) {
+
+		// String path = session.getServletContext().getRealPath("/fotos");
+		String path = HelperController.getProperty("fotos.dir");
+		new File(path).mkdirs();
+		String filename = "";
+		// Get file extension
+		if (!file.isEmpty()){
+			String extension = new StringBuilder().append(file.getOriginalFilename()).reverse().toString();
+			extension = extension.substring(0, extension.indexOf("."));
+			extension = new StringBuilder().append(extension).reverse().toString();
+
+			filename = "" + usuario.getCpf() + "." + extension;
+			System.out.println("Saving image on "+ path + " " + filename);
+			try {
+				byte barr[] = file.getBytes();
+
+				BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(path + "/" + filename));
+				bout.write(barr);
+				bout.flush();
+				bout.close();
+
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
+		
+		usuario.setFoto(filename);
 		new UsuarioDAO().insert(usuario);
 		// Adiciona o prestador ao session e manda par ao login
 		session.setAttribute("usuarioCriado", true);
 		return "preLogin/login";
+	}
+
+	@RequestMapping(value = "/getImage")
+	@ResponseBody
+	public byte[] getImage(HttpServletRequest request) throws IOException {
+		String rpath = HelperController.getProperty("fotos.dir");
+		String imageId = request.getParameter("foto");
+		rpath = rpath + "\\" + imageId; // whatever path you used for storing the
+										// file
+		System.out.println("rpath="+rpath);
+		Path path = Paths.get(rpath);
+		byte[] data = Files.readAllBytes(path);
+		return data;
+	}
+	
+	@RequestMapping("500")
+	public String adicionaUsuario(HttpSession session) {
+		return "500";
 	}
 
 	/**
@@ -109,8 +162,8 @@ public class IndexController {
 	 * @param petshop
 	 * @param session
 	 * @return
-	 * @throws ServletException 
-	 * @throws IOException 
+	 * @throws ServletException
+	 * @throws IOException
 	 */
 	@RequestMapping("insert-prestador-petshop")
 	public String adicionaUsuarioPrestadorPetshop(Prestador prestador, Petshop petshop, HttpSession session) {
@@ -119,15 +172,15 @@ public class IndexController {
 		prestador.setId_prestador(petshop.getCnpj());
 		prestador.setSomaNota(0);
 		prestador.setSomaQnt(0);
-		
-		/*//Transforma foto em byte
-		InputStream inputStream = null; // input stream of the upload file
-        
-       if (!logotipo.isEmpty()) {
-            // obtains input stream of the upload file
-            petshop.setLogotipo(logotipo.getBytes());
-        }*/
-        
+
+		/*
+		 * //Transforma foto em byte InputStream inputStream = null; // input
+		 * stream of the upload file
+		 * 
+		 * if (!logotipo.isEmpty()) { // obtains input stream of the upload file
+		 * petshop.setLogotipo(logotipo.getBytes()); }
+		 */
+
 		// Insere no banco
 		new PrestadorDAO().insert(prestador);
 		new PetshopDAO().insert(petshop);
@@ -138,7 +191,7 @@ public class IndexController {
 		// TODO:Adicionar mapeamento para o poslogin
 		return "preLogin/login";
 	}
-	
-	//Metodos auxiliares
-	
+
+	// Metodos auxiliares
+
 }

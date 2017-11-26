@@ -26,7 +26,9 @@
 </head>
 <body>
 	<c:import url="headerUsuario.jsp" />
-	<c:import url="menuUsuario.jsp" />
+	<jsp:include page="menuUsuario.jsp">
+        <jsp:param name="foto" value="${usuarioLogado.foto}"/>
+    </jsp:include>
 
 	<jsp:useBean id="daoAgendamento"
 		class="br.com.petdelivery.jdbc.dao.Agenda_ServicoDAO" />
@@ -42,7 +44,6 @@
 		<div id="page-inner">
 			<div class="row">
 				<div class="home col-md-12">
-
 					<h2>Bem-vindo ao <span class="colored-text">Pet Delivery</span>, ${usuarioLogado.nome}!</h2>
 					<br>
 					

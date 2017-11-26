@@ -20,8 +20,8 @@ public class UsuarioDAO {
 	}
 
 	public void insert(Usuario usuario) {
-		String sql = "INSERT INTO USUARIO " + "(cpf,nome,ddd,telefone,rua,numero,complemento,bairro,cep,email,senha)"
-				+ " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO USUARIO " + "(cpf,nome,ddd,telefone,rua,numero,complemento,bairro,cep,email,senha,foto)"
+				+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			// prepared statement para inserção
@@ -39,6 +39,11 @@ public class UsuarioDAO {
 			stmt.setString(9, usuario.getCep());
 			stmt.setString(10, usuario.getEmail());
 			stmt.setString(11, usuario.getSenha());
+			
+			if (usuario.getFoto() != null) {
+                // fetches input stream of the upload file for the blob column
+				stmt.setString(12, usuario.getFoto());
+            }
 
 			// executa
 			stmt.execute();
@@ -100,6 +105,7 @@ public class UsuarioDAO {
 				usuario.setCep(rs.getString("cep"));
 				usuario.setEmail(rs.getString("email"));
 				usuario.setSenha(rs.getString("senha"));
+				usuario.setFoto(rs.getString("foto"));
 
 				usuarios.add(usuario);
 			}
@@ -132,6 +138,7 @@ public class UsuarioDAO {
 				usuario.setCep(rs.getString("cep"));
 				usuario.setEmail(rs.getString("email"));
 				usuario.setSenha(rs.getString("senha"));
+				usuario.setFoto(rs.getString("foto"));
 
 				usuarios.add(usuario);
 			}
@@ -168,6 +175,7 @@ public class UsuarioDAO {
 				usuario.setComplemento(rs.getString("complemento"));
 				usuario.setBairro(rs.getString("bairro"));
 				usuario.setCep(rs.getString("cep"));
+				usuario.setFoto(rs.getString("foto"));
 				//usuario.setEmail(rs.getString("email"));
 				//usuario.setSenha(rs.getString("Senha"));
 				

@@ -1,5 +1,7 @@
 package br.com.petdelivery.jdbc.modelo;
 
+import java.io.InputStream;
+
 public class Usuario {
 	private long cpf;
 	private String nome;
@@ -12,6 +14,7 @@ public class Usuario {
 	private String cep;	
 	private String email;
 	private String senha;
+	private String foto; 
 	
 	public long getCpf() {
 		return cpf;
@@ -78,6 +81,12 @@ public class Usuario {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 	
 }
