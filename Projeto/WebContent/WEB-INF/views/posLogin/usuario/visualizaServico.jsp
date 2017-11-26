@@ -43,42 +43,90 @@
 	<jsp:useBean id="daoPrestador"
 		class="br.com.petdelivery.jdbc.dao.PrestadorDAO" />
 		
- 	<h1> Detalhe do Serviço </h1>
- 	<br><br>
+	<c:import url="headerAutonomo.jsp" />
+
+	<c:import url="menuAutonomo.jsp" />	
+	
+	
+	<!-- /. NAV SIDE  -->
+	<div id="page-wrapper">
+		<div id="page-inner">
+			<div class="row">
+
+				<div class="page-title-container">
+					<div class="container">
+						<div class="title col-sm-9 page-title wow fadeIn">
+							<span aria-hidden="true" class="fa fa-gear"></span>
+							<h1>Detalhe do Serviço</h1>
+						</div>
+					</div>
+				</div>
+		
+<<<<<<< HEAD
  	
- 	<label for="contact-name" class="table-header"> Serviço: </label>
- 		<c:out value="${daoServico.getServicoById(servicoSelecionado.id_servico)}"/>
- 		
-	<br><label for="contact-name" class="table-header"> Nome do prestador: </label>
-		<c:out value="${daoPrestador.getTipoById(servicoSelecionado.id_prestador) eq 0? daoAutonomo.getNomeById(servicoSelecionado.id_prestador) : daoPetshop.getNomeById(servicoSelecionado.id_prestador)}"/>
+ 
+ 	
+			 	<label for="contact-name" class="table-header"> Serviço: </label>
+			 		<c:out value="${daoServico.getServicoById(servicoSelecionado.id_servico)}"/>
+			 		
+				<br><label for="contact-name" class="table-header"> Nome do prestador: </label>
+					<c:out value="${daoPrestador.getTipoById(servicoSelecionado.id_prestador) eq 0? daoAutonomo.getNomeById(servicoSelecionado.id_prestador) : daoPetshop.getNomeById(servicoSelecionado.id_prestador)}"/>
+							
+				<br><label for="contact-name" class="table-header"> E-mail do prestador: </label>
+					<c:out value="${daoPrestador.getEmailById(servicoSelecionado.id_prestador)}"/>
+					
+				<br><label for="contact-name" class="table-header"> Nome do animal: </label>
+					<c:out value="${daoAnimal.getAnimalById(servicoSelecionado.id_animal)}"/>
+					
+				<br><label for="contact-name" class="table-header"> Data de início: </label>
+					<c:out value="${servicoSelecionado.dataInicio}"/>
+					
+				<br><label for="contact-name" class="table-header"> Data de fim: </label>
+					<c:out value="${servicoSelecionado.dataFim eq null? 'Não informado' : servicoSelecionado.dataFim}"/>
 				
-	<br><label for="contact-name" class="table-header"> E-mail do prestador: </label>
-		<c:out value="${daoPrestador.getEmailById(servicoSelecionado.id_prestador)}"/>
-		
-	<br><label for="contact-name" class="table-header"> Nome do animal: </label>
-		<c:out value="${daoAnimal.getAnimalById(servicoSelecionado.id_animal)}"/>
-		
-	<br><label for="contact-name" class="table-header"> Data de início: </label>
-		<c:out value="${servicoSelecionado.dataInicio}"/>
-		
-	<br><label for="contact-name" class="table-header"> Data de fim: </label>
-		<c:out value="${servicoSelecionado.dataFim eq null? 'Não informado' : servicoSelecionado.dataFim}"/>
-	
-	<br><label for="contact-name" class="table-header"> Horário de início: </label>
-		<c:out value="${servicoSelecionado.horaInicio}"/>
-		
-	<br><label for="contact-name" class="table-header"> Horário de fim: </label>
-		<c:out value="${servicoSelecionado.horaFim eq null? 'Não informado' : servicoSelecionado.horaFim}"/>
-	
-	<br><label for="contact-name" class="table-header"> Observação do Cliente: </label>
-		<c:out value="${servicoSelecionado.obsCliente}"/>
-	
-	<br><label for="contact-name" class="table-header"> Delivery? </label>
-		<c:out value="${servicoSelecionado.delivery eq 'true'? 'Sim' : 'Não'}"/>
-		
-	<br><br><label for="contact-name" class="table-header"> Status: </label>
-		<c:out value="${servicoSelecionado.status}"/>
-		
+				<br><label for="contact-name" class="table-header"> Horário de início: </label>
+					<c:out value="${servicoSelecionado.horaInicio}"/>
+					
+				<br><label for="contact-name" class="table-header"> Horário de fim: </label>
+					<c:out value="${servicoSelecionado.horaFim eq null? 'Não informado' : servicoSelecionado.horaFim}"/>
+				
+				<br><label for="contact-name" class="table-header"> Observação do Cliente: </label>
+					<c:out value="${servicoSelecionado.obsCliente}"/>
+				
+				<br><label for="contact-name" class="table-header"> Delivery? </label>
+					<c:out value="${servicoSelecionado.delivery eq 'true'? 'Sim' : 'Não'}"/>
+					
+				<br><br><label for="contact-name" class="table-header"> Status: </label>
+					<c:out value="${servicoSelecionado.status}"/>
+					
+				<br><label for="contact-name" class="table-header"> Observação do Prestador: </label>
+				<c:out value="${servicoSelecionado.obsPrestador eq null? 'Não informado' : servicoSelecionado.obsPrestador}"/>	
+				
+				<c:if test="${servicoSelecionado.status ne 'cancelado'}">
+					<br><br><button type="submit" class="btn" onclick="editaServico()"> Editar Serviço </button>
+					<button type="submit" class="btn" onclick="confirmaCancelamento()">Cancelar Serviço </button>										
+				</c:if>
+				
+				<c:if test="${servicoSelecionado.status eq 'cancelado'}">
+					<br><br><button type="submit" class="btn" onclick="excluiServico()"> Excluir Serviço </button>												
+				</c:if>	
+					 
+			 	<script language="javascript">
+				function editaServico(){	
+					window.location = 'editaServico?id=' + ${servicoSelecionado.id_agendamento};				
+				}
+				
+				function confirmaCancelamento(){
+					if (confirm("Tem certeza que deseja cancelar este serviço?"))
+						window.location = 'cancelaServico?id=' + ${servicoSelecionado.id_agendamento}		
+				}
+				
+				function excluiServico(){
+					if (confirm("Tem certeza que deseja cancelar este serviço?"))
+						window.location = 'cancelaServico?id=' + ${servicoSelecionado.id_agendamento}		
+				}
+				</script>
+=======
 	<br><label for="contact-name" class="table-header"> Observação do Prestador: </label>
 	<c:out value="${servicoSelecionado.obsPrestador eq (null or 'null')? 'Não informado' : servicoSelecionado.obsPrestador}"/>	
 	
@@ -100,12 +148,15 @@
 		if (confirm("Tem certeza que deseja cancelar este serviço?"))
 			window.location = 'cancelaServico?id=' + ${servicoSelecionado.id_agendamento}		
 	}
+>>>>>>> 2eee429460f1d3c11834bf5c5ef36c354eddef19
 	
-	function excluiServico(){
-		if (confirm("Tem certeza que deseja cancelar este serviço?"))
-			window.location = 'cancelaServico?id=' + ${servicoSelecionado.id_agendamento}		
-	}
-	</script>
+			</div>
+		</div>
+
+	</div>
+
+
+	<c:import url="footer.jsp" />
  
 </body>
 </html>

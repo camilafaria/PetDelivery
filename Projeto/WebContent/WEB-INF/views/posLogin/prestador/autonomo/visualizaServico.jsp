@@ -39,72 +39,93 @@
 	<jsp:useBean id="daoAnimal"
 		class="br.com.petdelivery.jdbc.dao.AnimalDAO" />
 		
- 	<h1> Detalhe do Serviço </h1>
- 	<br><br>
- 	
- 	<label for="contact-name" class="table-header"> Serviço: </label>
- 		<c:out value="${daoServico.getServicoById(servicoSelecionado.id_servico)}"/>
- 		
-	<br><label for="contact-name" class="table-header"> Nome do cliente: </label>
-		<c:out value="${daoUsuario.getNameById(servicoSelecionado.id_usuario)}"/>
-		
-	<br><label for="contact-name" class="table-header"> E-mail do cliente: </label>
-		<c:out value="${daoUsuario.getEmailById(servicoSelecionado.id_usuario)}"/>
-		
-	<br><label for="contact-name" class="table-header"> Nome do animal: </label>
-		<c:out value="${daoAnimal.getAnimalById(servicoSelecionado.id_animal)}"/>
-		
-	<br><label for="contact-name" class="table-header"> Data de início: </label>
-		<c:out value="${servicoSelecionado.dataInicio}"/>
-		
-	<br><label for="contact-name" class="table-header"> Data de fim: </label>
-		<c:out value="${servicoSelecionado.dataFim eq null? 'Não informado' : servicoSelecionado.dataFim}"/>
+ 	<c:import url="headerAutonomo.jsp" />
+
+	<c:import url="menuAutonomo.jsp" />	
 	
-	<br><label for="contact-name" class="table-header"> Horário de início: </label>
-		<c:out value="${servicoSelecionado.horaInicio}"/>
-		
-	<br><label for="contact-name" class="table-header"> Horário de fim: </label>
-		<c:out value="${servicoSelecionado.horaFim eq null? 'Não informado' : servicoSelecionado.horaFim}"/>
 	
-	<br><label for="contact-name" class="table-header"> Observação: </label>
-		<c:out value="${servicoSelecionado.obsCliente}"/>
-	
-	<br><label for="contact-name" class="table-header"> Delivery? </label>
-		<c:out value="${servicoSelecionado.delivery eq 'true'? 'Sim' : 'Não'}"/>
-	
-	<br><label for="contact-name" class="table-header"> Status: </label>
-		<c:out value="${servicoSelecionado.status}"/>
-	
-	<c:if test="${servicoSelecionado.status eq 'a confirmar'}">
-		<br><br><button type="submit" class="btn" onclick="confirmaServico()"> Confirmar serviço </button>
-		<button type="submit" class="btn" onclick="confirmaCancelamento()">Cancelar serviço</button>								
-	</c:if>
+	<!-- /. NAV SIDE  -->
+	<div id="page-wrapper">
+		<div id="page-inner">
+			<div class="row">
+
+				<div class="page-title-container">
+					<div class="container">
+						<div class="title col-sm-9 page-title wow fadeIn">
+							<span aria-hidden="true" class="fa fa-gear"></span>
+							<h1>Detalhe do Serviço</h1>
+						</div>
+					</div>
+				</div>
+ 				
+			 	<label for="contact-name" class="table-header"> Serviço: </label>
+			 		<c:out value="${daoServico.getServicoById(servicoSelecionado.id_servico)}"/>
+			 		
+				<br><label for="contact-name" class="table-header"> Nome do cliente: </label>
+					<c:out value="${daoUsuario.getNameById(servicoSelecionado.id_usuario)}"/>
+					
+				<br><label for="contact-name" class="table-header"> E-mail do cliente: </label>
+					<c:out value="${daoUsuario.getEmailById(servicoSelecionado.id_usuario)}"/>
+					
+				<br><label for="contact-name" class="table-header"> Nome do animal: </label>
+					<c:out value="${daoAnimal.getAnimalById(servicoSelecionado.id_animal)}"/>
+					
+				<br><label for="contact-name" class="table-header"> Data de início: </label>
+					<c:out value="${servicoSelecionado.dataInicio}"/>
+					
+				<br><label for="contact-name" class="table-header"> Data de fim: </label>
+					<c:out value="${servicoSelecionado.dataFim eq null? 'Não informado' : servicoSelecionado.dataFim}"/>
+				
+				<br><label for="contact-name" class="table-header"> Horário de início: </label>
+					<c:out value="${servicoSelecionado.horaInicio}"/>
+					
+				<br><label for="contact-name" class="table-header"> Horário de fim: </label>
+					<c:out value="${servicoSelecionado.horaFim eq null? 'Não informado' : servicoSelecionado.horaFim}"/>
+				
+				<br><label for="contact-name" class="table-header"> Observação: </label>
+					<c:out value="${servicoSelecionado.obsCliente}"/>
+				
+				<br><label for="contact-name" class="table-header"> Delivery? </label>
+					<c:out value="${servicoSelecionado.delivery eq 'true'? 'Sim' : 'Não'}"/>
+				
+				<br><label for="contact-name" class="table-header"> Status: </label>
+					<c:out value="${servicoSelecionado.status}"/>
+				
+				<c:if test="${servicoSelecionado.status eq 'a confirmar'}">
+					<br><br><button type="submit" class="btn" onclick="confirmaServico()"> Confirmar serviço </button>
+					<button type="submit" class="btn" onclick="confirmaCancelamento()">Cancelar serviço</button>								
+				</c:if>
+						
+				<c:if test="${servicoSelecionado.status eq 'confirmado'}">				
+					<br><br><button type="submit" class="btn" onclick="confirmaServico()"> Alterar serviço </button>
+					<button type="submit" class="btn" onclick="confirmaCancelamento()">Cancelar serviço</button>								
+				</c:if> 	 	
+			 	 	
+			 	 <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+				<script language="javascript">
+				function confirmaServico(){	
+					var obs = prompt("Escreva aqui quaisquer observações sobre o serviço agendado:");
 			
-	<c:if test="${servicoSelecionado.status eq 'confirmado'}">				
-		<br><br><button type="submit" class="btn" onclick="confirmaServico()"> Alterar serviço </button>
-		<button type="submit" class="btn" onclick="confirmaCancelamento()">Cancelar serviço</button>								
-	</c:if> 	 	
- 	 	
- 	 <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-	<script language="javascript">
-	function confirmaServico(){	
-		var obs = prompt("Escreva aqui quaisquer observações sobre o serviço agendado:");
+					if (obs == null || obs == "")
+						window.location = 'updateStatus?id=' + ${servicoSelecionado.id_agendamento} + '&status=confirmado&obsPrestador=null';		
+					else
+						window.location = 'updateStatus?id=' + ${servicoSelecionado.id_agendamento} + '&status=confirmado&obsPrestador=' + obs;		
+				}
+				
+				function confirmaCancelamento(){
+					var obs = prompt("Justificativa para cancelamento do serviço:");
+			
+					if (obs == null || obs == "")
+						window.alert("Insira uma justificativa!")	
+					else
+						window.location = 'updateStatus?id=' + ${servicoSelecionado.id_agendamento} + '&status=cancelado&obsPrestador=' + obs;
+				}	
+				</script> 	
+				
+			</div>
+		</div>
 
-		if (obs == null || obs == "")
-			window.location = 'updateStatus?id=' + ${servicoSelecionado.id_agendamento} + '&status=confirmado&obsPrestador=null';		
-		else
-			window.location = 'updateStatus?id=' + ${servicoSelecionado.id_agendamento} + '&status=confirmado&obsPrestador=' + obs;		
-	}
-	
-	function confirmaCancelamento(){
-		var obs = prompt("Justificativa para cancelamento do serviço:");
-
-		if (obs == null || obs == "")
-			window.alert("Insira uma justificativa!")	
-		else
-			window.location = 'updateStatus?id=' + ${servicoSelecionado.id_agendamento} + '&status=cancelado&obsPrestador=' + obs;
-	}	
-	</script> 	
+	</div>
  
 </body>
 </html>
