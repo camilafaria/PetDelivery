@@ -187,7 +187,9 @@ public class HomeUsuarioController {
 	
 	@RequestMapping("confirmaEdicaoServico")
 	public String editaServico (Agenda_Servico agendamento, HttpServletRequest request, HttpSession session) {		
+		new Agenda_ServicoDAO().updateStatus("a confirmar", agendamento.getObsPrestador(), agendamento.getId_agendamento());
 		new Agenda_ServicoDAO().updateServicoByUsuario(agendamento);
+		
 		session.setAttribute("servicoAtualizado", true);
 		return "posLogin/usuario/home";
 	}	
