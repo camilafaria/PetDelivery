@@ -69,6 +69,7 @@
 								<th><b>Nome</b></th>
 								<th><b>Tipo</b></th>
 								<th><b>Raça</b></th>
+								<th><b></b></th>
 							</tr>					
 						
 							<c:forEach var="animal" items="${daoAnimal.getAnimalUsuario(usuarioLogado.cpf)}">
@@ -79,6 +80,7 @@
 									<td href="">${animal.nome}</td>
 									<td>${daoTipo.getTipoById(daoRaca.getTipoByRaca(animal.id_raca))}</td>
 									<td>${daoRaca.getRacaById(animal.id_raca)}</td>
+									<td><a href="editaPet?id=${animal.id_animal}">Detalhes</a></td>
 								</tr>
 							</c:forEach>			
 						

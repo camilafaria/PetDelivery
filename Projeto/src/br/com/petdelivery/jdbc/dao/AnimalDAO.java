@@ -27,8 +27,7 @@ public class AnimalDAO {
 			// prepared statement para inserção
 			PreparedStatement stmt = connection.prepareStatement(sql);
 
-			// seta os valores	
-			System.out.println("TESTE " + animal.getGenero());
+			// seta os valores			
 			stmt.setLong(1, animal.getId_raca());
 			stmt.setLong(2, animal.getId_usuario());
 			stmt.setString(3, animal.getNome());
@@ -40,6 +39,35 @@ public class AnimalDAO {
 			stmt.setString(9, animal.getFoto());		
 
 			// executa
+			stmt.execute();
+			stmt.close();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public void update(Animal animal) {
+		String sql = "UPDATE ANIMAL SET id_raca=?, nome=?, genero=?, porte=?, pedigree=?, comportamento=?, vacinas=?, foto=? "
+				+ " WHERE id_animal=?";
+
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);
+
+			// seta os valores	
+			stmt.setLong(1, animal.getId_raca());
+			stmt.setString(2, animal.getNome());
+			stmt.setString(3, animal.getGenero());
+			stmt.setString(4, animal.getPorte());
+			stmt.setBoolean(5, animal.getPedigree());
+			stmt.setString(6, animal.getComportamento());
+			stmt.setString(7, animal.getVacinas());
+			stmt.setString(8, animal.getFoto());
+			stmt.setLong(9, animal.getId_animal());
+
+			// executa
+			System.out.println("UPDATE: " + stmt.toString());
 			stmt.execute();
 			stmt.close();
 
@@ -100,6 +128,38 @@ public class AnimalDAO {
 			}
 
 			return "";
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public Animal getAnimalRealById (Long id_animal) {
+		String sql = "SELECT * FROM ANIMAL WHERE id_animal=?";
+		Animal animal = new Animal();
+		
+		try {
+			// prepared statement para inserção
+			PreparedStatement stmt = connection.prepareStatement(sql);			
+			stmt.setLong(1, id_animal);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				animal.setId_animal(rs.getLong("id_animal"));
+				animal.setId_usuario(rs.getLong("id_usuario"));
+				animal.setId_raca(rs.getLong("id_raca"));
+				animal.setNome(rs.getString("nome"));
+				animal.setGenero(rs.getString("genero"));
+				animal.setPorte(rs.getString("porte"));
+				animal.setPedigree(rs.getBoolean("pedigree"));
+				animal.setComportamento(rs.getString("comportamento"));
+				animal.setVacinas(rs.getString("vacinas"));	
+				animal.setFoto(rs.getString("foto"));					
+				stmt.close();
+				return animal;
+			}
+
+			return animal;
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

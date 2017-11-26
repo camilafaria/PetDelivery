@@ -304,6 +304,20 @@ public class HomeUsuarioController {
 		session.setAttribute("servicoAtualizado", true);
 		return "posLogin/usuario/home";
 	}
+	
+	@RequestMapping("editaPet")
+	public String redirecionaEdicaoPet (HttpServletRequest request, HttpSession session) {
+		Animal animal = new AnimalDAO().getAnimalRealById(Long.parseLong((request.getParameter("id"))));		
+		session.setAttribute("animalSelecionado", animal);
+		return "posLogin/usuario/editaPet";
+	}
+	
+	@RequestMapping("confirmaEdicaoPet")
+	public String editaPet (Animal animal, HttpServletRequest request, HttpSession session) {
+		new AnimalDAO().update(animal);		
+		session.setAttribute("animalAtualizado", animal);
+		return "posLogin/usuario/meusPets";
+	}
 
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
