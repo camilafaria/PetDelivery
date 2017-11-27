@@ -65,7 +65,7 @@
 						<c:forEach items="${daoAgendamento.getAgendamentos(usuarioLogado.cpf)}" var="agendamento">
 							<tr class="table-line">
 								<td>
-									<img src="assetsPosLogin/img/find-user.png" class="img-responsive img-circle" width="50px" height="50px" />
+									<img src="/ESI2017/getImage?foto=${daoAnimal.getAnimalRealById(agendamento.id_animal).foto}" class="img-responsive img-circle" width="50px" height="50px" />
 								</td>
 								<td><c:out value="${daoPrestador.getNomeById(agendamento.id_prestador)}" /></td>
 								<td><c:out value="${daoServico.getServicoById(agendamento.id_servico)}" /></td>
