@@ -12,7 +12,7 @@ public class Autonomo {
 	private String complemento;
 	private String cep;	
 	private String bairro;
-	private byte[] foto;
+	private String foto;
 	
 	public Long getCpf() {
 		return cpf;
@@ -74,10 +74,10 @@ public class Autonomo {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-	public byte[] getFoto() {
+	public String getFoto() {
 		return foto;
 	}
-	public void setFoto(byte[] foto) {
+	public void setFoto(String foto) {
 		this.foto = foto;
 	}
 }

@@ -113,12 +113,10 @@
 							<label for="contact-email">Experiência</label>
                             <textarea name="experiencia" cols="30" rows="10" class="contact-email form-control" id="experiencia" placeholder="Sou formado em veterinária, trabalho há 5 anos com animais..."></textarea>
 					</div>
-				<!-- </div>
-				<div class="contact-form col-sm-6 wow fadeInRight"> -->
 					<!-- 6 -->
 					<div class="form-group col-sm-12">
-							<label for="img">Selecione sua foto</label>
-							<input type="file" name="foto" class="img form-control"  accept="image/png, image/jpeg"  multiple /> 
+							<label for="img">Selecione sua foto (até 16 MB)</label>
+							<input type="file" name="file" class="img form-control"  accept=".png"/> 
 					</div>
 					<!-- 7 -->
 					<div class="form-group col-sm-12">

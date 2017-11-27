@@ -128,17 +128,34 @@ public class IndexController {
 	 * @return
 	 */
 	@RequestMapping("insert-prestador-autonomo")
-	public String adicionaUsuarioPrestadorAutonomo(Prestador prestador, Autonomo autonomo, HttpSession session) {
-		/*
-		 * System.out.println("Prestador");
-		 * System.out.println(prestador.getEmail());
-		 * System.out.println(prestador.getSenha());
-		 * System.out.println("Autonomo");
-		 * System.out.println(autonomo.getNome());
-		 * System.out.println(autonomo.getExperiencia());
-		 */
+	public String adicionaUsuarioPrestadorAutonomo(Prestador prestador, Autonomo autonomo, HttpSession session, @RequestParam CommonsMultipartFile file) {
 
-		// Instancia variaveis de prestador
+		// String path = session.getServletContext().getRealPath("/fotos");
+		String path = HelperController.getProperty("fotos.dir");
+		new File(path).mkdirs();
+		String filename = "";
+		// Get file extension
+		if (!file.isEmpty()){
+			String extension = new StringBuilder().append(file.getOriginalFilename()).reverse().toString();
+			extension = extension.substring(0, extension.indexOf("."));
+			extension = new StringBuilder().append(extension).reverse().toString();
+			
+			filename = "" + autonomo.getCpf() + "." + extension;
+			System.out.println("Saving image on "+ path + " " + filename);
+			try {
+				byte barr[] = file.getBytes();
+
+				BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(path + "/" + filename));
+				bout.write(barr);
+				bout.flush();
+				bout.close();
+
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
+		
+		autonomo.setFoto(filename);		
 		prestador.setId_prestador(autonomo.getCpf());
 		prestador.setSomaNota(0);
 		prestador.setSomaQnt(0);

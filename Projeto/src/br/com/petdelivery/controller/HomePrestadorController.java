@@ -1,5 +1,8 @@
 package br.com.petdelivery.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +17,10 @@ import org.json.JSONException;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import br.com.petdelivery.jdbc.dao.Agenda_ServicoDAO;
 import br.com.petdelivery.jdbc.dao.AnimalDAO;
@@ -71,8 +77,33 @@ public class HomePrestadorController {
 		return "posLogin/prestador/autonomo/configConta";	
 	}
 	
-	@RequestMapping("update-autonomo")
-	public String atualizarAutonomo(Autonomo autonomo, HttpSession session, HttpServletRequest request) {
+	@RequestMapping(value = "update-autonomo", method = RequestMethod.POST)
+	public String atualizarAutonomo(Autonomo autonomo, HttpSession session, HttpServletRequest request, @RequestParam CommonsMultipartFile file) {
+		String path = HelperController.getProperty("fotos.dir");
+		new File(path).mkdirs();
+		String filename = "";
+		// Get file extension
+		if (!file.isEmpty()) {
+			String extension = new StringBuilder().append(file.getOriginalFilename()).reverse().toString();
+			extension = extension.substring(0, extension.indexOf("."));
+			extension = new StringBuilder().append(extension).reverse().toString();
+
+			filename = "" + autonomo.getCpf() + "." + extension;
+			System.out.println("Updating image on " + path + " " + filename);
+			try {
+				byte barr[] = file.getBytes();
+
+				BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(path + "/" + filename));
+				bout.write(barr);
+				bout.flush();
+				bout.close();
+
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
+
+		autonomo.setFoto(filename);
 		new AutonomoDAO().update(autonomo);
 		
 		Prestador prestador = new Prestador();

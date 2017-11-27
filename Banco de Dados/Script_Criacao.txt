@@ -93,7 +93,7 @@ CREATE TABLE AUTONOMO (
     complemento varchar(20) NOT NULL,
     bairro varchar(70) NOT NULL,
 	cep varchar(20) NOT NULL,
-    foto longblob,
+    foto varchar(1000),
 		PRIMARY KEY (cpf),
         FOREIGN KEY (cpf) REFERENCES PRESTADOR(id_prestador)
 );

@@ -38,7 +38,7 @@ public class AutonomoDAO {
 			stmt.setString(8, autonomo.getComplemento());
 			stmt.setString(9, autonomo.getBairro());
 			stmt.setString(10, autonomo.getCep());
-			stmt.setBytes(11, autonomo.getFoto());
+			stmt.setString(11, autonomo.getFoto());
 
 			// executa
 			stmt.execute();
@@ -76,7 +76,7 @@ public class AutonomoDAO {
 				autonomo.setComplemento(rs.getString("complemento"));
 				autonomo.setBairro(rs.getString("bairro"));
 				autonomo.setCep(rs.getString("cep"));
-				autonomo.setFoto(rs.getBytes("foto"));
+				autonomo.setFoto(rs.getString("foto"));
 				
 				return autonomo;
 			}
@@ -88,7 +88,7 @@ public class AutonomoDAO {
 	}
 	
 	public void update(Autonomo autonomo) {
-		String sql = "UPDATE AUTONOMO SET nome=?, experiencia=?, ddd=?, telefone=?, rua=?, numero=?, complemento=?, cep=?, bairro=? "
+		String sql = "UPDATE AUTONOMO SET nome=?, experiencia=?, ddd=?, telefone=?, rua=?, numero=?, complemento=?, cep=?, bairro=?, foto=? "
 				+ "WHERE cpf=?";
 
 		try {
@@ -105,7 +105,8 @@ public class AutonomoDAO {
 			stmt.setString(7, autonomo.getComplemento());
 			stmt.setString(8, autonomo.getCep());
 			stmt.setString(9, autonomo.getBairro());
-			stmt.setLong(10, autonomo.getCpf());
+			stmt.setString(10, autonomo.getFoto());
+			stmt.setLong(11, autonomo.getCpf());
 
 			// executa
 			stmt.execute();

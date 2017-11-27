@@ -32,8 +32,9 @@
 </head>
 <body>
 	<c:import url="headerAutonomo.jsp" />
-
-	<c:import url="menuAutonomo.jsp" />
+	<jsp:include page="menuAutonomo.jsp">
+        <jsp:param name="foto" value="${prestadorAutonomoLogado.foto}"/>
+    </jsp:include>
 	
 	<jsp:useBean id="daoPrestador"
 		class="br.com.petdelivery.jdbc.dao.PrestadorDAO" />
@@ -53,7 +54,8 @@
 				</div>
 
 				<!-- form action="alteraUsuario" class="form-horizontal"-->
-				<form action="update-autonomo" class="form-horizontal">
+				<form action="update-autonomo" class="form-horizontal" method="post"
+					enctype="multipart/form-data">
 					<div class="form-group" style="vertical-align: middle;"
 						align="center">
 						<div class="container col-sm-10" style="vertical-align: middle;"
@@ -126,6 +128,11 @@
 									<label for="contact-name">Senha</label> <input type="password"
 										name="senha" value="${daoPrestador.getSenhaById (prestadorAutonomoLogado.cpf)}"
 										class="contact-name form-control">
+								</div>
+								
+								<div class="form-group col-sm-11">
+									<label for="contact-email">Foto (até 16 MB)</label> <input
+										type="file" name="file" class="contact-email form-control" accept=".png" />
 								</div>
 								
 								<button type="submit" class="btn">Atualizar</button>

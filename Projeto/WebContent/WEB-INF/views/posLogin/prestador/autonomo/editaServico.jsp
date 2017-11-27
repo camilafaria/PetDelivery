@@ -32,8 +32,9 @@
 <body>
 
 	<c:import url="headerAutonomo.jsp" />
-	
-	<c:import url="menuAutonomo.jsp" />
+	<jsp:include page="menuAutonomo.jsp">
+        <jsp:param name="foto" value="${prestadorAutonomoLogado.foto}"/>
+    </jsp:include>
 	
 	<jsp:useBean id="daoServico"
 		class="br.com.petdelivery.jdbc.dao.ServicoDAO" />
