@@ -5,7 +5,7 @@ public class Petshop {
 	private Long cnpj;
 	private String nome;
 	private String descricao;
-	private byte[] logotipo;
+	private String logotipo;
 	
 	public Long getCnpj() {
 		return cnpj;
@@ -25,10 +25,10 @@ public class Petshop {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public byte[] getLogotipo() {
+	public String getLogotipo() {
 		return logotipo;
 	}
-	public void setLogotipo(byte[] logotipo) {
+	public void setLogotipo(String logotipo) {
 		this.logotipo = logotipo;
 	}
 }

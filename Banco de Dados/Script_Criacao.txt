@@ -62,7 +62,7 @@ CREATE TABLE PETSHOP (
 	cnpj bigint NOT NULL,
     nome varchar(50) NOT NULL,
     descricao varchar(300) NOT NULL,
-    logotipo longblob,    
+    logotipo varchar(1000),
 		PRIMARY KEY (cnpj),
         FOREIGN KEY (cnpj) REFERENCES PRESTADOR(id_prestador)        
 );
