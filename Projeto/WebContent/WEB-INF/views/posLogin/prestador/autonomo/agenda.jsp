@@ -54,7 +54,7 @@
 
 					<div class="page-title-container">
 						<div class=" title col-md-12 page-title wow fadeIn">
-							<span aria-hidden="true" class="fa fa-heart"></span>
+							<span aria-hidden="true" class="fa fa-calendar"></span>
 							<h1 align="center">Agenda</h1>
 						</div>
 					</div>

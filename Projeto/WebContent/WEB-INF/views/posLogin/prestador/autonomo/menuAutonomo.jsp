@@ -43,7 +43,7 @@
 			<li class="text-center user-image-back"><img
 				src="assetsPosLogin/img/prestador.jpg" class="img-responsive" width="260px" height="100px" /></li>
 
-			<li><a href="agenda"><i class="fa fa-gear "></i>Agenda</a></li>
+			<li><a href="agenda"><i class="fa fa-calendar "></i>Agenda</a></li>
 			
 			<li><a href="servicosAutonomo"><i class="fa fa-heart "></i>Meus serviços</a></li>			
 
