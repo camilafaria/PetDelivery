@@ -26,7 +26,16 @@
 <!-- GOOGLE FONTS-->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans"
 	rel="stylesheet" type="text/css" />
+	
 <c:import url="../favicon.jsp" />
+
+<script src="assetsPosLogin/js/jquery-1.10.2.js"></script>
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="assetsPosLogin/js/bootstrap.min.js"></script>
+<!-- METISMENU SCRIPTS -->
+<script src="assetsPosLogin/js/jquery.metisMenu.js"></script>
+<!-- CUSTOM SCRIPTS -->
+<script src="assetsPosLogin/js/custom.js"></script>
 
 <script>
 $(document).ready(function() {

@@ -30,6 +30,15 @@
 	rel="stylesheet" type="text/css" />
 	
 <c:import url="../favicon.jsp" />
+
+<script src="assetsPosLogin/js/jquery-1.10.2.js"></script>
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="assetsPosLogin/js/bootstrap.min.js"></script>
+<!-- METISMENU SCRIPTS -->
+<script src="assetsPosLogin/js/jquery.metisMenu.js"></script>
+<!-- CUSTOM SCRIPTS -->
+<script src="assetsPosLogin/js/custom.js"></script>
+
 </head>
 <body>
 	<c:import url="headerUsuario.jsp" />
@@ -82,7 +91,7 @@
 									<td>${daoTipo.getTipoById(daoRaca.getTipoByRaca(animal.id_raca))}</td>
 									<td>${daoRaca.getRacaById(animal.id_raca)}</td>
 									<td><a href="editaPet?id=${animal.id_animal}">Editar</a></td>
-									<td><a href="javascript:confirmaExclusao();">Excluir</a></td>
+									<td><a href="javascript:confirmaExclusao(${animal.id_animal});">Excluir</a></td>
 								</tr>
 							</c:forEach>			
 						
@@ -103,11 +112,22 @@
 
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<script>
-	function confirmaExclusao(){
-		if (confirm('Tem certeza que deseja excluir este pet?')){		
-			window.location = 'confirmaExclusaoPet?id=' + ${animal.id_animal};
-		}
+	function confirmaExclusao(id_animal)
+	{
+	    var r=confirm("Tem certeza que deseja excluir este pet?");
+	    if (r)
+	    {
+	        //write redirection code
+	        window.location = 'confirmaExclusaoPet?id=' + id_animal;
+	    }
+	    else
+	   {
+	        //do nothing
+	    }
 	}
+	
+		
+		
 	</script>
 	<!-- JQUERY SCRIPTS -->
 	<script src="assetsPosLogin/js/jquery-1.10.2.js"></script>
