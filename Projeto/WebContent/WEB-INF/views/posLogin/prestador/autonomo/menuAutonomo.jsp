@@ -40,9 +40,9 @@
 	<div class="sidebar-collapse">
 
 		<ul class="nav" id="main-menu">
-			<li class="text-center user-image-back"><img
-				src="assetsPosLogin/img/prestador.jpg" class="img-responsive" width="260px" height="100px" /></li>
-
+			<li class="text-center user-image-back">	
+				<img src="/ESI2017/getImage?foto=${param.foto}" class="img-responsive img-circle" width="260px" height="100px" />
+			</li>
 			<li><a href="agenda"><i class="fa fa-calendar "></i>Agenda</a></li>
 			
 			<li><a href="servicosAutonomo"><i class="fa fa-heart "></i>Meus serviços</a></li>			
