@@ -47,97 +47,119 @@
 	<jsp:useBean id="daoServicoPetshop"
 		class="br.com.petdelivery.jdbc.dao.Servico_PetshopDAO" />
 		
- 	<h1> Editar Serviço </h1>
- 	<br><br>
- 	
- 	<form action="confirmaEdicaoServico">
- 	
- 		<input hidden type="text" name="id_agendamento" value="${servicoSelecionado.id_agendamento}"/>
- 		<input hidden type="text" name="id_usuario" value="${servicoSelecionado.id_usuario}"/>
- 		<input hidden type="text" name="id_prestador" value="${servicoSelecionado.id_prestador}"/>
- 		<input hidden type="text" name="obsPrestador" value="${servicoSelecionado.obsPrestador}"/>
- 		<input hidden type="text" name="status" value="${servicoSelecionado.status}"/>
- 		
-	 	<label for="contact-name" class="table-header"> Serviço: </label>
-	 	<select name="id_servico">
-	 		<option selected value="${servicoSelecionado.id_servico}"> ${daoServico.getServicoById(servicoSelecionado.id_servico)} </option>
-	 		<c:forEach var="servico" items="${daoPrestador.getTipoById(servicoSelecionado.id_prestador) eq 0? daoServicoAutonomo.getServico(servicoSelecionado.id_prestador) : daoServicoPetshop.getServico(servicoSelecionado.id_prestador)}">;
-	 			<c:if test="${servico.id_servico ne servicoSelecionado.id_servico}">
-	 				<option value="${servico.id_servico}"}> ${daoServico.getServicoById(servico.id_servico)} </option>
-	 			</c:if>
-			</c:forEach>
-		</select>
-		
-		<br><label for="contact-name" class="table-header"> Nome do prestador: </label>
-			<input type="text" name="" class="contact-name form-control" value="${daoPrestador.getTipoById(servicoSelecionado.id_prestador) eq 0? daoAutonomo.getNomeById(servicoSelecionado.id_prestador) : daoPetshop.getNomeById(servicoSelecionado.id_prestador)}" readonly/>
-					
-		<br><label for="contact-name" class="table-header"> E-mail do prestador: </label>
-			<input type="text" name="" class="contact-name form-control" value="${daoPrestador.getEmailById(servicoSelecionado.id_prestador)}" readonly/>
-			
-		<br><label for="contact-name" class="table-header"> Nome do animal: </label>
-			<select name="id_animal">
-				<option selected value="${servicoSelecionado.id_animal}"> ${daoAnimal.getAnimalById(servicoSelecionado.id_animal)} </option>
-				<c:forEach var="animal"	items="${daoAnimal.getAnimalUsuario(servicoSelecionado.id_usuario)}">	
-					<c:if test="${animal.id_animal ne servicoSelecionado.id_animal}">
-						<option value="${animal.id_animal}"> ${animal.nome} </option>
-					</c:if>
-				</c:forEach>
-			</select>
+ 	<c:import url="headerUsuario.jsp" />
 
-		<br><br>
-		
-		<input type="radio" id="r1" name="radioData" value="dataInicio" onChange="checkRadioData()" checked>Apenas data de início 
-		<input type="radio" id="r2" name="radioData" value="dataInicioFim" onChange="checkRadioData()"> Data de início e fim definidos <br>
-		
-		<br>
-		<label for="contact-name">Data de Início:</label> 
-			<input type="date" name="dataInicio" id="dataInicio" class="contact-name form-control" min="2017-11-30" value="${servicoSelecionado.dataInicio}">
-		
-		<label for="contact-name">Data de Fim:</label> 
-			<input type="date" name="dataFim" id="dataFim" class="contact-name form-control" min="2017-10-30" value="${servicoSelecionado.dataFim}" disabled >
-			
-		<br><br>				
-		<input type="radio" id="r1" name="radioTime" value="timeInicio" onChange="checkRadioTime()" checked>Apenas hora de início 
-		<input type="radio" id="r2" name="radioTime" value="timeInicioFim" onChange="checkRadioTime()"> Hora de início e fim definidos <br>
+	<jsp:include page="menuUsuario.jsp">
+	<jsp:param name="foto" value="${usuarioLogado.foto}"/>
+	</jsp:include>
+
+	<!-- /. NAV SIDE  -->
+	<div id="page-wrapper">
+		<div id="page-inner">
+			<div class="row" align="center">
+
+				<div
+					class="page-title-container title col-sm-12 col-sm-offset-1 page-title wow fadeIn">
+					<span aria-hidden="true" class="fa fa-gear"></span>
+					<h1>Editar Serviço</h1>
+				</div>
+ 	
+			 	<form action="confirmaEdicaoServico">
+			 	
+			 		<input hidden type="text" name="id_agendamento" value="${servicoSelecionado.id_agendamento}"/>
+			 		<input hidden type="text" name="id_usuario" value="${servicoSelecionado.id_usuario}"/>
+			 		<input hidden type="text" name="id_prestador" value="${servicoSelecionado.id_prestador}"/>
+			 		<input hidden type="text" name="obsPrestador" value="${servicoSelecionado.obsPrestador}"/>
+			 		<input hidden type="text" name="status" value="${servicoSelecionado.status}"/>
+			 		
+				 	<label for="contact-name" class="table-header"><br>
+			 		<br> Serviço: </label>
+				 	<select name="id_servico">
+				 		<option selected value="${servicoSelecionado.id_servico}"> ${daoServico.getServicoById(servicoSelecionado.id_servico)} </option>
+				 		<c:forEach var="servico" items="${daoPrestador.getTipoById(servicoSelecionado.id_prestador) eq 0? daoServicoAutonomo.getServico(servicoSelecionado.id_prestador) : daoServicoPetshop.getServico(servicoSelecionado.id_prestador)}">;
+				 			<c:if test="${servico.id_servico ne servicoSelecionado.id_servico}">
+				 				<option value="${servico.id_servico}"}> ${daoServico.getServicoById(servico.id_servico)} </option>
+				 			</c:if>
+						</c:forEach>
+					</select>
+					
+					<br><label for="contact-name" class="table-header"><br> Nome do prestador: </label>
+						<input type="text" name="" style=" width: 400px" class="contact-name form-control" value="${daoPrestador.getTipoById(servicoSelecionado.id_prestador) eq 0? daoAutonomo.getNomeById(servicoSelecionado.id_prestador) : daoPetshop.getNomeById(servicoSelecionado.id_prestador)}" readonly/>
+								
+					<br><label for="contact-name" class="table-header"> E-mail do prestador: </label>
+						<input type="text" name="" style=" width: 400px" class="contact-name form-control" value="${daoPrestador.getEmailById(servicoSelecionado.id_prestador)}" readonly/>
 						
-		<label for="contact-name">Hora de Início</label> 
-			<input type="text" name="horaInicio" class="contact-name form-control" id="horaInicio" placeholder="hh:mm" value="${servicoSelecionado.horaInicio}"> 
-		
-		<label for="contact-name">Hora de Fim</label> 
-			<input type="text" name="horaFim" class="contact-name form-control" id="horaFim" placeholder="hh:mm" value="${servicoSelecionado.horaFim eq null? '' : servicoSelecionado.horaFim}" disabled>
+					<br><label for="contact-name" class="table-header"> Nome do animal: </label>
+						<select name="id_animal">
+							<option selected value="${servicoSelecionado.id_animal}"> ${daoAnimal.getAnimalById(servicoSelecionado.id_animal)} </option>
+							<c:forEach var="animal"	items="${daoAnimal.getAnimalUsuario(servicoSelecionado.id_usuario)}">	
+								<c:if test="${animal.id_animal ne servicoSelecionado.id_animal}">
+									<option value="${animal.id_animal}"> ${animal.nome} </option>
+								</c:if>
+							</c:forEach>
+						</select>
 			
-		<br><label for="contact-name" class="table-header"> Observação: </label>
-			<input type="text" name="obsCliente" class="contact-name form-control" value="${servicoSelecionado.obsCliente}"/>
-		
-		<br><label for="contact-name" class="table-header"> Delivery? </label>
-			<select name="delivery" id="delivery">
-				<option value="true">Sim</option>
-				<option value="false">Não</option>
-			</select>
+					<br><br>
+					
+					<input type="radio" id="r1" name="radioData" value="dataInicio" onChange="checkRadioData()" checked>Apenas data de início 
+					<input type="radio" id="r2" name="radioData" value="dataInicioFim" onChange="checkRadioData()"> Data de início e fim definidos <br>
+					
+					<br>
+					<label for="contact-name">Data de Início:</label> 
+						<input type="date" name="dataInicio" style=" width: 400px" id="dataInicio" class="contact-name form-control" min="2017-11-30" value="${servicoSelecionado.dataInicio}">
+					
+					<label for="contact-name">Data de Fim:</label> 
+						<input type="date" name="dataFim" style=" width: 400px" id="dataFim" class="contact-name form-control" min="2017-10-30" value="${servicoSelecionado.dataFim}" disabled >
+						
+					<br><br>				
+					<input type="radio" id="r1" name="radioTime" value="timeInicio" onChange="checkRadioTime()" checked>Apenas hora de início 
+					<input type="radio" id="r2" name="radioTime" value="timeInicioFim" onChange="checkRadioTime()"> Hora de início e fim definidos <br>
 									
-		<br><br><button type="submit" class="btn"> Atualizar </button>
-			
-	</form>
+					<label for="contact-name">Hora de Início</label> 
+						<input type="text" name="horaInicio" style=" width: 400px" class="contact-name form-control" id="horaInicio" placeholder="hh:mm" value="${servicoSelecionado.horaInicio}"> 
+					
+					<label for="contact-name">Hora de Fim</label> 
+						<input type="text" name="horaFim" style=" width: 400px" class="contact-name form-control" id="horaFim" placeholder="hh:mm" value="${servicoSelecionado.horaFim eq null? '' : servicoSelecionado.horaFim}" disabled>
+						
+					<br><label for="contact-name" class="table-header"> Observação: </label>
+						<input type="text" name="obsCliente" style=" width: 400px" class="contact-name form-control" value="${servicoSelecionado.obsCliente}"/>
+					
+					<br><label for="contact-name" class="table-header"> Delivery? </label>
+						<select name="delivery" id="delivery">
+							<option value="true">Sim</option>
+							<option value="false">Não</option>
+						</select>
+												
+					<br><br><button type="submit" class="btn"> Atualizar </button>
+						
+				</form>
+				
+			 	<script language="javascript">
+				function checkRadioData(){
+					var selectedValue = document.querySelector('input[name="radioData"]:checked').value;
+					if(selectedValue=="dataInicio"){			
+						document.getElementById("dataFim").setAttribute('disabled',true);
+					}else{			
+						document.getElementById("dataFim").removeAttribute('disabled');
+					}
+				}
+				
+				function checkRadioTime(){
+					var selectedValue = document.querySelector('input[name="radioTime"]:checked').value;
+					if(selectedValue=="timeInicio"){			
+						document.getElementById("horaFim").setAttribute('disabled',true);
+					}else{			
+						document.getElementById("horaFim").removeAttribute('disabled');
+					}
+				}
+				</script>
 	
- 	<script language="javascript">
-	function checkRadioData(){
-		var selectedValue = document.querySelector('input[name="radioData"]:checked').value;
-		if(selectedValue=="dataInicio"){			
-			document.getElementById("dataFim").setAttribute('disabled',true);
-		}else{			
-			document.getElementById("dataFim").removeAttribute('disabled');
-		}
-	}
-	
-	function checkRadioTime(){
-		var selectedValue = document.querySelector('input[name="radioTime"]:checked').value;
-		if(selectedValue=="timeInicio"){			
-			document.getElementById("horaFim").setAttribute('disabled',true);
-		}else{			
-			document.getElementById("horaFim").removeAttribute('disabled');
-		}
-	}
-	</script>
+			</div>
+		</div>
+
+	</div>
+
+	<c:import url="footer.jsp" />
  
 </body>
 </html>
