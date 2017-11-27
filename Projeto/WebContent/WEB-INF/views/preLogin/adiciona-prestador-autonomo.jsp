@@ -139,8 +139,7 @@
 								class="contact-name form-control">
 					</div>				
 					
-					<!-- input type="submit" class="btn" value="Registrar" /-->
-					<input hidden type="text" name="tipo" value="0" class="contact-name form-control">
+					<!-- input type="submit" class="btn" value="Registrar" /-->					
 					<button type="submit" class="btn" onclick="confirmaCadastroAutonomo()">Registrar</button>
 				</div>
 			</div>

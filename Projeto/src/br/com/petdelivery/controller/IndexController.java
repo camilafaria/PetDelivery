@@ -142,6 +142,7 @@ public class IndexController {
 		prestador.setId_prestador(autonomo.getCpf());
 		prestador.setSomaNota(0);
 		prestador.setSomaQnt(0);
+		prestador.setTipo(0);
 
 		// Insere no banco
 		new PrestadorDAO().insert(prestador);
@@ -172,6 +173,7 @@ public class IndexController {
 		prestador.setId_prestador(petshop.getCnpj());
 		prestador.setSomaNota(0);
 		prestador.setSomaQnt(0);
+		prestador.setTipo(1);
 
 		/*
 		 * //Transforma foto em byte InputStream inputStream = null; // input
