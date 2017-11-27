@@ -87,7 +87,7 @@ $('#id_tipo').change(function(event) {
 					</div>
 				</div>
 
-				<form action="confirmaEdicaoPet" class="form-horizontal" method="post">
+				<form action="confirmaEdicaoPet" class="form-horizontal" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<div class="container"  style="vertical-align: middle;" align="center">
 							<div class="col-sm-6 col-sm-offset-2 contact-form wow">
@@ -185,9 +185,8 @@ $('#id_tipo').change(function(event) {
 								</div>
 
 								<div class="form-group">
-									<label for="img">Selecione uma foto</label> 
-									<input type="file" name="foto" class="img form-control"
-										accept="image/png, image/jpeg" multiple />
+									<label for="img">Selecione sua foto</label> <input type="file"
+										name="file" class="contact-email form-control" accept=".png" />
 								</div>
 
 								<input type="hidden" name="id_usuario"

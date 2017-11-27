@@ -97,42 +97,6 @@ public class HomeUsuarioController {
 		return "redirect:pets";
 	}
 
-	@RequestMapping("populaRaca")
-	public @ResponseBody String populaAgendaAutonomo(HttpServletRequest request, HttpSession session,
-			HttpServletResponse response) {
-		System.out.println(request.getParameter("id_tipo"));
-		return "teste";
-		// List<Agenda_Servico> agendamentos = new ArrayList();
-		// agendamentos = new
-		// Agenda_ServicoDAO().getAgendamentosPrestador(Long.parseLong(request.getParameter("id_tipo")));
-
-		/*
-		 * List<Map<String, Object>> setAgendamentos = new ArrayList<Map<String,
-		 * Object>>(); for (Agenda_Servico agendamento : agendamentos) {
-		 * Map<String, Object> map = new HashMap<String, Object>();
-		 * map.put("id", agendamento.getId_agendamento()); map.put("title", new
-		 * ServicoDAO().getServicoById(agendamento.getId_servico()) + " " + new
-		 * AnimalDAO().getAnimalById(agendamento.getId_animal()));
-		 * map.put("start", agendamento.getDataInicio() + " " +
-		 * agendamento.getHoraInicio()); map.put("end", agendamento.getDataFim()
-		 * + " " + agendamento.getHoraFim()); map.put("url",
-		 * "visualiza-servico?id=" + agendamento.getId_agendamento());
-		 * map.put("backgroundColor",
-		 * agendamento.getStatus().compareTo("a confirmar") == 0 ? "#ff4d4d" :
-		 * "#009999"); map.put("editable", "false"); setAgendamentos.add(map); }
-		 * 
-		 * JSONArray json = new JSONArray(); json.put(setAgendamentos); try {
-		 * System.err.println(json.toString(2)); } catch (JSONException e) {
-		 * e.printStackTrace(); }
-		 * 
-		 * response.setContentType("application/json");
-		 * response.setCharacterEncoding("UTF-8");
-		 * 
-		 * String jsonString = json.toString(); return jsonString.substring(1,
-		 * jsonString.length()-1);
-		 */
-	}
-
 	// Visualiza página do Prestador Autonomo
 	@RequestMapping("visualiza-autonomo")
 	public String vizualizaAutonomo(HttpServletRequest request, HttpSession session) {
@@ -312,8 +276,35 @@ public class HomeUsuarioController {
 		return "posLogin/usuario/editaPet";
 	}
 	
-	@RequestMapping("confirmaEdicaoPet")
-	public String editaPet (Animal animal, HttpServletRequest request, HttpSession session) {
+	@RequestMapping(value = "confirmaEdicaoPet", method = RequestMethod.POST)
+	public String editaPet (Animal animal, HttpServletRequest request, HttpSession session, 
+			@RequestParam CommonsMultipartFile file) {
+		// Tratativa de foto
+		String path = HelperController.getProperty("fotos.dir");
+		new File(path).mkdirs();
+		String filename = "";
+		// Get file extension
+		if (!file.isEmpty()) {
+			String extension = new StringBuilder().append(file.getOriginalFilename()).reverse().toString();
+			extension = extension.substring(0, extension.indexOf("."));
+			extension = new StringBuilder().append(extension).reverse().toString();
+
+			filename = "" + animal.getId_usuario() + "_" + animal.getNome() + "." + extension;
+			System.out.println("Adicionando imagem do animal " + path + " " + filename);
+			try {
+				byte barr[] = file.getBytes();
+
+				BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(path + "/" + filename));
+				bout.write(barr);
+				bout.flush();
+				bout.close();
+
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
+
+		animal.setFoto(filename);
 		new AnimalDAO().update(animal);		
 		session.setAttribute("animalAtualizado", animal);
 		return "posLogin/usuario/meusPets";
