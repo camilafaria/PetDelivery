@@ -40,9 +40,9 @@
 	<div class="sidebar-collapse">
 
 		<ul class="nav" id="main-menu">
-			<li class="text-center user-image-back"><img
-				src="assetsPosLogin/img/petshop.jpg" class="img-responsive" /></li>
-
+			<li class="text-center user-image-back">	
+				<img src="/ESI2017/getImage?foto=${param.foto}" class="img-responsive img-circle" width="260px" height="100px" />
+			</li>
 			<li><a href="cadastroServico"><i class="fa fa-heart "></i>Meus serviços</a></li>			
 			<li><a href="minhasUnidades"><i class="fa fa-home "></i>Minhas unidades</a></li>
 			<li><a href="configContaPetshop"><i class="fa fa-gear "></i>Configurações da Conta</a></li>

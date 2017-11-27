@@ -31,7 +31,7 @@ public class PetshopDAO {
 			stmt.setLong(1, petshop.getCnpj());
 			stmt.setString(2, petshop.getNome());
 			stmt.setString(3, petshop.getDescricao());
-			stmt.setBytes(4, petshop.getLogotipo());			
+			stmt.setString(4, petshop.getLogotipo());			
 
 			// executa
 			stmt.execute();
@@ -62,7 +62,7 @@ public class PetshopDAO {
 				autonomo.setCnpj(rs.getLong("cnpj"));
 				autonomo.setNome(rs.getString("nome"));
 				autonomo.setDescricao(rs.getString("descricao"));
-				autonomo.setLogotipo(rs.getBytes("logotipo"));
+				autonomo.setLogotipo(rs.getString("logotipo"));
 				
 				return autonomo;
 			}
@@ -73,7 +73,7 @@ public class PetshopDAO {
 	}
 	
 	public void update(Petshop petshop) {
-		String sql = "UPDATE PETSHOP SET nome=?, descricao=?"
+		String sql = "UPDATE PETSHOP SET nome=?, descricao=?, logotipo=? "
 				+ "WHERE cnpj=?";
 
 		try {
@@ -83,7 +83,8 @@ public class PetshopDAO {
 			// seta os valores			
 			stmt.setString(1, petshop.getNome());
 			stmt.setString(2, petshop.getDescricao());
-			stmt.setLong(3, petshop.getCnpj());
+			stmt.setString(3, petshop.getLogotipo());
+			stmt.setLong(4, petshop.getCnpj());
 
 			// executa
 			stmt.execute();

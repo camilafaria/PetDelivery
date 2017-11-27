@@ -184,7 +184,34 @@ public class IndexController {
 	 * @throws IOException
 	 */
 	@RequestMapping("insert-prestador-petshop")
-	public String adicionaUsuarioPrestadorPetshop(Prestador prestador, Petshop petshop, HttpSession session) {
+	public String adicionaUsuarioPrestadorPetshop(Prestador prestador, Petshop petshop, HttpSession session, @RequestParam CommonsMultipartFile file) {
+
+		// String path = session.getServletContext().getRealPath("/fotos");
+		String path = HelperController.getProperty("fotos.dir");
+		new File(path).mkdirs();
+		String filename = "";
+		// Get file extension
+		if (!file.isEmpty()){
+			String extension = new StringBuilder().append(file.getOriginalFilename()).reverse().toString();
+			extension = extension.substring(0, extension.indexOf("."));
+			extension = new StringBuilder().append(extension).reverse().toString();
+			
+			filename = "" + petshop.getCnpj() + "." + extension;
+			System.out.println("Saving image on "+ path + " " + filename);
+			try {
+				byte barr[] = file.getBytes();
+
+				BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(path + "/" + filename));
+				bout.write(barr);
+				bout.flush();
+				bout.close();
+
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}
+		
+		petshop.setLogotipo(filename);		
 
 		// Instancia variaveis de prestador
 		prestador.setId_prestador(petshop.getCnpj());

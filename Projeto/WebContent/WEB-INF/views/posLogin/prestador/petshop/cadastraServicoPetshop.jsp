@@ -32,8 +32,9 @@
 <body>
 
 	<c:import url="headerPetshop.jsp" />
-
-	<c:import url="menuPetshop.jsp" />
+	<jsp:include page="menuPetshop.jsp">
+        <jsp:param name="foto" value="${prestadorPetshopLogado.logotipo}"/>
+    </jsp:include>
 	
 	<jsp:useBean id="daoUnidade"
 		class="br.com.petdelivery.jdbc.dao.Unidade_PetshopDAO" />

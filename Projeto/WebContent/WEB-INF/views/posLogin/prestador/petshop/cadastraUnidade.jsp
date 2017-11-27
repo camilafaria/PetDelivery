@@ -32,9 +32,9 @@
 <body>
 
 	<c:import url="headerPetshop.jsp" />
-
-	<c:import url="menuPetshop.jsp" />
-
+	<jsp:include page="menuPetshop.jsp">
+        <jsp:param name="foto" value="${prestadorPetshopLogado.logotipo}"/>
+    </jsp:include>
 	<!-- /. NAV SIDE  -->
 
 	<div id="page-wrapper">
@@ -108,7 +108,7 @@
 								<div class="form-group col-sm-12">
 								<!-- input type="submit" class="btn" value="Registrar" /-->
 								<button type="submit" class="btn col-md-offset-2"
-									onclick="confirmaCadastroUnidade()">asdRegistrar</button>
+									onclick="confirmaCadastroUnidade()">Registrar</button>
 								</div>	
 							</div>
 						</div>

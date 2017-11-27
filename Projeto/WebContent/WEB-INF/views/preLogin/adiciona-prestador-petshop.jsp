@@ -86,9 +86,9 @@
                             <textarea name="descricao" cols="30" rows="10" class="contact-email form-control" id="experiencia" placeholder="Somos especialistas na venda de produtos para animais..."></textarea>
 					</div>
 					<div class="form-group">
-							<label for="img">Logotipo</label>
-							<input type="file" name="logotipo" class="img form-control"  accept="image/png, image/jpeg"  multiple /> 
-					</div>			
+							<label for="img">Logotipo (até 16 MB)</label>
+							<input type="file" name="file" class="img form-control"  accept=".png"/> 
+					</div>					
 					
 					<button type="submit" class="btn" onclick="confirmaCadastroPetshop()">Registrar</button>
 				</div>

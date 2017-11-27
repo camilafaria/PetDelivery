@@ -32,9 +32,9 @@
 </head>
 <body>
 	<c:import url="headerPetshop.jsp" />
-
-	<c:import url="menuPetshop.jsp" />
-	
+	<jsp:include page="menuPetshop.jsp">
+        <jsp:param name="foto" value="${prestadorPetshopLogado.logotipo}"/>
+    </jsp:include>	
 	<jsp:useBean id="daoPrestador"
 		class="br.com.petdelivery.jdbc.dao.PrestadorDAO" />
 
@@ -49,7 +49,8 @@
 				</div>
 
 				<!-- form action="alteraUsuario" class="form-horizontal"-->
-				<form action="update-petshop" class="form-horizontal">
+				<form action="update-petshop" class="form-horizontal" method="post"
+					enctype="multipart/form-data">
 					<div class="form-group" style="vertical-align: middle;"
 						align="center">
 						<div class="container col-sm-10" style="vertical-align: middle;"
@@ -86,16 +87,19 @@
 										name="senha" value="${daoPrestador.getSenhaById (prestadorPetshopLogado.cnpj)}"
 										class="contact-name form-control">
 								</div>
+								
+								<div class="form-group col-sm-11">
+									<label for="contact-email">Foto (até 16 MB)</label> <input
+										type="file" name="file" class="contact-email form-control" accept=".png" />
+								</div>
+								
 								<div class="form-group col-sm-12">
 								<button type="submit" class="btn">Atualizar</button>
 								</div>
 							</div>
 						</div>
 					</div>
-				</form>
-				
-				
-		
+				</form>		
 				
 				<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 				<!-- JQUERY SCRIPTS -->
