@@ -61,9 +61,7 @@ $('#id_tipo').change(function(event) {
 
 	<c:import url="headerUsuario.jsp" />
 
-	<jsp:include page="menuUsuario.jsp">
-		<jsp:param name="foto" value="${usuarioLogado.foto}"/>
-	</jsp:include>
+	<c:import url="menuUsuario.jsp" />
 	
 	<jsp:useBean id="daoAnimal"
 		class="br.com.petdelivery.jdbc.dao.AnimalDAO" />
