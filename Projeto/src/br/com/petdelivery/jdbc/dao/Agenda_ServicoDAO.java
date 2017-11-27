@@ -62,7 +62,33 @@ public class Agenda_ServicoDAO {
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
 			}			
-		}		
+		}
+		
+		public void deleteServicoPet (Long id_animal) {
+			String sql = "DELETE FROM AGENDA_SERVICO WHERE id_animal=?";
+			
+			try {
+				PreparedStatement stmt = connection.prepareStatement(sql);				
+				stmt.setLong(1, id_animal);
+				stmt.execute();
+				stmt.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}			
+		}
+		
+		public void deleteServicoServico (Long id_servico) {
+			String sql = "DELETE FROM AGENDA_SERVICO WHERE id_servico=?";
+			
+			try {
+				PreparedStatement stmt = connection.prepareStatement(sql);				
+				stmt.setLong(1, id_servico);
+				stmt.execute();
+				stmt.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}			
+		}
 		
 		public List<Agenda_Servico> getAgendamentos (Long cpfUsuario) {
 			String sql = "SELECT * FROM Agenda_Servico WHERE id_usuario=? and dataInicio >= (SELECT CURDATE());";	

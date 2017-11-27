@@ -43,10 +43,10 @@
 	<jsp:useBean id="daoPrestador"
 		class="br.com.petdelivery.jdbc.dao.PrestadorDAO" />
 		
-	<c:import url="headerAutonomo.jsp" />
-
-	<c:import url="menuAutonomo.jsp" />	
-	
+	<c:import url="headerUsuario.jsp" />
+	<jsp:include page="menuUsuario.jsp">
+        <jsp:param name="foto" value="${usuarioLogado.foto}"/>
+    </jsp:include>	
 	
 	<!-- /. NAV SIDE  -->
 	<div id="page-wrapper">
@@ -61,11 +61,7 @@
 						</div>
 					</div>
 				</div>
-		
-<<<<<<< HEAD
- 	
- 
- 	
+			
 			 	<label for="contact-name" class="table-header"> Serviço: </label>
 			 		<c:out value="${daoServico.getServicoById(servicoSelecionado.id_servico)}"/>
 			 		
@@ -109,35 +105,11 @@
 				
 				<c:if test="${servicoSelecionado.status eq 'cancelado'}">
 					<br><br><button type="submit" class="btn" onclick="excluiServico()"> Excluir Serviço </button>												
-				</c:if>	
-					 
-			 	<script language="javascript">
-				function editaServico(){	
-					window.location = 'editaServico?id=' + ${servicoSelecionado.id_agendamento};				
-				}
+				</c:if>
 				
-				function confirmaCancelamento(){
-					if (confirm("Tem certeza que deseja cancelar este serviço?"))
-						window.location = 'cancelaServico?id=' + ${servicoSelecionado.id_agendamento}		
-				}
-				
-				function excluiServico(){
-					if (confirm("Tem certeza que deseja cancelar este serviço?"))
-						window.location = 'cancelaServico?id=' + ${servicoSelecionado.id_agendamento}		
-				}
-				</script>
-=======
-	<br><label for="contact-name" class="table-header"> Observação do Prestador: </label>
-	<c:out value="${servicoSelecionado.obsPrestador eq (null or 'null')? 'Não informado' : servicoSelecionado.obsPrestador}"/>	
-	
-	<c:if test="${servicoSelecionado.status ne 'cancelado'}">
-		<br><br><button type="submit" class="btn" onclick="editaServico()"> Editar Serviço </button>
-		<button type="submit" class="btn" onclick="confirmaCancelamento()">Cancelar Serviço </button>										
-	</c:if>
-	
-	<c:if test="${servicoSelecionado.status eq 'cancelado'}">
-		<br><br><button type="submit" class="btn" onclick="excluiServico()"> Excluir Serviço </button>												
-	</c:if>	
+				</div>
+		</div>
+	</div>			
 		 
  	<script language="javascript">
 	function editaServico(){	
@@ -148,14 +120,13 @@
 		if (confirm("Tem certeza que deseja cancelar este serviço?"))
 			window.location = 'cancelaServico?id=' + ${servicoSelecionado.id_agendamento}		
 	}
->>>>>>> 2eee429460f1d3c11834bf5c5ef36c354eddef19
 	
-			</div>
-		</div>
-
-	</div>
-
-
+	function excluiServico(){
+		if (confirm("Tem certeza que deseja cancelar este serviço?"))
+			window.location = 'cancelaServico?id=' + ${servicoSelecionado.id_agendamento}		
+	}
+	</script>
+	
 	<c:import url="footer.jsp" />
  
 </body>

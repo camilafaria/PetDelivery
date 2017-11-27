@@ -321,6 +321,7 @@ public class HomeUsuarioController {
 	
 	@RequestMapping("confirmaExclusaoPet")
 	public String excluiPet (HttpServletRequest request, HttpSession session) {
+		new Agenda_ServicoDAO().deleteServicoPet(Long.parseLong((request.getParameter("id"))));
 		new AnimalDAO().delete(Long.parseLong((request.getParameter("id"))));		
 		return "posLogin/usuario/meusPets";
 	}

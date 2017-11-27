@@ -213,6 +213,7 @@ public class HomePrestadorController {
 	
 	@RequestMapping("confirmaExclusaoServicoAutonomo")
 	public String excluiServicoAutonomo (HttpServletRequest request, HttpSession session) {		
+		new Agenda_ServicoDAO().deleteServicoServico(Long.parseLong(request.getParameter("id")));
 		new Servico_AutonomoDAO().delete(Long.parseLong(request.getParameter("id")));		
 		return "redirect:servicosAutonomo";
 	}

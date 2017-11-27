@@ -82,7 +82,7 @@
 									<td>${servico.condicoes}</td>
 									<td>${servico.delivery eq 'true'? 'Sim' : 'Não'}</td>
 									<td><a href="editaServicoAutonomo?id=${servico.id_servicoAutonomo}">Atualizar</a></td>
-									<td><a href="javascript:confirmaExclusao();"> Excluir </a></td>						
+									<td><a href="javascript:confirmaExclusao(${servico.id_servicoAutonomo});"> Excluir </a></td>						
 									
 								</tr>
 							</c:forEach>						
@@ -103,10 +103,10 @@
 
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<script language="javascript">
-	function confirmaExclusao(){
-		System.out.println("ESTOU EXECUTANDO");
-		if (confirm('Tem certeza que deseja excluir este serviço?')){		
-			window.location = 'confirmaExclusaoServicoAutonomo?id=' + ${servico.id_servicoAutonomo};
+	function confirmaExclusao(id_animal){
+		var r = confirm("Tem certeza que deseja excluir este serviço?"); 
+		if (r){		
+			window.location = 'confirmaExclusaoServicoAutonomo?id=' + id_animal;
 		}
 	}
 	</script>	
