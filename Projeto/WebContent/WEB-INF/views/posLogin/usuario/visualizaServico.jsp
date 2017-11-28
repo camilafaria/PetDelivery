@@ -56,17 +56,17 @@
 				<div class="page-title-container">
 					<div class="container">
 						<div class="title col-sm-9 page-title wow fadeIn">
-							<span aria-hidden="true" class="fa fa-gear"></span>
+							<span aria-hidden="true" class="fa fa-heart"></span>
 							<h1>Detalhe do Serviço</h1>
 						</div>
 					</div>
 				</div>
 			
-			 	<label for="contact-name" class="table-header"> Serviço: </label>
+			 	<label for="contact-name" class="table-header"><br><br> Serviço: </label>
 			 		<c:out value="${daoServico.getServicoById(servicoSelecionado.id_servico)}"/>
 			 		
 				<br><label for="contact-name" class="table-header"> Nome do prestador: </label>
-					<c:out value="${daoPrestador.getTipoById(servicoSelecionado.id_prestador) eq 0? daoAutonomo.getNomeById(servicoSelecionado.id_prestador) : daoPetshop.getNomeById(servicoSelecionado.id_prestador)}"/>
+					<c:out value=" ${daoPrestador.getTipoById(servicoSelecionado.id_prestador) eq 0? daoAutonomo.getNomeById(servicoSelecionado.id_prestador) : daoPetshop.getNomeById(servicoSelecionado.id_prestador)}"/>
 							
 				<br><label for="contact-name" class="table-header"> E-mail do prestador: </label>
 					<c:out value="${daoPrestador.getEmailById(servicoSelecionado.id_prestador)}"/>

@@ -65,7 +65,7 @@
 					<c:if test="${not empty daoServico_Autonomo.getServico(prestadorAutonomoLogado.cpf)}">	
 						<br><br><br><br><br>
 									
-						<table border="0" align="center" width="500px">
+						<table border="0" align="center" width="800px">
 							<tr align="center" class="table-header">
 								<th>Serviço</th>
 								<th>Preço</th>

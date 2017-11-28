@@ -68,7 +68,7 @@
 								</div>
 								
 								<div class="form-group">
-									<label for="contact-name">Preço: R$</label>
+									<label for="contact-name ">Preço: R$</label>
 									<input type="number" step="0.01" name="preco" class="contact-name form-control" style="width:150px;" value="${servicoSelecionado.preco}">
 								</div>
 								
