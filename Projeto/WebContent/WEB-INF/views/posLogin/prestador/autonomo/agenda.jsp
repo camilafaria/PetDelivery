@@ -96,7 +96,7 @@
 						},
 				defaultDate: '2017-11-12',
 				navLinks: true, // can click day/week names to navigate views
-				editable: true,
+				editable: false,
 				eventLimit: true, // allow "more" link when too many events
 				events: {
 					url: 'populaAgenda',
@@ -111,6 +111,7 @@
 			            return false;       
 			        }
 			    }
+				,locale:'pt-br'
 			});			
 		});
 	</script>
