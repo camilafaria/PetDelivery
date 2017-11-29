@@ -55,7 +55,7 @@ public class UsuarioDAO {
 	}
 	
 	public void update(Usuario usuario) {
-		String sql = "UPDATE USUARIO SET nome=?, ddd=?, telefone=?, rua=?, numero=?, complemento=?, bairro=?, cep=?, email=?, senha=? "
+		String sql = "UPDATE USUARIO SET nome=?, ddd=?, telefone=?, rua=?, numero=?, complemento=?, bairro=?, cep=?, email=?, senha=?, foto=? "
 				+ "WHERE cpf=?";
 
 		try {
@@ -73,7 +73,8 @@ public class UsuarioDAO {
 			stmt.setString(8, usuario.getCep());
 			stmt.setString(9, usuario.getEmail());
 			stmt.setString(10, usuario.getSenha());
-			stmt.setLong(11, usuario.getCpf());
+			stmt.setString(11, usuario.getFoto());
+			stmt.setLong(12, usuario.getCpf());
 
 			// executa
 			stmt.execute();
@@ -224,6 +225,29 @@ public class UsuarioDAO {
 			
 			if (rs.next()){				
 				email = rs.getString("email");								
+				stmt.close();
+				return email;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;		
+	}
+	
+public String getFotoById (Long cpf) {
+		
+		String sql = "SELECT foto FROM USUARIO WHERE cpf=?";
+		String email = "";
+		
+		PreparedStatement stmt;
+		try {
+			stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, cpf);			
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()){				
+				email = rs.getString("foto");								
 				stmt.close();
 				return email;
 			}

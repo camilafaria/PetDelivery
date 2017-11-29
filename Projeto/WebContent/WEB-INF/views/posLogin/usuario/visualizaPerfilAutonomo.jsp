@@ -41,8 +41,13 @@
 	<jsp:useBean id="daoServicoAutonomo"
 		class="br.com.petdelivery.jdbc.dao.Servico_AutonomoDAO" />
 	<jsp:useBean id="daoPrestador"
-		class="br.com.petdelivery.jdbc.dao.PrestadorDAO" />	
-		
+		class="br.com.petdelivery.jdbc.dao.PrestadorDAO" />
+	<jsp:useBean id="daoAvaliacao"
+		class="br.com.petdelivery.jdbc.dao.AvaliacaoDAO" />
+	<jsp:useBean id="daoComentario"
+		class="br.com.petdelivery.jdbc.dao.ComentarioDAO" />
+	<jsp:useBean id="daoUsuario"
+		class="br.com.petdelivery.jdbc.dao.UsuarioDAO" />		
 
 	<!-- /. NAV SIDE  -->
 	<div id="page-wrapper">
@@ -53,14 +58,13 @@
 					<span aria-hidden="true"></span>
 					<h1><c:out value="${perfilPrestadorAutonomo.nome}"/></h1>
 					<h5><c:out value="${perfilPrestadorAutonomo.experiencia}"/></h5>
-					<h5>Avaliação: 
+					<h5><b>Média de avaliações: </b> 
 						<c:out value="${perfilPrestador_nota}"/>
 					</h5>
 				</div>
 <br><br><br><br>
-				<img src="assetsPosLogin/img/prestador.jpg"
-					class="img-responsive img-circle col-sm-3 col-sm-offset-1"/>
-
+				<img src="/ESI2017/getImage?foto=${perfilPrestadorAutonomo.foto}" class="img-responsive img-circle col-sm-3 col-sm-offset-1" />
+				
 				<div class="form-group col-sm-7">					
 					<div class="form-group col-sm-12">
 						<label for="contact-name" class="table-header">Localização: </label> <br>
@@ -93,36 +97,78 @@
 						</table>
 					</div>
 					
-					<div class="form-group col-sm-12">
-						<label for="contact-name">Avalie esse prestador:</label>
-						<form action="avaliar-PrestadorAutonomo" class="form-horizontal" method="get">
-							<label class="">1
-								<input	class="" type="radio" name="nota" value="1">
-							</label>
-							<label class="">2
-								<input	class="" type="radio" name="nota" value="2">
-							</label>
-							<label class="">3
-								<input	class="" type="radio" name="nota" value="3">
-							</label>
-							<label class="">4
-								<input	class="" type="radio" name="nota" value="4">
-							</label>
-							<label class="">5
-								<input	class="" type="radio" name="nota" value="5">
-							</label>
-							
-							<input hidden type="text" name="id" value="${perfilPrestadorAutonomo.cpf}">
+					<br><br><br>
+					<div class="form-group col-sm-12">							
+										
+						<c:if test="${daoAvaliacao.getAvaliacao(usuarioLogado.cpf) != -1}">												
+							<form action="editarAvaliacao-PrestadorAutonomo" class="form-horizontal" method="post">
+							<label for="contact-name">Avalie esse prestador:</label>							
+								<c:forEach begin="1" end="5" var="val">		
+    								<c:if test="${val eq daoAvaliacao.getAvaliacao(usuarioLogado.cpf)}">
+    									<label class="">
+											<input class="" type="radio" name="nota" value="${val}" checked> ${val}
+										</label>
+    								</c:if>
+    							
+    								<c:if test="${val ne daoAvaliacao.getAvaliacao(usuarioLogado.cpf)}">
+    									<label class="">
+											<input class="" type="radio" name="nota" value="${val}">${val}
+										</label>			
+    								</c:if>
+								</c:forEach>
+								
+							<input hidden type="text" name="id_prestador" value="${perfilPrestadorAutonomo.cpf}">
+							<input hidden type="text" name="id_usuario" value="${usuarioLogado.cpf}">
+							<button type="submit" class="btn">Atualizar</button>
+							</form>							
+						</c:if>						
+						
+						<c:if test="${daoAvaliacao.getAvaliacao(usuarioLogado.cpf) == -1}">						
+							<form action="avaliar-PrestadorAutonomo" class="form-horizontal" method="post">						
+								<c:forEach begin="1" end="5" var="val">		
+    								<label class="">
+										<input class="" type="radio" name="nota" value="${val}">${val}
+									</label>
+								</c:forEach>				
+							<input hidden type="text" name="id_prestador" value="${perfilPrestadorAutonomo.cpf}">
+							<input hidden type="text" name="id_usuario" value="${usuarioLogado.cpf}">
 							<button type="submit" class="btn">Avaliar</button>
+							</form>	
+						</c:if>						
+						
+						<br><br>
+						
+						<form action="insereComentario" class="form-horizontal" method="post">		
+						<div class="form-group col-sm-12">
+							<label for="contact-email">Deixe seu comentário:</label>
+                            <textarea name="comentario" cols="20" rows="5" class="contact-email form-control" id="comentario" placeholder="Faça um comentário sobre este prestador e ajude outras pessoas na escolha pelo melhor serviço!"></textarea>
+                            <input hidden type="text" name="id_prestador" value="${perfilPrestadorAutonomo.cpf}">
+							<input hidden type="text" name="id_usuario" value="${usuarioLogado.cpf}">
+							<br><button type="submit" class="btn"">Comentar</button>
+						</div>		
 						</form>
-					</div>
-					
-				</div>		
-				
+						
+						<br><br><br>
+						<div class="form-group col-sm-12">
+							<label for="contact-email">Comentários de outros petlovers sobre ${perfilPrestadorAutonomo.nome}:</label>
+							<c:forEach var="comment" items="${daoComentario.getComentsByIdPrestador(perfilPrestadorAutonomo.cpf)}">
+							<tr class="table-line">
+									<td>
+										<img src="/ESI2017/getImage?foto=${daoUsuario.getFotoById(comment.cpf)}" class="img-responsive img-circle" width="50px" height="50px" />
+									</td>
+									<td>${daoUsuario.getNameById(comment.cpf)}</td>
+									<td><br><br>${comment.comentario}</td>									
+									<td><a href="javascript:confirmaExclusao(${animal.id_animal});">Excluir</a></td>
+								</tr>
+							</c:forEach>							
+							
+						</div>										
+					</div>			
+				</div>						
 			</div>
 			<div class="form-group col-sm-12 col-md-offset-0">						
 						<button name="back" onclick="history.back()" class="btn"><< Voltar</button>
-					</div>
+			</div>
 		</div>
 	</div>
 

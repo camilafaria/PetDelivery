@@ -23,6 +23,8 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import br.com.petdelivery.jdbc.dao.Agenda_ServicoDAO;
 import br.com.petdelivery.jdbc.dao.AnimalDAO;
+import br.com.petdelivery.jdbc.dao.AvaliacaoDAO;
+import br.com.petdelivery.jdbc.dao.ComentarioDAO;
 import br.com.petdelivery.jdbc.dao.AutonomoDAO;
 import br.com.petdelivery.jdbc.dao.PrestadorDAO;
 import br.com.petdelivery.jdbc.dao.ServicoDAO;
@@ -30,7 +32,9 @@ import br.com.petdelivery.jdbc.dao.UsuarioDAO;
 import br.com.petdelivery.jdbc.modelo.Agenda_Servico;
 import br.com.petdelivery.jdbc.modelo.Animal;
 import br.com.petdelivery.jdbc.modelo.Autonomo;
+import br.com.petdelivery.jdbc.modelo.Avaliacao;
 import br.com.petdelivery.jdbc.modelo.Busca;
+import br.com.petdelivery.jdbc.modelo.Comentario;
 import br.com.petdelivery.jdbc.modelo.Prestador;
 import br.com.petdelivery.jdbc.modelo.Usuario;
 
@@ -167,10 +171,43 @@ public class HomeUsuarioController {
 
 	@RequestMapping("avaliar-PrestadorAutonomo")
 	public String avaliarPrestadorAutonomo(HttpServletRequest request, HttpSession session) {
-		// System.out.println("Prestador CPF="+request.getParameter("id"));
-		Prestador prestador = new PrestadorDAO().buscaPrestadorById(Long.parseLong(request.getParameter("id")));
+		// System.out.println("Prestador CPF="+request.getParameter("id"));		
+		Avaliacao avaliacao = new Avaliacao();
+		avaliacao.setId_prestador(Long.parseLong(request.getParameter("id_prestador")));
+		avaliacao.setCpf(Long.parseLong(request.getParameter("id_usuario")));
+		avaliacao.setNota(Integer.parseInt(request.getParameter("nota")));		
+		new AvaliacaoDAO().insert(avaliacao);		
+		
+		Prestador prestador = new PrestadorDAO().buscaPrestadorById(Long.parseLong(request.getParameter("id_prestador")));
 		new PrestadorDAO().atribuiNovaNota(prestador, Integer.parseInt(request.getParameter("nota")));
 
+		return "posLogin/usuario/visualizaPerfilAutonomo";
+	}
+	
+	@RequestMapping("editarAvaliacao-PrestadorAutonomo")
+	public String updateAvaliacaoPrestadorAutonomo(HttpServletRequest request, HttpSession session) {
+		// System.out.println("Prestador CPF="+request.getParameter("id"));		
+		Avaliacao avaliacao = new Avaliacao();
+		avaliacao.setId_prestador(Long.parseLong(request.getParameter("id_prestador")));
+		avaliacao.setCpf(Long.parseLong(request.getParameter("id_usuario")));
+		avaliacao.setNota(Integer.parseInt(request.getParameter("nota")));	
+		new AvaliacaoDAO().update(avaliacao);
+		
+		Prestador prestador = new PrestadorDAO().buscaPrestadorById(Long.parseLong(request.getParameter("id_prestador")));
+		new PrestadorDAO().atribuiNovaNota(prestador, Integer.parseInt(request.getParameter("nota")));
+
+		return "posLogin/usuario/visualizaPerfilAutonomo";
+	}
+	
+	@RequestMapping("insereComentario")
+	public String insertComentario(HttpServletRequest request, HttpSession session) {
+		// System.out.println("Prestador CPF="+request.getParameter("id"));		
+		Comentario comentario = new Comentario();
+		comentario.setId_prestador(Long.parseLong(request.getParameter("id_prestador")));
+		comentario.setCpf(Long.parseLong(request.getParameter("id_usuario")));
+		comentario.setComentario(request.getParameter("comentario"));		
+		
+		new ComentarioDAO().insert(comentario);		
 		return "posLogin/usuario/visualizaPerfilAutonomo";
 	}
 
