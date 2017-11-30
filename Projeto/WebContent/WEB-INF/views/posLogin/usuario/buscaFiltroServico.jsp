@@ -69,7 +69,7 @@
 							<div class="col-sm-2 col-form-label">
 								<label class="form-check-label"> <input
 									class="form-check-input" type="checkbox" id="inlineCheckbox1"
-									name="servico" value="${servico.id_servico}">${servico.nome}
+									name="servico" value="${servico.id_servico}" checked>${servico.nome}
 								</label>
 							</div>
 						</c:forEach>
