@@ -142,7 +142,7 @@
 		                    <p></p>
 		                    <div class="work-bottom">
 		                        <a class="big-link-2 view-work" href="assets/img/portfolio/work01.jpg"><span class="icon_search"></span></a>
-		                        <a class="big-link-2" href="portfolio.html"><span class="icon_link"></span></a>
+		                        <a class="big-link-2" href="#.html"><span class="icon_link"></span></a>
 		                    </div>
 		                </div>
 	                </div>
@@ -153,7 +153,7 @@
 		                    <p></p>
 		                    <div class="work-bottom">
 		                        <a class="big-link-2 view-work" href="assets/img/portfolio/work02.jpg"><span class="icon_search"></span></a>
-		                        <a class="big-link-2" href="portfolio.html"><span class="icon_link"></span></a>
+		                        <a class="big-link-2" href="#"><span class="icon_link"></span></a>
 		                    </div>
 		                </div>
 		            </div>
@@ -164,7 +164,7 @@
 		                    <p></p>
 		                    <div class="work-bottom">
 		                        <a class="big-link-2 view-work" href="assets/img/portfolio/work03.jpg"><span class="icon_search"></span></a>
-		                        <a class="big-link-2" href="portfolio.html"><span class="icon_link"></span></a>
+		                        <a class="big-link-2" href="#"><span class="icon_link"></span></a>
 		                    </div>
 		                </div>
 		            </div>
@@ -175,7 +175,7 @@
 		                    <p></p>
 		                    <div class="work-bottom">
 		                        <a class="big-link-2 view-work" href="assets/img/portfolio/work04.jpg"><span class="icon_search"></span></a>
-		                        <a class="big-link-2" href="portfolio.html"><span class="icon_link"></span></a>
+		                        <a class="big-link-2" href="#"><span class="icon_link"></span></a>
 		                    </div>
 		                </div>
 		            </div>

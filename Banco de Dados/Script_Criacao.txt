@@ -40,7 +40,7 @@ CREATE TABLE ANIMAL (
     genero char(1) NOT NULL,
     porte char(20) NOT NULL,
     pedigree boolean NOT NULL,
-    comportamento char(50) NOT NULL,
+    comportamento varchar(500) NOT NULL,
     vacinas varchar(300) NOT NULL,        
     foto varchar(1000),
 		PRIMARY KEY (id_animal),
