@@ -178,8 +178,7 @@ $('#id_tipo').change(function(event) {
 									value="${usuarioLogado.cpf}" />
 
 								<!-- input type="submit" class="btn" value="Registrar" /-->
-								<button type="submit" class="btn"
-									onclick="confirmaCadastroPet()">Registrar</button>
+								<button type="submit" class="btn">Registrar</button>
 							</div>
 						</div>
 					</div>
@@ -192,16 +191,6 @@ $('#id_tipo').change(function(event) {
 
 
 	<c:import url="footer.jsp" />
-
-	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-
-	<script language="javascript">
-	function confirmaCadastroPet(){
-		  alert('Cadastro realizado com sucesso!');  
-	}
-	</script>
-
-	
 
 	<!-- JQUERY SCRIPTS -->
 	<script src="assetsPosLogin/js/jquery-1.10.2.js"></script>

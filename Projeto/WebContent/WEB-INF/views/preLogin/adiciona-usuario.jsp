@@ -176,12 +176,6 @@ $(document).ready(function() {
 
 	<c:import url="../footer.jsp" />
 
-	<!-- Javascript -->
-	<script language="javascript">
-	function confirmaCadastroUsuario(){
-		  alert('Cadastro realizado com sucesso!');  
-	}
-	</script>
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/js/bootstrap-hover-dropdown.min.js"></script>

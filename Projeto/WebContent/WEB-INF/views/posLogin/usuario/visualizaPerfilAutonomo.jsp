@@ -161,7 +161,6 @@
 									</td>
 									<td>${daoUsuario.getNameById(comment.cpf)}</td>
 									<td><br><br>${comment.comentario}</td>									
-									<td><a href="javascript:confirmaExclusao(${animal.id_animal});">Excluir</a></td>
 								</tr>
 							</c:forEach>							
 							

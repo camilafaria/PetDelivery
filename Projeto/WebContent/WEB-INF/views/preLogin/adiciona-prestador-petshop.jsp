@@ -56,7 +56,8 @@
 		</div>
 	</div>
 	
-	<form action="insert-prestador-petshop"  class="form-horizontal" style="vertical-align: middle;" align="center" method="post">
+	<form action="insert-prestador-petshop"  class="form-horizontal" style="vertical-align: middle;" align="center" method="post"
+	enctype="multipart/form-data">
 		<div class="form-group" style="vertical-align: middle;" align="center">
         	<div class="container" style="vertical-align: middle; margin-left:27%;" align="center">
         		<div class="col-sm-7 contact-form wow fadeInLeft" style="vertical-align: middle;" align="center">
@@ -90,7 +91,7 @@
 							<input type="file" name="file" class="img form-control"  accept=".png"/> 
 					</div>					
 					
-					<button type="submit" class="btn" onclick="confirmaCadastroPetshop()">Registrar</button>
+					<button type="submit" class="btn">Registrar</button>
 				</div>
 			</div>
 		</div>
@@ -101,11 +102,6 @@
 
 	<c:import url="../footer.jsp" />
 
-	<!-- Javascript -->
-	<script language="javascript">
-	function confirmaCadastroPetshop(){
-		  alert('Cadastro realizado com sucesso!');  
-	}
 	</script>
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>

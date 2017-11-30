@@ -122,13 +122,6 @@
 	<c:import url="footer.jsp" />
 	
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-
-	<script language="javascript">
-		function confirmaCadastroUnidade() {
-			alert('Cadastro realizado com sucesso!');
-		}
-	</script>
-
 	<!-- JQUERY SCRIPTS -->
 	<script src="assetsPosLogin/js/jquery-1.10.2.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->
