@@ -113,7 +113,7 @@ $(document).ready(function() {
 					</div>
 					<div class="form-group col-sm-5">
 						<label for="contact-name">Telefone</label> <input type="text"
-							name="telefone" placeholder="93456-9879"
+							name="telefone" placeholder="934569879"
 							class="contact-name form-control">
 					</div>
 					<!-- 3 -->
