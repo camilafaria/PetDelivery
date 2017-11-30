@@ -32,8 +32,6 @@
 <link rel="apple-touch-icon-precomposed"
 	href="assets/ico/apple-touch-icon-57-precomposed.png">
 
-
-
 <body>
 
 	<nav class="navbar-default navbar-side" role="navigation">
@@ -43,9 +41,12 @@
 			<li class="text-center user-image-back">	
 				<img src="/ESI2017/getImage?foto=${param.foto}" class="img-responsive img-circle" width="260px" height="100px" />
 			</li>
-			<li><a href="agenda"><i class="fa fa-calendar "></i>Agenda</a></li>
 			
-			<li><a href="servicosAutonomo"><i class="fa fa-heart "></i>Meus serviços</a></li>			
+			<li><a href="visualizaPerfil?id=${prestadorAutonomoLogado.cpf}"><i class="fa fa-calendar "></i>Meu perfil</a></li>
+			
+			<li><a href="servicosAutonomo"><i class="fa fa-heart "></i>Meus serviços</a></li>
+			
+			<li><a href="agenda"><i class="fa fa-calendar "></i>Minha agenda</a></li>						
 
 			<li><a href="configContaAutonomo"><i class="fa fa-gear "></i>Configurações da Conta</a></li>
 

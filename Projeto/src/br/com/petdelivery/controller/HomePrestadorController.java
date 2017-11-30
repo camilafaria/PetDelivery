@@ -3,6 +3,7 @@ package br.com.petdelivery.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -272,6 +273,29 @@ public class HomePrestadorController {
 		new Agenda_ServicoDAO().deleteServicoServico(Long.parseLong(request.getParameter("id")));
 		new Servico_AutonomoDAO().delete(Long.parseLong(request.getParameter("id")));		
 		return "redirect:servicosAutonomo";
+	}
+	
+	@RequestMapping("visualizaPerfil")
+	public String visualizaPerfil(HttpServletRequest request, HttpSession session) {
+		Prestador prestador = new Prestador();
+		prestador = new PrestadorDAO().getPrestadorbyId(Long.parseLong(request.getParameter("id")));
+		// corrige nota caso seja 0
+		double nota = 0;
+
+		if (prestador.getSomaNota() == 0) {
+			nota = 0;
+		} else {
+			nota = prestador.getSomaNota() / prestador.getSomaQnt();
+		}
+		Autonomo autonomo = new AutonomoDAO().getAutonomo(prestador);
+		DecimalFormat formatter = new DecimalFormat("#.00");
+		String notaAjustada = formatter.format(nota);
+
+		session.setAttribute("perfilPrestador", prestador);
+		session.setAttribute("perfilPrestador_nota", notaAjustada);
+		session.setAttribute("perfilPrestadorAutonomo", autonomo);
+
+		return "posLogin/prestador/autonomo/visualizaPerfilAutonomo";
 	}
 	
 }

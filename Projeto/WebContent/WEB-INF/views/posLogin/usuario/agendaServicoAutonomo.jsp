@@ -106,11 +106,11 @@
 	
 									<div class="form-group col-sm-5">
 										<label for="contact-name">Hora de Início</label> 
-										<input type="text" name="horaInicio" class="contact-name form-control" id="horaInicio" placeholder="hh:mm"> 
+										<input type="time" name="horaInicio" class="contact-name form-control" id="horaInicio" placeholder="hh:mm"> 
 									</div>
 									<div class="form-group col-sm-5">
 										<label for="contact-name">Hora de Fim</label> 
-										<input type="text" name="horaFim" class="contact-name form-control" id="horaFim" placeholder="hh:mm" disabled>
+										<input type="time" name="horaFim" class="contact-name form-control" id="horaFim" placeholder="hh:mm" disabled>
 									</div>
 								
 									<br><br>

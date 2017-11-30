@@ -235,7 +235,7 @@ public class UsuarioDAO {
 		return null;		
 	}
 	
-public String getFotoById (Long cpf) {
+	public String getFotoById (Long cpf) {
 		
 		String sql = "SELECT foto FROM USUARIO WHERE cpf=?";
 		String email = "";

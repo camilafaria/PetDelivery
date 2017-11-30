@@ -1,5 +1,5 @@
 <%@page import="com.sun.java.swing.plaf.windows.resources.windows"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="ISO-8859-1"%>
 <%@ page
 	import="java.util.*,
@@ -34,11 +34,10 @@
 	<c:import url="headerUsuario.jsp" />
 
 	<jsp:include page="menuUsuario.jsp">
-	<jsp:param name="foto" value="${usuarioLogado.foto}"/>
-</jsp:include>
+		<jsp:param name="foto" value="${usuarioLogado.foto}"/>
+	</jsp:include>
 
-	<!-- /. NAV SIDE  -->
-	
+	<!-- /. NAV SIDE  -->	
 	
 	<div id="page-wrapper">
 		<div id="page-inner">
@@ -130,7 +129,7 @@
 								
 									<label class="form-check-label"> <input
 										class="form-check-input" type="radio" name="autonomoOuPetshop"
-										id="gridRadios3" value="petshop"> Petshop
+										id="gridRadios3" value="petshop" disabled> Petshop
 									</label>
 								</div>
 							</div>

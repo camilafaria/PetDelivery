@@ -3,6 +3,7 @@ package br.com.petdelivery.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -115,9 +116,11 @@ public class HomeUsuarioController {
 			nota = prestador.getSomaNota() / prestador.getSomaQnt();
 		}
 		Autonomo autonomo = new AutonomoDAO().getAutonomo(prestador);
+		DecimalFormat formatter = new DecimalFormat("#.00");
+		String notaAjustada = formatter.format(nota);
 
 		session.setAttribute("perfilPrestador", prestador);
-		session.setAttribute("perfilPrestador_nota", nota);
+		session.setAttribute("perfilPrestador_nota", notaAjustada);
 		session.setAttribute("perfilPrestadorAutonomo", autonomo);
 
 		return "posLogin/usuario/visualizaPerfilAutonomo";
@@ -177,13 +180,13 @@ public class HomeUsuarioController {
 		avaliacao.setCpf(Long.parseLong(request.getParameter("id_usuario")));
 		avaliacao.setNota(Integer.parseInt(request.getParameter("nota")));		
 		new AvaliacaoDAO().insert(avaliacao);		
-		
+
 		Prestador prestador = new PrestadorDAO().buscaPrestadorById(Long.parseLong(request.getParameter("id_prestador")));
 		new PrestadorDAO().atribuiNovaNota(prestador, Integer.parseInt(request.getParameter("nota")));
 
 		return "posLogin/usuario/visualizaPerfilAutonomo";
 	}
-	
+
 	@RequestMapping("editarAvaliacao-PrestadorAutonomo")
 	public String updateAvaliacaoPrestadorAutonomo(HttpServletRequest request, HttpSession session) {
 		// System.out.println("Prestador CPF="+request.getParameter("id"));		
@@ -192,13 +195,13 @@ public class HomeUsuarioController {
 		avaliacao.setCpf(Long.parseLong(request.getParameter("id_usuario")));
 		avaliacao.setNota(Integer.parseInt(request.getParameter("nota")));	
 		new AvaliacaoDAO().update(avaliacao);
-		
+
 		Prestador prestador = new PrestadorDAO().buscaPrestadorById(Long.parseLong(request.getParameter("id_prestador")));
 		new PrestadorDAO().atribuiNovaNota(prestador, Integer.parseInt(request.getParameter("nota")));
 
 		return "posLogin/usuario/visualizaPerfilAutonomo";
 	}
-	
+
 	@RequestMapping("insereComentario")
 	public String insertComentario(HttpServletRequest request, HttpSession session) {
 		// System.out.println("Prestador CPF="+request.getParameter("id"));		
@@ -206,7 +209,7 @@ public class HomeUsuarioController {
 		comentario.setId_prestador(Long.parseLong(request.getParameter("id_prestador")));
 		comentario.setCpf(Long.parseLong(request.getParameter("id_usuario")));
 		comentario.setComentario(request.getParameter("comentario"));		
-		
+
 		new ComentarioDAO().insert(comentario);		
 		return "posLogin/usuario/visualizaPerfilAutonomo";
 	}
@@ -301,18 +304,18 @@ public class HomeUsuarioController {
 	public String editaServico (Agenda_Servico agendamento, HttpServletRequest request, HttpSession session) {		
 		new Agenda_ServicoDAO().updateStatus("a confirmar", agendamento.getObsPrestador(), agendamento.getId_agendamento());
 		new Agenda_ServicoDAO().updateServicoByUsuario(agendamento);
-		
+
 		session.setAttribute("servicoAtualizado", true);
 		return "posLogin/usuario/home";
 	}
-	
+
 	@RequestMapping("editaPet")
 	public String redirecionaEdicaoPet (HttpServletRequest request, HttpSession session) {
 		Animal animal = new AnimalDAO().getAnimalRealById(Long.parseLong((request.getParameter("id"))));		
 		session.setAttribute("animalSelecionado", animal);
 		return "posLogin/usuario/editaPet";
 	}
-	
+
 	@RequestMapping(value = "confirmaEdicaoPet", method = RequestMethod.POST)
 	public String editaPet (Animal animal, HttpServletRequest request, HttpSession session, 
 			@RequestParam CommonsMultipartFile file) {
@@ -346,7 +349,7 @@ public class HomeUsuarioController {
 		session.setAttribute("animalAtualizado", animal);
 		return "posLogin/usuario/meusPets";
 	}
-	
+
 	@RequestMapping("confirmaExclusaoPet")
 	public String excluiPet (HttpServletRequest request, HttpSession session) {
 		new Agenda_ServicoDAO().deleteServicoPet(Long.parseLong((request.getParameter("id"))));

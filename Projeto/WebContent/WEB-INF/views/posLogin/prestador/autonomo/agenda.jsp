@@ -1,7 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="ISO-8859-1"%>
+	
 <!-- Declaration to use JSTL -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -84,6 +85,7 @@
 	<script src='assetsPosLogin/js/jqueryCalendar.min.js'></script>
 	<script src='assetsPosLogin/js/momentCalendar.min.js'></script>
 	<script src='assetsPosLogin/js/fullcalendar.min.js'></script>
+	<script src='assetsPosLogin/js/locale/pt-br.js'></script>
 	
 	<script>
 		var cpfAutonomo = '${prestadorAutonomoLogado.cpf}';		
@@ -110,8 +112,8 @@
 			            window.open(event.url);
 			            return false;       
 			        }
-			    }
-				,locale:'pt-br'
+			    },
+				timeFormat: 'H:mm'	
 			});			
 		});
 	</script>
