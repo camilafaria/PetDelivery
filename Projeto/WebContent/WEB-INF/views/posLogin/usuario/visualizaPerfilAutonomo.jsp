@@ -54,11 +54,14 @@
 		<div id="page-inner">
 			<div class="row">
 
-				<div class="title col-sm-12 wow fadeIn">
+				<div class="title col-sm-12 wow fadeIn" >
 					<span aria-hidden="true"></span>
-					<h1><c:out value="${perfilPrestadorAutonomo.nome}"/></h1>
-					<h5><c:out value="${perfilPrestadorAutonomo.experiencia}"/></h5>
-					<h5><b>Média de avaliações: </b> 
+					<h1  ><c:out value="${perfilPrestadorAutonomo.nome}"/></h1>
+					<br>
+					<br>
+					<br>
+					<h5 style="vertical-align: middle; margin-left: 24%;"><c:out value="${perfilPrestadorAutonomo.experiencia}"/></h5>
+					<h5 style="vertical-align: middle; margin-left: 24%;"><b>Média de avaliações: </b> 
 						<c:out value="${perfilPrestador_nota}"/>
 					</h5>
 				</div>
@@ -139,7 +142,7 @@
 						<br><br>
 						
 						<form action="insereComentario" class="form-horizontal" method="post">		
-						<div class="form-group col-sm-12">
+						<div class="form-group col-sm-12" style="vertical-align: middle; margin-left: 5%;">
 							<label for="contact-email">Deixe seu comentário:</label>
                             <textarea name="comentario" cols="20" rows="5" class="contact-email form-control" id="comentario" placeholder="Faça um comentário sobre este prestador e ajude outras pessoas na escolha pelo melhor serviço!"></textarea>
                             <input hidden type="text" name="id_prestador" value="${perfilPrestadorAutonomo.cpf}">
@@ -166,8 +169,8 @@
 					</div>			
 				</div>						
 			</div>
-			<div class="form-group col-sm-12 col-md-offset-0">						
-						<button name="back" onclick="history.back()" class="btn"><< Voltar</button>
+			<div class="form-group col-sm-12 col-md-offset-0 " style="vertical-align: middle; margin-left: 16%;">						
+						<button name="back" onclick="history.back()" class="btn"> Voltar</button>
 			</div>
 		</div>
 	</div>

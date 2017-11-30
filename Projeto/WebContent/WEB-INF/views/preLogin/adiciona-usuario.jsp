@@ -38,7 +38,32 @@
 	href="assets/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
 	href="assets/ico/apple-touch-icon-57-precomposed.png">
+	
+<script type="text/javascript" src="assets/mascara/jquery.js"></script>
+<script type="text/javascript" src="assets/mascara/jquery.maskedinput.js"></script>
+
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+	$("input.telefone") .mask("(99)99999-9999");
+    
+})
+	$(document).ready(function() {
+	$("input.cpf") .mask("999.999.999-99");
+    
+});
+$(document).ready(function() {
+	$("input.cep") .mask("99999-999");
+    
+});
+</script>
+
+
 </head>
+
+
+
 <body>
 	<c:import url="../header.jsp" />
 
@@ -94,7 +119,7 @@
 					<!-- 3 -->
 					<div class="form-group col-sm-6">
 						<label for="contact-name">CEP</label> <input type="text"
-							name="cep" placeholder="00000-000"
+							name="cep" placeholder="00000-000" 
 							class="contact-name form-control">
 					</div>
 					<div class="form-group col-sm-6">
