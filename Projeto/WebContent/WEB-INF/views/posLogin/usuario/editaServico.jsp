@@ -117,10 +117,10 @@
 					<input type="radio" id="r2" name="radioTime" value="timeInicioFim" onChange="checkRadioTime()"> Hora de início e fim definidos <br>
 									
 					<label for="contact-name">Hora de Início</label> 
-						<input type="text" name="horaInicio" style=" width: 400px" class="contact-name form-control" id="horaInicio" placeholder="hh:mm" value="${servicoSelecionado.horaInicio}"> 
+						<input type="time" name="horaInicio" style=" width: 400px" class="contact-name form-control" id="horaInicio" placeholder="hh:mm" value="${servicoSelecionado.horaInicio}"> 
 					
 					<label for="contact-name">Hora de Fim</label> 
-						<input type="text" name="horaFim" style=" width: 400px" class="contact-name form-control" id="horaFim" placeholder="hh:mm" value="${servicoSelecionado.horaFim eq null? '' : servicoSelecionado.horaFim}" disabled>
+						<input type="time" name="horaFim" style=" width: 400px" class="contact-name form-control" id="horaFim" placeholder="hh:mm" value="${servicoSelecionado.horaFim eq null? '' : servicoSelecionado.horaFim}" disabled>
 						
 					<br><label for="contact-name" class="table-header"> Observação: </label>
 						<input type="text" name="obsCliente" style=" width: 400px" class="contact-name form-control" value="${servicoSelecionado.obsCliente}"/>
