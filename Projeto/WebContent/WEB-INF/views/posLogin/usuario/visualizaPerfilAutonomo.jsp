@@ -103,17 +103,17 @@
 					<br><br><br>
 					<div class="form-group col-sm-12">							
 										
-						<c:if test="${daoAvaliacao.getAvaliacao(usuarioLogado.cpf) != -1}">												
+						<c:if test="${daoAvaliacao.getAvaliacao(usuarioLogado.cpf,perfilPrestadorAutonomo.cpf) != -1}">												
 							<form action="editarAvaliacao-PrestadorAutonomo" class="form-horizontal" method="post">
 							<label for="contact-name">Avalie esse prestador:</label>							
 								<c:forEach begin="1" end="5" var="val">		
-    								<c:if test="${val eq daoAvaliacao.getAvaliacao(usuarioLogado.cpf)}">
+    								<c:if test="${val eq daoAvaliacao.getAvaliacao(usuarioLogado.cpf,perfilPrestadorAutonomo.cpf)}">
     									<label class="">
 											<input class="" type="radio" name="nota" value="${val}" checked> ${val}
 										</label>
     								</c:if>
     							
-    								<c:if test="${val ne daoAvaliacao.getAvaliacao(usuarioLogado.cpf)}">
+    								<c:if test="${val ne daoAvaliacao.getAvaliacao(usuarioLogado.cpf,perfilPrestadorAutonomo.cpf)}">
     									<label class="">
 											<input class="" type="radio" name="nota" value="${val}">${val}
 										</label>			
@@ -126,7 +126,7 @@
 							</form>							
 						</c:if>						
 						
-						<c:if test="${daoAvaliacao.getAvaliacao(usuarioLogado.cpf) == -1}">						
+						<c:if test="${daoAvaliacao.getAvaliacao(usuarioLogado.cpf,perfilPrestadorAutonomo.cpf) == -1}">						
 							<form action="avaliar-PrestadorAutonomo" class="form-horizontal" method="post">						
 								<c:forEach begin="1" end="5" var="val">		
     								<label class="">

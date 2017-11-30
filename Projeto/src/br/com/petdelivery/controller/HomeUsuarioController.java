@@ -194,7 +194,7 @@ public class HomeUsuarioController {
 		avaliacao.setId_prestador(Long.parseLong(request.getParameter("id_prestador")));
 		avaliacao.setCpf(Long.parseLong(request.getParameter("id_usuario")));
 		avaliacao.setNota(Integer.parseInt(request.getParameter("nota")));	
-		new AvaliacaoDAO().update(avaliacao);
+		new AvaliacaoDAO().update(avaliacao);		
 
 		Prestador prestador = new PrestadorDAO().buscaPrestadorById(Long.parseLong(request.getParameter("id_prestador")));
 		new PrestadorDAO().atribuiNovaNota(prestador, Integer.parseInt(request.getParameter("nota")));
@@ -248,6 +248,7 @@ public class HomeUsuarioController {
 
 		usuario.setFoto(filename);
 
+		System.out.println("NOME: " + usuario.getNome());
 		new UsuarioDAO().update(usuario);
 		session.setAttribute("usuarioAtualizado", true);
 

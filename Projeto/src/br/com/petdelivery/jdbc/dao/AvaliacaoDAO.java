@@ -64,13 +64,14 @@ public class AvaliacaoDAO {
 		}
 	}
 	
-	public float getAvaliacao (Long id_usuario) {
-		String sql = "SELECT nota FROM AVALIACAO WHERE cpf=?";
+	public float getAvaliacao (Long id_usuario, Long id_prestador) {
+		String sql = "SELECT nota FROM AVALIACAO WHERE cpf=? and id_prestador=?";
 		int nota = -1;
 		
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);			
 			stmt.setLong(1, id_usuario);
+			stmt.setLong(2, id_prestador);
 			
 			ResultSet rs = stmt.executeQuery();
 			

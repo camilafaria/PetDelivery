@@ -14,7 +14,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Pet Delivery</title>
 
 <!-- BOOTSTRAP STYLES-->
@@ -54,16 +54,18 @@
 		<div id="page-inner">
 			<div class="row">
 
-				<div class="title col-sm-12 wow fadeIn">
+				<div class="title col-sm-12 wow fadeIn" >
 					<span aria-hidden="true"></span>
-					<h1><c:out value="${perfilPrestadorAutonomo.nome}"/></h1>
-					<h5><c:out value="${perfilPrestadorAutonomo.experiencia}"/></h5>
-					<h5><b>Média de avaliações: </b> 
+					<h1  ><c:out value="${perfilPrestadorAutonomo.nome}"/></h1>
+					<br>
+					<br>
+					<br>
+					<h5 style="vertical-align: middle; margin-left: 24%;"><c:out value="${perfilPrestadorAutonomo.experiencia}"/></h5>
+					<h5 style="vertical-align: middle; margin-left: 24%;"><b>Média de avaliações: </b> 
 						<c:out value="${perfilPrestador_nota}"/>
 					</h5>
 				</div>
-				<br><br><br><br>
-				<img src="/ESI2017/getImage?foto=${perfilPrestadorAutonomo.foto}" class="img-responsive img-circle col-sm-3 col-sm-offset-1" />
+<br><br><br><br><img src="/ESI2017/getImage?foto=${perfilPrestadorAutonomo.foto}" class="img-responsive img-circle col-sm-3 col-sm-offset-1" />
 				
 				<div class="form-group col-sm-7">					
 					<div class="form-group col-sm-12">

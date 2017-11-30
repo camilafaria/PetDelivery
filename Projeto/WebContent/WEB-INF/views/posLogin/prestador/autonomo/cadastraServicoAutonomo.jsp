@@ -79,8 +79,8 @@
 									<label for="contact-name col-md-12">Para esse serviço, você oferece delivery?</label>
 									<select name="delivery" id="delivery">
 										<option selected disabled value=""></option>
-										<option value="0">Sim</option>
-										<option value="1">Não</option>								
+										<option value="true">Sim</option>
+										<option value="false">Não</option>								
 									</select>
 								</div>
 
@@ -88,9 +88,7 @@
 									<label for="contact-name">Condições do serviço oferecido</label>
 									<input type="text" name="condicoes" placeholder="Ex.: Pagamento antecipado"
 										class="contact-name form-control">
-								</div>
-								
-								
+								</div>							
 								
 								<input type="hidden" name="cpf"
 									value="${prestadorAutonomoLogado.cpf}" />
