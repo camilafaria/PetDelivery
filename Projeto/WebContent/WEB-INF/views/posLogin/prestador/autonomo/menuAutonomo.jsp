@@ -42,7 +42,7 @@
 				<img src="/ESI2017/getImage?foto=${param.foto}" class="img-responsive img-circle" width="260px" height="100px" />
 			</li>
 			
-			<li><a href="visualizaPerfil?id=${prestadorAutonomoLogado.cpf}"><i class="fa fa-calendar "></i>Meu perfil</a></li>
+			<li><a href="visualizaPerfil?id=${prestadorAutonomoLogado.cpf}"><i class="fa fa-user "></i>Meu perfil</a></li>
 			
 			<li><a href="servicosAutonomo"><i class="fa fa-heart "></i>Meus serviços</a></li>
 			

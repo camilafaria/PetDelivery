@@ -94,7 +94,7 @@
 									<td>R$ ${servico.preco}0</td>
 									<td>${servico.condicoes}</td>
 									<td>${servico.delivery eq 'true'? 'Sim' : 'Não'}</td>
-									<td><a href="agenda-servicoAutonomo?id=${perfilPrestadorAutonomo.cpf}&servico=${servico.id_servico}&delivery=${servico.delivery}">Agendar</a></td>
+									<td class="btn" ><a class="btn" href="agenda-servicoAutonomo?id=${perfilPrestadorAutonomo.cpf}&servico=${servico.id_servico}&delivery=${servico.delivery}">Agendar</a></td>
 								</tr>
 							</c:forEach>
 						</table>
